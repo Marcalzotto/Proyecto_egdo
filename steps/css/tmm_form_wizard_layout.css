@@ -1,0 +1,108 @@
+@font-face {
+	font-family: 'calibriregular';
+	src: url('../fonts/calibri-webfont.eot');
+	src: url('../fonts/calibri-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/calibri-webfont.woff') format('woff'),
+	url('../fonts/calibri-webfont.ttf') format('truetype'),
+	url('../fonts/calibri-webfont.svg#calibriregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* #Media Queries
+================================================== */
+
+/*	Retina Ready Display  */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+    .form-icon {
+		background: url(../images/sprite2X.png) no-repeat 0 0;
+		background-size: 36px 300px;
+    }
+	
+	.head-icon {
+		background: url(../images/header-sprite2x.png) no-repeat 0 0;
+		background-size: 30px 800px;
+	}
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    
+    .form-container { width: 100%; }
+	
+	#tmm-form-wizard dt { width: 24%; }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+	
+	.form-container { width: 100%; }
+	
+		.form-container #tmm-form-wizard .stage:before,
+        .form-container #tmm-form-wizard .stage:after { display: none; }
+        
+        #tmm-form-wizard .stage-content { width: 100%; }
+		
+		#tmm-form-wizard .stage {
+			text-align: left;
+			margin-bottom: 10px;
+		}
+		
+			#tmm-form-wizard .stage-header {float: left;}
+
+				#tmm-form-wizard .stage-title {	padding-left: 59px;	}
+
+				#tmm-form-wizard .stage-info { padding-left: 60px; }
+         
+		#tmm-form-wizard .stage.tmm-success .stage-header:after {
+            top: -4px;
+			left: 209px;
+		}
+                
+                #tmm-form-wizard .stage.tmm-success .stage-header.head-number:after { top: -13px; }
+		
+		#tmm-form-wizard .stage { min-height: 0; }
+		
+		#tmm-form-wizard dt { width: 16%; }
+		#tmm-form-wizard .tooltip { display: none; }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    
+	.form-container { width: 100%; }
+    
+    #tmm-form-wizard .form-header { font: 19px 'calibriregular',sans-serif;	}
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 480px) {
+	
+	#tmm-form-wizard .next .button.button-control span { padding: 6px 26px 9px 2px; }
+
+    #tmm-form-wizard .prev .button.button-control span {
+		padding-left: 45px;
+		padding: 6px 2px 9px 26px;
+    }
+    
+    #tmm-form-wizard .next .button.button-control span:after { right: 5px; }
+
+    #tmm-form-wizard .prev .button.button-control span:after { left: 3px; }
+    
+    #tmm-form-wizard .next .button-divider { right: 25px; }
+	
+	#tmm-form-wizard .prev .button-divider {	left: 25px; }
+
+    #tmm-form-wizard .tooltip { display: none; }
+	
+    #tmm-form-wizard dt { width: 31%; }
+	#tmm-form-wizard .form-login { width: 100%; margin-left: -240px; }
+}
+
+@media screen and (max-width: 320px) {
+	#tmm-form-wizard .form-login { 
+		width: 100%;
+		margin-left: -160px; 
+	}
+	
+    .form-container { width: 100%; }
+}
