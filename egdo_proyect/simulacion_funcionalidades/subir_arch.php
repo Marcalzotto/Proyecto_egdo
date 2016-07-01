@@ -43,7 +43,34 @@
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-	
+			<script>
+				$(function(){
+						
+						$("#formulario").on("submit", function(evento){
+							evento.preventDefault();
+							var formData = new FormData(document.getElementById("formulario"));
+							formData.append("clave","valor");
+
+							var direccion = "recibe_datos.php";
+							$.ajax({
+								url: direccion,
+								type: "post",
+								dataType: "html",
+								data: formData,
+								cache: false,
+								contentType: false,
+								processData: false
+							})
+
+							.done(function(response){
+								$("#respuesta_ajax").html(response);
+							});
+						
+						});
+				
+						
+				});
+			</script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -74,9 +101,9 @@
 											</a>
 												<ul>
 													<li><a href="../simulacion_funcionalidades/Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="../simulacion_funcionalidades/votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
 													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="../simulacion_funcionalidades/subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+													<li><a href="index_general.html">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -108,93 +135,48 @@
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
-
-					<!--
-
-						The slider's images (as well as its behavior) can be configured
-						at the top of "assets/js/main.js".
-
-					-->
-
-				
+				<div id="divContform">
+						<div class="form">
+								<h2>Subi tus dise&ntilde;os</h2>
 					
+								<div id="respuesta_ajax">
 						
-					<div id="slider">
-						<div class="caption">
-							<h2>Magna feugiat lorem ipsum dolor gravida</h2>
-							<!--<p>Nulla justo magna veroeros tempus</p> -->
-						</div>
-					</div>
+								</div>
+					
+								
+									<form enctype="multipart/form-data" method="post"  id="formulario">
+
+										<select name="disenio_opcion" id="dis_opcion">
+											<option value="0">Seleccionar dise&ntilde;o:</option>
+											<option value="1">Buzo/Campera</option>
+											<option value="2">Remera</option>
+											<option value="3">Bandera</option>
+										</select>
+										
+										<div id="frontal">
+											<p id="subir_frontal">Subir Frontal</p>
+											<input type="file" name="dis_frontal" id="d_frontal">
+										</div>
+										<div id="impresion">
+											<p id="subir_impresion">Subir Impresion</p>
+											<input type="file" name="vista_impresion"  id="d_impresion">
+										</div>
+										<div id="btn-enviar">
+											<p id="p_enviar">Subir</p>
+											<input type="submit" name="enviar_archs"  id="d_enviar">
+										</div>
+
+										<!--<div id="btn-enviar">
+											<input type="submit" value="subir" >
+										</div>-->
+									</form>
+						
+								
+				
+						</div>	
 				</div>
 
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-
-					<!-- Main -->
-						<div id="intro" class="container">
-							<div class="row">
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">01</span> -->
-									<header>
-										<h2>REGISTRATE</h2>
-									</header>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-1">
-											<div class="circulo-info">
-											<h3>Y REGISTRA A TUS COMPA&ntilde;EROS</h3>
-											<p><i class="fa fa-users fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Tu curso,Y registra a tus compañeros.</p> -->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">02</span> -->
-									<header>
-										<h2>ORGANIZA</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-2">
-											<div class="circulo-info">
-											<h3> UPD, FIESTA, VIAJES</h3>
-											<p>... Y M&Aacute;S </p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Todas tus actividades del ultimo ano, en un solo lugar.</p>-->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number"><i class="fa fa-envelope-o"></i></span> -->
-									<header>
-										<h2>COMPARTI</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-3">
-											<div class="circulo-info">
-											<h3>TODOS TUS MOMENTOS</h3>
-											<p><i class="fa fa-heart-o fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-								</section>
-							</div>
-							<div class="actions">
-								<a href="#" class="button button-big">Get Started</a>
-								<a href="#" class="button button-big button-alt">Learn More</a>
-							</div>
-						</div>
-						
-						
-				</div>
+			
 				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
