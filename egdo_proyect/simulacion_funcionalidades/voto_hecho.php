@@ -1,10 +1,6 @@
 <?php
 
-$mysqli = new mysqli("localhost","root","","egdo_pruebas");
-if($mysqli->connect_errno){
-	die("Error al conectar: ".$mysqli->connect_error);
-}
-
+require_once("conexion.php");
 
 
 if($_POST){
@@ -19,7 +15,7 @@ if($_POST){
 
 	/*La consulta verifica si existen votos de este usuario para el disenio $id_disenio*/
 
-	$obtenerConjunto = $mysqli->query($verificarSiYaVoto) or die($mysqli->error);
+	$obtenerConjunto = $conexion->query($verificarSiYaVoto) or die($conexion->error);
 	
 	if($obtenerConjunto){
 
@@ -31,11 +27,11 @@ if($_POST){
 
 			$registrar_voto = "insert into votos values('','$user_voto_id','$id_disenio','$tipo_dis')";
 
-			$mysqli->query($registrar_voto) or die($mysqli->error);
+			$conexion->query($registrar_voto) or die($conexion->error);
 
 			$traerCantidadVotos = "select cantidad_votos from disenio where id_disenio = '$id_disenio'";
 
-			$registro = $mysqli->query($traerCantidadVotos) or die($mysqli->error);
+			$registro = $conexion->query($traerCantidadVotos) or die($conexion->error);
 
 			$arrayRegistros = $registro->fetch_array(MYSQLI_ASSOC);
 
@@ -45,7 +41,7 @@ if($_POST){
 
 			$actualizarCantidadVotos = "update disenio set cantidad_votos = '$cantidadActual' where id_disenio = '$id_disenio'";
 			
-			$mysqli->query($actualizarCantidadVotos) or die($mysqli->error);
+			$conexion->query($actualizarCantidadVotos) or die($conexion->error);
 
 			echo $cantidadActual;
 		}else{

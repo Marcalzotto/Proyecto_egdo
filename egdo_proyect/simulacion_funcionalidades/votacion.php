@@ -185,10 +185,7 @@
   							<label for="tab3"><img src="../images/tab_icons/flag.png" alt="">Bandera</label>
     
     							<?php 
-    									$mysqli = new mysqli("localhost","root","","egdo_pruebas");
-    										if($mysqli->errno){
-    											die("Error de conexion: ".$mysqli->error);
-    										}
+    									require_once("conexion.php");
     							?>
 
   								<section id="content1">
@@ -225,7 +222,7 @@
 										<?php
 											$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 1";
 
-											$resultSetTipo1 = $mysqli->query($qry) or die($mysqli->error);
+											$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
 
 											if($resultSetTipo1){
 													
@@ -270,7 +267,7 @@
     										$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 2";
 
     										
-    										$resultSet = $mysqli->query($qry) or die($mysqli->error);
+    										$resultSet = $conexion->query($qry) or die($conexion->error);
     										
     										if($resultSet){
 
@@ -309,7 +306,7 @@
     								<?php
     									$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 3";
 
-    									$resultSetTipo2 = $mysqli->query($qry) or die($mysqli->error);
+    									$resultSetTipo2 = $conexion->query($qry) or die($conexion->error);
 
     									if($resultSetTipo2){
     										
@@ -338,7 +335,7 @@
     											echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
     										}
     									
-
+    										$conexion->close();
     								?>
   								</section>
     

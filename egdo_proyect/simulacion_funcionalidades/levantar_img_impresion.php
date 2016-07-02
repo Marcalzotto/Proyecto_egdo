@@ -1,9 +1,6 @@
 <?php
 	
-	$mysqli = new mysqli("localhost","root","","egdo_pruebas");
-	if($mysqli->connect_errno){
-		die("hubo problemas al conectar: ".$mysqli->connect_error);
-	}
+	require_once("conexion.php");
 
 	/*$query = "select id_disenio, disenio_impresion, ancho_impresion, alto_impresion
 	, nombre_impresion, tipo_impresion from disenio where id_disenio = ".$_GET["id_imp"];*/
@@ -11,7 +8,7 @@
 	$query = "select * from disenio where id_disenio = ".$_GET["id_imp"]; 
 
 	/*Busco la imagen de impresion por el id*/
-	$obtenerResultSet = $mysqli->query($query);
+	$obtenerResultSet = $conexion->query($query);
 	$registro = $obtenerResultSet->fetch_array(MYSQLI_ASSOC);
 
 	/*muestro la imagen*/

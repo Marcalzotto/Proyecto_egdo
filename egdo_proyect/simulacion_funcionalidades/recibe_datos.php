@@ -1,4 +1,5 @@
 <?php
+	require_once("conexion.php");
 	
 	$respuesta_ajax = "";
 
@@ -17,10 +18,7 @@
 		echo $respuesta_ajax;
 	}else{
 		
-		$mysqli = new mysqli("localhost","root","","egdo_pruebas");
-		if($mysqli->connect_errno){
-			die("Error de conexion: ".$mysqli->connect_error);
-		}
+		
 
 		/*Datos que corresponden a la imagen frontal del diseño*/
 		
@@ -29,7 +27,7 @@
 		$altoDeFrontal = $obtenerDimensionesFrontal[1];
 
 		$nombreArchFrontal = $_FILES["dis_frontal"]["tmp_name"];
-		$obtenerContenidoFrontal = $mysqli->real_escape_string(file_get_contents($_FILES["dis_frontal"]["tmp_name"]));
+		$obtenerContenidoFrontal = $conexion->real_escape_string(file_get_contents($_FILES["dis_frontal"]["tmp_name"]));
 		$obtenerTipoArchFrontal = $_FILES["dis_frontal"]["type"];
 
 		/*Datos que correspondena la imagen de impresion del diseño*/
@@ -39,7 +37,7 @@
 		$altoDeImpresion = $obtenerDimensionesImpresion[1];
 
 		$nombreArchImpresion = $_FILES["vista_impresion"]["tmp_name"];
-		$obtenerContenidoImpresion = $mysqli->real_escape_string(file_get_contents($_FILES["vista_impresion"]["tmp_name"]));
+		$obtenerContenidoImpresion = $conexion->real_escape_string(file_get_contents($_FILES["vista_impresion"]["tmp_name"]));
 		$obtenerTipoArchImpresion = $_FILES["vista_impresion"]["type"];
 
 		$id_usuario_sube = 1;
@@ -48,21 +46,20 @@
 			'$altoDeFrontal','$nombreArchFrontal','$obtenerTipoArchFrontal','$obtenerContenidoImpresion',
 			'$anchoDeImpresion','$altoDeImpresion','$nombreArchImpresion','$obtenerTipoArchImpresion','$id_usuario_sube',0)";
 
-		if($mysqli->query($qry)){
+		if($conexion->query($qry)){
+			
 			$respuesta_ajax = "<p>Los datos fueron subidos con exito.</p>";
 			echo $respuesta_ajax;
+		
 		}else{
 
-			$respuesta_ajax = "<p>Hubo problemas con el servidor: ".die($mysqli->error)."</p>";
+			$respuesta_ajax = "<p>Hubo problemas con el servidor: ".die($conexion->error)."</p>";
 			echo $respuesta_ajax;
 
 		}
-
-
-	
-
 	}
 
+	$conexion->close();
 	
 
 
