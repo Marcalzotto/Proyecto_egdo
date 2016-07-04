@@ -1312,7 +1312,7 @@
 		-ms-transition: background-color 0.25s ease-in-out;
 		transition: background-color 0.25s ease-in-out;
 		display: inline-block;
-		background: #8AA659;
+		background:#60B822 ; /*#8AA659*/
 		border-radius: 5px;
 		line-height: 3.2em;
 		padding: 0 2em;
@@ -1409,13 +1409,20 @@
 		overflow: hidden;
 		background: #1c1c1c;
 	}
-
+	
+	#main-wrapper-ad { /*modif admin panel*/
+		position: relative;
+		overflow: hidden;
+		background: #1c1c1c;
+	}  
+	
 	.homepage #main-wrapper {
 		background:#1c1c1c; 
 	}
 
 	#footer-wrapper {
 		position: relative;
+		background:#191919;
 	}
 
 /* Logo */
@@ -1425,7 +1432,7 @@
 		z-index: 1;
 		top: 0;
 		left: 50%;
-		background: #EF2F72; /*#8AA659*/
+		/*background: #EF2F72; #8AA659*/
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: normal;
@@ -1571,7 +1578,11 @@
 			#main-wrapper {
 				padding: 8em 0em 6em 0em;
 			}
-
+			
+			#main-wrapper-ad { /*padding top 0-8*/
+				padding: 0em 0em 6em 0em;
+			}
+			
 			.homepage #main-wrapper {
 				padding: 5em 0em;
 			}
@@ -1755,13 +1766,18 @@
 			}
 
 		/* Footer */
-
+			.footer-main-color {
+				background:#191919;
+			}
+			
+			
 			#footer {
 				text-align: center;
 			}
 
 				#footer h2 {
 					font-size: 1.6em;
+					font-family: 'Open Sans Condensed', sans-serif;
 				}
 
 				#footer p {
@@ -2176,6 +2192,7 @@
 
 			#footer {
 				padding: 5em 0em 3em 0em;
+				
 			}
 
 				#footer hr {
@@ -2274,7 +2291,7 @@ padding-top:5px;
 
 	.login {
 	position: absolute;
-	top: 5%;
+	top: 15%;
 	left: 0;
 	width: 100%;
 	height: 50%;
@@ -2376,15 +2393,26 @@ padding-top:5px;
 
 .actions .login {
 position: absolute;
-	top: 5%;
+	top: 15%;
 	left: 0;
 	width: 100%;
 	height: 50%;
 	padding: 1.5rem 2.5rem;
 	text-align: center;
 	z-index: 3;
-	
-
 }
+/*EGDO logo panel admin*/
+.egdo-logo{
+	padding-top:40px;
+	height:auto;
+	width:200px;
+	
+	}
 
-
+/*EGDO logo resgitro*/
+.egdo-logo-register{
+	padding-top:0px;
+	height:auto;
+	width:200px;
+	
+	}
