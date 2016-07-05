@@ -17,7 +17,7 @@ ul.circulo-grid {
 	clear: both;
 }
 
-.circulo-grid li {
+.circulo-grid .circle-li {
 	width: 220px;
 	height: 220px;
 	display: inline-block;

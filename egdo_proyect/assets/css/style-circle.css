@@ -52,7 +52,7 @@
 
 }
 
-.circulo-info h3 {
+.circulo-info .circle-h3 {
 	color: #fff;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -60,13 +60,14 @@
 	margin: 0 30px;
 	padding: 45px 0 0 0;
 	height: 140px;
-	font-family: 'Open Sans', Arial, sans-serif;
+	font-family:Arial, sans-serif;
+	font-weight:bold;
 	text-shadow: 
 		0 0 1px #fff, 
 		0 1px 2px rgba(0,0,0,0.3);
 }
 
-.circulo-info p {
+.circulo-info .circle-p {
 	color: #fff;
 	padding: 10px 5px;
 	font-style: italic;
@@ -81,7 +82,7 @@
 	transition: all 1s ease-in-out 0.4s;
 }
 
-.circulo-info p a {
+.circulo-info .circle-p a {
 	display: block;
 	color: #fff;
 	color: rgba(255,255,255,0.7);
@@ -94,7 +95,7 @@
 	font-family: 'Open Sans', Arial, sans-serif;
 }
 
-.circulo-info p a:hover {
+.circulo-info .circle-p a:hover {
 	color: #fff222;
 	color: rgba(255,242,34, 0.8);
 }
