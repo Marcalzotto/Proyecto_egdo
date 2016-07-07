@@ -6,9 +6,9 @@ session_start();
 
 $host_db = "localhost";
 $user_db = "root";
-$pass_db = "32636185";
+$pass_db = "";
 $db_name = "egdo_db";
-$tbl_name = "user";
+$tbl_name = "usuario";
 
 $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
 
@@ -16,8 +16,8 @@ if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
 
-$email = $_POST['form-username'];
-$contrasenia = $_POST['form-password'];
+$email = $_POST['email'];
+$contrasenia = $_POST['password'];
 
 //echo "Bienvenido! " . $email;
 
@@ -27,24 +27,32 @@ $result = $conexion->query($sql);
 
 
 if ($result->num_rows === 1) {
-echo "alert('usuario bien')";
+//echo "alert('usuario bien')";
  $row = $result->fetch_array(MYSQLI_ASSOC); 
  
  if (password_verify($contrasenia, $row['contrasenia'])) { 
  
  $_SESSION['loggedin'] = true;
+ $_SESSION['nombre'] = $row['nombre'];
  $_SESSION['email'] = $email;
  $_SESSION['start'] = time();
  $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
 
- echo "Bienvenido! " . $_SESSION['email'];
- echo "<br><br><a href=prueba.php>Panel de Control</a>"; 
+ //echo "Bienvenido! " . $_SESSION['email'] . $_SESSION['nombre'];
+ header('Location: ../pag_interiores/indexUsuarioAdminCurso.php');
+ //echo "<br><br><a href=../pag_interiores/index_general.html>ir a index usuario comun</a>"; 
 
  } else { 
  
- echo "email o Password estan incorrectos.";
+ echo '<script>alert("Email o Password incorrectoooooooooooo");</script>';
+ echo "<br><a href='../index.php'>Volver a Intentarlo</a>";
+ 
+ //echo "<script>"+"window.location.assign('" + site_url("/controller/method") + "')""</script>";
+ //echo '<script language="javascript">alert("Email o Password incorrecto");</script>';
+//echo '<script>alert("Email o Password incorrectoooooooooooo");</script>';
+//echo '<script>window.location.href="../index.php";</script>';
+//header('Location: ../index.php');
 
- echo "<br><a href='login.html'>Volver a Intentarlo</a>";
  }
 }
 mysqli_close($conexion); 
