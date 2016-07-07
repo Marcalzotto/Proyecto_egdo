@@ -1815,7 +1815,7 @@
 			#main #tab1{
 				border-top: 2px solid #EF2F72;
 			}
-		#votacion #main section ul li{
+		#votacion #main section .primer_instancia li{
 		
 			margin-top: 0.5em;
 			margin-right:2.2em ;
@@ -1857,19 +1857,86 @@
 		#votacion #main label:checked{
 			border-top: 2px solid #EF2F72;
 		}
-
+	/*boton estilos de admin de curso*/
+	#formDisparaVotacion{
+		text-align: center;
+	}
+	
+	#formDisparaVotacion button{
+		 
+   	 margin-top: 1.2em;
+     background: #79B800;
+   	 border-radius: 5px;
+     padding: 1.3em;
+     padding-left: 2em;
+     padding-right: 2em;
+     border-color: #79B800;
+     font-family: 'Open Sans Condensed',sans-serif;
+     color: #fff;
+     font-size: 1.5em;
+     font-weight: bold;
+     border-style: none;
+	}
 		
-
+	/*span estilos respuesta votacion*/
+	#votacion #respuestaDisparo{
+			text-align: center;
+  		color: #fff;
+  		font-family: 'Open Sans Condensed',sans-serif;
+    	font-size: 1.6em;
+    	font-weight: bold;
+    	padding: 0em;
+    	padding-top: 1em;
+	}
 /*lista segunda instancia*/
 
-.tabs div .segunda_instancia li{
+#votacion #main section .segunda_instancia li{
 		margin: 105px;
 		display: inline-block;
+		width: 105px;
+			height: 105px;
+			border-radius: 60px;
+			border-color: #ffffff;
+			border-style: solid;
+			background-color: #939291;
+			text-align: center;
+			font-family: 'Open Sans Condensed', sans-serif;
+			font-size: 1em;
+			font-weight: bold;
 
 }
 
 .tabs div label{
 	float: left;
+}
+
+/*lista tercer instancia*/
+#votacion #main section #ganador{
+		text-align: center;
+		color: #000000;
+		font-family: 'Open Sans Condensed',sans-serif;
+		font-weight: bold;
+		font-size: 1.5em;
+	}
+#votacion #main section .tercer_instancia{
+	text-align: center;
+}
+
+#votacion #main section .tercer_instancia li{
+			margin: 0;
+
+			display: inline-block;
+			width: 105px;
+			height: 105px;
+			border-radius: 60px;
+			border-color: #ffffff;
+			border-style: solid;
+			background-color: #939291;
+			text-align: center;
+			font-family: 'Open Sans Condensed', sans-serif;
+			font-size: 1em;
+			font-weight: bold;
+
 }
 
 /*input type file syles */
@@ -1882,6 +1949,16 @@
 #divContform{
 	position: relative;
 	background: #333;
+}
+
+#divContform h2{
+	text-align: center;
+	color: #fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-size: 1.8em;
+	padding: 6em;
+	letter-spacing: 0.10em;
+	font-weight: bold;
 }
 /*#banner-wrapper .form h2{
 	padding: 5em;
@@ -1906,7 +1983,7 @@
 	width: 300px;
 	height: 50px;
 	margin:0 auto;
-	margin-bottom: 2em;
+	margin-bottom: 4.5em;
 	position: relative;
 	top:0em;
 
@@ -2526,7 +2603,7 @@ text-align: justify;
 			width: 300px;
 			height: 50px;
 			margin:0 auto;
-			margin-bottom: 2em;
+			margin-bottom: 4.5em;
 			position: relative;
 			top:0em;
 			}
@@ -2549,7 +2626,16 @@ text-align: justify;
 			font-weight: bold;
 			font-size: 1em;
 			}
-
+			
+			#divContform h2{
+				text-align: center;
+				color:#fff;
+				font-family: 'Open Sans Condensed',sans-serif;
+				font-size: 1.8em;
+				padding: 2em;
+				font-weight: bold;
+				letter-spacing: 0.10em;
+			}
 			/*boton subir frontal*/
 
 			.form #frontal{					/*--> el div*/
@@ -2637,8 +2723,38 @@ text-align: justify;
 				text-align: center;
 				color:#fff;
 			}
+	/*estilos lista tercer instancia*/
+	#votacion #main section .tercer_instancia{
+	text-align: center;
+	margin-bottom:1em; 
+	}
+	
+	/*estilos span*/
+	#alert{
+		position:fixed;
+		top:50%;
+		left:10%;
+		background:#333333;
+		padding: 1.5em;
+		border-radius: 5px;
+		display: none;
+		
+	}
 
+	#alert span{
+		color: #ffffff;
+		font-family: 'Open Sans Condensed',sans-serif;
+		font-size: 1.3em;
+		font-weight: bold;
+	}
 
+	#ganador{
+		text-align: center;
+		color:#000;
+		font-family: 'Open Sans Condensed',sans-serif;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
 }
 	
 	/* flecha */

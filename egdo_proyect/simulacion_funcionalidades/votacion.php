@@ -52,7 +52,7 @@
 			<script src="../assets/js/jquery.min.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function(){
-					$("#votacion #main section ul li p img").click(function(evento){
+					$("#votacion #main section .primer_instancia li p img").click(function(evento){
 						
 						evento.preventDefault();
 						
@@ -72,9 +72,15 @@
 									
 								var messaje = "Lo sentimos hubo problemas con el servidor";
 								$("#alert").find("span").text(messaje);
-								$("#alert").show();
+								$("#alert").fadeIn('slow');
 								//return false;
 							
+							}else if(data == -3){
+								
+								var messaje = "Usted excedio los 5 votos para este Item";
+								$("#alert").find("span").text(messaje);
+								$("#alert").fadeIn('slow');
+
 							}else{
 							
 								target.closest("p").find("span").text(data);
@@ -84,7 +90,39 @@
 							setTimeout(function(){$("#alert").fadeOut('slow');}, 3500);
 						});
 
+
 					});
+
+				$("#votacion #main section .segunda_instancia li p img").click(function(evento){
+					evento.preventDefault();
+
+					var id = $(this).data("id");
+					var tipo =  $(this).data("tipo");
+					var url_servidor = "voto_segunda_instancia.php";
+					var target = $(this);
+
+					$.post(url_servidor,{'id':id, 'tipo':tipo},function(data){
+							
+							var messaje = "";
+							if(data == -1){
+								
+								messaje = "Solo se permite un voto por usuario";
+								$("#alert").find("span").text(messaje);
+								$("#alert").fadeIn('slow');
+
+							}else if(data == -2){
+								messaje = "Lo sentimos hubo un problema con el servidor";
+								$("#alert").find("span").text(messaje);
+								$("#alert").fadeIn('slow');
+							}else{
+								target.closest("p").find("span").text(data);
+							}
+					
+							setTimeout(function(){$("#alert").fadeOut('slow');}, 3500);
+					});
+
+				});
+
 				});
 			</script>
 			
@@ -171,9 +209,9 @@
 						<div id="alert">
 							<span>No puedes votar dos veces este disenio</span>
 						</div>
-							<h2>Vota hasta 5 dise&ntilde;os distintos</h2>
-										
-								<div id="main">
+							<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>
+								
+							<div id="main">
   
   							<input id="tab1" type="radio" name="tabs" checked>
   							<label for="tab1"><img src="../images/tab_icons/sweatshirt.png" alt=""> Buzo/Campera</label>
@@ -186,155 +224,372 @@
     
     							<?php 
     									require_once("conexion.php");
+
+    									$votacionAbierta = "select id_votacion, fecha_apertura from votacion where vigente = 1";
+    								 	$datosVotacion = $conexion->query($votacionAbierta) or die($conexion->error);
+
+    									if($datosVotacion){
+
+												$hayVotacionAbierta = $datosVotacion->num_rows;
+												
+												if($hayVotacionAbierta > 0){
+													
+													$traerDatosVotacion = $datosVotacion->fetch_array(MYSQLI_ASSOC);
+													$fecha_apertura = $traerDatosVotacion["fecha_apertura"];
+													
+													//echo "Fecha de apertura votacion".$fecha_apertura."</br>";
+													
+													$fechaHoy = new datetime(null, new dateTimeZone('America/Argentina/Buenos_Aires'));
+													//se usa para ver que todo funcione en forma correcta
+													$fecha_alternativa_prueba = new datetime("2016-07-10 20:00:00"); 
+													//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
+
+													$fecha_fin_primer_instancia = new datetime($traerDatosVotacion["fecha_apertura"]);
+													
+													//echo "Fecha fin primer instancia".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
+													
+													$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
+													//prueba periodo de 2 dias(P2D) real a periodo de 2 minutos y 4 minutos para las fechas
+													
+													//echo "Fecha fin primer instancia + 2 dias".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
+													$fecha_fin_segunda_instancia = new datetime($traerDatosVotacion["fecha_apertura"]);
+
+													//echo "Fecha fin segunda instancia".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
+													$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
+
+													//echo "Fecha fin segunda instancia + 4 dias".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
+													$response = 1;
+
+												}else{	
+													$response = 0;
+												}
+    									
+    									}else{
+    								 		$response = -1;
+    								 	}
     							?>
 
   								<section id="content1">
-    							
-    								<!--<ul>
-											<li><a href="../images/votacion_ropa/buzo_campera/mymodel.jpg" rel="lightbox"><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"></a><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/remera/frontal.jpg" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><a href="../images/votacion_ropa/buzo_campera/mymodel.jpg" rel="lightbox"><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"></a><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/purple_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/buzo_campera/black_front.png" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 0 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-											<li><img src="../images/votacion_ropa/remera/frontal.jpg" alt="" width="70" height="100" class="ropa"><p>Subido Por: Fulano</p><p>Calificacion: 2 <img src="../images/dropotron_icons/like.png" alt=""></p></li>
-										</ul>-->
 
 										<?php
-											$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 1";
+											
+											if($response > 0){
 
-											$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
+														if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
 
-											if($resultSetTipo1){
+														$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio 
+														= u.id_usuario where d.codigo_tipo = 1";
+														$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
+
+														if($resultSetTipo1){
 													
-													$cant_regs = $resultSetTipo1->num_rows;
+																$cant_regs = $resultSetTipo1->num_rows;
 
-												if($cant_regs == 0){
-													echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
-												}else{
-														
-														while($reg = $resultSetTipo1->fetch_array(MYSQLI_ASSOC)){
-															$varRegistros[] = $reg;
+																if($cant_regs == 0){
+																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
+																}else{
+																
+																		while($reg = $resultSetTipo1->fetch_array(MYSQLI_ASSOC)){
+																			$varRegistros[] = $reg;
+																		}
+
+																			echo "<ul class=primer_instancia>";
+
+																		foreach($varRegistros as $unVar){
+																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unVar["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unVar["id_disenio"]." "
+    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unVar["nombre"]."</p><p>Calificacion: <span>".$unVar["cantidad_votos"]."</span> 
+    																		<img data-id=".$unVar["id_disenio"]." data-tipo=".$unVar["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		}
+
+																			echo "</ul>";
+																}
+
+														}else{
+															echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 														}
+													}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
+																
+																	$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+																	where d.codigo_tipo = 1 order by d.cantidad_votos desc limit 3";
+																
+																	$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
 
-														echo "<ul>";
+																	if($consultaMasVotados){
+																		
+																			$cantidadDeRegistros = $consultaMasVotados->num_rows;
+																			if($cantidadDeRegistros > 0){
+																				
+																					echo "<ul class=segunda_instancia>";		
+																				
+																					while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
+																						$arrayMasVotados[] = $deAunGanador;
+																					}
 
-														foreach($varRegistros as $unVar){
-															echo "<li><a href=levantar_img_impresion.php?id_imp=".$unVar["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unVar["id_disenio"]." "
-    														."width='70' height='100' class='ropa'></a><p>Subido por: ".$unVar["nombre"]."</p><p>Calificacion: <span>".$unVar["cantidad_votos"]."</span> 
-    														<img data-id=".$unVar["id_disenio"]." data-tipo=".$unVar["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
-														}
+																					foreach($arrayMasVotados as $unoMasVotado){
+																					echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
+    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																					}
 
-														echo "</ul>";
-												}
+																					echo "</ul>";
 
+																			}else{
+																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
+																			}
+
+																	}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																	}	
+													}else{
+																
+																$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+																where d.codigo_tipo = 1 order by d.cantidad_votos desc limit 1";
+																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
+
+																if($traerGanador){
+																	$hayUnGanador = $traerGanador->num_rows;
+
+																	if($hayUnGanador > 0){
+																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
+																		echo "<ul class=tercer_instancia>";
+
+																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
+
+																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
+    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		
+																		echo "</ul>";
+																	}else{
+																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
+																	}
+																}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																}
+													}
+											}else if($response == 0){
+													
+														echo "<p id=no-ul >No hay votacion abierta para este curso.</p>";
+													
 											}else{
+
 													echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-											}
+											}	
 										?>
   								</section>
     
   								<section id="content2">
     									<?php
     										
-    										
-    										/*$qry = "select d.id_disenio, d.codigo_tipo, d.disenio_frontal, d.ancho_frontal, 
-    										d.alto_frontal, d.nombre_imagen, d.tipo_frontal, d.disenio_impresion, d.ancho_impresion, 
-    										d.alto_impresion, d.nombre_impresion, d.tipo_impresion, d.id_usuario_subio, 
-    										u.nombre, count(voto) as votos from usuarios as u join disenio as d on 
-    										u.id_usuario = d.id_usuario_subio  join votos on d.id_disenio = disenio_votado 
-    										where d.codigo_tipo = 2 group by d.id_disenio"; */
+    										if($response > 0){
 
-    										$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 2";
+    											if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
-    										
-    										$resultSet = $conexion->query($qry) or die($conexion->error);
-    										
-    										if($resultSet){
 
-    											$cant_regs = $resultSet->num_rows;
+    												$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 2";
+														$resultSet = $conexion->query($qry) or die($conexion->error);
+    										
+    												if($resultSet){
+
+    														$cant_regs = $resultSet->num_rows;
     											
-    											if($cant_regs == 0){
+    														if($cant_regs == 0){
     												
-    												echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
+    																echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
     											
-    											}else{
+    														}else{
     													
-    													while($registro = $resultSet->fetch_array(MYSQLI_ASSOC)){
-    														$contenerRegistros[] = $registro;
-    													}
+    																while($registro = $resultSet->fetch_array(MYSQLI_ASSOC)){
+    																	$contenerRegistros[] = $registro;
+    																}
     											
-    													echo "<ul>";
+    																echo "<ul class=primer_instancia>";
 
-    														foreach ($contenerRegistros as $unRegistro) {
+    																foreach ($contenerRegistros as $unRegistro) {
     					
-    														echo "<li><a href=levantar_img_impresion.php?id_imp=".$unRegistro["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unRegistro["id_disenio"]." "
-    														."width='70' height='100' class='ropa'></a><p>Subido por: ".$unRegistro["nombre"]."</p><p>Calificacion: <span>".$unRegistro["cantidad_votos"]."</span> 
-    														<img data-id=".$unRegistro["id_disenio"]." data-tipo=".$unRegistro["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
-    														}
+    																echo "<li><a href=levantar_img_impresion.php?id_imp=".$unRegistro["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unRegistro["id_disenio"]." "
+    																."width='70' height='100' class='ropa'></a><p>Subido por: ".$unRegistro["nombre"]."</p><p>Calificacion: <span>".$unRegistro["cantidad_votos"]."</span> 
+    																<img data-id=".$unRegistro["id_disenio"]." data-tipo=".$unRegistro["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+    																}
     												
-    													echo "</ul>";	
-    											}
+    																echo "</ul>";	
+    														}
+    												}else{
+    													
+    													echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+    												}
+    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+
+    													$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+															where d.codigo_tipo = 2 order by d.cantidad_votos desc limit 3";
+																
+															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
+
+															if($consultaMasVotados){
+																		
+																$cantidadDeRegistros = $consultaMasVotados->num_rows;
+																
+																if($cantidadDeRegistros > 0){
+																				
+																		echo "<ul class=segunda_instancia>";		
+																				
+																		while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
+																			$arrayMasVotados[] = $deAunGanador;
+																		}
+
+																		foreach($arrayMasVotados as $unoMasVotado){
+																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
+    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		}
+
+																		echo "</ul>";
+
+																	}else{
+																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
+																	}
+
+																}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																}		
+    											}else{
+
+    														$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+																where d.codigo_tipo = 2 order by d.cantidad_votos desc limit 1";
+																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
+
+																if($traerGanador){
+																	$hayUnGanador = $traerGanador->num_rows;
+
+																	if($hayUnGanador > 0){
+																		
+																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
+																		echo "<ul class=tercer_instancia>";
+
+																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
+																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
+    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		
+																		echo "</ul>";
+																	}else{
+																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
+																	}
+																}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																}
+
+    											}	
+    										}else if($response == 0){
+    											echo "<p id=no-ul >No hay votacion abierta para este curso.</p>";
     										}else{
     											echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-    										}		
-
-
+    										}	
     									?>
   								</section>
-    
-  								<section id="content3">
+    							
+    							<section id="content3">
     								<?php
-    									$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 3";
-
-    									$resultSetTipo2 = $conexion->query($qry) or die($conexion->error);
-
-    									if($resultSetTipo2){
     										
-    										$cant_regs = $resultSetTipo2->num_rows; 	
+    										if($response > 0){
 
-    											if($cant_regs == 0){
-    													echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
-													}else{
+    											if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+
+    												$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 3";
+
+    												$resultSetTipo2 = $conexion->query($qry) or die($conexion->error);
+
+    												if($resultSetTipo2){
+    										
+    													$cant_regs = $resultSetTipo2->num_rows; 	
+
+    														if($cant_regs == 0){
+    																echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
+																}else{
     													
-    													while($reg2 = $resultsetTipo2->fetch_array(MYSQLI_ASSOC)){
-    													$vector[] = $reg2; 
-    													}
+    																while($reg2 = $resultSetTipo2->fetch_array(MYSQLI_ASSOC)){
+    																	$vector[] = $reg2; 
+    																}
     										
-    													echo "<ul>";
+    																echo "<ul class=primer_instancia>";
 
-    														foreach ($vector as $var) {
+    																	foreach ($vector as $var) {
     												
-    															echo "<li><a href=levantar_img_impresion.php?id_imp=".$var["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$var["id_disenio"]." "
-    															."width='70' height='100' class='ropa'></a><p>Subido por: ".$var["nombre"]."</p><p>Calificacion: <span>".$var["cantidad_votos"]."</span> 
-    															<img data-id=".$var["id_disenio"]." data-tipo=".$var["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
-    														}
+    																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$var["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$var["id_disenio"]." "
+    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$var["nombre"]."</p><p>Calificacion: <span>".$var["cantidad_votos"]."</span> 
+    																		<img data-id=".$var["id_disenio"]." data-tipo=".$var["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+    																	}
 
-    													echo "</ul>";
-    											}	
+    																echo "</ul>";
+    														}	
+    												}else{
+    														echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+    												}
+    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+    													$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+															where d.codigo_tipo = 2 order by d.cantidad_votos desc limit 3";
+																
+															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
+
+															if($consultaMasVotados){
+																		
+																$cantidadDeRegistros = $consultaMasVotados->num_rows;
+																
+																if($cantidadDeRegistros > 0){
+																				
+																		echo "<ul class=segunda_instancia>";		
+																				
+																		while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
+																			$arrayMasVotados[] = $deAunGanador;
+																		}
+
+																		foreach($arrayMasVotados as $unoMasVotado){
+																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
+    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		}
+
+																		echo "</ul>";
+
+																	}else{
+																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
+																	}
+
+																}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																}		
+    											}else{
+
+    														$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+																where d.codigo_tipo = 3 order by d.cantidad_votos desc limit 1";
+																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
+
+																if($traerGanador){
+																	$hayUnGanador = $traerGanador->num_rows;
+
+																	if($hayUnGanador > 0){
+																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
+																		echo "<ul class=tercer_instancia>";
+
+																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
+																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
+    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
+																		
+																		echo "</ul>";
+																	}else{
+																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
+																	}
+																}else{
+																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
+																}
+    											}
+    										}else if($response == 0){
+    											echo "<p id=no-ul >No hay votacion abierta para este curso.</p>";
     										}else{
     											echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
     										}
-    									
+
     										$conexion->close();
     								?>
   								</section>
@@ -361,8 +616,7 @@
 								<li><a href="no-sidebar.html" class="icon fa-facebook"><span>Facebook</span></a></li>
 								<li><a href="no-sidebar.html" class="icon fa-twitter"><span>Twitter</span></a></li>
 								<li><a href="no-sidebar.html" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
-							</ul>
+						</ul>
 							
 						</div>
 							

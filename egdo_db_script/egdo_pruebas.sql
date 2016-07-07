@@ -31,6 +31,7 @@ foreign key(id_usuario_subio) references usuarios(id_usuario)
 );
 
 alter table disenio add column cantidad_votos int not null default 0;
+alter table disenio add column votos_segunda_instancia int not null default 0;
 
 create table votos(
 voto int not null primary key,
@@ -54,7 +55,7 @@ insert into codigo_disenio values("","Bandera");
 
 alter table votos add column tipo_disenio int not null;
 alter table votos add foreign key (tipo_disenio) references disenio(codigo_tipo); 
-
+alter table votos add column instancia_voto int not null default 1;
 insert into votos values("",1,1,2);
 insert into votos values("",2,1,2);
 insert into votos values("",3,1,2);
@@ -67,6 +68,7 @@ select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuar
 
 
 select * from votos;
+select * from disenio;
 
 select count(voto) as votos,disenio_votado from votos where tipo_disenio = 2
 group by disenio_votado; /*esta consulta es para saber los votos de cada disenio*/
@@ -89,3 +91,30 @@ select count(voto) as votos_hechos from votos where id_usuario_voto = 1
 and disenio_votado = 2;
 
 select * from votos;
+
+select d.codigo_tipo, c.descripcion from disenio as d join codigo_disenio as c 
+on d.codigo_tipo = c.codigo where d.id_usuario_subio = 1 and d.codigo_tipo = 2;
+
+create table votacion(
+id_votacion int not null auto_increment primary key,
+fecha_apertura datetime not null,
+vigente boolean not null,
+tipo_actividad int not null,
+usuario_apertura int not null,
+foreign key (usuario_apertura) references usuarios(id_usuario)
+);
+
+select * from usuarios;
+
+insert into votacion values('','2016-07-05 18:36:00',true,3,1);
+ 
+select * from votacion;
+
+delete from votacion where id_votacion = 8;
+
+select * from votacion where vigente = true;
+
+select * from disenio order by cantidad_votos desc limit 3;
+select * from disenio order by cantidad_votos desc limit 1;
+select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+				where d.codigo_tipo = 1 order by d.cantidad_votos desc limit 1;

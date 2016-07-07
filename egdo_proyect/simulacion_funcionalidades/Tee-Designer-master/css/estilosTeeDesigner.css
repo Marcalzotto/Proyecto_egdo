@@ -129,7 +129,7 @@
 	color:#ffffff;
 	font-weight: 700;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 1.9em;
+	font-size: 1.5em;
 	letter-spacing: 0.10em;
 	margin-bottom: 0;
 	padding-bottom: -1em;
@@ -140,14 +140,15 @@
 	text-align: center;
 	margin:0;
 	padding: 0;
-	color:#939291;
-	font-size: 1.1em;
+	color:#555555;
+	font-size: 1em;
 }
 
 .pie{
 	margin-top: 2em;
 	list-style: none;
-	margin-left: 39%;
+	text-align: center;
+	padding: 0em 0.25em;
 	
 }
 
@@ -164,13 +165,20 @@
 	
 }
 
+.pie li:hover{
+	
+	background-color: #2e2e2e;
+	color: #939291;
+}
+
 .pie li a:before{
+	background-color: #2e2e2e;
 	color: #939291;
 }
 
 
 }
-.pie li a:hover:before {
+.pie li a:hover{
 					background: #393939;
 					color: #FFF;
 }
@@ -199,5 +207,7 @@
 	text-align: center;
 		color: #61666c;
 		overflow: hidden;
-		font-size: 1.1em;
+		font-size: 0.95em;
 }
+
+ 
