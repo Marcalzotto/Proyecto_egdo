@@ -22,7 +22,7 @@
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" /> 
+		<link rel="stylesheet" href="../assets/css/main.css" />  
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- Mobile Specific Metas
@@ -53,32 +53,33 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+		
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-				<div id="header-wrapper">
+			<div id="header-wrapper">
 
 					<!-- Header -->
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
+								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Elimado-->
+							<!-- Nav Eliminado-->
 								
+
 						</div>
 
 				</div>
-
 			<!-- Main Wrapper -->
 				
 					<!-- Wide Content -->
 						
 
 			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-		<div id="contents">
+			<div id="contents">
 
 			<div class="form-container">
 
@@ -87,7 +88,7 @@
 					<div class="rows">
 
 						<div class="col-xs-12">
-							<h2 class="form-login-heading">Sigue los pasos,<span> registrate y registra tu curso</span></h2>
+							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
 						</div>
 
 					</div><!--/ .row-->
@@ -101,7 +102,7 @@
 								<div class="stage-info">
 									Ingresar datos personales 
 									nombre email password
-								</div> 
+								</div>
 							</div>
 						</div><!--/ .stage-->
 						
@@ -112,11 +113,11 @@
 								<div class="stage-info">
 									Ingresar nombre escuela
 									curso cantidad alumnos
-								</div>  
+								</div> 
 							</div>
 						</div><!--/ .stage-->
 						
-						<div class="stage tmm-success col-md-3 col-sm-3">
+						<div class="stage tmm-current col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-payment"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Enviar Invitaciones</h3>
@@ -127,14 +128,14 @@
 							</div>
 						</div><!--/ .stage-->
 						
-						<div class="stage tmm-current col-md-3 col-sm-3">
+						<div class="stage col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-details"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Confirma Invitaciones</h3>
 								<div class="stage-info">
 									Vas a enviar invitaciones
 									los siguientes email
-								</div>  
+								</div>
 							</div>
 						</div><!--/ .stage-->
 
@@ -145,11 +146,11 @@
 						<div class="col-xs-12">
 
 							<div class="form-header">
-								<div class="form-title form-icon title-icon-payment">
-									<b><i class="fa fa-check" aria-hidden="true"></i>Confirmar Invitaciones</b>
+								<div class="form-title-2 form-icon title-icon-card">
+									<b><i class="fa fa-users" aria-hidden="true"></i>Enviar Invitaciones</b> 
 								</div>
 								<div class="steps">
-									Steps 4 - 4
+									Paso 3 - 4
 								</div>
 							</div><!--/ .form-header-->
 
@@ -164,49 +165,12 @@
 							<div class="rows">
 
 								<div class="col-md-8 col-sm-7">
-
-									<div class="data-container">
-										<dl>
-											<dt>Username</dt>
-											<dd>John_503in</dd>
-										</dl>
-										<dl>
-											<dt>Email ID</dt>
-											<dd>john_doe@gmail.com</dd>
-										</dl>
-										<dl>
-											<dt>Full Name</dt>
-											<dd>John Doe</dd>
-										</dl>
-										<dl>
-											<dt>Gender</dt>
-											<dd>Male</dd>
-										</dl>
-										<dl>
-											<dt>Telephone NO.</dt>
-											<dd>325-555-1234</dd>
-										</dl>
-										<dl>
-											<dt>Address</dt>
-											<dd>111 W.App Ave. Suite 123, Sunway, CA</dd>
-										</dl>
-										<dl>
-											<dt>Zip Code</dt>
-											<dd>94086</dd>
-										</dl>
-										<dl>
-											<dt>Country</dt>
-											<dd>USA</dd>
-										</dl>
-										<dl>
-											<dt>Card Type</dt>
-											<dd>Visa</dd>
-										</dl>
-										<dl>
-											<dt>Telephone NO.</dt>
-											<dd>4519-1235-9869-4321</dd>
-										</dl>
-									</div><!--/ .data-container-->
+				
+									<fieldset class="input-block">
+										<label for="email">Email</label>
+										<input type="text" id="email" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
+									</fieldset><!--/ .input-email-->
+									
 
 								</div>
 
@@ -215,27 +179,25 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registro-icon2.php'"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
+							<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 						
 						<div class="next">
-							<button class="button button-control" type="button"><span>Enviar<b>Confirmar Datos</b></span></button>
+							<button class="button button-control" type="button" onclick="window.location.href='registroPaso4.php'"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 
-					</form><!--/ form-->
+					</form><!--/ .form-wizard-->
 
 				</div><!--/ .container-->
-
+				
 			</div><!--/ .form-container-->
 
 		</div><!--/ #content-->
 
 
-
 		
-	
 
 		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
 
@@ -284,6 +246,5 @@
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
-
 	</body>
 </html>

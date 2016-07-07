@@ -22,7 +22,7 @@
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" /> 
+		<link rel="stylesheet" href="../assets/css/main.css" />  
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- Mobile Specific Metas
@@ -53,25 +53,28 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+	
+	
+		
 		
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-					<div id="header-wrapper">
+				<div id="header-wrapper">
 
 					<!-- Header -->
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
+								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Elimado-->
-								
+							<!-- Nav Eliminado -->
+
 						</div>
 
-					</div>
+				</div>
 
 			<!-- Main Wrapper -->
 				
@@ -79,14 +82,15 @@
 						
 
 			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
+
+
 		<div id="contents">
 
 			<div class="form-container">
 
-				<div id="tmm-form-wizard" class="containers substrate">
+				<div id="tmm-form-wizard" class="containers substrate"> <!--container substrate-->
 
 					<div class="rows">
-
 						<div class="col-xs-12">
 							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
 						</div>
@@ -95,7 +99,7 @@
 
 					<div class="rows stage-container">
 
-						<div class="stage tmm-success col-md-3 col-sm-3">
+						<div class="stage tmm-current col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-lock"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Crear cuenta</h3>
@@ -105,19 +109,20 @@
 								</div> 
 							</div>
 						</div><!--/ .stage-->
-						
-						<div class="stage tmm-success col-md-3 col-sm-3">
+
+						<div class="stage col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-user"></div>
+
 							<div class="stage-content">
 								<h3 class="stage-title">Datos del Curso</h3>
 								<div class="stage-info">
 									Ingresar nombre escuela
 									curso cantidad alumnos
-								</div>  
+								</div>
 							</div>
 						</div><!--/ .stage-->
-						
-						<div class="stage tmm-success col-md-3 col-sm-3">
+
+						<div class="stage col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-payment"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Enviar Invitaciones</h3>
@@ -127,15 +132,15 @@
 								</div>
 							</div>
 						</div><!--/ .stage-->
-						
-						<div class="stage tmm-current col-md-3 col-sm-3">
+
+						<div class="stage col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-details"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Confirma Invitaciones</h3>
 								<div class="stage-info">
 									Vas a enviar invitaciones
 									los siguientes email
-								</div>  
+								</div> 
 							</div>
 						</div><!--/ .stage-->
 
@@ -146,11 +151,11 @@
 						<div class="col-xs-12">
 
 							<div class="form-header">
-								<div class="form-title form-icon title-icon-payment">
-									<b><i class="fa fa-check" aria-hidden="true"></i>Confirmar Invitaciones</b>
+								<div class="form-title form-icon title-icon-lock">
+									<b><i class="fa fa-lock" aria-hidden="true"></i> Tus datos </b> 
 								</div>
 								<div class="steps">
-									Paso 4 - 4
+									Paso 1 - 4
 								</div>
 							</div><!--/ .form-header-->
 
@@ -158,61 +163,62 @@
 
 					</div><!--/ .row-->
 
-					<form action="/" role="form">
+					<form action="validaRegistroPaso1.php" method="POST" role="form">
 
 						<div class="form-wizard">
-							
+
 							<div class="rows">
+								
+								<div class="col-md-9 col-sm-7">
 
-								<div class="col-md-8 col-sm-7">
-
-									<div class="data-container">
-										<dl>
-											<dt>Invitacion 1</dt>
-											<dd>noe@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 2</dt>
-											<dd>pau@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 3</dt>
-											<dd>marcos@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 4</dt>
-											<dd>romy@egdo.com</dd>
-										</dl>
-										
-									</div><!--/ .data-container-->
+									<fieldset class="input-block">
+										<label for="username">Nombre</label>
+										<input type="text" id="username" class="form-icon form-icon-user" name="nombre" placeholder="Nombre" required />
+									</fieldset><!--/ .input-login name-->
+									
+									<fieldset class="input-block">
+										<label for="surname">Apellido</label>
+										<input type="text" id="surname" class="form-icon form-icon-user" name="apellido" placeholder="Apellido" required />
+									</fieldset><!--/ .input-login surname-->
+									
+									<fieldset class="input-block">
+										<label for="password">Password</label>
+										<input type="password" id="password" placeholder="Password" name="pass" required />
+									</fieldset><!--/ .input-password-->
+									
+									<fieldset class="input-block">
+										<label for="pass-confirm">Confirmar password</label>
+										<input type="password" id="pass-confirm" placeholder="Password" name="repass" required />
+									</fieldset><!--/ .input-conf-password-->
+									
+									<fieldset class="input-block">
+										<label for="email">Email</label>
+										<input type="text" id="email" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
+									</fieldset><!--/ .input-email-->
 
 								</div>
 
 							</div><!--/ .row-->
 							
 						</div><!--/ .form-wizard-->
-
-						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php'"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
-							<div class="button-divider"></div>
-						</div>
 						
-						<div class="next">
-							<button class="button button-control" type="button"><span>Enviar<b>Confirmar Datos</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-
-					</form><!--/ form-->
+							<div class="prev" style="display: none;">
+								<button class="button button-control" type="button" ><span>Prev Step <b>Account Information</b></span></button>
+								<div class="button-divider"></div>
+							</div>
+						
+							<div class="next">
+								<button class="button button-control" type="submit" ><span>Siguiente Paso <b> Datos Curso</b></span></button>
+								<div class="button-divider"></div>
+							</div>
+						
+					</form><!--/ .form-wizard-->
 
 				</div><!--/ .container-->
-
+				
 			</div><!--/ .form-container-->
 
 		</div><!--/ #content-->
-
-
-
-		
 	
 
 		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
@@ -255,7 +261,7 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
+				<script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/jquery.dropotron.min.js"></script>
 			<script src="../assets/js/skel.min.js"></script>
 			<script src="../assets/js/skel-viewport.min.js"></script>

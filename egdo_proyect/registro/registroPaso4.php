@@ -53,25 +53,25 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+		
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-				<div id="header-wrapper">
+					<div id="header-wrapper">
 
 					<!-- Header -->
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
+								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Eliminado-->
+							<!-- Nav Elimado-->
 								
-
 						</div>
 
-				</div>
+					</div>
 
 			<!-- Main Wrapper -->
 				
@@ -79,7 +79,7 @@
 						
 
 			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-			<div id="contents">
+		<div id="contents">
 
 			<div class="form-container">
 
@@ -88,7 +88,7 @@
 					<div class="rows">
 
 						<div class="col-xs-12">
-							<h2 class="form-login-heading">Sigue los pasos,<span> registrate y registra tu curso</span></h2>
+							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
 						</div>
 
 					</div><!--/ .row-->
@@ -102,7 +102,7 @@
 								<div class="stage-info">
 									Ingresar datos personales 
 									nombre email password
-								</div>
+								</div> 
 							</div>
 						</div><!--/ .stage-->
 						
@@ -113,11 +113,11 @@
 								<div class="stage-info">
 									Ingresar nombre escuela
 									curso cantidad alumnos
-								</div> 
+								</div>  
 							</div>
 						</div><!--/ .stage-->
 						
-						<div class="stage tmm-current col-md-3 col-sm-3">
+						<div class="stage tmm-success col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-payment"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Enviar Invitaciones</h3>
@@ -128,14 +128,14 @@
 							</div>
 						</div><!--/ .stage-->
 						
-						<div class="stage col-md-3 col-sm-3">
+						<div class="stage tmm-current col-md-3 col-sm-3">
 							<div class="stage-header head-icon head-icon-details"></div>
 							<div class="stage-content">
 								<h3 class="stage-title">Confirma Invitaciones</h3>
 								<div class="stage-info">
 									Vas a enviar invitaciones
 									los siguientes email
-								</div>
+								</div>  
 							</div>
 						</div><!--/ .stage-->
 
@@ -146,11 +146,11 @@
 						<div class="col-xs-12">
 
 							<div class="form-header">
-								<div class="form-title-2 form-icon title-icon-card">
-									<b><i class="fa fa-users" aria-hidden="true"></i>Enviar Invitaciones</b> 
+								<div class="form-title form-icon title-icon-payment">
+									<b><i class="fa fa-check" aria-hidden="true"></i>Confirmar Invitaciones</b>
 								</div>
 								<div class="steps">
-									Paso 3 - 4
+									Paso 4 - 4
 								</div>
 							</div><!--/ .form-header-->
 
@@ -158,7 +158,7 @@
 
 					</div><!--/ .row-->
 
-					<form action="/" role="form">
+					<form role="form">
 
 						<div class="form-wizard">
 							
@@ -166,121 +166,25 @@
 
 								<div class="col-md-8 col-sm-7">
 
-									<div class="rows">
+									<div class="data-container">
+										<dl>
+											<dt>Invitacion 1</dt>
+											<dd>noe@egdo.com</dd>
+										</dl>
+										<dl>
+											<dt>Invitacion 2</dt>
+											<dd>pau@egdo.com</dd>
+										</dl>
+										<dl>
+											<dt>Invitacion 3</dt>
+											<dd>marcos@egdo.com</dd>
+										</dl>
+										<dl>
+											<dt>Invitacion 4</dt>
+											<dd>romy@egdo.com</dd>
+										</dl>
 										
-										<div class="col-md-12 col-sm-12">
-											<fieldset class="input-block">
-												<label>Card Type</label>
-												<div class="dropdown">
-													<select name="card-type" class="dropdown-select">
-														<option value="1">Visa</option>
-														<option value="2">Master Card</option>
-													</select>
-												</div><!--/ .input-dropdown-->
-											</fieldset><!--/ .input-card-type-->
-										</div>
-										
-									</div><!--/ .row-->
-
-									<div class="rows">
-										
-										<div class="col-md-9 col-sm-9">
-											<fieldset class="input-block">
-												<label for="card-number">Card Number</label>
-												<input type="text" id="card-number" placeholder="Number" required />
-												<div class="tooltip">
-													<p>
-														<b>Why do we need this info?</b>
-														Lorem Ipsum is simply dummy text of the printing and
-														typesetting industry. Lorem Ipsum has been the industry's
-														standard dummy text ever since the 1500s
-													</p>
-													<span>Your information is Safe here & never shared.</span> 
-												</div><!--/ .tooltip-content-->
-											</fieldset><!--/ .input-cardnumber-->
-										</div>
-										
-										<div class="col-md-3 col-sm-3">
-											<fieldset class="input-block">
-												<label for="cvc">CVC</label>
-												<input type="password" id="cvc" placeholder="Cvc" required />
-												<div class="tooltip">
-													<p>
-														<b>Why do we need this info?</b>
-														Lorem Ipsum is simply dummy text of the printing and
-														typesetting industry. Lorem Ipsum has been the industry's
-														standard dummy text ever since the 1500s
-													</p>
-													<span>Your information is Safe here & never shared.</span> 
-												</div><!--/ .tooltip-content-->
-											</fieldset><!--/ .input-cvc-->
-										</div>
-										
-									</div><!--/ .row-->
-
-									<div class="rows">
-										
-										<div class="col-md-12 col-sm-12">
-											<fieldset class="input-block">
-												<label for="card-holder">Card Holder Name</label>
-												<input type="text" id="card-holder" class="form-icon form-icon-user" placeholder="Please enter your email ID" required />
-												<div class="tooltip">
-													<p>
-														<b>Why do we need this info?</b>
-														Lorem Ipsum is simply dummy text of the printing and
-														typesetting industry. Lorem Ipsum has been the industry's
-														standard dummy text ever since the 1500s
-													</p>
-													<span>Your information is Safe here & never shared.</span> 
-												</div><!--/ .tooltip-content-->
-											</fieldset><!--/ .input-holder-->
-										</div>
-										
-									</div><!--/ .row-->
-
-									<div class="rows">
-										
-										<div class="col-md-3 col-sm-4">
-											
-											<fieldset class="input-block">
-												<label>Expiry Month</label>
-												<div class="dropdown">
-													<select name="month" class="dropdown-select">
-														<option value="1">01</option>
-														<option value="2">02</option>
-														<option value="3">03</option>
-														<option value="4">04</option>
-														<option value="5">05</option>
-														<option value="6">06</option>
-														<option value="7">07</option>
-														<option value="8">08</option>
-														<option value="9">09</option>
-														<option value="10">10</option>
-														<option value="11">11</option>
-														<option value="12">12</option>
-													</select>
-												</div><!--/ .dropdown-->
-											</fieldset><!--/ .input-month-->
-											
-										</div>
-
-										<div class="col-md-3 col-sm-4">
-
-											<fieldset class="input-block">
-												<label>Expiry Year</label>
-												<div class="dropdown">
-													<select name="year" class="dropdown-select">
-														<option value="1">2014</option>
-														<option value="2">2015</option>
-														<option value="3">2016</option>
-														<option value="4">2017</option>
-													</select>
-												</div><!--/ .dropdown-->
-											</fieldset><!--/ .input-year-->
-
-										</div>
-
-									</div><!--/ .row-->
+									</div><!--/ .data-container-->
 
 								</div>
 
@@ -289,25 +193,27 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registro-icon1.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
+							<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php'"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 						
 						<div class="next">
-							<button class="button button-control" type="button" onclick="window.location.href='registro-icon3.php'"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
+							<button class="button button-control" onclick="window.location.href='../pag_interiores/indexUsuarioAdminCurso.php'" type="button"><span>Enviar<b>Confirmar Datos</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 
-					</form><!--/ .form-wizard-->
+					</form><!--/ form-->
 
 				</div><!--/ .container-->
-				
+
 			</div><!--/ .form-container-->
 
 		</div><!--/ #content-->
 
 
+
 		
+	
 
 		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
 

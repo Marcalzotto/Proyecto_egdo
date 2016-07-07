@@ -12,7 +12,8 @@
 		
 		<!-- Basic Page Needs
 		================================================== -->
-		<meta http-equiv="Content-Type" content="text/html; charset=ansi" />		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
 		
 		<title>EGDO</title>
 		<!-- Google Web Fonts
@@ -22,7 +23,7 @@
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" />  
+		<link rel="stylesheet" href="../assets/css/main.css" /> 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- Mobile Specific Metas
@@ -65,7 +66,7 @@
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
+								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
 							<!-- Nav Elimado-->
 								
@@ -116,12 +117,15 @@
 						</div>
 
 					</div><!--/ .row-->
+
 <?php
-// Arrays para guardar errores:
+    // Arrays para guardar errores:
     $aErrores = array();
 
-    // Patrón para usar en expresiones regulares (admite letras acentuadas y espacios):
-    $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ\s]+$/";
+    // Patrón para usar en expresiones regulares (admite letras acentuadas, numeros y espacios):
+    $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ0123456789\s]+$/";
+	// Patrón para usar en expresiones regulares (admite solo numeros):
+	$patron_num = "/^[[0-9\s]+$/";
 
     // Comprobar si se ha enviado el formulario:
     if( !empty($_POST) )
@@ -129,96 +133,78 @@
 			//función trim que se encarga de eliminar los espacios en blanco 
 			//función mysql_real_escape_string para evitar las inyecciones sql 
 			//htmlentities para xss 
-			$nombre = trim(htmlentities(mysql_real_escape_string($_POST["nombre"])));
-			$apellido = trim(htmlentities(mysql_real_escape_string($_POST["apellido"])));
-			$email = trim(htmlentities(mysql_real_escape_string($_POST["email"])));
-			$pass = trim(htmlentities(mysql_real_escape_string($_POST["pass"])));
-			$repass = trim(htmlentities(mysql_real_escape_string($_POST["repass"])));
+			$nombre_escuela = trim(htmlentities(mysql_real_escape_string($_POST["nombre_escuela"])));
+			$localidad = trim(htmlentities(mysql_real_escape_string($_POST["localidad"])));
+			$cant_alumnos = trim(htmlentities(mysql_real_escape_string($_POST["cant_alumnos"])));
+			$curso_anio = $_POST["curso_anio"];
+			$curso_letra = $_POST["curso_letra"];
+			
+			//Establecemos zona horaria para obtener fecha
+			date_default_timezone_set('America/Argentina/Buenos_Aires');
+			$fecha_creacion = date("Y-n-d-H-i-s");
 
 		
 					echo "FORMULARIO RECIBIDO:<br/>";
 					echo "====================<p/>";
 
 					// Mostrar la información recibida del formulario:
-					echo "Nombre: ".$nombre."<br/>";
-					echo "Apellido: ".$apellido."<br/>";
-					echo "Email: ".$email."<br/>";
-					echo "Password: ".$pass."<br/>";
-					echo "Confirma password: ".$repass."<br/>";
+
+					echo "Nombre  de escuela: ".$nombre_escuela."<br/>";
+					echo "Localidad: ".$localidad."<br/>";
+					echo "Curso-anio: ".$curso_anio."<br/>";
+					echo "Curso-letra: ".$curso_letra."<br/>";
+					echo "Cantidad de alumnos: ".$cant_alumnos."<br/>";
+					echo "Fecha de creacion: ".$fecha_creacion."<br/>";
 					echo "====================<p/>";
 	
 					// Comprobar si llenaron los campos requeridos:
-					if( isset($nombre) && isset($apellido)&& isset($email)&& isset($pass)&& isset($repass) )
+					if( isset($nombre_escuela) && isset($localidad)&& isset($curso_anio)&& isset($curso_letra)&& isset($cant_alumnos) )
 					{
 						// Nombre:
-						if( empty($nombre) )
-							$aErrores[] = "- Debe completar el campo Nombre.";
+						if( empty($nombre_escuela) )
+							$aErrores[] = "- Debe completar el campo Nombre de escuela.";
 						else
 						{
 							// Comprobar mediante una expresión regular, que sólo contiene letras y espacios:
-							if( !preg_match($patron_texto, $nombre) )
-								$aErrores[] = "- El nombre solo puede contener letras y espacios";
+							if( !preg_match($patron_texto, $nombre_escuela) )
+								$aErrores[] = "- El campo Nombre de escuela solo puede contener letras, numeros y espacios";
 							else 
 							{
 								// Comprobar que no supere cantidad maximo de caracteres:
-								if(strlen($nombre) > 45)
-								$aErrores[] = "- El nombre no puede contener mas de 45 caracteres";
+								if(strlen($nombre_escuela) > 100)
+								$aErrores[] = "- El campo Nombre de escuela no puede contener mas de 100 caracteres";
 							}
 						}
 
 						// Apellidos:
-						if( empty($apellido) )
-							$aErrores[] = "- Debe completar el campo apellido";
+						if( empty($localidad) )
+							$aErrores[] = "- Debe completar el campo localidad";
 						else
 						{
-							// Comprobar mediante una expresión regular, que sólo contienen letras y espacios:
-							if( !preg_match($patron_texto, $apellido) )
-								$aErrores[] = "- El apellido solo puede contener letras y espacios";
+							// Comprobar mediante una expresión regular, que sólo contienen letras, numeros y espacios:
+							if( !preg_match($patron_texto, $localidad) )
+								$aErrores[] = "- El campo localidad solo puede contener letras, numeros y espacios";
 							else 
 							{
 								// Comprobar que no supere cantidad maximo de caracteres:
-								if(strlen($apellido) > 45)
-								$aErrores[] = "- El apellido no puede contener mas de 45 caracteres";
+								if(strlen($localidad) > 70)
+								$aErrores[] = "- El campo localidad no puede contener mas de 70 caracteres";
 							}
 						}
 						
-						//email
-						if( empty($email) )
-							$aErrores[] = "- Debe completar el campo email";
+						//Cantidad de alumnos
+						if( empty($cant_alumnos) )
+							$aErrores[] = "- Debe completar el campo Cantidad de alumnos";
 						else
 						{
-							// Comprobar mediante  filter_var si es valido el email:
-							if(!filter_var($email,FILTER_VALIDATE_EMAIL )){
-								$aErrores[] = "- El email no es valido";
-								}
+							// Comprobar mediante una expresión regular, que sólo contiene numeros:
+							if( !preg_match($patron_num, $cant_alumnos) )
+								$aErrores[] = "- El campo Cantidad de alumnos solo puede contener numeros";
 							else 
 							{
-								// Comprobar que no supere cantidad maximo de caracteres:
-								if(strlen($email) > 45)
-								$aErrores[] = "- El email no puede contener mas de 45 caracteres";
-							}
-						}
-						
-						//contraseñia
-						
-						if( empty($pass) )
-							$aErrores[] = "- Debe completar el campo Password";
-						else
-						{
-							if( empty($repass) )
-							$aErrores[] = "- Debe completar el campo Confirmar Password";
-							else
-							{
-								// Comprobar si los campos ingrese y confirme password son iguales
-								if($pass != $repass){
-									$aErrores[] = "- Los password deben coincidir";
-									}
-								else 
-								{
-									// Comprobar que no supere cantidad maximo de caracteres:
-									if(strlen($pass) < 3 ||strlen($pass) > 45)
-									$aErrores[] = "- El password no puede contener menos de 3 caracteres y mas de 45 caracteres";
-								}
+								// Comprobar que no supere cantidad maxima:
+								if(($cant_alumnos < 0) || ($cant_alumnos > 70))
+									$aErrores[] = "- El campo cantidad de alumnos debe ser mayor a 0 y menor a 70";
 							}
 						}
 
@@ -236,11 +222,11 @@
 						// Mostrar los errores:
 						for( $contador=0; $contador < count($aErrores); $contador++ )
 							echo $aErrores[$contador]."<br/>";
-							echo "<p><a href='registroPaso1.php'>Volver y completar nuevamente</a></p>";
+							echo "<p><a href='registroPaso2.php'>Volver y completar nuevamente</a></p>";
 					}
 					else
 					{		
-							//Validado los campos se inserta los datos a la base y se redirecciona al paso 2
+							//Validado los campos se inserta los datos a la base y se redirecciona al paso 3
 					
 							
 							 $host_db = "localhost";
@@ -255,53 +241,37 @@
 							 die("La conexion falló: " . $conexion->connect_error);
 							}
 						
-							 $passhash = password_hash($pass, PASSWORD_BCRYPT); 
-
-
-							 $buscarUsuario = "SELECT * FROM $tbl_name
-							 WHERE email = '$email' ";
-
-							 $result = $conexion->query($buscarUsuario);
-
-							 $count = mysqli_num_rows($result);
-
-							 if ($count == 1) {
 							 
-							 echo "<br />". "El email ya se encuentra registrado. Comuniquese con EGDO" . "<br />";
-							 echo "<p><a href='registroPaso1.php'>volver</a></p>";
-
-							 }
-							 else{
-
-								 //$query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol,id_curso)
-								 //VALUES ('$nombre','$apellido','$email','$passhash','1','')";
-								 
-								 $query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol)
-									VALUES ('$nombre','$apellido','$email','$passhash',1)";
+								 $query = "INSERT INTO curso (nombre_escuela,localidad,curso_anio,curso_letra,cant_alumnos,fecha_creacion)
+									VALUES ('$nombre_escuela','$localidad','$curso_anio','$curso_letra','$cant_alumnos','$fecha_creacion')";
 
 								 if (!mysqli_query($conexion, $query)){
 									 echo "<script language='JavaScript'>
-											alert('Error al crear usuario, cargue nuevamente los datos!');
+											alert('Error al crear curso, cargue nuevamente los datos!');
 											</script>"; 
 									 die('Error: ' . mysqli_error());
 									 mysqli_close($conexion);
-									 header('Location:registroPaso1.php');
+									 header('Location: registroPaso2.php');
 								 }
 								 else {
 								 
 									 mysqli_close($conexion);
-									 header('Location:registroPaso2.php');
-									 //echo ("<script>location.href='registroPaso2.php'</script>");
+									 echo ("<script>location.href='registroPaso3.php'</script>");// atado con alambreeeeee!!!!!!!
+									 //header('Location: registroPaso3.php');
 								 }
-							 }			
+							 			
 					}
     }
     else
     {
         echo "<p>No se ha enviado el formulario.</p>";
-		echo "<p><a href='registroPaso1.php'>volver</a></p>";
+		echo "<p><a href='registroPaso2.php'>volver</a></p>";
     }
+
+
 ?>
+
+
 				</div><!--/ .container-->
 				
 			</div><!--/ .form-container-->
