@@ -71,7 +71,7 @@
 								
 							<!-- Flecha 
 							
-								<a href="index.html">
+								<a href="i../ndex.php">
 									
 								</a> -->	
 								
@@ -84,7 +84,7 @@
 											<a href="#comenza">COMENZA</a>
 										</li>
 										<li class="circle"><a href="pag_interiores/empresa.php">EMPRESAS</a></li>
-										<li class="break"><a href="pag_interiores/registro.php">REGISTRO</a></li> 
+										<li class="break"><a href="registro/registroPaso1.php">REGISTRO</a></li> 
 										<li class="circle"><a href="#contacto">CONTACTO</a></li>
 									</ul>
 								</nav>
