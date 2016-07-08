@@ -34,6 +34,7 @@ if ($result->num_rows === 1) {
  
  $_SESSION['loggedin'] = true;
  $_SESSION['nombre'] = $row['nombre'];
+ $_SESSION['id_usuario'] = $row['id_usuario'];
  $_SESSION['email'] = $email;
  $_SESSION['start'] = time();
  $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);

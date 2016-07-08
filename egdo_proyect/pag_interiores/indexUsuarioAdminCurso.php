@@ -123,6 +123,7 @@ exit;
 																<li> <h2></h2>
 																</li>
 																<li> <h2>Hola</br><?php echo $_SESSION['nombre']; ?></h2>
+																	<h2>ID_usuario: <?php echo $_SESSION['id_usuario']; ?></h2>
 																</li>
 
 										
