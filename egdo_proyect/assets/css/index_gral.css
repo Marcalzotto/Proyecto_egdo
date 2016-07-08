@@ -1863,6 +1863,10 @@
 	}
 	
 	#formDisparaVotacion button{
+		-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
 		 
    	 margin-top: 1.2em;
      background: #79B800;
@@ -1877,6 +1881,10 @@
      font-weight: bold;
      border-style: none;
 	}
+
+	#formDisparaVotacion button:hover{
+		background: #78FF1E;
+	}
 		
 	/*span estilos respuesta votacion*/
 	#votacion #respuestaDisparo{
@@ -1887,6 +1895,7 @@
     	font-weight: bold;
     	padding: 0em;
     	padding-top: 1em;
+    	display: none;
 	}
 /*lista segunda instancia*/
 

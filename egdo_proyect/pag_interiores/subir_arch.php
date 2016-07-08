@@ -1,27 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
-} else {
-   echo "Esta pagina es solo para usuarios registrados.<br>";
-   echo "<br><a href='../index.php'>Ir a inicio</a>";
-
-exit;
-}
-
-$now = time();
-
-if($now > $_SESSION['expire']) {
-session_destroy();
-
-echo "Su sesion a terminado,
-<a href='../index.php'>Ir a inicio</a>";
-exit;
-}
-?>
-
-
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -67,7 +43,34 @@ exit;
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-	
+			<script>
+				$(function(){
+						
+						$("#formulario").on("submit", function(evento){
+							evento.preventDefault();
+							var formData = new FormData(document.getElementById("formulario"));
+							formData.append("clave","valor");
+
+							var direccion = "recibe_datos.php";
+							$.ajax({
+								url: direccion,
+								type: "post",
+								dataType: "html",
+								data: formData,
+								cache: false,
+								contentType: false,
+								processData: false
+							})
+
+							.done(function(response){
+								$("#respuesta_ajax").html(response);
+							});
+						
+						});
+				
+						
+				});
+			</script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -93,14 +96,14 @@ exit;
 									<li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
 										
 										<li class="circle">
-											<a href="no-sidebar.html">
+											<a href="#">
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
-													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+													<li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
 													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+													<li><a href="index_general.html">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -115,15 +118,11 @@ exit;
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 
 
 										</li>
-																<li> <h2></h2>
-																</li>
-																<li> <h2>Hola</br><?php echo $_SESSION['nombre']; ?></h2>
-																</li>
 
 										
 									</ul>
@@ -136,93 +135,87 @@ exit;
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
+				<div id="divContform">
+					<?php	
+						$curso_sesion = 1;
+						require_once("conexion.php");
+						$verificarEstadoVotacion = "select * from votacion where vigente = 1 and curso_pertenece_votacion = '$curso_sesion'";
+						
+						$verificar = $conexion->query($verificarEstadoVotacion) or die($conexion->error);
 
-					<!--
+						if($verificar){
+							
+							$hayVotacion = $verificar->num_rows;
+							if($hayVotacion > 0){
 
-						The slider's images (as well as its behavior) can be configured
-						at the top of "assets/js/main.js".
+								$conjuntoVotacion = $verificar->fetch_array(MYSQLI_ASSOC);
+								$fecha_apertura = $conjuntoVotacion["fecha_apertura"];
 
-					-->
+								$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
+								$fecha_de_prueba = new datetime("2016-07-09 20:00:00"); 
 
-				
+								$fecha_fin_primer_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
+								$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
+
+								$fecha_fin_segunda_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
+								$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
+
+								if($fecha_de_prueba >= $fecha_apertura && $fecha_de_prueba <= $fecha_fin_primer_instancia){
+
+												echo "<div class=form>
+															<h2>Subi tus dise&ntilde;os</h2>
+							
+															<div id=respuesta_ajax>
+						
+															</div>
 					
+															<form enctype=multipart/form-data method=post id=formulario>
+
+															<select name=disenio_opcion id=dis_opcion>
+																<option value=0>Seleccionar dise&ntilde;o:</option>
+																<option value=1>Buzo/Campera</option>
+																<option value=2>Remera</option>
+																<option value=3>Bandera</option>
+															</select>
+										
+															<div id=frontal>
+																<p id=subir_frontal>Subir Frontal</p>
+																<input type=file name=dis_frontal id=d_frontal>
+															</div>
+											
+															<div id=impresion>
+																<p id=subir_impresion>Subir Impresion</p>
+																<input type=file name=vista_impresion  id=d_impresion>
+															</div>
+											
+															<div id=btn-enviar>
+																<p id=p_enviar>Subir</p>
+																<input type=submit name=enviar_archs  id=d_enviar>
+															</div>
+
+															</form>
 						
-					<div id="slider">
-						<div class="caption">
-							<h2>Magna feugiat lorem ipsum dolor gravida</h2>
-							<!--<p>Nulla justo magna veroeros tempus</p> -->
-						</div>
-					</div>
+															</div>";
+								}else if($fecha_de_prueba >= $fecha_fin_primer_instancia && $fecha_de_prueba <= $fecha_fin_segunda_instancia){
+										echo "<h2>La votacion vigente ya paso la primer instancia.</h2>";
+								}else if($fecha_de_prueba >= $fecha_fin_segunda_instancia){
+									echo "<h2>La votacion ha finalizado.</h2>";
+								}else{
+									echo "<h2>Lo sentimos hubo un error inesperado</h2>";
+								}
+
+							}else{
+								echo "<h2>No hay votaciones abiertas para este curso</h2>";
+							}
+						}else{
+							echo "<h2>Lo sentimos hubo problemas con el servidor.</h2>";
+						}
+
+						
+					?>		
 				</div>
 
-			<!-- Main Wrapper -->
-				<div id="main-wrapper">
-
-					<!-- Main -->
-						<div id="intro" class="container">
-							<div class="row">
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">01</span> -->
-									<header>
-										<h2>REGISTRATE</h2>
-									</header>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-1">
-											<div class="circulo-info">
-											<h3>Y REGISTRA A TUS COMPA&ntilde;EROS</h3>
-											<p><i class="fa fa-users fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Tu curso,Y registra a tus compañeros.</p> -->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">02</span> -->
-									<header>
-										<h2>ORGANIZA</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-2">
-											<div class="circulo-info">
-											<h3> UPD, FIESTA, VIAJES</h3>
-											<p>... Y M&Aacute;S </p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Todas tus actividades del ultimo ano, en un solo lugar.</p>-->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number"><i class="fa fa-envelope-o"></i></span> -->
-									<header>
-										<h2>COMPARTI</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-3">
-											<div class="circulo-info">
-											<h3>TODOS TUS MOMENTOS</h3>
-											<p><i class="fa fa-heart-o fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-								</section>
-							</div>
-							<div class="actions">
-								<a href="#" class="button button-big">Get Started</a>
-								<a href="#" class="button button-big button-alt">Learn More</a>
-							</div>
-						</div>
-						
-						
-				</div>
+			
 				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">

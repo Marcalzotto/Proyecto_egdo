@@ -30,8 +30,15 @@ foreign key(codigo_tipo) references codigo_disenio(codigo),
 foreign key(id_usuario_subio) references usuarios(id_usuario) 
 );
 
+delete from disenio where votacion_pertenece = 9;
+
+select * from disenio;
+
 alter table disenio add column cantidad_votos int not null default 0;
 alter table disenio add column votos_segunda_instancia int not null default 0;
+alter table disenio add column votacion_pertenece int not null default 9;
+alter table disenio add foreign key (votacion_pertenece) references votacion (id_votacion);
+/*agregar id de votacion a la tabla disenio y relacion foranea del campo a tabla votacion*/ 
 
 create table votos(
 voto int not null primary key,
@@ -56,18 +63,14 @@ insert into codigo_disenio values("","Bandera");
 alter table votos add column tipo_disenio int not null;
 alter table votos add foreign key (tipo_disenio) references disenio(codigo_tipo); 
 alter table votos add column instancia_voto int not null default 1;
-insert into votos values("",1,1,2);
-insert into votos values("",2,1,2);
-insert into votos values("",3,1,2);
-insert into votos values("",1,2,2);
-insert into votos values("",2,2,2);
-insert into votos values("",1,3,2);
 
 select * from disenio where codigo_tipo = 3;
 select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where codigo_tipo = 3;
 
 
 select * from votos;
+alter table votos add column votacion_pertenece int not null default 9;
+alter table votos add foreign key (votacion_pertenece) references votacion(id_votacion); 
 select * from disenio;
 
 select count(voto) as votos,disenio_votado from votos where tipo_disenio = 2
@@ -83,7 +86,7 @@ from usuarios as u join disenio as d on u.id_usuario = d.id_usuario_subio  join 
 d.id_disenio = disenio_votado where d.codigo_tipo = 2
 group by d.id_disenio;
  
-delete from votos where tipo_disenio = 2;
+delete from votos where tipo_disenio = 1;
 
 update disenio set cantidad_votos = 1 where id_disenio = 1;
 
@@ -109,8 +112,9 @@ select * from usuarios;
 insert into votacion values('','2016-07-05 18:36:00',true,3,1);
  
 select * from votacion;
-
-delete from votacion where id_votacion = 8;
+alter table votacion add column curso_pertenece_votacion int not null default 1;
+/*agregar fk curso*/
+delete from votacion where id_votacion = 9;
 
 select * from votacion where vigente = true;
 
@@ -118,3 +122,14 @@ select * from disenio order by cantidad_votos desc limit 3;
 select * from disenio order by cantidad_votos desc limit 1;
 select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
 				where d.codigo_tipo = 1 order by d.cantidad_votos desc limit 1;
+
+
+
+select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 
+and d.votacion_pertenece = 10 order by d.cantidad_votos desc limit 3;
+
+
+
+select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+where d.codigo_tipo = 3 and d.votacion_pertenece = 10 order by 
+d.cantidad_votos desc limit 1;

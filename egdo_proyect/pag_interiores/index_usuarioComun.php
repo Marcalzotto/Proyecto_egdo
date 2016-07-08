@@ -1,27 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
-} else {
-   echo "Esta pagina es solo para usuarios registrados.<br>";
-   echo "<br><a href='../index.php'>Ir a inicio</a>";
-
-exit;
-}
-
-$now = time();
-
-if($now > $_SESSION['expire']) {
-session_destroy();
-
-echo "Su sesion a terminado,
-<a href='../index.php'>Ir a inicio</a>";
-exit;
-}
-?>
-
-
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -97,10 +73,10 @@ exit;
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
-													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+													<li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
 													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+													<li><a href="subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -115,15 +91,11 @@ exit;
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 
 
 										</li>
-																<li> <h2></h2>
-																</li>
-																<li> <h2>Hola</br><?php echo $_SESSION['nombre']; ?></h2>
-																</li>
 
 										
 									</ul>

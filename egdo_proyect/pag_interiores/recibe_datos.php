@@ -22,7 +22,7 @@
 	
 	}else{
 		
-		$id_usuario_sube = 1;
+		$id_usuario_sube = 4;
 		$curso_sesion = 1;
 		/*tengo que obtener el usuario que sube el disenio y el curso al que pertenece por medio de la sesion*/
 
@@ -81,9 +81,9 @@
 
 							$qry = "insert into disenio values('','$opcion_disenio','$obtenerContenidoFrontal','$anchoDeFrontal',
 							'$altoDeFrontal','$nombreArchFrontal','$obtenerTipoArchFrontal','$obtenerContenidoImpresion',
-							'$anchoDeImpresion','$altoDeImpresion','$nombreArchImpresion','$obtenerTipoArchImpresion','$id_usuario_sube',0,0,'$numVotacionCurso')";
+							'$anchoDeImpresion','$altoDeImpresion','$nombreArchImpresion','$obtenerTipoArchImpresion','$id_usuario_sube',0,'','$numVotacionCurso')";
 					
-							if($conexion->query($qry) or die($conexion->error)){
+							if($conexion->query($qry)){
 						
 								$respuesta_ajax = "<p>Sus dise&ntilde;os fueron subidos con exito.";
 								echo $respuesta_ajax;
