@@ -1,25 +1,4 @@
-<?php
-session_start();
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
-} else {
-   echo "Esta pagina es solo para usuarios registrados.<br>";
-   echo "<br><a href='../index.php'>Ir a inicio</a>";
-
-exit;
-}
-
-$now = time();
-
-if($now > $_SESSION['expire']) {
-session_destroy();
-
-echo "Su sesion a terminado,
-<a href='../index.php'>Ir a inicio</a>";
-exit;
-}
-?>
+<?php include ("../bloqueSeguridad.php");?>
 
 
 <!DOCTYPE HTML>
@@ -111,7 +90,7 @@ exit;
 																			</a>
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../mensajes/listar.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
