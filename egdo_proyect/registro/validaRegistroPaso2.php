@@ -256,7 +256,7 @@
 								 else {
 								 
 									 mysqli_close($conexion);
-									 echo ("<script>location.href='registroPaso3.php'</script>");// atado con alambreeeeee!!!!!!!
+									 echo ("<script>location.href='registroPaso3.php?cant_alumnos=	$cant_alumnos'</script>");// atado con alambreeeeee!!!!!!!
 									 //header('Location: registroPaso3.php');
 								 }
 							 			

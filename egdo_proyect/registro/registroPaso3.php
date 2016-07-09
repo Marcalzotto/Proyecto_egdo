@@ -158,7 +158,7 @@
 
 					</div><!--/ .row-->
 
-					<form action="/" role="form">
+					<form action="../registro/registroPaso4.php" method="post" role="form">
 
 						<div class="form-wizard">
 							
@@ -166,10 +166,22 @@
 
 								<div class="col-md-8 col-sm-7">
 				
-									<fieldset class="input-block">
-										<label for="email">Email</label>
-										<input type="text" id="email" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
-									</fieldset><!--/ .input-email-->
+									
+										<?php
+										
+										$cant_alumnos=$_GET["cant_alumnos"];
+										
+										for ($inputEmail = 0; $inputEmail < $cant_alumnos; $inputEmail++){
+
+											echo '								
+											<fieldset class="input-block">
+											<label for="email"></label>
+											<input type="text" id="email" class="form-icon form-icon-mail" name="email[]" placeholder="Email" required />
+											</fieldset><!--/ .input-email-->';
+											
+										}
+
+										?>
 									
 
 								</div>
@@ -184,7 +196,7 @@
 						</div>
 						
 						<div class="next">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso4.php'"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
+							<button class="button button-control" type="submit"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 

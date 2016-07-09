@@ -167,23 +167,16 @@
 								<div class="col-md-8 col-sm-7">
 
 									<div class="data-container">
-										<dl>
-											<dt>Invitacion 1</dt>
-											<dd>noe@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 2</dt>
-											<dd>pau@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 3</dt>
-											<dd>marcos@egdo.com</dd>
-										</dl>
-										<dl>
-											<dt>Invitacion 4</dt>
-											<dd>romy@egdo.com</dd>
-										</dl>
+									
 										
+											<?php
+											echo "Se enviaran invitaciones a los siguientes emails: <br/>\n";
+											foreach($_POST['email'] as $invitacion)
+											{
+											echo "- $invitacion <br/>\n";
+											}
+											?>
+									
 									</div><!--/ .data-container-->
 
 								</div>
