@@ -229,12 +229,12 @@
         					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         				</button>
         				<h3 class="modal-title" id="modal-login-label">Login</h3>
-        				<p>Introduzca su email y contrase&ntilde;a para iniciar sesi&oacute;n:</p>
+        				<p>Ingresa tu email y contrase&ntilde;a para iniciar sesi&oacute;n:</p>
         			</div>
         			
         			<div class="modal-body">
         				
-	                    <form role="form" name="login" action="login/checklogin.php" method="post" class="login-form">
+	                    <form role="form" name="login" action="login/login.php" method="post" class="login-form">
 	                    	<div class="form-group">
 	                    		<label class="sr-only" for="form-username">Email</label>
 	                        	<input type="text" name="email" placeholder="Email..." class="form-username form-control" id="form-username">
@@ -253,7 +253,7 @@
 					var contrasenia = document.getElementById('password').value;
 					$.ajax({
 					type:'POST',
-					url:'login/checklogin.php',
+					url:'login/login.php',
 					data:('email'+email+'&password'+contrasenia),
 					success:function(respuesta) {
 					if(respuesta ==1) {
