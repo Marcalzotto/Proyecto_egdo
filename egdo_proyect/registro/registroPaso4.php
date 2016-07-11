@@ -186,8 +186,7 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php'"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
-							<div class="button-divider"></div>
+							
 						</div>
 						
 						<div class="next">

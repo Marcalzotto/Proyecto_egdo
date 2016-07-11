@@ -80,23 +80,65 @@
 
 			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
 
-
-		<div id="contents">
+<div id="contents">
 
 			<div class="form-container">
 
 				<div id="tmm-form-wizard" class="containers substrate"> <!--container substrate-->
 
-				<div class="rows">
+					<div class="rows">
 						<div class="col-xs-12">
 							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
 						</div>
 
 					</div><!--/ .row-->
 
-				
+					<div class="rows stage-container">
 
-						
+						<div class="stage tmm-current col-md-3 col-sm-3">
+							<div class="stage-header head-icon head-icon-lock"></div>
+							<div class="stage-content">
+								<h3 class="stage-title">Crear cuenta</h3>
+								<div class="stage-info">
+									Ingresar datos personales 
+									nombre email password
+								</div> 
+							</div>
+						</div><!--/ .stage-->
+
+						<div class="stage col-md-3 col-sm-3">
+							<div class="stage-header head-icon head-icon-user"></div>
+
+							<div class="stage-content">
+								<h3 class="stage-title">Datos del Curso</h3>
+								<div class="stage-info">
+									Ingresar nombre escuela
+									curso cantidad alumnos
+								</div>
+							</div>
+						</div><!--/ .stage-->
+
+						<div class="stage col-md-3 col-sm-3">
+							<div class="stage-header head-icon head-icon-payment"></div>
+							<div class="stage-content">
+								<h3 class="stage-title">Enviar Invitaciones</h3>
+								<div class="stage-info">
+									Invita a tus compa&ntilde;eros
+									ingresando sus email
+								</div>
+							</div>
+						</div><!--/ .stage-->
+
+						<div class="stage col-md-3 col-sm-3">
+							<div class="stage-header head-icon head-icon-details"></div>
+							<div class="stage-content">
+								<h3 class="stage-title">Confirma Invitaciones</h3>
+								<div class="stage-info">
+									Vas a enviar invitaciones
+									los siguientes email
+								</div> 
+							</div>
+						</div><!--/ .stage-->
 
 					</div><!--/ .row-->
 
@@ -116,6 +158,12 @@
 						</div>
 
 					</div><!--/ .row-->
+
+					<div class="form-wizard">
+
+							<div class="rows">
+								
+								<div class="col-md-9 col-sm-7">
 <?php
 // Arrays para guardar errores:
     $aErrores = array();
@@ -135,17 +183,17 @@
 			$pass = trim(htmlentities(mysql_real_escape_string($_POST["pass"])));
 			$repass = trim(htmlentities(mysql_real_escape_string($_POST["repass"])));
 
-		
-					echo "FORMULARIO RECIBIDO:<br/>";
-					echo "====================<p/>";
-
-					// Mostrar la información recibida del formulario:
-					echo "Nombre: ".$nombre."<br/>";
-					echo "Apellido: ".$apellido."<br/>";
-					echo "Email: ".$email."<br/>";
-					echo "Password: ".$pass."<br/>";
-					echo "Confirma password: ".$repass."<br/>";
-					echo "====================<p/>";
+		            //
+					//echo "FORMULARIO RECIBIDO:<br/>";
+					//echo "====================<p/>";
+                    //
+					//// Mostrar la información recibida del formulario:
+					//echo "Nombre: ".$nombre."<br/>";
+					//echo "Apellido: ".$apellido."<br/>";
+					//echo "Email: ".$email."<br/>";
+					//echo "Password: ".$pass."<br/>";
+					//echo "Confirma password: ".$repass."<br/>";
+					//echo "====================<p/>";
 	
 					// Comprobar si llenaron los campos requeridos:
 					if( isset($nombre) && isset($apellido)&& isset($email)&& isset($pass)&& isset($repass) )
@@ -156,8 +204,11 @@
 						else
 						{
 							// Comprobar mediante una expresión regular, que sólo contiene letras y espacios:
-							if( !preg_match($patron_texto, $nombre) )
+							if( !preg_match($patron_texto, $nombre) ){
+							
 								$aErrores[] = "- El nombre solo puede contener letras y espacios";
+								
+							}
 							else 
 							{
 								// Comprobar que no supere cantidad maximo de caracteres:
@@ -199,7 +250,7 @@
 							}
 						}
 						
-						//contraseñia
+						//contrasenia
 						
 						if( empty($pass) )
 							$aErrores[] = "- Debe completar el campo Password";
@@ -240,7 +291,7 @@
 					}
 					else
 					{		
-							//Validado los campos se inserta los datos a la base y se redirecciona al paso 2
+							//Validado los campos se inserta los datos a la base y envia email
 					
 							
 							 $host_db = "localhost";
@@ -273,11 +324,14 @@
 							 }
 							 else{
 
-								 //$query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol,id_curso)
-								 //VALUES ('$nombre','$apellido','$email','$passhash','1','')";
+								 $id_confirmacion = uniqid();
+								 //Establecemos zona horaria para obtener fecha
+								 date_default_timezone_set('America/Argentina/Buenos_Aires');
+								 $fechaAltaUsuario = date("Y-n-d-H-i-s");
 								 
-								 $query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol)
-									VALUES ('$nombre','$apellido','$email','$passhash',1)";
+								 
+								 $query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion)
+									VALUES ('$nombre','$apellido','$email','$passhash',1,'$id_confirmacion',$fechaAltaUsuario,0)";
 
 								 if (!mysqli_query($conexion, $query)){
 									 echo "<script language='JavaScript'>
@@ -288,15 +342,58 @@
 									 header('Location:registroPaso1.php');
 								 }
 								 else {
-								 
-									 mysqli_close($conexion);
-									 //header('Location:registroPaso2.php');
-									 echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!
-									 // da error, preguntar RUSTY!!!! O buscar en 
-									 //http://librosweb.es/foro/pregunta/128/como-solucionar-el-problema-headers-already-sent-de-php/
-								 }
-							 }			
-					}
+									
+									//al estar ok se envia email al usuario link para validar cuenta e ir al paso 2
+					
+											require 'Mailer/PHPMailerAutoload.php';
+											
+											$url_activacion = 'http://localhost/egdo_proyect/registro/activaCuenta.php';
+
+											$mail = new PHPMailer;
+											$mail->isSMTP();                                      // Activamos SMTP para mailer
+											$mail->Host = 'p3plcpnl0173.prod.phx3.secureserver.net';                       // Especificamos el host del servidor SMTP
+											$mail->SMTPAuth = true;                               // Activamos la autenticacion
+											$mail->Username = 'public@ocrend.com';       // Correo SMTP
+											$mail->Password = 'Prinick2016';                // Contraseña SMTP
+											$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
+											$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
+											$mail->From = 'tucorreo@gmail.com';
+											$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
+											$mail->isHTML(true); //Decimos que lo que enviamos es HTML
+											$mail->CharSet = 'UTF-8';  // Configuramos el charset 
+											
+											$mensaje = '<h2>Hola '.$nombre.'!!! para poder activar tu cuenta y continuar con la registracion por favor segui el siguiente link.
+													Si no podes hacer click, copia y pega en la barra de direcciones de tu navegador.</h2><br><br>'
+													.$url_activacion.'?id_confirmacion='.$id_confirmacion.'&email='.$email;
+					
+											//Agregamos a todos los destinatarios
+											$mail->addAddress($email,$nombre);
+											
+											//Añadimos el asunto del mail
+											$mail->Subject = 'Confirma tu Cuenta de EGDO';
+
+											//Mensaje del email
+											$mail->Body = '<div align="center"><img src="http://i66.tinypic.com/10nua77.png"></div><br><br>'.$mensaje;
+											
+											if(!$mail->send()) {
+											
+												echo 'error al enviar email';
+												
+											} else {											
+												
+												echo '<p>Datos correctos!! </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
+												mysqli_close($conexion);
+												//header('Location:registroPaso2.php');
+												//echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!
+												// da error, preguntar RUSTY!!!! O buscar en 
+												//http://librosweb.es/foro/pregunta/128/como-solucionar-el-problema-headers-already-sent-de-php/
+								 												
+											}
+ 
+										}
+								}
+						}			
+					
     }
     else
     {
@@ -304,6 +401,16 @@
 		echo "<p><a href='registroPaso1.php'>volver</a></p>";
     }
 ?>
+				
+								</div>
+
+							</div><!--/ .row-->
+							
+						</div><!--/ .form-wizard-->
+						
+				
+				
+				
 				</div><!--/ .container-->
 				
 			</div><!--/ .form-container-->
@@ -312,18 +419,6 @@
 	
 
 		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
-
-
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-		<!--[if lt IE 9]>
-				<script src="js/respond.min.js"></script>
-		<![endif]-->
-		
-		<!--<script src="js/tmm_form_wizard_custom.js"></script>-->
-						
-						
-			
 
 			<!-- Footer Wrapper -->
 					<div id="footer-wrapper" class="footer-main-color">

@@ -250,11 +250,6 @@
 							
 						</div><!--/ .form-wizard-->
 						
-						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso1.php'"><span>Paso Anterior <b>Tus Datos</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-						
 						<div class="next">
 							<button class="button button-control" type="submit"><span>Paso Siguiente <b>Enviar Invitacion</b></span></button>
 							<div class="button-divider"></div>
