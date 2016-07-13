@@ -135,6 +135,7 @@
 				</div>
 </header>
 			<!-- Banner Wrapper -->
+			
 				<div id="divContform">
 					<?php	
 						$curso_sesion = 1;
@@ -214,7 +215,7 @@
 						
 					?>		
 				</div>
-
+			
 			
 				
 				<!-- Footer Wrapper -->

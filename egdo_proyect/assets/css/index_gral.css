@@ -1948,6 +1948,10 @@
 
 }
 
+#votacion #main section ul li img{
+	border-radius: 70px;
+}
+
 /*input type file syles */
 *{
 	margin: 0;
@@ -2138,6 +2142,431 @@ color: #fff;
 font-size: 1.4em;
 text-align: justify;
 }
+
+/*Estilos div Empresas*/
+#banner-wrapper #empresas{
+	margin-top: 5.7em;
+	text-align: center;
+	padding: 0.5em;
+}
+
+#empresas h2{
+	font-family: 'Open Sans Condensed',sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.9em;
+	margin: 2em;
+
+}
+
+#empresas div ul li{
+	
+    display: inline-block;
+    margin: 2em;
+}
+
+#empresas div ul li a{
+	height: 130px;
+    width: 130px;
+    background-color: #000;
+    border-radius: 90px;
+    display: inline-block;
+    
+}
+
+#empresas div ul li p{
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.4em;
+}
+
+#empresas div{
+	background-color: none;
+}
+
+#empresas div ul li a img{
+	height: 130px;
+	width: 130px;
+	border-radius: 65px;
+}
+
+#empresas div ul li ul li{
+margin: 0;
+
+}
+#empresas div ul li ul li span{
+color:grey;
+font-size: 200%;
+}
+#empresas div ul li ul li .marcado{
+color:#79B800;
+font-size: 200%;
+}
+
+
+#empresas div ul li .puntaje{
+		color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+/*Estilos para el detalle de las empresas*/
+#banner-wrapper #empresaDetalles{
+	margin-top: 5.7em;
+	text-align: center;
+	padding: 0.5em;
+}
+
+#empresaDetalles h2{
+	font-family: 'Open Sans Condensed',sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.9em;
+	margin: 2em;
+	margin-bottom: 0.5em;
+}
+
+#empresaDetalles #detalle{
+	text-align: center;
+	
+}
+
+
+#banner-wrapper #empresaDetalles #detalle ul li p img{
+	border-radius: 100px;
+}
+
+#empresaDetalles #detalle ul li p{
+color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+   font-size: 1.4em;
+  
+	display: inline;
+	
+}
+
+#empresaDetalles #detalle ul li .clave{
+  margin-left: 0;
+	text-align: left;
+}
+
+#empresaDetalles #detalle ul li .dato{
+
+	text-align: right;
+}
+
+#calificacion{
+	
+	background: #2E2E2E;
+  padding: 0;
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+#empresaDetalles #calificacion .l1 li .puntaje{
+		color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+#empresaDetalles #calificacion p{
+	color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+   font-size: 1.6em;
+   margin-top: 1em;
+   text-align: center
+}
+#empresaDetalles #calificacion ul li{
+	color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.4em;
+ }
+
+#empresaDetalles #calificacion .l1 li img{
+
+margin-right: 0.25em;
+}
+
+
+
+#empresaDetalles #calificacion .l1{
+
+margin-bottom: 1em;
+margin-left: 3em;
+}
+
+
+
+#empresaDetalles #calificacion ul{
+	display: inline-block;
+	margin-left: 3em;
+	margin-right: 0em;
+	text-align: left;
+}
+
+#empresaDetalles  #calificacion .l1 li span{
+color:grey;
+font-size: 150%;
+}
+#empresaDetalles  #calificacion ul li .marcado{
+color:#79B800;
+font-size: 150%;
+}
+
+/*Estilos lista l2*/
+
+
+
+#calificacion .l2 li div{
+	color:#000;
+	display: inline-block;
+}
+
+#calificacion .l2 li span{
+color:#79B800;
+font-size: 120%;
+}
+
+/*Estilos que pertenecen a la calificacion*/
+
+/*#empresaDetalles #formCalificar h2{
+	text-align: center;
+	color:#fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: -1.5em;
+}*/
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+  font-size: 2.5em;
+}
+form .labelEstrellas{
+	display: block;
+	font-size: 2.5em;
+}
+#form p {
+  text-align: center;
+}
+
+#form .labelEstrellas {
+  font-size: 20px;
+  font-size: 2.5em;
+}
+
+input[type="radio"] {
+  display: none;
+  font-size: 2.5em;
+}
+
+.labelEstrellas {
+  color: grey;
+  font-size: 2.5em;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: inline-flex;
+}
+
+.labelEstrellas:hover,
+.labelEstrellas:hover ~ .labelEstrellas {
+  color: #79B800;
+  font-size: 2.5em;
+}
+
+input[type="radio"]:checked ~ .labelEstrellas {
+  color: #79B800;
+}
+
+#empresaDetalles .formCalificar #texto{
+	font-family: 'Open Sans Condensed',sans-serif;
+	color:#fff;
+	font-size: 1.5em;
+	display: none;
+	margin-top: 0.5em;
+}
+
+/*Estilos de los comentarios*/
+#comentarios{
+	margin-bottom: 1em;
+}
+
+#empresaDetalles .unComentario{
+	background: #2E2E2E;
+  width: 500px;
+  padding: 0.5em;
+  margin: 0 auto;
+  margin-bottom: 0.1em;
+	text-align: left;
+	color: #fff;
+	border-radius: 3px;
+  font-family: 'Open Sans Condensed',sans-serif;
+  font-size: 1.2em;
+  
+}
+#empresaDetalles .unComentario p{
+	
+
+}
+
+#empresaDetalles .unComentario .tiempo{
+	margin-top: 0.5em;
+}
+
+#empresaDetalles .unComentario img{
+	display: inline-block;
+	width: 42px;
+    height: 40px;
+}
+
+#textAreaComent{
+    height: 200px;
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 1em;
+		text-align: left;
+		background: #fff;
+		line-height: 1.1em;
+		font-family: 'Open Sans Condensed',sans-serif;
+   	border-radius: 3px;
+    padding: 0.4em;
+		
+}
+#labelTextArea{
+	color:#fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.5em;
+margin-right: 16em;
+}
+#noComent{
+		position:fixed;
+		top:30%;
+		left:38%;
+		background:#333333;
+		padding: 2em;
+		border-radius: 5px;
+		display: none;
+		
+	}
+
+	#noComent span{
+		color: #ffffff;
+		font-family: 'Open Sans Condensed',sans-serif;
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+#btn-comentar{
+	-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+		background: #79B800;
+    border: 0;
+    padding: 1em 2em;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+#btn-comentar:hover{
+	background: #78FF1E;
+}
+#btn-comentar:active{
+	border:0;
+	border-color: none;
+}
+
+#btn-deshacer{
+	-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+		background: #2E2E2E;
+    border: 0;
+    padding: 1em 2em;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+#btn-deshacer:hover{
+background: #393939;
+}
+#btn-deshacer:active{
+	border:0;
+	border-color: none;
+}
+
+/*estilos para las notificaciones*/
+
+#banner-wrapper #contenerNotificaciones{
+	margin:0 auto;
+	margin-top: 5em;
+	padding: 2em;
+	width: 60%;
+}
+
+#contenerNotificaciones a{
+		margin: 0 auto;
+		padding: 1em;
+    background: #2e2e2e;
+   	display: table;
+    text-decoration: none;
+    border: 1px solid;
+    border-color: #333;
+    color: #fff;
+    width: 100%;
+}
+
+#contenerNotificaciones a img{
+	float: left;
+}
+#contenerNotificaciones a p{
+	vertical-align: text-top;
+  margin: 0;
+  margin-left: 6em;
+}
+#contenerNotificaciones a .fecha{
+    margin-top: 1.7em;
+}
+
+/*Estilo alterta notificaciones*/
+#cant_notificaciones{
+
+		position: absolute;
+    top: 9.1em;
+    left: 14.5em;
+    background: red;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    border-radius: 100%;
+    margin:0;
+    padding: 0;
+}
+
+/*Estilos de la agenda*/
+#agenda{
+	margin-top: 5.5em;
+	padding: 2em;
+}
+
 	/* #78FF1E -> verde brilloso #FF3B7B-> rosa brilloso #DD137B;-> rosa de fondo #79B800;->verde de fondo
 
 		/* Slider */
@@ -2482,6 +2911,7 @@ text-align: justify;
 
 			#footer-wrapper {
 				padding: 0em 15px !important;
+				background: #2e2e2e;
 			}
 
 			.wrapper-style1 {
@@ -2591,7 +3021,8 @@ text-align: justify;
 			#intro .actions {
 				margin-top: 1em;
 			}
-
+		
+		/*Estilos formulario para subir archivos votacion*/
 			#divContform{
 			position: relative;
 			background: #333;
@@ -2732,39 +3163,427 @@ text-align: justify;
 				text-align: center;
 				color:#fff;
 			}
-	/*estilos lista tercer instancia*/
-	#votacion #main section .tercer_instancia{
-	text-align: center;
-	margin-bottom:1em; 
-	}
+				/*estilos lista tercer instancia*/
+				#votacion #main section .tercer_instancia{
+				text-align: center;
+				margin-bottom:1em; 
+				}
 	
-	/*estilos span*/
-	#alert{
+				/*estilos span*/
+				#alert{
+					position:fixed;
+					top:50%;
+					left:10%;
+					background:#333333;
+					padding: 1.5em;
+					border-radius: 5px;
+					display: none;
+		
+				}
+
+				#alert span{
+					color: #ffffff;
+					font-family: 'Open Sans Condensed',sans-serif;
+					font-size: 1.3em;
+					font-weight: bold;
+				}
+
+				#ganador{
+					text-align: center;
+					color:#000;
+					font-family: 'Open Sans Condensed',sans-serif;
+					font-weight: bold;
+					font-size: 1.2em;
+				}
+
+/*estilos que pertenecen a la pagina empresas*/
+
+/*Estilos div Empresas*/
+#banner-wrapper #empresas{
+	margin-top: 8em;
+	text-align: center;
+	padding: 0.5em;
+}
+
+#empresas h2{
+	font-family: 'Open Sans Condensed',sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.9em;
+	margin: 2em;
+
+}
+
+#empresas div ul li{
+	
+    display: inline-block;
+    margin: 2em;
+}
+
+#empresas div ul li a{
+	height: 130px;
+    width: 130px;
+    background-color: #000;
+    border-radius: 90px;
+    display: inline-block;
+    
+}
+
+#empresas div ul li p{
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.4em;
+}
+
+#empresas div{
+	background-color: none;
+}
+
+#empresas div ul li a img{
+	height: 130px;
+	width: 130px;
+	border-radius: 65px;
+}
+
+#empresas div ul li ul li{
+margin: 0;
+
+}
+#empresas div ul li ul li span{
+color:grey;
+font-size: 200%;
+}
+#empresas div ul li ul li .marcado{
+color:#79B800;
+font-size: 200%;
+}
+
+
+#empresas div ul li .puntaje{
+		color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+
+				/*Estilos para detalle de empresas*/
+
+#banner-wrapper #empresaDetalles{
+	margin-top: 8em;
+	text-align: center;
+	padding: 0.5em;
+}
+
+#empresaDetalles h2{
+	font-family: 'Open Sans Condensed',sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.6em;
+	margin: 2em;
+	margin-bottom: 0.5em;
+}
+
+#empresaDetalles #detalle{
+	text-align: center;
+	
+}
+
+
+#banner-wrapper #empresaDetalles #detalle ul li p img{
+	border-radius: 100px;
+}
+
+#empresaDetalles #detalle ul li p{
+color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+   font-size: 1.4em;
+  
+	display: inline;
+	
+}
+
+#empresaDetalles #detalle ul li .clave{
+  margin-left: 0;
+	text-align: left;
+}
+
+#empresaDetalles #detalle ul li .dato{
+
+	text-align: right;
+}
+
+#calificacion{
+	
+	background: #2E2E2E;
+  padding: 0;
+  width: auto;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+#empresaDetalles #calificacion .l1 li .puntaje{
+		color: #fff;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+#empresaDetalles #calificacion p{
+	color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+   font-size: 1.6em;
+   margin-top: 1em;
+   text-align: center
+}
+#empresaDetalles #calificacion ul li{
+	color: #fff;
+   font-weight: bold;
+   font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.4em;
+ }
+
+#empresaDetalles #calificacion .l1 li{
+
+
+}
+
+#empresaDetalles #calificacion .l1{
+
+margin-bottom: 1em;
+display: inline-block;
+}
+
+
+
+#empresaDetalles #calificacion ul{
+	
+	
+	margin-right: 0em;
+	text-align: left;
+}
+
+#empresaDetalles  #calificacion .l1 li span{
+color:grey;
+font-size: 150%;
+}
+#empresaDetalles  #calificacion ul li .marcado{
+color:#79B800;
+font-size: 150%;
+}
+
+/*Estilos lista l2*/
+#empresaDetalles #calificacion .l2{
+margin-bottom: 1em;
+margin: 0 auto;
+width: 300px;
+}
+
+#empresaDetalles #calificacion .l2 li{
+
+
+}
+
+#calificacion .l2 li div{
+	color:#000;
+	display: inline-block;
+}
+
+#calificacion .l2 li span{
+color:#79B800;
+font-size: 120%;
+}
+
+/*Estilos que pertenecen a la calificacion*/
+
+/*#empresaDetalles #formCalificar h2{
+	text-align: center;
+	color:#fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: -1.5em;
+}*/
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+  font-size: 2.5em;
+}
+form .labelEstrellas{
+	display: block;
+	font-size: 2.5em;
+}
+#form p {
+  text-align: center;
+}
+
+#form .labelEstrellas {
+  font-size: 20px;
+  font-size: 2.5em;
+}
+
+input[type="radio"] {
+  display: none;
+  font-size: 2.5em;
+}
+
+.labelEstrellas {
+  color: grey;
+  font-size: 2.5em;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: inline-flex;
+}
+
+.labelEstrellas:hover,
+.labelEstrellas:hover ~ .labelEstrellas {
+  color: #79B800;
+  font-size: 2.5em;
+}
+
+input[type="radio"]:checked ~ .labelEstrellas {
+  color: #79B800;
+}
+
+#empresaDetalles .formCalificar #texto{
+	font-family: 'Open Sans Condensed',sans-serif;
+	color:#fff;
+	font-size: 1.5em;
+	display: none;
+	margin-top: 0.5em;
+}
+
+/*Estilos de los comentarios*/
+#comentarios{
+	margin-bottom: 1em;
+}
+
+#empresaDetalles .unComentario{
+	background: #2E2E2E;
+  
+  padding: 0.5em;
+  margin: 0 auto;
+  margin-bottom: 0.1em;
+	text-align: left;
+	color: #fff;
+	border-radius: 3px;
+  font-family: 'Open Sans Condensed',sans-serif;
+  font-size: 1.2em;
+  
+}
+#empresaDetalles .unComentario p{
+	
+font-size: 0.91em;
+}
+
+#empresaDetalles .unComentario .tiempo{
+	margin-top: 0.5em;
+}
+
+#empresaDetalles .unComentario img{
+	display: inline-block;
+	width: 42px;
+    height: 40px;
+}
+
+#textAreaComent{
+    height: 200px;
+   
+    margin: 0 auto;
+    margin-bottom: 1em;
+		text-align: left;
+		background: #fff;
+		line-height: 1.1em;
+		font-family: 'Open Sans Condensed',sans-serif;
+   	border-radius: 3px;
+    padding: 0.4em;
+		
+}
+#labelTextArea{
+	color:#fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.5em;
+margin-right: 16em;
+}
+
+#noComent{
 		position:fixed;
-		top:50%;
-		left:10%;
+		top:30%;
+		left:12.5%;
 		background:#333333;
-		padding: 1.5em;
+		padding: 2em;
 		border-radius: 5px;
 		display: none;
 		
 	}
 
-	#alert span{
+	#noComent span{
 		color: #ffffff;
 		font-family: 'Open Sans Condensed',sans-serif;
 		font-size: 1.3em;
 		font-weight: bold;
 	}
 
-	#ganador{
-		text-align: center;
-		color:#000;
-		font-family: 'Open Sans Condensed',sans-serif;
-		font-weight: bold;
-		font-size: 1.2em;
-	}
+#btn-comentar{
+	-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+		background: #79B800;
+    border: 0;
+    padding: 1em 2em;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
 }
+#btn-comentar:hover{
+	background: #78FF1E;
+}
+#btn-comentar:active{
+	border:0;
+	border-color: none;
+}
+
+#btn-deshacer{
+	-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+		background: #2E2E2E;
+    border: 0;
+    padding: 1em 2em;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+#btn-deshacer:hover{
+background: #393939;
+}
+#btn-deshacer:active{
+	border:0;
+	border-color: none;
+}
+
+#agenda{
+	margin-top: 18em;
+	padding: 2em;
+}
+
+}/*cierra media query max-width:736px
 	
 	/* flecha */
 .flecha {
@@ -2805,6 +3624,11 @@ li.circle a img{
 	
 	margin-top: 1.6em;
 }
+
+
+
+
+
 
 
 
