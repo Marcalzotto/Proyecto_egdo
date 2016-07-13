@@ -35,6 +35,7 @@
 		<link rel="stylesheet" href="../assets/css/grid.css" />
 		<link rel="stylesheet" href="../assets/css/tmm_form_wizard_layout.css" />
 		<link rel="stylesheet" href="../assets/css/fontello.css" />
+		<link rel="stylesheet" href="../assets/css/form-elements.css" />
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -165,18 +166,20 @@
 							<div class="rows">
 
 								<div class="col-md-8 col-sm-7">
-				
-									
+								
 										<?php
 										
-										$cant_alumnos=$_GET["cant_alumnos"];
+										
+										
+										$cant_alumnos=$_GET["cant_alumnos"];										
+											
 										
 										for ($inputEmail = 0; $inputEmail < $cant_alumnos; $inputEmail++){
 
 											echo '								
 											<fieldset class="input-block">
 											<label for="email"></label>
-											<input type="text" id="email" class="form-icon form-icon-mail" name="email[]" placeholder="Email" required />
+											<input type="text" id="email"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email[]" placeholder="Email" required />
 											</fieldset><!--/ .input-email-->';
 											
 										}

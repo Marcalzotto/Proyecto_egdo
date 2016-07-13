@@ -158,7 +158,7 @@
 
 					</div><!--/ .row-->
 
-					<form role="form">
+					<form role="form" method="post" action="registroFinal.php">
 
 						<div class="form-wizard">
 							
@@ -170,14 +170,74 @@
 									
 										
 											<?php
-											echo "Se enviaran invitaciones a los siguientes emails: <br/>\n";
-											foreach($_POST['email'] as $invitacion)
-											{
-											echo "- $invitacion <br/>\n";
+											
+												//email
+											$bandera=0;
+											if( empty($_POST['email']) ){
+												
+												$bandera=1;
+												echo "Debe completar el campo email.";
+												
 											}
+											else
+											{	
+													
+													foreach($_POST['email'] as $invitacion)
+													{
+																						
+														// Comprobar mediante  filter_var si es valido el email:
+														if(!filter_var($invitacion,FILTER_VALIDATE_EMAIL )){
+															
+															$bandera=1;
+															echo "- El email '".$invitacion."' no es valido.</br>";
+															
+															}
+														else 
+														{												
+															// Comprobar que no supere cantidad maximo de caracteres:
+															if(strlen($invitacion) > 45){
+															
+																echo "- El email ". $invitacion ." no puede contener mas de 45 caracteres.</br>";
+																$bandera=1;
+															}
+															else{
+															
+																$emailsOk[]=$invitacion;
+																
+															}
+														}
+												
+													}	
+												
+											}
+											
+											if($bandera==0){
+											
+												echo 'Se enviaran invitaciones a los siguientes emails:</br>';
+												foreach($emailsOk as $invitacion){
+												
+													echo '- '.$invitacion.'</br>';
+												
+												}
+												
+												//manera de mandar array por POST o GET
+												$emailsOk = serialize($emailsOk);
+												$emailsOk = urlencode($emailsOk);												
+												echo '<input type="hidden" name="emailsOk" value="'.$emailsOk.'">';
+											}
+											else{
+											
+												echo "<p><a href='registroPaso3.php'>Volver y corregir emails</a></p>";
+											
+											}
+											
 											?>
+											
+											
+											
+										
 									
-									</div><!--/ .data-container-->
+									</div><!--/ .data-container  -->
 
 								</div>
 
@@ -186,15 +246,16 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							
+							<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php?cant_alumnos='"><span>Paso Anterior <b>Datos curso</b></span></button>
+							<div class="button-divider"></div>
 						</div>
 						
 						<div class="next">
-							<button class="button button-control" onclick="window.location.href='../pag_interiores/indexUsuarioAdminCurso.php'" type="button"><span>Enviar<b>Confirmar Datos</b></span></button>
+							<button class="button button-control" type="submit"><span>Enviar<b>Confirmar Datos</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 
-					</form><!--/ form-->
+					</form><!--/ form onclick="window.location.href='../registro/registroFinal.php'"  -->
 
 				</div><!--/ .container-->
 

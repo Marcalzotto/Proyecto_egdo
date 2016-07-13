@@ -331,7 +331,7 @@
 								 
 								 
 								 $query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion)
-									VALUES ('$nombre','$apellido','$email','$passhash',1,'$id_confirmacion',$fechaAltaUsuario,0)";
+									VALUES ('$nombre','$apellido','$email','$passhash',1,'$id_confirmacion','$fechaAltaUsuario',0)";
 
 								 if (!mysqli_query($conexion, $query)){
 									 echo "<script language='JavaScript'>

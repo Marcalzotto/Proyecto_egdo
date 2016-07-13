@@ -192,8 +192,8 @@
 									</fieldset><!--/ .input-conf-password-->
 									
 									<fieldset class="input-block">
-										<label for="email">Email</label>
-										<input type="text" id="email" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
+										<label for="email">Email</label>		
+										<input type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
 									</fieldset><!--/ .input-email-->
 
 								</div>

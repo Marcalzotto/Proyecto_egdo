@@ -165,6 +165,107 @@
 
 									<div class="data-container">
 											<h3>Se han enviado todas las invitaciones! </br> para continuar por favor <a href="../index.php">inicia sesi&oacute;n</a> ;)</h3>
+											
+											<?php
+											
+												$host_db = "localhost";
+												$user_db = "root";
+												$pass_db = "";
+												$db_name = "egdo_db";
+												$tbl_name = "usuario";
+					
+												$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
+					
+												if ($conexion->connect_error) {
+												die("La conexion falló: " . $conexion->connect_error);
+												}
+											
+												date_default_timezone_set('America/Argentina/Buenos_Aires');
+												$fechaAltaUsuario = date("Y-n-d-H-i-s");
+																							
+												require '../registro/Mailer/PHPMailerAutoload.php';
+												
+												$mail = new PHPMailer;
+												$mail->isSMTP();                                      // Activamos SMTP para mailer
+												$mail->Host = 'p3plcpnl0173.prod.phx3.secureserver.net';                       // Especificamos el host del servidor SMTP
+												$mail->SMTPAuth = true;                               // Activamos la autenticacion
+												$mail->Username = 'public@ocrend.com';       // Correo SMTP
+												$mail->Password = 'Prinick2016';                // Contraseña SMTP
+												$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
+												$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
+												$mail->From = 'tucorreo@gmail.com';
+												$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
+												$mail->isHTML(true); //Decimos que lo que enviamos es HTML
+												$mail->CharSet = 'UTF-8';  // Configuramos el charset 
+											
+												
+												$url_activacion = 'http://localhost/egdo_proyect/index.php';
+												
+												//manera de recibir array por POST o GET
+												$emailsOk = $_POST['emailsOk'];
+												$emailsOk = stripslashes($emailsOk);
+												$emailsOk = urldecode($emailsOk);
+												$emailsOk = unserialize($emailsOk);																
+											
+												foreach($emailsOk as $invitacion){
+												
+													echo '</br>- emails: '.$invitacion;
+													
+													$id_confirmacion = uniqid();
+													$passhash = password_hash($id_confirmacion, PASSWORD_BCRYPT);
+												
+													$query = "INSERT INTO usuario (email,contrasenia,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion)
+													VALUES ('$invitacion','$passhash',3,'$id_confirmacion','$fechaAltaUsuario',0)";
+				
+													if (!mysqli_query($conexion, $query)){
+														echo "<script language='JavaScript'>
+																alert('Error al crear usuario, cargue nuevamente los datos!');
+																</script>"; 
+														die('Error: ' . mysqli_error());
+														mysqli_close($conexion);
+														echo "<p>No se han cargado los datos, error en conexion.</p>";
+														echo "<p><a href='registroPaso4.php'>volver al paso 4</a></p>";
+													}
+													else{										
+													
+													//al estar ok se envia email al usuario link para validar cuenta e iniciar sesion
+																				
+													$mensaje = '<h2>Hola!!! para poder activar tu cuenta en EGDO por favor realiza inicio de sesion en '.$url_activacion. 
+																' con tu email y el siguiente password:<br> '.$id_confirmacion.'. <br>Si no podes hacer click, 
+																copia y pega el enlace en la barra de direcciones de tu navegador.</h2>';
+							
+													//Agregamos a todos los destinatarios
+													$mail->addAddress($invitacion,'Nuevo Usario');
+													
+													//Añadimos el asunto del mail
+													$mail->Subject = 'Confirma tu Cuenta de EGDO';
+		
+													//Mensaje del email
+													$mail->Body = '<div align="center"><img src="http://i66.tinypic.com/10nua77.png"></div><br><br>'.$mensaje;
+													
+													if(!$mail->send()) {
+													
+														echo 'error al enviar email';
+														
+													} else {											
+														
+														echo '<p>Datos correctos!! </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
+																		//mysqli_close($conexion);
+														//header('Location:registroPaso2.php');
+														//echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!
+														// da error, preguntar RUSTY!!!! O buscar en 
+														//http://librosweb.es/foro/pregunta/128/como-solucionar-el-problema-headers-already-sent-de-php/
+																						
+													}
+											
+												}
+											}
+ 
+										
+											
+											?>
+									
+									
 									</div><!--/ .data-container-->
 
 								</div>
