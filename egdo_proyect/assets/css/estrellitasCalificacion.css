@@ -1,0 +1,21 @@
+.estrellas {
+	font-size: 0;
+	display: inline-block;
+}
+.estrellas a {
+	text-decoration: none;
+	display: inline-block;
+	/* Volver a dar tamaño al texto */
+	font-size: 32px;
+	font-size: 2rem;
+	
+	color: #888;
+}
+
+.estrellas:hover a {
+	color: rgb(39, 130, 228);
+}
+
+.estrellas > a:hover ~ a {
+	color: #888;
+}

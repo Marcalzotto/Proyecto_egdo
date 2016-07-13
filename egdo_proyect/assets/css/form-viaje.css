@@ -1,0 +1,183 @@
+.form-validation{
+    box-sizing: border-box;
+    max-width: 840px;
+    max-height: 90px;
+    margin: 10px 0 0 0;
+    padding: 12px;
+
+    background-color:  #585858;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+
+    font: bold 12px sans-serif;
+    text-align: center;
+    color:#ffffff;
+}
+
+.form-row{
+    position: relative;
+    text-align: left;
+    margin-bottom: 13px;
+    float: left;
+    margin-left: 10px;
+}
+
+
+
+.form-validation .form-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    width: 140px;
+    text-align: right;
+    padding: 11px 28px;
+}
+
+.form-validation input{
+    position: relative;
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 180px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+    margin-left: 15px;
+}
+
+
+/* Styles for Valid input data */
+
+.form-validation .form-valid-data-sign{
+    position: absolute;
+    color: #ffffff;
+    line-height: 24px;
+    text-align: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color:  #a2cf78;
+    left: 440px;
+    top: 10px;
+    display: none;
+}
+
+/* Styles for Invalid input data */
+
+.form-validation .form-invalid-data{
+    margin-bottom: 55px;
+}
+
+.form-validation .form-invalid-data input{
+    border: 1px solid #d37171;
+    box-shadow: 2px 3px 4px 0 rgba(200, 77, 77, 0.15);
+}
+
+.form-validation .form-invalid-data-sign{
+    position: absolute;
+    display: none;
+    color: #ffffff;
+    line-height: 23px;
+    font-size: 14px;
+    text-align: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: #e17c4f;
+    left: 440px;
+    top: 10px;
+}
+
+.form-validation .form-invalid-data-info{
+    display: none;
+    position: absolute;
+    color: #c84d4d;
+    font-weight: normal;
+    bottom: -30px;
+    left: 183px;
+}
+
+.form-invalid-data .form-invalid-data-sign,
+.form-invalid-data .form-invalid-data-info{
+    display: block;
+}
+
+.form-valid-data .form-valid-data-sign{
+    display: block;
+}
+
+
+.form-validation button{
+    display: block;
+    border-radius: 2px;
+    background-color:  #60B822;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 22px;
+    border: 0;
+}
+
+
+/* Placeholder color */
+
+.form-validation ::-webkit-input-placeholder {
+    color:  #999;
+}
+
+.form-validation ::-moz-placeholder {
+    color:  #999;
+    opacity: 1;
+}
+
+.form-validation :-ms-input-placeholder {
+    color:  #999;
+    opacity: 1;
+}
+
+/*	Making the form responsive. Remove this media query
+    if you don't need the form to work on mobile devices. */
+
+@media (max-width: 700px) {
+
+    .form-validation{
+        margin-top: 0;
+        padding: 30px;
+        max-width: 480px;
+    }
+
+    .form-validation .form-row{
+        max-width: 300px;
+        margin: 25px auto;
+        text-align: left;
+    }
+
+    .form-validation .form-row > label span{
+        display: block;
+        text-align: left;
+        padding: 0 0 15px;
+    }
+
+    .form-validation input,
+    .form-validation select{
+        width: 220px;
+    }
+
+    .form-validation .form-valid-data-sign,
+    .form-validation .form-invalid-data-sign{
+        left: 235px;
+        top: 40px;
+    }
+
+    .form-validation .form-invalid-data{
+        margin-bottom: 55px;
+    }
+
+    .form-validation .form-invalid-data-info{
+        left: 0;
+    }
+
+    .form-validation button{
+        margin: 0;
+    }
+
+}
+
