@@ -194,8 +194,8 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
-							<div class="button-divider"></div>
+							<!--/<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
+							<div class="button-divider"></div>-->
 						</div>
 						
 						<div class="next">

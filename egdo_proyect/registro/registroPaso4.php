@@ -249,8 +249,8 @@
 						</div><!--/ .form-wizard-->
 
 						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php?cant_alumnos='"><span>Paso Anterior <b>Datos curso</b></span></button>
-							<div class="button-divider"></div>
+							<!--/<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php?cant_alumnos='"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
+							<div class="button-divider"></div>-->
 						</div>
 						
 						<div class="next">
