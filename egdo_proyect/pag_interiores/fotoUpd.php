@@ -16,7 +16,7 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
-    <link rel="stylesheet" type="text/css" href="../assets/css/estilos-slider.css" /> 
+    <link rel="stylesheet" type="text/css" href="../assets/css/estilos-sliderFotoEvento.css" /> 
 
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -71,20 +71,29 @@
                   <li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
                     
                     <li class="circle">
-                      <a href="no-sidebar.html">
+                      <a href="#">
                         <img src="../images/shirt.png" alt="Dise&ntilde;ar">
                       </a>
                         <ul>
-                          <li><a href="../simulacion_funcionalidades/Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-                          <li><a href="../simulacion_funcionalidades/votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-                          <li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-                          <li><a href="../simulacion_funcionalidades/subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+                          <li><a href="Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+                          <li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+                          <li><a href="empresas.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
+                          <li><a href="subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
                         </ul>
                       </li>
-                    <li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-                    <li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
+                    <li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
+                    <li class="circle">
+                      <a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a>
+                        <ul>
+                          <li><p>Foto Evento</p></li>
+                          <li><a href="index_usuarioComun.php">Pagina Principal<img src="../images/dropotron_icons/principal.png" alt="" style="float:right"></a></li>
+                          <li><a href="galeriaFiesta.php">Fotos Fiesta de Egresados<img src="../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+                          <li><a href="fotoViajeEgresados.php">Fotos Viaje de Egresados<img src="../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+                          <li><a href="formSubirFotos.php">Subi tus fotos<img src="../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+                        </ul>
+                    </li>
                     <li class="circle"><a href="infoviaje.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
-                    <li class="circle"><a href="no-sidebar.html">
+                    <li class="circle"><a href="#">
                                         <img src="../images/settings.png" alt="configuracion">
                                       </a>
                                       <ul>
@@ -113,25 +122,47 @@
         <div id="main-wrapper">
 
           <!-- Wide Content -->
-            <section id="content" class="container">
-               <!-- SLIDESHOW -->
-               <div id="sliders">
-                    <ul class="bjqs">
-                      <li>
-                        <img src="../images/islamujeres_mexico.jpg" alt="" title="La zona costera de Isla Mujeres se distingue por contar con aguas cristalinas, calmadas y de poca profundidad. Otra parte popular de la ínsula es el Parque Nacional El Garrafón, que cuenta con cómodas instalaciones y atractivos como el templo de Ixchel, hermosos arrecifes coralinos y un espacio escultórico con increíbles vistas al mar al estar sobre un acantilado." />
-                      </li>
-                      <li>
-                        <img src="../images/jungletour_cancun.jpg" alt="" title="Una inolvidable experiencia que no debes perderte en Cancún es la de conducir tu propia embarcación en el Jungle Tour Sunrise Marina. ¿Imagina llegar hasta el segundo arrecife de coral más grande del mundo? Será una extraodinaria aventura, donde podrás admirar la variedad de especies tropicales en compañía de entrenados guías que estarán en toda tu travesía." />
-                      </li>
-                      <li>
-                        <img src="../images/playadelcarmen_cancun.jpg" alt="" title="Las playas de Playa del Carmen se caracterizan por ser accesibles prácticamente desde cualquier punto de la Quinta Avenida, así como por su suave oleaje y arena blanca. Mientras de día son el espacio predilecto para tomar el sol y descansar, de noche son frecuentemente elegidas para llevar a cabo festivales internacionales." />
-                      </li>
-                    </ul>
-              </div>
-     
-    <!-- FIN SLIDESHOW -->
-            </section>
+          <h2>Galeria UPD</h2>
+            
+            <?php
+              require_once('conexion.php');
 
+              $buscarFotosGaleria = "select * from imagen where id_actividad = 1";
+              $ejecutarQuery = $conexion->query($buscarFotosGaleria);
+              
+              if($ejecutarQuery){
+
+                  $hayFotos = $ejecutarQuery->num_rows;
+
+                  if($hayFotos > 0){
+                      while($contenido = $ejecutarQuery->fetch_array(MYSQLI_ASSOC)){
+                        $cantidadImg[] = $contenido;
+                      }
+                   
+                      echo "<section id='content' class='container'>";
+                        /*<!-- SLIDESHOW -->*/
+                        echo "<div id='sliders'>";
+                     
+                            echo "<ul class='bjqs'>";
+
+                            foreach ($cantidadImg as $unImg) {
+                              echo "<li>
+                                    <img src=traerImagenesGalerias.php?id=".$unImg["id_imagen"]."  alt=''/>
+                                    </li>";
+                           } 
+                            echo "</ul>";
+                        echo"</div>";
+     
+                     /* <!-- FIN SLIDESHOW -->*/
+                      echo "</section>";
+                  }else{
+                    echo "<h2>Aun no se han subido fotos para este curso</h2>";
+                  }
+              }else{
+                echo "<h2>Hubo problemas con el servidor</h2>";
+              }
+            ?>
+           
         </div> 
 
       <!-- Footer Wrapper -->
@@ -176,7 +207,7 @@
  
         <!-- Incluimos el plugin -->
         <script src="../assets/js/bjqs.min.js"></script>
-        <script src="../assets/js/script.js"></script>
+        <script src="../assets/js/fotoEvento.js"></script>
 
   </body>
 </html>

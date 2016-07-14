@@ -43,34 +43,7 @@
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script>
-				$(function(){
-						
-						$("#formulario").on("submit", function(evento){
-							evento.preventDefault();
-							var formData = new FormData(document.getElementById("formulario"));
-							formData.append("clave","valor");
-
-							var direccion = "recibe_datos.php";
-							$.ajax({
-								url: direccion,
-								type: "post",
-								dataType: "html",
-								data: formData,
-								cache: false,
-								contentType: false,
-								processData: false
-							})
-
-							.done(function(response){
-								$("#respuesta_ajax").html(response);
-							});
-						
-						});
-				
-						
-				});
-			</script>
+			<script src="../js/subirArchDisenios.js"></script> <!--Sube los archivos
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -93,7 +66,7 @@
 									
 									<ul class="myfont">
 								
-									<li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
+									<li class="circle"><a href="#"><img src="../images/upd.png" alt="UPD"></a></li>
 										
 										<li class="circle">
 											<a href="#">
@@ -102,23 +75,23 @@
 												<ul>
 													<li><a href="Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
 													<li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="index_general.html">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
+													<li><a href="empresas.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
+													<li><a href="index_usuarioComun.php">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
 												</ul>
 											</li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/bus.png" alt="info-viajes"></a></li>
-										<li class="circle"><a href="no-sidebar.html">
+										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
+										<li class="circle"><a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
+										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
+										<li class="circle"><a href="#">
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 
 

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -11,11 +8,13 @@ session_start();
 	<head>
 		<title>EGDO</title>
 		<meta charset="utf-8" />
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../assets/css/index_gral.css" />
-
+		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
@@ -44,9 +43,12 @@ session_start();
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/tabs.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script src="../js/subirArchDisenios.js"></script>
+		
+	
+			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
+	
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -76,10 +78,10 @@ session_start();
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
-													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-													<li><a href="empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="indexUsuarioAdminCurso.php">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
+													<li><a href="Tee-Designer-master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+													<li><a href="votacion.php">Votacion<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="index_usuarioComun.php">Pagina Principal<img src="../images/dropotron_icons/principal.png" alt="" style="float:right"></a></li>
+													<li><a href="subir_arch.php">Subi tus dise&ntilde;os<img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -91,8 +93,8 @@ session_start();
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="notificacionesAdmin.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="agendaAdmin.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
@@ -111,88 +113,82 @@ session_start();
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-				<div id="divContform">
-					<?php	
-						$curso_sesion = 1;
-						require_once("conexion.php");
-						$verificarEstadoVotacion = "select * from votacion where vigente = 1 and curso_pertenece_votacion = '$curso_sesion'";
-						
-						$verificar = $conexion->query($verificarEstadoVotacion) or die($conexion->error);
+	<div id="banner-wrapper">
 
-						if($verificar){
-							
-							$hayVotacion = $verificar->num_rows;
-							if($hayVotacion > 0){
+					<!--
 
-								$conjuntoVotacion = $verificar->fetch_array(MYSQLI_ASSOC);
-								$fecha_apertura = $conjuntoVotacion["fecha_apertura"];
+						The slider's images (as well as its behavior) can be configured
+						at the top of "assets/js/main.js".
 
-								$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
-								$fecha_de_prueba = new datetime("2016-07-09 20:00:00"); 
-
-								$fecha_fin_primer_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
-								$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
-
-								$fecha_fin_segunda_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
-								$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
-
-								if($fecha_de_prueba >= $fecha_apertura && $fecha_de_prueba <= $fecha_fin_primer_instancia){
-
-												echo "<div class=form>
-															<h2>Subi tus dise&ntilde;os</h2>
-							
-															<div id=respuesta_ajax>
-						
-															</div>
-					
-															<form enctype=multipart/form-data method=post id=formulario>
-
-															<select name=disenio_opcion id=dis_opcion>
-																<option value=0>Seleccionar dise&ntilde;o:</option>
-																<option value=1>Buzo/Campera</option>
-																<option value=2>Remera</option>
-																<option value=3>Bandera</option>
-															</select>
+					-->
+					<div id="empresas">
+								<h2>Empresas</h2>	
+								<div>
+									<ul>
 										
-															<div id=frontal>
-																<p id=subir_frontal>Subir Frontal</p>
-																<input type=file name=dis_frontal id=d_frontal>
-															</div>
-											
-															<div id=impresion>
-																<p id=subir_impresion>Subir Impresion</p>
-																<input type=file name=vista_impresion  id=d_impresion>
-															</div>
-											
-															<div id=btn-enviar>
-																<p id=p_enviar>Subir</p>
-																<input type=submit name=enviar_archs  id=d_enviar>
-															</div>
+										<li>
+											<p>Empresa 1</p>
+											<a href="empresa1_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
+											<p>Calificacion:</p>
+											<p class="puntaje">5,0</p>
+											<ul>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+											</ul>
+										</li>
+										
+										<li>
+											<p>Empresa 2</p>
+											<a href="empresa2_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
+											<p>Calificacion:</p>
+											<p class="puntaje">4,0</p>
+											<ul>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span>&#9733;</span></li>
+											</ul>
+										</li>
 
-															</form>
-						
-															</div>";
-								}else if($fecha_de_prueba >= $fecha_fin_primer_instancia && $fecha_de_prueba <= $fecha_fin_segunda_instancia){
-										echo "<h2>La votacion vigente ya paso la primer instancia.</h2>";
-								}else if($fecha_de_prueba >= $fecha_fin_segunda_instancia){
-									echo "<h2>La votacion ha finalizado.</h2>";
-								}else{
-									echo "<h2>Lo sentimos hubo un error inesperado</h2>";
-								}
+										<li>
+											<p>Empresa 3</p>
+											<a href="empresa3_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
+											<p>Calificacion:</p>
+											<p class="puntaje">1,7</p>
+											<ul>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span >&#9733;</span></li>
+													<li><span >&#9733;</span></li>
+													<li><span >&#9733;</span></li>
+													<li><span>&#9733;</span></li>
+											</ul>
+										</li>
 
-							}else{
-								echo "<h2>No hay votaciones abiertas para este curso</h2>";
-							}
-						}else{
-							echo "<h2>Lo sentimos hubo problemas con el servidor.</h2>";
-						}
-
-						
-					?>		
-				</div>
-
-			
-				
+										<li>
+											<p>Empresa 4</p>
+											<a href="empresa4_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
+											<p>Calificacion:</p>
+											<p class="puntaje">2,1</p>
+											<ul>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span class="marcado">&#9733;</span></li>
+													<li><span >&#9733;</span></li>
+													<li><span >&#9733;</span></li>
+													<li><span>&#9733;</span></li>
+											</ul>
+										</li>
+										
+										
+										
+									</ul>				
+								</div>
+					</div>
+					
+					
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
@@ -205,9 +201,9 @@ session_start();
 						<p>Email: egdoweb@gmail.com</p>
 						
 						<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="no-sidebar.html" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="no-sidebar.html" class="icon fa-twitter"><span>Twitter</span></a></li>
+								<li><a href="no-sidebar.html" class="icon fa-instagram"><span>Instagram</span></a></li>
 								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
 							</ul>
 							
@@ -232,7 +228,6 @@ session_start();
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
-			
 			
 	</body>
 </html>

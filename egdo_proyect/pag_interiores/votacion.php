@@ -81,10 +81,10 @@
 
 									
 								
-									<li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
+									<li class="circle"><a href="#"><img src="../images/upd.png" alt="UPD"></a></li>
 										
 										<li class="circle">
-											<a href="no-sidebar.html">
+											<a href="#">
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
@@ -94,19 +94,19 @@
 													<li><a href="subir_arch.php">Subi tus dise&ntilde;os<img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
 												</ul>
 											</li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/bus.png" alt="info-viajes"></a></li>
-										<li class="circle"><a href="no-sidebar.html">
+										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
+										<li class="circle"><a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
+										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
+										<li class="circle"><a href="#">
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
-																				<li><a href="no-sidebar.html">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="no-sidebar.html">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="no-sidebar.html">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="no-sidebar.html">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="no-sidebar.html">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="no-sidebar.html">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 
 

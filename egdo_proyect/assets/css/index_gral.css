@@ -1516,6 +1516,15 @@
 				margin: 0;
 			}
 
+/*Estilos slider foto evento*/
+#main-wrapper h2{
+		padding: 2em;
+    text-align: center;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 2em;
+    color: #fff;
+    font-weight: bold;
+}
 /* Intro */
 
 	#intro {
@@ -1679,6 +1688,23 @@
 					font-weight: 700;
 					text-decoration: none;
 					color: #FFF;
+				}
+
+				.dropotron p{
+
+					display: block;
+					padding: 1.2em 1.70em;
+					border-top: solid 1px #373737;
+					border-bottom: 0;
+					letter-spacing: 0.20em;
+					text-transform: uppercase;
+					font-family: 'Open Sans Condensed', sans-serif;
+					font-weight: 700;
+					text-decoration: none;
+					color: #FFF;
+					text-align: center;
+					font-size: 1.2em;
+
 				}
 
 				.dropotron li:first-child > a, .dropotron li:first-child > span {
@@ -1962,6 +1988,11 @@
 #divContform{
 	position: relative;
 	background: #333;
+	margin-bottom: 1em;
+}
+
+#divContform .form{
+	padding-bottom: 1em;
 }
 
 #divContform h2{
@@ -2022,6 +2053,7 @@
 	background: #FFFFFF;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: bold;
+
 }
 
 
@@ -2086,6 +2118,8 @@
 	text-align: center;
 	color:#fff;
 }
+
+/*Estilos de los form para subir fotos de eventos*/
 
 /*boton enviar similar estilo files*/
 .form #btn-enviar{

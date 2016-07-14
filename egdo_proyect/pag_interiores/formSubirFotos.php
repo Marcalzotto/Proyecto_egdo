@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -46,7 +43,7 @@ session_start();
 			<script src="../assets/js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script src="../js/subirArchDisenios.js"></script>
+			<script src="../js/subirFotosEventos.js"></script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -76,10 +73,10 @@ session_start();
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
-													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-													<li><a href="empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="indexUsuarioAdminCurso.php">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
+													<li><a href="Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+													<li><a href="votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="empresas.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
+													<li><a href="index_usuarioComun.php">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -91,8 +88,8 @@ session_start();
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="notificacionesAdmin.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="agendaAdmin.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
@@ -111,89 +108,43 @@ session_start();
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-				<div id="divContform">
-					<?php	
-						$curso_sesion = 1;
-						require_once("conexion.php");
-						$verificarEstadoVotacion = "select * from votacion where vigente = 1 and curso_pertenece_votacion = '$curso_sesion'";
-						
-						$verificar = $conexion->query($verificarEstadoVotacion) or die($conexion->error);
-
-						if($verificar){
-							
-							$hayVotacion = $verificar->num_rows;
-							if($hayVotacion > 0){
-
-								$conjuntoVotacion = $verificar->fetch_array(MYSQLI_ASSOC);
-								$fecha_apertura = $conjuntoVotacion["fecha_apertura"];
-
-								$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
-								$fecha_de_prueba = new datetime("2016-07-09 20:00:00"); 
-
-								$fecha_fin_primer_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
-								$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
-
-								$fecha_fin_segunda_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
-								$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
-
-								if($fecha_de_prueba >= $fecha_apertura && $fecha_de_prueba <= $fecha_fin_primer_instancia){
-
-												echo "<div class=form>
-															<h2>Subi tus dise&ntilde;os</h2>
-							
-															<div id=respuesta_ajax>
-						
-															</div>
-					
-															<form enctype=multipart/form-data method=post id=formulario>
-
-															<select name=disenio_opcion id=dis_opcion>
-																<option value=0>Seleccionar dise&ntilde;o:</option>
-																<option value=1>Buzo/Campera</option>
-																<option value=2>Remera</option>
-																<option value=3>Bandera</option>
-															</select>
-										
-															<div id=frontal>
-																<p id=subir_frontal>Subir Frontal</p>
-																<input type=file name=dis_frontal id=d_frontal>
-															</div>
-											
-															<div id=impresion>
-																<p id=subir_impresion>Subir Impresion</p>
-																<input type=file name=vista_impresion  id=d_impresion>
-															</div>
-											
-															<div id=btn-enviar>
-																<p id=p_enviar>Subir</p>
-																<input type=submit name=enviar_archs  id=d_enviar>
-															</div>
-
-															</form>
-						
-															</div>";
-								}else if($fecha_de_prueba >= $fecha_fin_primer_instancia && $fecha_de_prueba <= $fecha_fin_segunda_instancia){
-										echo "<h2>La votacion vigente ya paso la primer instancia.</h2>";
-								}else if($fecha_de_prueba >= $fecha_fin_segunda_instancia){
-									echo "<h2>La votacion ha finalizado.</h2>";
-								}else{
-									echo "<h2>Lo sentimos hubo un error inesperado</h2>";
-								}
-
-							}else{
-								echo "<h2>No hay votaciones abiertas para este curso</h2>";
-							}
-						}else{
-							echo "<h2>Lo sentimos hubo problemas con el servidor.</h2>";
-						}
-
-						
-					?>		
-				</div>
-
 			
-				
-				<!-- Footer Wrapper -->
+				<div id="divContform">
+							
+							<div class="form">
+								
+								<h2>Subi tus fotos</h2>
+							
+										<div id="respuesta_ajax">
+						
+										</div>
+					
+										<form enctype="multipart/form-data" method="post" id="formulario">
+
+												<select name="evento_opcion" id="event_opcion">
+													<option value="0">Elejir Evento</option>
+													<option value="1">UPD</option>
+													<option value="2">Fiesta Egresados</option>
+													<option value="3">Viaje Egresados</option>
+												</select>
+										
+													<div id="frontal">
+														<p id="subir_frontal">Subir Foto</p>
+														<input type="file" name="foto_evento" id="d_frontal">
+													</div>
+											
+													
+											
+													<div id="btn-enviar">
+														<p id="p_enviar">Subir</p>
+														<input type="submit" name="enviar_archs"  id="d_enviar">
+													</div>
+
+										</form>
+						
+							</div>
+				</div>
+			<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
 					<!-- Footer -->

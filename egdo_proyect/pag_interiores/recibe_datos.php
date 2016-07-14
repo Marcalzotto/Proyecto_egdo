@@ -99,42 +99,6 @@
 						$respuesta_ajax = "<p>Lo sentimos hubo problemas para identificar su curso.</p>";
 						echo $respuesta_ajax;
 					}
-
-					/*Datos que corresponden a la imagen frontal del disenio*/
-
-					/*$obtenerDimensionesFrontal = getimagesize($_FILES["dis_frontal"]["tmp_name"]);
-					$anchoDeFrontal = $obtenerDimensionesFrontal[0];
-					$altoDeFrontal = $obtenerDimensionesFrontal[1];
-
-					$nombreArchFrontal = $_FILES["dis_frontal"]["tmp_name"];
-					$obtenerContenidoFrontal = $conexion->real_escape_string(file_get_contents($_FILES["dis_frontal"]["tmp_name"]));
-					$obtenerTipoArchFrontal = $_FILES["dis_frontal"]["type"];*/
-
-					/*Datos que correponden a la imagen de impresion del disenio*/
-
-					/*$obtenerDimensionesImpresion = getimagesize($_FILES["vista_impresion"]["tmp_name"]);
-					$anchoDeImpresion = $obtenerDimensionesImpresion[0];
-					$altoDeImpresion = $obtenerDimensionesImpresion[1];
-
-					$nombreArchImpresion = $_FILES["vista_impresion"]["tmp_name"];
-					$obtenerContenidoImpresion = $conexion->real_escape_string(file_get_contents($_FILES["vista_impresion"]["tmp_name"]));
-					$obtenerTipoArchImpresion = $_FILES["vista_impresion"]["type"];
-
-					$qry = "insert into disenio values('','$opcion_disenio','$obtenerContenidoFrontal','$anchoDeFrontal',
-						'$altoDeFrontal','$nombreArchFrontal','$obtenerTipoArchFrontal','$obtenerContenidoImpresion',
-						'$anchoDeImpresion','$altoDeImpresion','$nombreArchImpresion','$obtenerTipoArchImpresion','$id_usuario_sube',0)";
-					
-					if($conexion->query($qry)){
-						
-						$respuesta_ajax = "<p>Sus dise&ntilde;os fueron subidos con exito.";
-						echo $respuesta_ajax;
-					
-					}else{
-
-						$respuesta_ajax = "<p>Lo sentimos no se pudieron subir sus disenios, por favor intentelo nuevamente.</p>";
-						echo $respuesta_ajax;
-
-					}*/
 				}
 
 			}else{

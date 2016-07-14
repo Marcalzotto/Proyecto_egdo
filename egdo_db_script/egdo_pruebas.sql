@@ -133,3 +133,17 @@ and d.votacion_pertenece = 10 order by d.cantidad_votos desc limit 3;
 select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
 where d.codigo_tipo = 3 and d.votacion_pertenece = 10 order by 
 d.cantidad_votos desc limit 1;
+
+create table imagen(
+id_imagen int not null primary key auto_increment,
+nombreImagen varchar(40) not null,
+tamanio decimal(6,2) not null,
+tipo varchar(15) not null,
+ancho int not null,
+alto int not null,
+imagen mediumblob not null,
+id_usuario int not null,
+id_actividad int not null
+);
+
+select * from imagen;
