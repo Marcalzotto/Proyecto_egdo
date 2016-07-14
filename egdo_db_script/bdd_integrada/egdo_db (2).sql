@@ -112,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `comentario` (
 CREATE TABLE IF NOT EXISTS `curso` (
   `id_curso` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_escuela` varchar(45) DEFAULT NULL,
-  `numero_escuela` int(11) DEFAULT NULL,
   `localidad` varchar(70) DEFAULT NULL,
   `curso_anio` int(3) DEFAULT NULL,
   `curso_letra` varchar(3) DEFAULT NULL,
