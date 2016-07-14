@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `numero_escuela` int(11) DEFAULT NULL,
   `localidad` varchar(70) DEFAULT NULL,
   `curso_anio` int(3) DEFAULT NULL,
-  `cusro_letra` varchar(3) DEFAULT NULL,
+  `curso_letra` varchar(3) DEFAULT NULL,
   `cant_alumnos` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_curso`)
