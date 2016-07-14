@@ -222,8 +222,11 @@
 												
 												//manera de mandar array por POST o GET
 												$emailsOk = serialize($emailsOk);
-												$emailsOk = urlencode($emailsOk);												
+												$emailsOk = urlencode($emailsOk);	
+												
+												
 												echo '<input type="hidden" name="emailsOk" value="'.$emailsOk.'">';
+												echo '<input type="hidden" name="id_curso" value="'.$_POST["id_curso"].'">';
 											}
 											else{
 											

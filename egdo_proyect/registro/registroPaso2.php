@@ -246,6 +246,8 @@
 											</fieldset><!--/ .input-first-name-->
 										</div>
 									</div><!--/ .row-->
+									
+									<?php echo '<input type="hidden" name="email" value="'.$_GET["email"].'">';?>
 							</div>
 							
 						</div><!--/ .form-wizard-->

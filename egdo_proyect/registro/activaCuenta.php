@@ -29,7 +29,7 @@ if ($count == 1) {
 	WHERE email ="'. $datos["email"].'" and id_confirmacion="'. $datos["id_confirmacion"].'"';
 	mysqli_query($conexion,$query);
 	mysqli_close($conexion);
-	header('Location:registroPaso2.php');
+	header('Location:registroPaso2.php?email='.$datos["email"].'');
 
 }
 else {

@@ -331,7 +331,7 @@
 								 
 								 
 								 $query = "INSERT INTO usuario (nombre,apellido,email,contrasenia,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion)
-									VALUES ('$nombre','$apellido','$email','$passhash',1,'$id_confirmacion','$fechaAltaUsuario',0)";
+									VALUES ('$nombre','$apellido','$email','$passhash',2,'$id_confirmacion','$fechaAltaUsuario',0)";
 
 								 if (!mysqli_query($conexion, $query)){
 									 echo "<script language='JavaScript'>
@@ -381,7 +381,7 @@
 												
 											} else {											
 												
-												echo '<p>Datos correctos!! </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
+												echo '<p>Datos correctos!! </br>Por favor revisa tu bandeja de entrada y valida la cuenta para continuar con el paso 2 </p>';
 												mysqli_close($conexion);
 												//header('Location:registroPaso2.php');
 												//echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!

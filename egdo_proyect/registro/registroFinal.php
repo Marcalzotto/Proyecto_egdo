@@ -199,27 +199,37 @@
 												$mail->CharSet = 'UTF-8';  // Configuramos el charset 
 											
 												
-												$url_activacion = 'http://localhost/egdo_proyect/index.php';
+												$url_activacion = 'http://localhost/egdo_proyect/registro/activaCuentaUsuario.php';
 												
 												//manera de recibir array por POST o GET
 												$emailsOk = $_POST['emailsOk'];
 												$emailsOk = stripslashes($emailsOk);
 												$emailsOk = urldecode($emailsOk);
-												$emailsOk = unserialize($emailsOk);																
-											
-												foreach($emailsOk as $invitacion){
+												$emailsOk = unserialize($emailsOk);	
+
+												//recibo id del curso creado
+												$id_curso=$_POST['id_curso'];
+												//echo 'el id curso es:'.$id_curso;
+
+
+												//saco el numero de elementos
+												$longitud = count($emailsOk);
 												
-													echo '</br>- emails: '.$invitacion;
+												//Recorro todos los elementos
+												for($i=0; $i<$longitud; $i++)
+													{
+													//saco el valor de cada elemento
+													$emailsOk[$i];
 													
 													$id_confirmacion = uniqid();
-													$passhash = password_hash($id_confirmacion, PASSWORD_BCRYPT);
-												
-													$query = "INSERT INTO usuario (email,contrasenia,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion)
-													VALUES ('$invitacion','$passhash',3,'$id_confirmacion','$fechaAltaUsuario',0)";
+													
+													//creo nuevo usuario (se asigna el id de curso)
+													$query = "INSERT INTO usuario (email,id_rol,id_confirmacion,fechaAltaUsuario,estadoActivacion,id_curso)
+													VALUES ('$emailsOk[$i]',3,'$id_confirmacion','$fechaAltaUsuario',0,'$id_curso')";
 				
 													if (!mysqli_query($conexion, $query)){
 														echo "<script language='JavaScript'>
-																alert('Error al crear usuario, cargue nuevamente los datos!');
+																alert('el email $emailsOk[$i] ya se encuentra registrado, no se envia invitacion!');
 																</script>"; 
 														die('Error: ' . mysqli_error());
 														mysqli_close($conexion);
@@ -233,9 +243,15 @@
 													$mensaje = '<h2>Hola!!! para poder activar tu cuenta en EGDO por favor realiza inicio de sesion en '.$url_activacion. 
 																' con tu email y el siguiente password:<br> '.$id_confirmacion.'. <br>Si no podes hacer click, 
 																copia y pega el enlace en la barra de direcciones de tu navegador.</h2>';
-							
+													
+													$mensaje = '<h2>Hola!!! para poder activar tu cuenta y registrarte por favor segui el siguiente link.
+													Si no podes hacer click, copia y pega en la barra de direcciones de tu navegador.</h2><br><br>'
+													.$url_activacion.'?id_confirmacion='.$id_confirmacion.'&email='.$emailsOk[$i];
+													
+													
+													
 													//Agregamos a todos los destinatarios
-													$mail->addAddress($invitacion,'Nuevo Usario');
+													$mail->addAddress($emailsOk[$i],'Nuevo Usuario');
 													
 													//Añadimos el asunto del mail
 													$mail->Subject = 'Confirma tu Cuenta de EGDO';
@@ -249,13 +265,14 @@
 														
 													} else {											
 														
-														echo '<p>Datos correctos!! </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
+														//echo '<p>Datos correctos!! email a:'.$emailsOk[$i].' </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
 																		//mysqli_close($conexion);
 														//header('Location:registroPaso2.php');
 														//echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!
 														// da error, preguntar RUSTY!!!! O buscar en 
 														//http://librosweb.es/foro/pregunta/128/como-solucionar-el-problema-headers-already-sent-de-php/
-																						
+														$mail->ClearAddresses();
+														$mail->ClearAttachments();								
 													}
 											
 												}

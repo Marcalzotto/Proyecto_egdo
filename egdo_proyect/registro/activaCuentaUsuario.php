@@ -35,7 +35,6 @@
 		<link rel="stylesheet" href="../assets/css/grid.css" />
 		<link rel="stylesheet" href="../assets/css/tmm_form_wizard_layout.css" />
 		<link rel="stylesheet" href="../assets/css/fontello.css" />
-		<link rel="stylesheet" href="../assets/css/form-elements.css" />
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -54,13 +53,16 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+	
+	
+		
 		
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-			<div id="header-wrapper">
+				<div id="header-wrapper">
 
 					<!-- Header -->
 						<div id="header" class="container">
@@ -68,77 +70,78 @@
 							<!-- Logo -->
 								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Eliminado-->
-								
+							<!-- Nav Eliminado -->
 
 						</div>
 
 				</div>
+
 			<!-- Main Wrapper -->
 				
 					<!-- Wide Content -->
 						
 
 			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-			<div id="contents">
+<?php
+
+$datos = $_GET;
+
+$host_db = "localhost";
+$user_db = "root";
+$pass_db = "";
+$db_name = "egdo_db";
+$tbl_name = "usuario";
+
+$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
+
+if ($conexion->connect_error) {
+die("La conexion falló: " . $conexion->connect_error);
+}											
+
+//consulta si el email y id_confirmacion se encuentran asociados
+$buscarUsuario = 'SELECT * FROM usuario
+WHERE email ="'. $datos["email"].'" and id_confirmacion="'. $datos["id_confirmacion"].'"';
+
+$result = $conexion->query($buscarUsuario);
+
+$count = mysqli_num_rows($result);
+
+if ($count == 1) {
+
+	//al dar ok se actualiza el estado de activacion a 1 y se redirecciona al paso 2
+	$query = 'UPDATE usuario SET estadoActivacion = 1 
+	WHERE email ="'. $datos["email"].'" and id_confirmacion="'. $datos["id_confirmacion"].'"';
+	mysqli_query($conexion,$query);
+	mysqli_close($conexion);
+	//header('Location:registroPaso2.php?email='.$datos["email"].'');
+
+}
+else {
+	echo "<script language='JavaScript'>
+		alert('Error al activar cuenta, comunicate con EGDO');
+		</script>";
+	//header('Location:../index.php');		
+}
+
+//	mysqli_close($conexion);
+?>
+
+		<div id="contents">
 
 			<div class="form-container">
 
-				<div id="tmm-form-wizard" class="containers substrate">
+				<div id="tmm-form-wizard" class="containers substrate"> <!--container substrate-->
 
 					<div class="rows">
-
 						<div class="col-xs-12">
-							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
+							<h2 class="form-login-heading">Tu cuenta ya esta activa,<span> solo falta completar tus datos</span></h2>
 						</div>
 
 					</div><!--/ .row-->
 
 					<div class="rows stage-container">
 
-						<div class="stage tmm-success col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-lock"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Crear cuenta</h3>
-								<div class="stage-info">
-									Ingresar datos personales 
-									nombre email password
-								</div>
-							</div>
-						</div><!--/ .stage-->
 						
-						<div class="stage tmm-success col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-user"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Datos del Curso</h3>
-								<div class="stage-info">
-									Ingresar nombre escuela
-									curso cantidad alumnos
-								</div> 
-							</div>
-						</div><!--/ .stage-->
-						
-						<div class="stage tmm-current col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-payment"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Enviar Invitaciones</h3>
-								<div class="stage-info">
-									Invita a tus compa&ntilde;eros
-									ingresando sus email
-								</div>
-							</div>
-						</div><!--/ .stage-->
-						
-						<div class="stage col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-details"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Confirma Invitaciones</h3>
-								<div class="stage-info">
-									Vas a enviar invitaciones
-									los siguientes email
-								</div>
-							</div>
-						</div><!--/ .stage-->
 
 					</div><!--/ .row-->
 
@@ -147,11 +150,11 @@
 						<div class="col-xs-12">
 
 							<div class="form-header">
-								<div class="form-title-2 form-icon title-icon-card">
-									<b><i class="fa fa-users" aria-hidden="true"></i>Enviar Invitaciones</b> 
+								<div class="form-title form-icon title-icon-lock">
+									<b><i class="fa fa-lock" aria-hidden="true"></i> Completa los campos </b> 
 								</div>
 								<div class="steps">
-									Paso 3 - 4
+									
 								</div>
 							</div><!--/ .form-header-->
 
@@ -159,50 +162,52 @@
 
 					</div><!--/ .row-->
 
-					<form action="../registro/registroPaso4.php" method="post" role="form">
+					<form action="validaCuentaUsuario.php" method="POST" role="form">
 
 						<div class="form-wizard">
-							
+
 							<div class="rows">
-
-								<div class="col-md-8 col-sm-7">
 								
-										<?php
-										
-										
-										
-										$cant_alumnos=$_GET["cant_alumnos"];
-										
-										for ($inputEmail = 0; $inputEmail < $cant_alumnos; $inputEmail++){
+								<div class="col-md-9 col-sm-7">
 
-											echo '								
-											<fieldset class="input-block">
-											<label for="email"></label>
-											<input type="text" id="email"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email[]" placeholder="Email" required />
-											</fieldset><!--/ .input-email-->';
-											
-										}
-
-										echo '<input type="hidden" name="id_curso" value="'.$_GET["id_curso"].'">';
-										?>
+									<fieldset class="input-block">
+										<label for="username">Nombre</label>
+										<input type="text" id="username" class="form-icon form-icon-user" name="nombre" placeholder="Nombre" required />
+									</fieldset><!--/ .input-login name-->
 									
-
+									<fieldset class="input-block">
+										<label for="surname">Apellido</label>
+										<input type="text" id="surname" class="form-icon form-icon-user" name="apellido" placeholder="Apellido" required />
+									</fieldset><!--/ .input-login surname-->
+									
+									<fieldset class="input-block">
+										<label for="password">Password</label>
+										<input type="password" id="password" placeholder="Password" name="pass" required />
+									</fieldset><!--/ .input-password-->
+									
+									<fieldset class="input-block">
+										<label for="pass-confirm">Confirmar password</label>
+										<input type="password" id="pass-confirm" placeholder="Password" name="repass" required />
+									</fieldset><!--/ .input-conf-password-->
+									
+									<?php echo '<input type="hidden" name="email" value="'.$datos["email"].'">';?>
+										
 								</div>
 
 							</div><!--/ .row-->
 							
 						</div><!--/ .form-wizard-->
-
-						<div class="prev">
-							<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
-							<div class="button-divider"></div>
-						</div>
 						
-						<div class="next">
-							<button class="button button-control" type="submit"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-
+							<div class="prev" style="display: none;">
+								<button class="button button-control" type="button" ><span>Prev Step <b>Account Information</b></span></button>
+								<div class="button-divider"></div>
+							</div>
+						
+							<div class="next">
+								<button class="button button-control" type="submit" ><span>Confirmar <b> info</b></span></button>
+								<div class="button-divider"></div>
+							</div>
+						
 					</form><!--/ .form-wizard-->
 
 				</div><!--/ .container-->
@@ -210,9 +215,7 @@
 			</div><!--/ .form-container-->
 
 		</div><!--/ #content-->
-
-
-		
+	
 
 		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
 
@@ -254,12 +257,13 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
+				<script src="../assets/js/jquery.min.js"></script>
 			<script src="../assets/js/jquery.dropotron.min.js"></script>
 			<script src="../assets/js/skel.min.js"></script>
 			<script src="../assets/js/skel-viewport.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
+
 	</body>
 </html>
