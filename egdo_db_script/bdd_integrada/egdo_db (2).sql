@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   `id_actividad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_actividad` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_actividad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `actividad`
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   PRIMARY KEY (`id_agenda`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `calificacion` (
   PRIMARY KEY (`id_calificacion`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_empresa` (`id_empresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `codigo_disenio` (
   `id_codigo_disenio` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_codigo_disenio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   PRIMARY KEY (`id_comentario`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `cant_alumnos` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `disenio` (
   KEY `codigo_tipo` (`codigo_tipo`),
   KEY `votacion_pertenece` (`votacion_pertenece`),
   KEY `id_votacion` (`id_votacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `fecha_alta` date DEFAULT NULL,
   `cuit` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_empresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `evento` (
   `id_usuario` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_evento`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `fiesta` (
   `id_usuario_propuesta` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_fiesta`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -238,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `imagen` (
   `id_actividad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_imagen`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `info_viaje` (
   `id_actividad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_info_viaje`),
   KEY `id_actividad` (`id_actividad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `mensajes_privado` (
   PRIMARY KEY (`id_mensaje`),
   KEY `id_emisor` (`id_emisor`),
   KEY `id_receptor` (`id_receptor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `notificaciones` (
   `resumen` varchar(50) DEFAULT NULL,
   `link` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_notificacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -354,10 +354,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `estadoActivacion` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `id_usuario` (`id_usuario`),
-  UNIQUE KEY `email` (`email`),
   KEY `id_curso` (`id_curso`),
   KEY `id_rol` (`id_rol`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -397,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `votacion` (
   KEY `id_usuario` (`id_usuario`),
   KEY `usuario_apertura` (`usuario_apertura`),
   KEY `curso_pertenece_votacion` (`curso_pertenece_votacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -417,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `votos` (
   KEY `disenio_votado` (`disenio_votado`),
   KEY `tipo_disenio` (`tipo_disenio`),
   KEY `votacion_pertenece` (`votacion_pertenece`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Restricciones para tablas volcadas
