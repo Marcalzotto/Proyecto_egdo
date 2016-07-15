@@ -18,6 +18,8 @@ $email = $_POST['email'];
 $contrasenia = $_POST['password'];
 
 
+
+
 $sql = "SELECT * FROM usuario WHERE email = '$email'";
 
 $result = $conexion->query($sql);
@@ -34,7 +36,7 @@ if ($result->num_rows === 1) {
 		 $_SESSION['id_usuario'] = $row['id_usuario'];
 		 $_SESSION['email'] = $email;
 		 $_SESSION['start'] = time();
-		 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+		 $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
 
 		 if($row['id_rol']==1){
 		 
@@ -56,6 +58,12 @@ if ($result->num_rows === 1) {
 		 
 		 }
 		 
+	 }
+	 else{
+		echo'<script type="text/javascript">
+			alert("Email o Password incorrecto");
+			window.location="httP://localhost/egdo_proyect/index.php"
+			</script>';
 	 }
 }	 
  else { 	 
