@@ -1,3 +1,4 @@
+<?php include ("../bloqueSeguridad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -85,7 +86,18 @@
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
+										<li class="circle">
+											<a href="#">
+												<img src="../images/foto-evento.png" alt="foto-evento">
+											</a>
+											<ul>
+												<li><p>Foto Evento</p></li>
+												<li><a href="fotoUpdAdmin.php">Fotos UPD<img src="../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
+												<li><a href="galeriaFiestaAdmin.php">Fotos Fiesta de Egresados<img src="../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+												<li><a href="fotoViajeEgresadosAdmin.php">Fotos Viaje de Egresados<img src="../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+												<li><a href="formSubirFotosAdmin.php">Subi tus fotos<img src="../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+											</ul>
+										</li>
 										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
 										<li class="circle"><a href="#">
 																				<img src="../images/settings.png" alt="configuracion">
@@ -201,9 +213,9 @@
 						<p>Email: egdoweb@gmail.com</p>
 						
 						<ul class="contact">
-								<li><a href="no-sidebar.html" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
+								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
 								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
 							</ul>
 							

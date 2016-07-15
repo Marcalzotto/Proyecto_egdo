@@ -9,13 +9,11 @@
 	<head>
 		<title>EGDO</title>
 		<meta charset="utf-8" />
-	
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../assets/css/index_gral.css" />
-		
+
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
@@ -44,13 +42,9 @@
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/tabs.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<script src="../js/calificacionPalabras.js"></script>
-			<script src="../js/subirComentario.js"></script>
-	
-			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
-	
+			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
+			<script src="../js/subirFotosEventos.js"></script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -80,10 +74,10 @@
 												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 											</a>
 												<ul>
-													<li><a href="Tee-Designer-master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="disenio de ropa" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votacion<img src="../images/dropotron_icons/votacion.png" alt="principal" style="float:right"></a></li>
-													<li><a href="empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="empresas" style="float:right"></a></li>
-													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os<img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+													<li><a href="empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
+													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
@@ -96,7 +90,7 @@
 												<li><a href="fotoUpdAdmin.php">Fotos UPD<img src="../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
 												<li><a href="galeriaFiestaAdmin.php">Fotos Fiesta de Egresados<img src="../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
 												<li><a href="fotoViajeEgresadosAdmin.php">Fotos Viaje de Egresados<img src="../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
-												<li><a href="formSubirFotosAdmin.php">Subi tus fotos<img src="../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+												<li><a href="indexUsuarioAdminCurso.php">Principal<img src="../images/dropotron_icons/principal.png" alt="ir a la pagina principal" style="float:right"></a></li>
 											</ul>
 										</li>
 										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
@@ -106,8 +100,8 @@
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="notificacionesAdmin.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="agendaAdmin.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
@@ -126,101 +120,43 @@
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-	<div id="banner-wrapper">
-
-					<!--
-
-						The slider's images (as well as its behavior) can be configured
-						at the top of "assets/js/main.js".
-
-					-->
-					<div id="empresaDetalles">
-								<h2>Detalle de Empresa</h2>
-
-								<div id="detalle">
-									<ul>
-									<li><p><img src="../images/empresas_logos/logotipo.jpg" width="200" height="200" alt=""></p></li>
-									<li><p>Nombre:</p> <p>Empresa 1</p></li>
-									<li><p>Direcci&oacute;n:</p><p> xxxxxx</p></li>
-									<li><p>Telefono:</p> <p>xx-xxxx-xxxx</p></li>
-									<li><p>E-mail:</p> <p>Empresa@any.com</p></li>
-									<li><p>Sedes:</p><p> Algun lugar</p></li>
-									<li><p>Web:</p> <p>www.empresa.com.ar</p></li>
-									</ul>
-								</div>
-								
-								<div id="calificacion">	
-										
-											<ul class="l1">
-													<li><p>Calificacion:</p></li>
-													<li><p class="puntaje">5,0</p></li>
-													<li><span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-													</li>
-													<li><img src="../images/dropotron_icons/avatar.png" alt="">:&nbsp;500 en Total.</li>
-													
-											</ul>
-											<ul class="l2">
-													
-													<li><span>&#9733;</span>5<div style="width: 250px; height: 20px; background:#9EBF59;">500</div></li>
-													<li><span>&#9733;</span>4<div style="width: 15px; height: 20px; background:#ACD532;">0</div></li>
-													<li><span>&#9733;</span>3<div style="width: 15px; height: 20px; background:#FED733;">0</div></li>
-													<li><span>&#9733;</span>2<div style="width: 15px; height: 20px; background:#FEB133;">0</div></li>
-													<li><span>&#9733;</span>1<div style="width: 15px; height: 20px; background:#FE8A59;">0</div></li>
-											</ul>
-								</div>
-								<div class="formCalificar">
-										<h2>Calificar esta empresa</h2>
-										<form>
-  											<p class="clasificacion">
-    												<input id="radio1" type="radio" name="estrellas" value="5">
-    												<label class="labelEstrellas" id="label5" for="radio1">★</label>
-   													<input id="radio2" type="radio" name="estrellas" value="4">
-    												<label class="labelEstrellas" id="label4" for="radio2">★</label>
-    												<input id="radio3" type="radio" name="estrellas" value="3">
-    												<label class="labelEstrellas" id="label3" for="radio3">★</label>
-    												<input id="radio4" type="radio" name="estrellas" value="2">
-   													<label class="labelEstrellas" id="label2" for="radio4">★</label>
-    												<input id="radio5" type="radio" name="estrellas" value="1">
-    												<label class="labelEstrellas" id="label1" for="radio5">★</label>
-  											</p>
-										</form>
-										<p id="texto">No me gusta!</p>
-								</div>
-								<div id="comentarios">
-									
-									<h2>Deja tus comentarios aqu&iacute;</h2>
-									<form action="">
-									
-										<label id="labelTextArea" for="textAreaComent">Comentario:</label>
-										<textarea name="textArea" id="textAreaComent" cols="30" rows="10"></textarea>
-						
-										<input type="button" id="btn-comentar" value="Comentar">
-										<input type="reset"  id="btn-deshacer"value="Deshacer">
-
-									</form>
-									
-								</div>
-								<div id="noComent">
-									<span>Por favor escribe un comentario.</span>	
-
-								</div>
-									<div class="unComentario">
-										<p><img src="../images/avatar_64.png" alt="">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla sed accusamus dolorum animi doloremque. Voluptates ducimus qui, vitae officia est ipsum molestias enim velit, quos, perferendis aperiam rerum, tenetur dicta?
-										</p>
-										<p class="tiempo">Hace 2 dias.</p>	
-									</div>
+			
+				<div id="divContform">
 							
+							<div class="form">
 								
-								
-					</div>
+								<h2>Subi tus fotos</h2>
+							
+										<div id="respuesta_ajax">
+						
+										</div>
 					
-					
-				<!-- Footer Wrapper -->
+										<form enctype="multipart/form-data" method="post" id="formulario">
+
+												<select name="evento_opcion" id="event_opcion">
+													<option value="0">Elejir Evento</option>
+													<option value="1">UPD</option>
+													<option value="2">Fiesta Egresados</option>
+													<option value="3">Viaje Egresados</option>
+												</select>
+										
+													<div id="frontal">
+														<p id="subir_frontal">Subir Foto</p>
+														<input type="file" name="foto_evento" id="d_frontal">
+													</div>
+											
+													
+											
+													<div id="btn-enviar">
+														<p id="p_enviar">Subir</p>
+														<input type="submit" name="enviar_archs"  id="d_enviar">
+													</div>
+
+										</form>
+						
+							</div>
+				</div>
+			<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
 					<!-- Footer -->
@@ -232,9 +168,9 @@
 						<p>Email: egdoweb@gmail.com</p>
 						
 						<ul class="contact">
-								<li><a href="no-sidebar.html" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
+								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
 								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
 							</ul>
 							
@@ -259,6 +195,7 @@
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
+			
 			
 	</body>
 </html>

@@ -1,4 +1,5 @@
-/*create database egdo_db;*/
+/*create database egdo_db;
+use egdo_db;*/
 -- phpMyAdmin SQL Dump
 -- version 4.1.14
 -- http://www.phpmyadmin.net
@@ -37,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `actividad` (
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`id_actividad`, `nombre_actividad`) VALUES
-(1, 'info-viaje');
+/*INSERT INTO `actividad` (`id_actividad`, `nombre_actividad`) VALUES
+(1, 'info-viaje');*/
 
 -- --------------------------------------------------------
 
@@ -363,9 +364,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia`, `fechaAltaUsuario`, `id_rol`, `id_curso`, `id_confirmacion`, `estadoActivacion`) VALUES
+/*INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia`, `fechaAltaUsuario`, `id_rol`, `id_curso`, `id_confirmacion`, `estadoActivacion`) VALUES
 (1, 'Romina', 'Giselle', 'rosse_velasco28@hotmail.com', 'rosse', '2016-07-07 00:00:00', 0, NULL, '', 1);
-
+*/
 -- --------------------------------------------------------
 
 --

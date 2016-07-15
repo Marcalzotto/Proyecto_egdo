@@ -1,3 +1,4 @@
+<?php include ("../bloqueSeguridad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -45,12 +46,12 @@
 			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
-			<script type="text/javascript" src="../assets/js/jquery_min.js"></script>
-			<script type="text/javascript" src="../assets/js/slimbox2.js"></script>
+			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
+			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
 			<!--Librarys for lightBox -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
+			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
@@ -89,14 +90,24 @@
 											</a>
 												<ul>
 													<li><a href="Tee-Designer-master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="disenio de ropa" style="float:right"></a></li>
-													<li><a href="votacion.php">Votacion.php<img src="../images/dropotron_icons/votacion.png" alt="principal" style="float:right"></a></li>
-													<li><a href="empresas.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="empresas" style="float:right"></a></li>
-													<li><a href="subir_arch.php">Subi tus dise&ntilde;os<img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+													<li><a href="votacionAdminCurso.php">Votacion.php<img src="../images/dropotron_icons/votacion.png" alt="principal" style="float:right"></a></li>
+													<li><a href="empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="empresas" style="float:right"></a></li>
+													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os<img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
+										<li class="circle"><a href="#">
+											<img src="../images/foto-evento.png" alt="foto-evento">
+										</a>
+										<ul>
+												<li><p>Foto Evento</p></li>
+												<li><a href="fotoUpdAdmin.php">Fotos UPD<img src="../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
+												<li><a href="galeriaFiestaAdmin.php">Fotos Fiesta de Egresados<img src="../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+												<li><a href="fotoViajeEgresadosAdmin.php">Fotos Viaje de Egresados<img src="../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+												<li><a href="formSubirFotosAdmin.php">Subi tus fotos<img src="../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+										</ul>
+									</li>
+										<li class="circle"><a href="infoviajeAdmin.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
 										<li class="circle"><a href="#">
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>

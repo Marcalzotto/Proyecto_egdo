@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php include ("../bloqueSeguridad.php");?>
 <?php require('conexion.php'); ?>
 
 <!DOCTYPE HTML>

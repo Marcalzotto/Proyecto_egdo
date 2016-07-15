@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include ("../../bloqueSeguridad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -83,8 +81,19 @@ session_start();
 												</ul>
 											</li>
 										<li class="circle"><a href="#"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="#"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="#"><img src="../images/bus.png" alt="info-viajes"></a></li>
+										<li class="circle">
+											<a href="#">
+											<img src="../images/foto-evento.png" alt="foto-evento">
+										</a>
+										<ul>
+												<li><p>Foto Evento</p></li>
+												<li><a href="fotoUpdAdmin.php">Fotos UPD<img src="../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
+												<li><a href="galeriaFiestaAdmin.php">Fotos Fiesta de Egresados<img src="../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+												<li><a href="fotoViajeEgresadosAdmin.php">Fotos Viaje de Egresados<img src="../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+												<li><a href="formSubirFotosAdmin.php">Subi tus fotos<img src="../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+										</ul>
+									</li>
+										<li class="circle"><a href="infoviajeAdminEgdo.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
 										<li class="circle"><a href="#">
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
