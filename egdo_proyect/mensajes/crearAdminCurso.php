@@ -135,10 +135,11 @@
 
 <div class="descripcion">Para
 <?php
+$id_curso=$_SESSION['curso'];
 $consulta=mysql_query("SELECT A.descripcion_rol, T.* 
 FROM rol A INNER JOIN 
 usuario T ON A.id_rol=T.id_rol 
-WHERE T.id_rol=1 or T.id_rol=3
+WHERE (T.id_rol=3 and T.id_curso='$id_curso' and T.estadoActivacion=1) or T.id_rol=1
 ", $conexion)
 					or die("Problemas en el select:".mysql_error());
 			echo '<div class="form-group">';
