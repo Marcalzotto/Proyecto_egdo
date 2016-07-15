@@ -122,7 +122,7 @@
 			<!-- Banner Wrapper -->
 				<div id="divContform">
 					<?php	
-						$curso_sesion = $_SESSION['cursos'];
+						$curso_sesion = $_SESSION['curso'];
 						require_once("conexion.php");
 						$verificarEstadoVotacion = "select * from votacion where vigente = 1 and curso_pertenece_votacion = '$curso_sesion'";
 						
@@ -145,7 +145,7 @@
 								$fecha_fin_segunda_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
 								$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
 
-								if($fecha_de_prueba >= $fecha_apertura && $fecha_de_prueba <= $fecha_fin_primer_instancia){
+								if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
 												echo "<div class=form>
 															<h2>Subi tus dise&ntilde;os</h2>
@@ -181,10 +181,14 @@
 															</form>
 						
 															</div>";
-								}else if($fecha_de_prueba >= $fecha_fin_primer_instancia && $fecha_de_prueba <= $fecha_fin_segunda_instancia){
+								}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+										
 										echo "<h2>La votacion vigente ya paso la primer instancia.</h2>";
-								}else if($fecha_de_prueba >= $fecha_fin_segunda_instancia){
+								
+								}else if($fechaHoy >= $fecha_fin_segunda_instancia){
+									
 									echo "<h2>La votacion ha finalizado.</h2>";
+								
 								}else{
 									echo "<h2>Lo sentimos hubo un error inesperado</h2>";
 								}

@@ -1867,6 +1867,7 @@
 
 		#votacion #main section ul li p img{
 			cursor:pointer;
+			border-radius: 0px;
 		}
 
 		#votacion #main section #no-ul{

@@ -313,7 +313,7 @@
 
 														if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
 
-														$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio 
+														$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio 
 														= u.id_usuario where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion'";
 														$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
 
@@ -333,7 +333,7 @@
 
 																		foreach($varRegistros as $unVar){
 																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unVar["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unVar["id_disenio"]." "
-    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unVar["nombre"]."</p><p>Calificacion: <span>".$unVar["cantidad_votos"]."</span> 
+    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unVar["nombre"]."</p><p>Calificacion: <span>".$unVar["cantidad_votos"]."</span> 
     																		<img data-id=".$unVar["id_disenio"]." data-tipo=".$unVar["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		}
 
@@ -345,7 +345,7 @@
 														}
 													}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
 																
-																	$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario 
+																	$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
 																	where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion' order by d.cantidad_votos desc limit 3";
 																
 																	$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
@@ -363,7 +363,7 @@
 
 																					foreach($arrayMasVotados1 as $unoMasVotado){
 																					echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
     																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																					}
 
@@ -378,7 +378,7 @@
 																	}	
 													}else if($fecha_alternativa_prueba >= $fecha_fin_segunda_instancia){
 																
-														$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
+														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
 																
 																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
 
@@ -392,7 +392,7 @@
 																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
 
 																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
     																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		
 																		echo "</ul>";
@@ -424,7 +424,7 @@
     											if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
 
 
-    												$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = '$numVotacion'";
+    												$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = '$numVotacion'";
 														
 														$resultSet = $conexion->query($qry) or die($conexion->error);
     										
@@ -447,7 +447,7 @@
     																foreach ($contenerRegistros as $unRegistro) {
     					
     																echo "<li><a href=levantar_img_impresion.php?id_imp=".$unRegistro["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unRegistro["id_disenio"]." "
-    																."width='70' height='100' class='ropa'></a><p>Subido por: ".$unRegistro["nombre"]."</p><p>Calificacion: <span>".$unRegistro["cantidad_votos"]."</span> 
+    																."width='105' height='105' class='ropa'></a><p>Subido por: ".$unRegistro["nombre"]."</p><p>Calificacion: <span>".$unRegistro["cantidad_votos"]."</span> 
     																<img data-id=".$unRegistro["id_disenio"]." data-tipo=".$unRegistro["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
     																}
     												
@@ -459,7 +459,7 @@
     												}
     											}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
 
-    													$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = 
+    													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = 
     													'$numVotacion' order by d.cantidad_votos desc limit 3";
 																
 															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
@@ -478,7 +478,7 @@
 																		
 																		foreach($arrayMasVotados2 as $unoMasVotado){
 																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
     																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		}
 
@@ -493,7 +493,7 @@
 																}		
     											}else{
 
-    														$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
+    														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
 																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
 
 																if($traerGanador){
@@ -506,7 +506,7 @@
 
 																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
 																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
     																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		
 																		echo "</ul>";
@@ -533,7 +533,7 @@
 
     											if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
 
-    												$qry = "select * from disenio as d join usuarios as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = '$numVotacion'";
+    												$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = '$numVotacion'";
 
     												$resultSetTipo2 = $conexion->query($qry) or die($conexion->error);
 
@@ -554,7 +554,7 @@
     																	foreach ($vector as $var) {
     												
     																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$var["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$var["id_disenio"]." "
-    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$var["nombre"]."</p><p>Calificacion: <span>".$var["cantidad_votos"]."</span> 
+    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$var["nombre"]."</p><p>Calificacion: <span>".$var["cantidad_votos"]."</span> 
     																		<img data-id=".$var["id_disenio"]." data-tipo=".$var["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
     																	}
 
@@ -565,7 +565,7 @@
     												}
     											}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
     													
-    													$traerDiseniosMasVotados = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = 
+    													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = 
     													'$numVotacion' order by d.cantidad_votos desc limit 3";
 																
 															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
@@ -584,7 +584,7 @@
 
 																		foreach($arrayMasVotados3 as $unoMasVotado){
 																			echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='70' height='100' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
+    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
     																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		}
 
@@ -599,7 +599,7 @@
 																}		
     											}else{
 
-    												$buscarGanador = "select * from disenio as d join usuarios u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
+    												$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
 																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
 
 																if($traerGanador){
@@ -611,7 +611,7 @@
 
 																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
 																		echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='70' height='100' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
+    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
     																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";
 																		
 																		echo "</ul>";
