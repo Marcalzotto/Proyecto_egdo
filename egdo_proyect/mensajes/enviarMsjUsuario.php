@@ -41,6 +41,7 @@
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
@@ -89,8 +90,7 @@
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
@@ -114,14 +114,41 @@
 			<!-- Banner Wrapper -->
 <div id="banner-wrapper">
 
-					
-
-				
-					
-						
-	<div id="slider">
 	
-						
+	<div id="bandejaEntrada">
+
+	
+	<?php
+
+
+    
+
+    $conexion = mysql_connect("localhost", "root", "")
+      or die("Problemas en la conexion");
+    
+    mysql_select_db("egdo_db", $conexion) 
+      or die("Problemas en la seleccion de la base de datos");
+  
+	
+	echo '<div ALIGN="left" style="font-size:130%"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />';
+
+		
+		@$id_receptor = $_POST['id_receptor'];
+		@$asunto = $_POST['asunto'];
+		@$mensaje = $_POST['mensaje'];
+		
+			//Establecemos zona horaria para obtener fecha
+			date_default_timezone_set('America/Argentina/Buenos_Aires');
+			$fecha_hora = date("Y-n-d-H-i-s");
+			
+			$sql = "INSERT INTO mensajes_privado (id_receptor,id_emisor,fecha_hora,asunto,mensaje) VALUES ('".$id_receptor."','".$_SESSION['id_usuario']."','".$fecha_hora."','".$asunto."','".$mensaje."')";
+			mysql_query($sql,$conexion);
+			echo "</br></br></br></br><div id='mensaje' ALIGN='center'>MENSAJE ENVIADO CORRECTAMENTE!!</div>";
+	
+
+?>
+ 
+	
 	</div>
 	
 </div>

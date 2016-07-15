@@ -41,6 +41,7 @@
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
@@ -89,8 +90,7 @@
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
@@ -114,14 +114,43 @@
 			<!-- Banner Wrapper -->
 <div id="banner-wrapper">
 
-					
-
-				
-					
-						
-	<div id="slider">
 	
-						
+	<div id="bandejaEntrada">
+
+	    <?php
+
+    $conexion = mysql_connect("localhost", "root", "")
+      or die("Problemas en la conexion");
+    
+    mysql_select_db("egdo_db", $conexion) 
+      or die("Problemas en la seleccion de la base de datos");
+    ?>
+
+
+
+<?php 
+
+# Obtenemos el mensaje privado
+$id = $_GET['id_mensaje'];
+//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+$sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+
+$res = mysql_query($sql, $conexion) or die(mysql_error());
+$row = mysql_fetch_assoc($res);
+?>
+
+
+<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a> </div><br /><br />
+<div class="descripcion"><strong>De</strong></div> 
+<div class="campo"><?=$row['nombre']?> <?=$row['apellido']?></div>
+<div class="descripcion"><strong>Fecha</strong></div> 
+<div class="campo"><?=$row['fecha_hora']?><br /></div>
+<div class="descripcion"><strong>Asunto</strong></div> 
+<div class="campo"><?=$row['asunto']?></div>
+<div class="descripcion"><strong>Mensaje</strong></div>
+<div class="campoMensaje"><?=$row['mensaje']?></div>
+
+	
 	</div>
 	
 </div>
