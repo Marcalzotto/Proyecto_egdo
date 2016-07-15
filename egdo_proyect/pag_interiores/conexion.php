@@ -2,7 +2,7 @@
 
 /*archivo para conectarse a la base de datos*/
 
-$conexion = new mysqli("localhost","root","","egdo_pruebas");
+$conexion = new mysqli("localhost","root","","egdo_db");
 if($conexion->connect_errno){
 	die("Error en la conexion con la base de datos: ".$conexion->connect_error);
 }

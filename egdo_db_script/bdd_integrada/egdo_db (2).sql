@@ -1,3 +1,4 @@
+/*create database egdo_db;*/
 -- phpMyAdmin SQL Dump
 -- version 4.1.14
 -- http://www.phpmyadmin.net
@@ -303,8 +304,8 @@ CREATE TABLE IF NOT EXISTS `rol` (
 -- Volcado de datos para la tabla `rol`
 --
 
-INSERT INTO `rol` (`id_rol`, `descripcion_rol`) VALUES
-(0, 'Administrador');
+/*INSERT INTO `rol` (`id_rol`, `descripcion_rol`) VALUES
+(0, 'Administrador');*/
 
 -- --------------------------------------------------------
 
@@ -510,6 +511,7 @@ ALTER TABLE `upd`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`);
+
 
 --
 -- Filtros para la tabla `usuario_has_actividad`

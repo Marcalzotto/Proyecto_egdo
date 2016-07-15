@@ -1,4 +1,4 @@
-<!--<?php //include ("../bloqueSeguridad.php");?>-->
+<?php include ("../bloqueSeguridad.php");?>
 
 <!DOCTYPE HTML>
 <!--

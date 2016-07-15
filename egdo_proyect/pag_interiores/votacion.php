@@ -1,3 +1,5 @@
+<?php include ("../bloqueSeguridad.php");?>
+
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
