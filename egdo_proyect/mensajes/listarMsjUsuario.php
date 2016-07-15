@@ -41,6 +41,7 @@
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
@@ -89,8 +90,7 @@
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
@@ -114,14 +114,56 @@
 			<!-- Banner Wrapper -->
 <div id="banner-wrapper">
 
-					
-
-				
-					
-						
-	<div id="slider">
 	
-						
+	<div id="bandejaEntrada">
+<?php
+
+    $conexion = mysql_connect("localhost", "root", "")
+      or die("Problemas en la conexion");
+    
+    mysql_select_db("egdo_db", $conexion) 
+      or die("Problemas en la seleccion de la base de datos");
+    ?>
+	
+	<?php
+	//$sqlCapacidad = "SELECT max_msj_priv FROM usuario WHERE usuario='".$_SESSION['usuario']."'";
+	//$resultado = mysql_query($sqlCapacidad, $conexion) or die(mysql_error());
+	//$rowCapacidad = mysql_fetch_assoc($resultado);
+	//echo '<h3 ALIGN="left"> Bienvenido usuario: &nbsp;&nbsp;&nbsp;'.$_SESSION['usuario'].' </h3>
+	//	  <h3 ALIGN="left"> Limite de almacenamiento: &nbsp;&nbsp;&nbsp;'.$rowCapacidad['max_msj_priv'].' mensajes</h3>'
+	?>
+
+<?php
+	
+	# Buscamos los mensajes privados
+//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."'";
+$sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."'";
+$res = mysql_query($sql, $conexion) or die(mysql_error());
+
+?>
+<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />
+  <table width="800" border="0" align="center" cellpadding="1" cellspacing="1">
+    <tr>
+	  <th class="columna"><strong>Mensaje Nro</strong></td>
+      <th class="columna"><strong>Asunto</strong></td>
+      <th class="columna"><strong>De</strong></td>
+	  <th class="columna"><strong>Fecha</strong></td>
+	  <th class="columna"><strong>Eliminar</strong></td>
+    </tr>
+    <?php
+	$i = 0; 
+	while($row = mysql_fetch_assoc($res)){ ?>
+    <tr class="fila">
+	  <td class="columna"><?=$i+1?></td>
+      <td class="columna"><a class="linkLeer" href="../mensajes/leerMsjUsuario.php?id_mensaje=<?=$row['id_mensaje']?>"><?=$row['asunto']?></a></td>
+      <td class="columna"><?=$row['nombre']?> <?=$row['apellido']?></td>
+	  <td class="columna"><?=$row['fecha_hora']?></td>
+	  <td class="columna"><a href="../mensajes/eliminarMsjUsuario.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="../mensajes/images/delete.png" width="15" height="15"></a></td>
+    </tr>
+<?php $i++; 
+} ?>
+</table>
+		
 	</div>
 	
 </div>

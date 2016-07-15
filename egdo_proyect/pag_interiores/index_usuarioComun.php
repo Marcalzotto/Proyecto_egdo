@@ -99,8 +99,8 @@
 																				<img src="../images/settings.png" alt="configuracion">
 																			</a>
 																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				
+																				<li><a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
@@ -134,10 +134,7 @@
 					
 						
 					<div id="slider">
-						<div class="caption">
-							<h2>Magna feugiat lorem ipsum dolor gravida</h2>
-							<!--<p>Nulla justo magna veroeros tempus</p> -->
-						</div>
+						
 					</div>
 				</div>
 
@@ -146,64 +143,7 @@
 
 					<!-- Main -->
 						<div id="intro" class="container">
-							<div class="row">
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">01</span> -->
-									<header>
-										<h2>REGISTRATE</h2>
-									</header>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-1">
-											<div class="circulo-info">
-											<h3>Y REGISTRA A TUS COMPA&ntilde;EROS</h3>
-											<p><i class="fa fa-users fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Tu curso,Y registra a tus compañeros.</p> -->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number">02</span> -->
-									<header>
-										<h2>ORGANIZA</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-2">
-											<div class="circulo-info">
-											<h3> UPD, FIESTA, VIAJES</h3>
-											<p>... Y M&Aacute;S </p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Todas tus actividades del ultimo ano, en un solo lugar.</p>-->
-								</section>
-								<section class="4u 12u(mobile)">
-									<!--<span class="number"><i class="fa fa-envelope-o"></i></span> -->
-									<header>
-										<h2>COMPARTI</h2>
-									</header>
-									<ul class="circulo-grid">
-										<li>
-											<div class="circulo-item circulo-img-3">
-											<div class="circulo-info">
-											<h3>TODOS TUS MOMENTOS</h3>
-											<p><i class="fa fa-heart-o fa-4x"></i></p>
-											</div>
-											</div>
-										</li>
-									</ul>
-									<!--<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p> -->
-								</section>
-							</div>
-							<div class="actions">
-								<a href="#" class="button button-big">Get Started</a>
-								<a href="#" class="button button-big button-alt">Learn More</a>
-							</div>
+							
 						</div>
 						
 						

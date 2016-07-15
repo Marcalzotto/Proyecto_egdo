@@ -14,6 +14,6 @@ include ("../bloqueSeguridad.php");
 @$id_mensaje = $_GET['id_mensaje'];
 		$query = "DELETE FROM mensajes_privado WHERE id_mensaje= $id_mensaje;";
 		mysql_query($query,$conexion);
-		header('Location: listar.php');
+		header('Location: ../mensajes/listarMsjUsuario.php');
 
 ?>
