@@ -100,7 +100,7 @@
                                       </a>
                                       <ul>
                                         <li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-                                        <li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+                                        <li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
                                         <li><a href="notificacionesAdmin.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
                                         <li><a href="agendaAdmin.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
                                         <li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
@@ -129,7 +129,7 @@
             <?php
               require_once('conexion.php');
 
-              $buscarFotosGaleria = "select * from imagen where id_actividad = 1";
+              $buscarFotosGaleria = "select * from imagen where id_actividad = 2";
               $ejecutarQuery = $conexion->query($buscarFotosGaleria);
               
               if($ejecutarQuery){

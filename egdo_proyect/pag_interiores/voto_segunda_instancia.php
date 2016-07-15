@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	include ("../bloqueSeguridad.php");
 
 	require_once("conexion.php");
 
@@ -9,8 +9,9 @@
 		$tipo_dis = filter_var($_POST["tipo"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 		
 		/*se debe traer el usuario y el curso desde la sesion*/
-		$user_voto_id = 2; 
-		$curso_sesion = 1;
+		$user_voto_id = $_SESSION['id_usuario']; 
+		$curso_sesion = $_SESSION['curso']; 
+		
 		$buscarVotoSegundaInstancia = "select * from votos where tipo_disenio = '$tipo_dis' 
 		and id_usuario_voto = '$user_voto_id' and instancia_voto = 2";
 

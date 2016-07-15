@@ -1,5 +1,6 @@
 <?php
-	session_start();
+include ("../bloqueSeguridad.php");
+
 	require_once("conexion.php");
 	
 	
@@ -7,11 +8,21 @@
 
 		$num = $_POST["num"];
 
-		$usuario_dispara = 1;
+		$usuario_dispara = $_SESSION['id_usuario'];
 		/*usuario que viene por la sesion cambiar luego*/
-		$curso_pertenece = 1; 
+		$curso_pertenece = $_SESSION['curso']; 
 		/*id de curso buscar en la base o tomar por sesion*/
-		$tipo_actividad = 1; 
+		$buscarActividad = "select id_actividad from actividad where id_actividad = 1";
+		$buscarNumeroActividad = $conexion->query($buscarActividad) or die($conexion->error);
+
+		if($buscarNumeroActividad){
+			$obtenerReg = $buscarNumeroActividad->fetch_array(MYSQLI_ASSOC);
+			$tipo_actividad = $obtenerReg["id_actividad"]; 
+		}else{
+			
+			header('location:votacionAdminCurso.php');
+		}
+		
 		/* 1 en caso de ser la votacion*/
 
 		$buscarSiAbrioVotacion = "select count(id_votacion) as cantidad from votacion where 
@@ -33,7 +44,7 @@
 				$vigente = 1;
 				/*estado de votacion 1 es que esta vigente 0 no esta vigente;*/
 				$consultaDispararVotacion = "insert into votacion values('','$fecha','$vigente','$tipo_actividad',
-				'$usuario_dispara','$curso_pertenece')";
+				'$usuario_dispara','$curso_pertenece','$usuario_dispara')";
 
 				$resultadoConsulta = $conexion->query($consultaDispararVotacion) or die($conexion->error);
 

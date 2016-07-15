@@ -1,5 +1,5 @@
 <?php
-session_start();
+include ("../bloqueSeguridad.php");
 require_once("conexion.php");
 
 
@@ -9,8 +9,8 @@ if($_POST){
 	$tipo_dis = filter_var($_POST["tipo"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 	
 	/*Se deberia obtener tanto el usuario como el curso desde la sesion*/
-	$user_voto_id = 2; 
-	$curso_sesion = 1; 
+	$user_voto_id = $_SESSION['id_usuario'];
+	$curso_sesion = $_SESSION['curso']; 
 
 	$votoCincoVeces = "select count(voto) as cantidad from votos where id_usuario_voto = '$user_voto_id' 
 	and tipo_disenio = '$tipo_dis'";

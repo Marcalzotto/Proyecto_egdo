@@ -37,6 +37,7 @@ if ($result->num_rows === 1) {
 		 $_SESSION['email'] = $email;
 		 $_SESSION['start'] = time();
 		 $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
+		 $_SESSION['curso'] = $row['id_curso'];
 
 		 if($row['id_rol']==1){
 		 

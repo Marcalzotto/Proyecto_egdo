@@ -1,4 +1,6 @@
-<?php
+<?php include ("../bloqueSeguridad.php");
+
+
 	require_once('conexion.php');
 	
 	$respuesta_ajax = "";
@@ -17,13 +19,16 @@
 	
 	}else{
 
-		/*se debe obtener de la sesion*/
-		$obtenerUsuario = 1;
-		/*Cuando todo este listo*/
-		//$obtener_curso = x;
-		//cuando todo este listo
-		$obtener_id_actividad = 1;
-
+		
+		$obtenerUsuario = $_SESSION['id_usuario'];
+		
+		$obtener_curso = 1;
+		//$_SESSION['curso']; 
+		
+		$evento = $evento + 1;
+		/*se le suma 1 por el modo en que se insertaron en la base las actividades*/
+		$obtener_id_actividad = $evento;
+		
 		$buscarSiSubioDosFotos = "select count(id_imagen) as cantidad from imagen where id_usuario = '$obtenerUsuario'";
 		$resultadoBusqueda = $conexion->query($buscarSiSubioDosFotos) or die($conexion->error);
 
@@ -47,7 +52,7 @@
 				$obtenerTamanio = $_FILES["foto_evento"]["size"];
 
 				$consultaInsercionImg = "insert into imagen values('','$nombre','$obtenerTamanio',
-																'$obtenerTipo','$ancho','$alto','$obtenerImg','$obtenerUsuario','$obtener_id_actividad')";
+																'$obtenerTipo','$ancho','$alto','$obtenerImg',1,$obtener_curso,'$obtenerUsuario','$obtener_id_actividad')";
 				
 					$ejecutarInsercion = $conexion->query($consultaInsercionImg) or die($conexion->error);
 					if($ejecutarInsercion){
