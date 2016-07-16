@@ -80,7 +80,8 @@
             <?php
               require_once('conexion.php');
 
-              $buscarFotosGaleria = "select * from imagen where id_actividad = 2";
+              $curso = $_SESSION['curso'];
+              $buscarFotosGaleria = "select * from imagen where id_actividad = 2 and id_curso = '$curso'";
               $ejecutarQuery = $conexion->query($buscarFotosGaleria);
               
               if($ejecutarQuery){

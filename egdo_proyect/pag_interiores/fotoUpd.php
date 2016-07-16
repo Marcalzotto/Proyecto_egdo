@@ -80,7 +80,9 @@
             <?php
               require_once('conexion.php');
 
-              $buscarFotosGaleria = "select * from imagen where id_actividad = 1";
+              $curso = $_SESSION['curso'];
+
+              $buscarFotosGaleria = "select * from imagen where id_actividad = 2 and id_curso = '$curso'";
               $ejecutarQuery = $conexion->query($buscarFotosGaleria);
               
               if($ejecutarQuery){
@@ -100,7 +102,7 @@
 
                             foreach ($cantidadImg as $unImg) {
                               echo "<li>
-                                    <img src=traerImagenesGalerias.php?id=".$unImg["id_imagen"]."  alt=''/>
+                                      <img src=traerImagenesGalerias.php?id=".$unImg["id_imagen"]."  alt=''/>
                                     </li>";
                            } 
                             echo "</ul>";
@@ -115,7 +117,8 @@
                 echo "<h2>Hubo problemas con el servidor</h2>";
               }
             ?>
-           
+         
+
         </div> 
 
       <!-- Footer Wrapper -->
@@ -161,6 +164,7 @@
         <!-- Incluimos el plugin -->
         <script src="../assets/js/bjqs.min.js"></script>
         <script src="../assets/js/fotoEvento.js"></script>
+        
 
   </body>
 </html>

@@ -22,14 +22,33 @@
 		
 		$obtenerUsuario = $_SESSION['id_usuario'];
 		
-		$obtener_curso = 1;
-		//$_SESSION['curso']; 
+		$obtener_curso = $_SESSION['curso']; 
 		
 		$evento = $evento + 1;
 		/*se le suma 1 por el modo en que se insertaron en la base las actividades*/
 		$obtener_id_actividad = $evento;
+
+		switch ($evento) {
+			case '2':
+				$nombreEvento = "UPD";
+				break;
+			
+			case '3':
+				$nombreEvento = "Fiesta de Egresados";
+				break;
+
+				case '4':
+				$nombreEvento = "Viaje de Egresados";
+				break;
+
+			default:
+				$nombreEvento = "";
+				break;
+		}
+
 		
-		$buscarSiSubioDosFotos = "select count(id_imagen) as cantidad from imagen where id_usuario = '$obtenerUsuario'";
+		$buscarSiSubioDosFotos = "select count(id_imagen) as cantidad from imagen where id_usuario = '$obtenerUsuario' 
+		and id_actividad = '$evento'";
 		$resultadoBusqueda = $conexion->query($buscarSiSubioDosFotos) or die($conexion->error);
 
 		if($resultadoBusqueda){
@@ -38,7 +57,7 @@
 			$cantidad = $obtenerCantidadFotos["cantidad"];
 			
 			if($cantidad > 1){
-				$respuesta_ajax = "<p>Lo sentimos pero has alcanzado el limite permitido de fotos por usuario</p>";
+				$respuesta_ajax = "<p>Lo sentimos solo se permiten 2 fotos maximo por usuario para el $nombreEvento</p>";
 				echo $respuesta_ajax;
 			
 			}else{

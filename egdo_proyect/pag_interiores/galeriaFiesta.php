@@ -62,8 +62,8 @@
               
               
               <?php
-				include '../pag_interiores/menu/masterMenu.php';
-			?>
+				        include '../pag_interiores/menu/masterMenu.php';
+			         ?>
                 
     
 
@@ -79,7 +79,9 @@
            <?php
               require_once('conexion.php');
 
-              $buscarFotosGaleria = "select * from imagen where id_actividad = 2";
+              $curso = $_SESSION['curso'];
+
+              $buscarFotosGaleria = "select * from imagen where id_actividad = 3 and id_curso = '$curso'";
               $ejecutarQuery = $conexion->query($buscarFotosGaleria);
               
               if($ejecutarQuery){
@@ -114,9 +116,10 @@
                 echo "<h2>Hubo problemas con el servidor</h2>";
               }
             ?>
+
         
         </div> 
-
+       
       <!-- Footer Wrapper -->
         <div id="footer-wrapper">
 

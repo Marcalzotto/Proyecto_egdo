@@ -24,3 +24,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia
 select email, nombre from usuario where id_curso = 2;
 update usuario set nombre = 'Maria'
 				where email = 'maria@egdo.com' and id_curso = 2;
+
+select * from votacion;
+
+select * from imagen;
