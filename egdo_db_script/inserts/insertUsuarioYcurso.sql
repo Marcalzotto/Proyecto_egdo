@@ -21,6 +21,6 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia
 (13, NULL, NULL, 'liliana@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878afcb1d7', 0),
 (14, NULL, NULL, 'daniel@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878b2dfaa7', 0);
 
-select email, contrasenia from usuario where id_curso = 2;
-update usuario set nombre = 'Jose'
-				where email = 'jose@egdo.com' and id_curso = 2;
+select email, nombre from usuario where id_curso = 2;
+update usuario set nombre = 'Maria'
+				where email = 'maria@egdo.com' and id_curso = 2;

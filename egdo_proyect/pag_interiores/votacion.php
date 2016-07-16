@@ -174,7 +174,7 @@
 													
 													//$fechaHoy = new datetime(null, new dateTimeZone('America/Argentina/Buenos_Aires'));
 													//se usa para ver que todo funcione en forma correcta
-													$fechaHoy = new datetime("2016-07-17 20:00:00"); 
+													$fechaHoy = new datetime("2016-07-19 20:00:00"); 
 													//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
 
 													$fecha_fin_primer_instancia = new datetime($traerDatosVotacion["fecha_apertura"]);

@@ -212,7 +212,42 @@
 				font-weight: bold;
 		}		
 
-	}
+		#formDisparaVotacion button {
+    -moz-transition: background-color 0.25s ease-in-out;
+    -webkit-transition: background-color 0.25s ease-in-out;
+    -ms-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+    margin-top: 1.2em;
+    background: #79B800;
+    border-radius: 5px;
+    padding: 1.3em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-color: #79B800;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-style: none;
+
+		}
+	
+		#formDisparaVotacion{
+			text-align: center;
+		}
+		
+		#votacion #respuestaDisparo {
+    text-align: center;
+    color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    padding: 0em;
+    padding-top: 1em;
+    display: none;
+		}
+
+}
 
 /* Grid */
 
@@ -1812,6 +1847,7 @@
 			#votacion{
 				margin-top: 2em;
 				padding: 4em;	
+				
 			}
 			
 			#votacion h2{
@@ -1978,6 +2014,22 @@
 #votacion #main section ul li img{
 	border-radius: 70px;
 }
+#main #btn-share{
+	text-align: center;
+}
+
+#btn-share{
+				margin: 0 auto;
+				text-align: center;
+   		 
+    		background: #3B5998;
+    		padding: 1em 2em 1em 2em;
+    		border: 0;
+    		border-radius: 6px;
+    		color: #fff;
+    		font-weight: bold;
+    		font-family: 'Open Sans Condensed',sans-serif;
+			}
 
 /*input type file syles */
 *{
@@ -2926,6 +2978,7 @@ background: #393939;
 			}
 			#votacion{
 				margin-top: 18em;
+				
 			}
 
 			#votacion h2{
@@ -2940,6 +2993,31 @@ background: #393939;
 						padding:0;
 						font-weight: bold;
 			}
+
+			#votacion ul li img{
+				border-radius: 55px;
+			}
+			#votacion ul li p img{
+
+				border-radius: 0px;
+			}
+			#main #btn-share{
+				text-align: center;
+			}
+
+		 #btn-share{
+				margin: 0 auto;
+				text-align: center;
+   		 
+    		background: #3B5998;
+    		padding: 1em 2em 1em 2em;
+    		border: 0;
+    		border-radius: 6px;
+    		color: #fff;
+    		font-weight: bold;
+    		font-family: 'Open Sans Condensed',sans-serif;
+			}
+
 			.homepage #main-wrapper {
 				padding: 5em 0em;
 			}
