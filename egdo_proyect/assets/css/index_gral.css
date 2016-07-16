@@ -1584,24 +1584,7 @@
 				padding: 1.4em 0em;
 			}
 
-		/* Logo */
-
-			.logo{
-				margin-top: 1em;
-				text-align: left;
-				padding-top: 0.5em;
-				padding-bottom: 0.2em;
-
-			}
-			.logo a{
-				padding-top:5em ;
-				padding-left:0em;
-				padding-bottom:0em;
-				padding-right:2em; 
-				margin-top: -3em;
-				margin-bottom: 3em;
-				vertical-align: top;
-			}
+		
 
 		/* Nav */
 

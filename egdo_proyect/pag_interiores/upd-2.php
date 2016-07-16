@@ -1,3 +1,4 @@
+<?php include ("../bloqueSeguridad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -66,51 +67,11 @@
 						
 						<div id="header" class="container">
 							
-							<h1 class="logo">
-									<a href="../index.html"><img src="../favicon/favicon-96x96.png" alt=""></a>
-							</h1>
 							
 							
-							
-							<!-- Nav -->
-								<nav id="nav">
-									
-									<ul class="myfont">
-								
-									<li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
-										
-										<li class="circle">
-											<a href="no-sidebar.html">
-												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
-											</a>
-												<ul>
-													<li><a href="../simulacion_funcionalidades/Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="../simulacion_funcionalidades/votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="../simulacion_funcionalidades/subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
-												</ul>
-											</li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="infoviaje.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
-										<li class="circle"><a href="no-sidebar.html">
-																				<img src="../images/settings.png" alt="configuracion">
-																			</a>
-																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
-																			</ul>
-
-
-										</li>
-
-										
-									</ul>
-								</nav>
+							<?php
+							include '../pag_interiores/menu/masterMenu.php';
+							?>
 								
 		
 
