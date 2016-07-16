@@ -17,8 +17,7 @@
 	
 	<link rel="stylesheet" href="../assets/css/admin-demo.css">
 	<link rel="stylesheet" href="../assets/css/admin-form-basic.css">
-	
-	<script type="text/javascript" src="js.js"> <!-- Bandeja de entrada-->
+	<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 	
 	</head>
 	<body class="no-sidebar">
@@ -28,9 +27,6 @@
 				
 				mysql_select_db("egdo_db", $conexion) 
 				  or die("Problemas en la seleccion de la base de datos");
-				?>
-				<?php
-				echo '<h3 ALIGN="left"> Bienvenido usuario: &nbsp;&nbsp;&nbsp;'.$_SESSION['nombre'].' </h3>'
 				?>
 		
 		<div id="page-wrapper">
@@ -83,60 +79,56 @@
 			<!-- Main Wrapper  -->
 				<div id="main-wrapper-ad">
 					
-					<div ALIGN="left" style="font-size:130%"><a href="admin-msj-listar.php">Ver mensajes</a> | <a href="panel-mensaje.php">Crear 	mensajes</a> | <a href="../panel-index.php">Ir a inicio</a></div><br /><br />
-					
 					<!-- Wide Content -->
 						<section id="content" class="container">
 							
 							<div class="main-content"> <!-- main content -->
 
-								<!-- You only need this form and the form-basic.css -->
+	<div id="bandejaEntrada">
 
-								<form class="form-basic" method="post" action="admin-msj-enviar.php">
+ <?php
+    
 
-									<div class="form-title-row">
-										<h1>Para:</h1>
-									</div>
+    $conexion = mysql_connect("localhost", "root", "")
+      or die("Problemas en la conexion");
+    
+    mysql_select_db("egdo_db", $conexion) 
+      or die("Problemas en la seleccion de la base de datos");
+    ?>
 
-									<div class="form-row">
-										<?php
-										$consulta=mysql_query("SELECT A.descripcion_rol, T.* 
-										FROM rol A INNER JOIN 
-										usuario T ON A.id_rol=T.id_rol 
-										WHERE T.id_rol=1 or T.id_rol=3
-										", $conexion)
-										or die("Problemas en el select:".mysql_error());
-										echo '<div class="form-group">';
 
-										echo '<select class="form-control" id="sel1" name="usuario_destino">';						
-										echo '<option value=""></option>';
-										while($fila = mysql_fetch_array($consulta)) {
-											echo"<option value='".$fila['id_usuario']."'>".$fila['nombre']." ".$fila['apellido']." (".$fila['descripcion_rol'].")</option>";
-										}					
-										echo '</select>';
-										?>
-										
-									</div>
+<div id="menu"><a class="links" href="../pag_interiores/admin-msj-listar.php">Ver mensajes</a> | <a class="links" href="../pag_interiores/panel-mensaje.php">Crear mensajes</a></div><br /><br />
 
-									<div class="form-row">
-										<label>
-											<span>Asunto:</span>
-											<input type="text" name="asunto" />
-										</label>
-									</div>
+<form method="post" action="admin-msj-enviar.php" >
 
-									<div class="form-row">
-										<label>
-											<span>Mensaje</span>
-											<textarea class="mensaje-textarea" name="textarea"></textarea>
-										</label>
-									</div>
+<div class="descripcion">Para
+<?php
+$id_curso=$_SESSION['curso'];
+$consulta=mysql_query("SELECT A.descripcion_rol, T.* 
+FROM rol A INNER JOIN 
+usuario T ON A.id_rol=T.id_rol 
+WHERE T.id_rol=3 or T.id_rol=1
+", $conexion)
+					or die("Problemas en el select:".mysql_error());
+			echo '<div class="form-group">';
 
-									<div class="form-row">
-										<input type="submit" name="enviar" value="Enviar" />
-									</div>
+echo '<select class="campoCrear" class="form-control" id="sel1" name="usuario_destino">';						
+						echo '<option value=""></option>';
+						while($fila = mysql_fetch_array($consulta)) {
+							echo"<option value='".$fila['id_usuario']."'>".$fila['nombre']." ".$fila['apellido']." (".$fila['descripcion_rol'].")</option>";
+						}					
+						echo '</select></div>';
+?>
+</div>
+<div class="descripcion">Asunto</div>
+<input class="campoCrear" type="text" name="asunto" />
+<div class="descripcion">Mensaje</div>
+<textarea class="campoMensaje" name="mensaje"></textarea></br>
+<input class="enviar" type="submit" name="enviar" value="Enviar" />
+</form>
 
-								</form>
+	
+	</div>
 
 
 							</div> <!-- /main content -->

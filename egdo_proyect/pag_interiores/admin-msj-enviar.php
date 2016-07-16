@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="../assets/css/admin-demo.css">
 	<link rel="stylesheet" href="../assets/css/admin-form-basic.css">
 	
-	<script type="text/javascript" src="js.js"> <!-- Bandeja de entrada-->
 	
 	</head>
 	<body class="no-sidebar">

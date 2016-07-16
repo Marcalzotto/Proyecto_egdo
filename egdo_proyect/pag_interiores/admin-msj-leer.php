@@ -16,8 +16,8 @@
 	
 	<link rel="stylesheet" href="../assets/css/admin-demo.css">
 	<link rel="stylesheet" href="../assets/css/admin-form-basic.css">
+	<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 	
-	<script type="text/javascript" src="js.js"> <!-- Bandeja de entrada-->
 	
 	</head>
 	<body class="no-sidebar">
@@ -79,7 +79,9 @@
 
 								<!-- You only need this form and the form-basic.css -->
 
-							<?php
+	<div id="bandejaEntrada">
+
+	    <?php
 
     $conexion = mysql_connect("localhost", "root", "")
       or die("Problemas en la conexion");
@@ -101,22 +103,19 @@ $res = mysql_query($sql, $conexion) or die(mysql_error());
 $row = mysql_fetch_assoc($res);
 ?>
 
-<?php
-	echo '<h3 ALIGN="left"> Bienvenido usuario: &nbsp;&nbsp;&nbsp;'.$_SESSION['nombre'].' </h3>'
-	?>
-<div ALIGN="left" style="font-size:130%"><a href="admin-msj-listar.php">Ver mensajes</a> | <a href="panel-index.php">Crear mensajes</a> | <a href="../panel-index.php">Ir a inicio</a></div><br /><br />
-<strong>De:</strong> <?=$row['nombre']?> <?=$row['apellido']?><br />
-<strong>Fecha:</strong> <?=$row['fecha_hora']?><br />
-<strong>Asunto:</strong> <?=$row['asunto']?><br /><br />
-<strong>Mensaje:</strong><br />
-<?=$row['mensaje']?>	
-								
 
+<div id="menu"><a class="links" href="../pag_interiores/admin-msj-listar.php">Ver mensajes</a> | <a class="links" href="../pag_interiores/panel-mensaje.php">Crear mensajes</a> </div><br /><br />
+<div class="descripcion"><strong>De</strong></div> 
+<div class="campo"><?=$row['nombre']?> <?=$row['apellido']?></div>
+<div class="descripcion"><strong>Fecha</strong></div> 
+<div class="campo"><?=$row['fecha_hora']?><br /></div>
+<div class="descripcion"><strong>Asunto</strong></div> 
+<div class="campo"><?=$row['asunto']?></div>
+<div class="descripcion"><strong>Mensaje</strong></div>
+<div class="campoMensaje"><?=$row['mensaje']?></div>
 
-							
-							
-							
-							
+	
+	</div>
 							
 							
 							</div> <!-- /main content -->

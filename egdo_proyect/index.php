@@ -108,9 +108,6 @@
 						<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-login">
 						Login <i class="fa fa-lock" aria-hidden="true"></i> 
 						</a>
-                        <a class="btn btn-link-2" href="#">
-						Login <i class="fa fa-facebook"></i> 
-	                    </a> 
 						</div>
 					</div>
 					<div id="slider">
