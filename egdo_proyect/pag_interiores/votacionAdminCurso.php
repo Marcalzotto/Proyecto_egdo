@@ -17,6 +17,8 @@
 		<link rel="stylesheet" href="../assets/css/index_gral.css" />
 		<link rel="stylesheet" href="../assets/css/slimbox2.css" type="text/css" media="screen">
 		
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> -->
