@@ -1,3 +1,5 @@
+<?php include ("../bloqueSeguridad.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

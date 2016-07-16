@@ -87,7 +87,7 @@ if ($conexion->connect_error) {
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
+								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../assets/images/EGDO.png" alt=""></a></h1>
 
 							<!-- Nav Eliminado -->
 								

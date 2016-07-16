@@ -1,0 +1,23 @@
+.bienvenida{
+color:#E0E0E0;
+font-size:30px;
+position:relative;
+ top:-120%;
+ left:83%;
+ width:15%;
+}
+
+#logoE{
+ position:relative;
+ top:10%;
+ left:5%;
+}
+
+
+.logo{
+	margin-top: 0.5em;
+	text-align: left;
+	padding-top: 0.5em;
+	padding-bottom: 0.2em;
+
+}

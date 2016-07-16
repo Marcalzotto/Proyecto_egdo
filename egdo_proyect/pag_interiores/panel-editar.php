@@ -132,11 +132,11 @@ if ($conexion->connect_error) {
 										</div>
 										
 										<div class="form-row">
-											<input type="text" name="password" id="password" placeholder="Password">
+											<input type="password" name="password" id="password" placeholder="Password">
 										</div>
 										
 										<div class="form-row">
-											<input type="text" name="repass" id="repass" placeholder="Confirmar Password">
+											<input type="password" name="repass" id="repass" placeholder="Confirmar Password">
 										</div>
 										
 										<div class="form-row form-last-row">
