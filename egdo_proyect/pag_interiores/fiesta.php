@@ -92,7 +92,7 @@
 
 								<!-- You only need this form and the form-validation.css -->
 
-								<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
+								<form class="form-validation" enctype="multipart/form-data" method="post" action="fiesta-2.php">
 
 									<div class="form-title-row">
 										<h1>Formulario Fiesta</h1>

@@ -111,7 +111,7 @@
 							<div class="row">
                                
 								<section class="4u 12u(mobile)">
-									<div id="bariloche"><a href="bariloche.html"><span class="number"></span></a></div>
+									<div id="mia-quinta"><a href="fiesta-3.php"><span class="number">MiaQuinta</span></a></div>
                                     <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
 									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>

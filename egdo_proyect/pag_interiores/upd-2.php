@@ -114,7 +114,7 @@
 							<div class="row">
 								
 								<section class="4u 12u(mobile)">
-									<div id="plaza-san-justo"><a href="bariloche.html"><span class="number">Plaza San Justo</span></a></div>
+									<div id="plaza-san-justo"><a href="upd-3.php"><span class="number">Plaza San Justo</span></a></div>
                                     <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
 									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
