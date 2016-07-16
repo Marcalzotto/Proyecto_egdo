@@ -63,16 +63,27 @@
 						</ul>		
 				</li>
 				<li class="circle"><a href=""><img src="tdesignAPI/images/party.png" alt=""></a></li>
-				<li class="circle"><a href=""><img src="tdesignAPI/images/foto-evento.png" alt=""></a></li>
+				<li class="circle">
+					<a href="">
+						<img src="tdesignAPI/images/foto-evento.png" alt="">
+					</a>
+					<ul>
+						<li><p>Foto Evento</p></li>
+						<li><a href="../fotoUpd.php">UPD<img src="../../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
+						<li><a href="../galeriaFiesta.php">Fiesta de Egresados<img src="../../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+						<li><a href="../fotoViajeEgresados.php">Viaje de Egresados<img src="../../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+						<li><a href="../formSubirFotos.php">Subi tus fotos<img src="../../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
+					</ul>
+				</li>
 				<li class="circle"><a href=""><img src="tdesignAPI/images/bus.png" alt=""></a></li>
 				<li class="circle"><a href=""><img src="tdesignAPI/images/settings.png" alt=""></a>
 																			<ul>
 																				<li><a href="#">Manda tu invitacion <img src="../../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Notificaciones<img src="../../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Agenda<img src="../../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../notificaciones.php">Notificaciones<img src="../../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../agenda.php">Agenda<img src="../../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="#">Perfil <img src="../../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="#">Logout <img src="../../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="../../login/logout.php">Logout <img src="../../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 				</li>
 			</ul>

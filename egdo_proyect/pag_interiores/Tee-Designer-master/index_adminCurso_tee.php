@@ -70,9 +70,9 @@
 					</a>
 					<ul>
 						<li><p>Foto Evento</p></li>
-						<li><a href="../fotoUpdAdmin.php">Fotos UPD<img src="../../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
-						<li><a href="../galeriaFiestaAdmin.php">Fotos Fiesta de Egresados<img src="../../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
-						<li><a href="../fotoViajeEgresadosAdmin.php">Fotos Viaje de Egresados<img src="../../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
+						<li><a href="../fotoUpdAdmin.php">UPD<img src="../../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
+						<li><a href="../galeriaFiestaAdmin.php">Fiesta de Egresados<img src="../../images/dropotron_icons/party.png" alt="" style="float:right"></a></li>
+						<li><a href="../fotoViajeEgresadosAdmin.php">Viaje de Egresados<img src="../../images/dropotron_icons/viaje_egresados.png" alt="" style="float:right"></a></li>
 						<li><a href="../formSubirFotosAdmin.php">Subi tus fotos<img src="../../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
 					</ul>
 				</li>
