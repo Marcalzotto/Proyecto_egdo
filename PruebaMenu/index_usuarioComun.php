@@ -1,6 +1,5 @@
 <?php include ("../bloqueSeguridad.php");?>
 
-
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -41,7 +40,6 @@
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
@@ -65,46 +63,9 @@
 							
 							
 							
-							<!-- Nav -->
-								<nav id="nav">
-									
-									<ul class="myfont">
-								
-									<li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
-										
-										<li class="circle">
-											<a href="no-sidebar.html">
-												<img src="../images/shirt.png" alt="Dise&ntilde;ar">
-											</a>
-												<ul>
-													<li><a href="Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-													<li><a href="votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-													<li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-													<li><a href="subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
-												</ul>
-											</li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-										<li class="circle"><a href="no-sidebar.html"><img src="../images/bus.png" alt="info-viajes"></a></li>
-										<li class="circle"><a href="no-sidebar.html">
-																				<img src="../images/settings.png" alt="configuracion">
-																			</a>
-																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-																				<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
-																			</ul>
-
-
-										</li>
-																
-
-										
-									</ul>
-								</nav>
+		<?php
+			include '../MasterMenu.php';
+		?>
 								
 		
 
@@ -113,58 +74,33 @@
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+				<div id="banner-wrapper">
 
-	
-	<div id="bandejaEntrada">
+					<!--
 
- <?php
-    
+						The slider's images (as well as its behavior) can be configured
+						at the top of "assets/js/main.js".
 
-    $conexion = mysql_connect("localhost", "root", "")
-      or die("Problemas en la conexion");
-    
-    mysql_select_db("egdo_db", $conexion) 
-      or die("Problemas en la seleccion de la base de datos");
-    ?>
-
-
-<div id="menu"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a></div><br /><br />
-
-<form method="post" action="enviarAdminCurso.php" >
-
-<div class="descripcion">Para
-<?php
-$id_curso=$_SESSION['curso'];
-$consulta=mysql_query("SELECT A.descripcion_rol, T.* 
-FROM rol A INNER JOIN 
-usuario T ON A.id_rol=T.id_rol 
-WHERE (T.id_rol=3 and T.id_curso='$id_curso' and T.estadoActivacion=1) or T.id_rol=1
-", $conexion)
-					or die("Problemas en el select:".mysql_error());
-			echo '<div class="form-group">';
-
-echo '<select class="campoCrear" class="form-control" id="sel1" name="usuario_destino">';						
-						echo '<option value=""></option>';
-						while($fila = mysql_fetch_array($consulta)) {
-							echo"<option value='".$fila['id_usuario']."'>".$fila['nombre']." ".$fila['apellido']." (".$fila['descripcion_rol'].")</option>";
-						}					
-						echo '</select></div>';
-?>
-</div>
-<div class="descripcion">Asunto</div>
-<input class="campoCrear" type="text" name="asunto" />
-<div class="descripcion">Mensaje</div>
-<textarea class="campoMensaje" name="mensaje"></textarea></br>
-<input class="enviar" type="submit" name="enviar" value="Enviar" />
-</form>
-
-	
-	</div>
-	
-</div>
+					-->
 
 				
+					
+						
+					<div id="slider">
+						
+					</div>
+				</div>
+
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="intro" class="container">
+							
+						</div>
+						
+						
+				</div>
 				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
