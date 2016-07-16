@@ -1,4 +1,5 @@
 <?php
+include ("../bloqueSeguridad.php");
 //Conectamos a la base de datos
 //require('../../conexion.php');
 

@@ -16,8 +16,7 @@
 	
 	<link rel="stylesheet" href="../assets/css/admin-demo.css">
 	<link rel="stylesheet" href="../assets/css/admin-form-basic.css">
-	
-	<script type="text/javascript" src="js.js"> <!-- Bandeja de entrada-->
+	<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 	
 	</head>
 	<body class="no-sidebar">
@@ -79,7 +78,8 @@
 
 								<!-- You only need this form and the form-basic.css -->
 
-							<?php
+	<div id="bandejaEntrada">
+<?php
 
     $conexion = mysql_connect("localhost", "root", "")
       or die("Problemas en la conexion");
@@ -104,28 +104,31 @@ $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_priv
 $res = mysql_query($sql, $conexion) or die(mysql_error());
 
 ?>
-<div ALIGN="left" style="font-size:130%"><a href="listar.php">Ver mensajes</a> | <a href="crear.php">Crear mensajes</a> | <a href="../index.php">Ir a inicio</a></div><br /><br />
+<div id="menu"><a class="links" href="../pag_interiores/admin-msj-listar.php">Ver mensajes</a> | <a class="links" href="../pag_interiores/panel-mensaje.php">Crear mensajes</a></div><br /><br />
   <table width="800" border="0" align="center" cellpadding="1" cellspacing="1">
     <tr>
-	  <td width="426" align="center" valign="top"><strong>Mensaje Nro</strong></td>
-      <td width="426" align="center" valign="top"><strong>Asunto</strong></td>
-      <td width="321" align="center" valign="top"><strong>De</strong></td>
-	  <td width="321" align="center" valign="top"><strong>Fecha</strong></td>
-	  <td width="321" align="center" valign="top"><strong>Eliminar</strong></td>
+	  <th class="columna"><strong>Mensaje Nro</strong></td>
+      <th class="columna"><strong>Asunto</strong></td>
+      <th class="columna"><strong>De</strong></td>
+	  <th class="columna"><strong>Fecha</strong></td>
+	  <th class="columna"><strong>Eliminar</strong></td>
     </tr>
     <?php
 	$i = 0; 
 	while($row = mysql_fetch_assoc($res)){ ?>
-    <tr bgcolor="#b2ffff">
-	  <td align="center" valign="top"><?=$i+1?></td>
-      <td align="center" valign="top"><a href="leer.php?id_mensaje=<?=$row['id_mensaje']?>"><?=$row['asunto']?></a></td>
-      <td align="center" valign="top"><?=$row['nombre']?> <?=$row['apellido']?></td>
-	  <td align="center" valign="top"><?=$row['fecha_hora']?></td>
-	  <td align="center" valign="top"><a href="eliminar.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="images/delete.png" width="15" height="15"></a></td>
+    <tr class="fila">
+	  <td class="columna"><?=$i+1?></td>
+      <td class="columna"><a class="linkLeer" href="../pag_interiores/admin-msj-leer.php?id_mensaje=<?=$row['id_mensaje']?>"><?=$row['asunto']?></a></td>
+      <td class="columna"><?=$row['nombre']?> <?=$row['apellido']?></td>
+	  <td class="columna"><?=$row['fecha_hora']?></td>
+	  <td class="columna"><a href="../pag_interiores/admin-msj-eliminar.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="../mensajes/images/delete.png" width="15" height="15"></a></td>
     </tr>
 <?php $i++; 
 } ?>
 </table>
+		
+	</div>
+
 							
 						</div> <!-- /main content -->
 
