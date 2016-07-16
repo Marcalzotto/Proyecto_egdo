@@ -20,3 +20,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia
 (12, 'Mario', 'Diaz', 'noeliamorel@live.com', '$2y$10$QhjrM9pt8xINB25ejC9KDeTxna6M2jMi/9St/ngM9yCEUgJgvwjcG', '2016-07-15 02:46:20', 3, 3, '578878ac88e84', 1),
 (13, NULL, NULL, 'liliana@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878afcb1d7', 0),
 (14, NULL, NULL, 'daniel@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878b2dfaa7', 0);
+
+select email, contrasenia from usuario where id_curso = 2;
+update usuario set nombre = 'Jose'
+				where email = 'jose@egdo.com' and id_curso = 2;

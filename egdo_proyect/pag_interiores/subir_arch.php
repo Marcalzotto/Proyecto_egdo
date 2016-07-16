@@ -1,3 +1,4 @@
+<?php include ("../bloqueSeguridad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -111,7 +112,7 @@
 			
 				<div id="divContform">
 					<?php	
-						$curso_sesion = 1;
+						$curso_sesion = $_SESSION['curso'];
 						require_once("conexion.php");
 						$verificarEstadoVotacion = "select * from votacion where vigente = 1 and curso_pertenece_votacion = '$curso_sesion'";
 						
@@ -125,8 +126,8 @@
 								$conjuntoVotacion = $verificar->fetch_array(MYSQLI_ASSOC);
 								$fecha_apertura = $conjuntoVotacion["fecha_apertura"];
 
-								$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
-								$fecha_de_prueba = new datetime("2016-07-09 20:00:00"); 
+								//$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
+								$fechaHoy = new datetime("2016-07-17 20:00:00"); 
 
 								$fecha_fin_primer_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
 								$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
@@ -134,7 +135,7 @@
 								$fecha_fin_segunda_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
 								$fecha_fin_segunda_instancia->add(new dateInterval('P4D'));
 
-								if($fecha_de_prueba >= $fecha_apertura && $fecha_de_prueba <= $fecha_fin_primer_instancia){
+								if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
 												echo "<div class=form>
 															<h2>Subi tus dise&ntilde;os</h2>
@@ -170,9 +171,9 @@
 															</form>
 						
 															</div>";
-								}else if($fecha_de_prueba >= $fecha_fin_primer_instancia && $fecha_de_prueba <= $fecha_fin_segunda_instancia){
+								}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
 										echo "<h2>La votacion vigente ya paso la primer instancia.</h2>";
-								}else if($fecha_de_prueba >= $fecha_fin_segunda_instancia){
+								}else if($fechaHoy >= $fecha_fin_segunda_instancia){
 									echo "<h2>La votacion ha finalizado.</h2>";
 								}else{
 									echo "<h2>Lo sentimos hubo un error inesperado</h2>";

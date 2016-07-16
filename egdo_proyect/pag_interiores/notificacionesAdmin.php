@@ -147,7 +147,7 @@
 						
 							<a href="#"><img src="../images/avatar_64.png" alt=""><p>Bienvenido a egdo.</p>
 							<p class="fecha">Hace 1h</p></a>
-							<a href="votacion.php"><img src="../images/shirt.png" alt=""><p>Se ha abierto la votacion dise&ntilde;os</p>
+							<a href="votacionAdminCurso.php"><img src="../images/shirt.png" alt=""><p>Se ha abierto la votacion dise&ntilde;os</p>
 								<p class="fecha">Hace 1h</p></a>
 							<a href="#"><img src="../images/bus.png" alt=""><p>Hay lugares que podrian interesarte para ir de viaje.</p></a>
 							

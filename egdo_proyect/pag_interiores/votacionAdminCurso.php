@@ -51,97 +51,7 @@
 			<!--Librarys for lightBox -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function(){
-					$("#votacion #main section .primer_instancia li p img").click(function(evento){
-						
-						evento.preventDefault();
-						
-						var id = $(this).data("id");
-						var tipo =  $(this).data("tipo");
-						var url_servidor = "voto_hecho.php";
-						var target = $(this);
-						
-						$.post(url_servidor,{'id':id, 'tipo':tipo},function(data){
-
-							if(data == -1){
-								
-								$("#alert").fadeIn('slow');
-								//return false;
-							
-							}else if(data == -2){
-									
-								var messaje = "Lo sentimos hubo problemas con el servidor";
-								$("#alert").find("span").text(messaje);
-								$("#alert").fadeIn('slow');
-								//return false;
-							
-							}else if(data == -3){
-								
-								var messaje = "Usted excedio los 5 votos para este Item";
-								$("#alert").find("span").text(messaje);
-								$("#alert").fadeIn('slow');
-
-							}else{
-							
-								target.closest("p").find("span").text(data);
-							
-							}
-
-							setTimeout(function(){$("#alert").fadeOut('slow');}, 3500);
-						});
-
-
-					});
-
-				$("#votacion #main section .segunda_instancia li p img").click(function(evento){
-					evento.preventDefault();
-
-					var id = $(this).data("id");
-					var tipo =  $(this).data("tipo");
-					var url_servidor = "voto_segunda_instancia.php";
-					var target = $(this);
-
-					$.post(url_servidor,{'id':id, 'tipo':tipo},function(data){
-							
-							var messaje = "";
-							if(data == -1){
-								
-								messaje = "Solo se permite un voto por usuario";
-								$("#alert").find("span").text(messaje);
-								$("#alert").fadeIn('slow');
-
-							}else if(data == -2){
-								messaje = "Lo sentimos hubo un problema con el servidor";
-								$("#alert").find("span").text(messaje);
-								$("#alert").fadeIn('slow');
-							}else{
-								target.closest("p").find("span").text(data);
-							}
-					
-							setTimeout(function(){$("#alert").fadeOut('slow');}, 3500);
-					});
-
-				});
-
-					$("#btn-disparar").click(function(evento){
-					evento.preventDefault();
-					var num = $(this).data("num");
-					url_servidor = "disparar_voto.php";
-					
-					$.post(url_servidor,{'num':num},function(data){
-
-						
-						$("#respuestaDisparo").text(data);
-						$("#respuestaDisparo").fadeIn();
-					
-					});
-
-
-					});
-
-				});
-			</script>
+			<script type="text/javascript" src="../js/administrarVotacionAdminCurso.js"></script>
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
@@ -259,7 +169,7 @@
     								
 
     									$votacionAbierta = "select id_votacion, fecha_apertura from votacion where vigente = 1 and 
-    									curso_pertenece_votacion = $cursoBuscarPorSesion";
+    									curso_pertenece_votacion = '$cursoBuscarPorSesion'";
     								 	$datosVotacion = $conexion->query($votacionAbierta) or die($conexion->error);
 
     									if($datosVotacion){
@@ -274,9 +184,10 @@
 													
 													//echo "Fecha de apertura votacion".$fecha_apertura."</br>";
 													
-													$fechaHoy = new datetime(null, new dateTimeZone('America/Argentina/Buenos_Aires'));
+													//$fechaHoy = new datetime(null, new dateTimeZone('America/Argentina/Buenos_Aires'));
+														
 													//se usa para ver que todo funcione en forma correcta
-													$fecha_alternativa_prueba = new datetime("2016-07-11 20:00:00"); 
+													$fechaHoy = new datetime("2016-07-17 20:00:00"); 
 													//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
 
 													$fecha_fin_primer_instancia = new datetime($traerDatosVotacion["fecha_apertura"]);
@@ -311,7 +222,7 @@
 											
 											if($response > 0){
 
-														if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
+														if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
 														$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio 
 														= u.id_usuario where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion'";
@@ -343,7 +254,7 @@
 														}else{
 															echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 														}
-													}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
+													}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
 																
 																	$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
 																	where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion' order by d.cantidad_votos desc limit 3";
@@ -376,7 +287,7 @@
 																	}else{
 																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 																	}	
-													}else if($fecha_alternativa_prueba >= $fecha_fin_segunda_instancia){
+													}else if($fechaHoy >= $fecha_fin_segunda_instancia){
 																
 														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and d.votacion_pertenece = '$numVotacion' order by d.votos_segunda_instancia desc limit 1";
 																
@@ -421,7 +332,7 @@
     										
     										if($response > 0){
 
-    											if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
+    											if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
 
     												$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = '$numVotacion'";
@@ -457,7 +368,7 @@
     													
     													echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
     												}
-    											}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
+    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
 
     													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and d.votacion_pertenece = 
     													'$numVotacion' order by d.cantidad_votos desc limit 3";
@@ -531,7 +442,7 @@
     										
     										if($response > 0){
 
-    											if($fecha_alternativa_prueba >= $fecha_apertura && $fecha_alternativa_prueba <= $fecha_fin_primer_instancia){
+    											if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
     												$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = '$numVotacion'";
 
@@ -563,7 +474,7 @@
     												}else{
     														echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
     												}
-    											}else if($fecha_alternativa_prueba >= $fecha_fin_primer_instancia && $fecha_alternativa_prueba <= $fecha_fin_segunda_instancia){
+    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
     													
     													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 3 and d.votacion_pertenece = 
     													'$numVotacion' order by d.cantidad_votos desc limit 3";
