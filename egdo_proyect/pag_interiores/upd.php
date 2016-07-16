@@ -253,20 +253,23 @@
 					<!-- Footer -->
 						<div id="footer" class="container">
 							<header>
-								<h2>lorem ipsum dolor sit amet</h2>
+								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
 							</header>
-							<p>Aenean vel justo nulla, at gravida elit. In hac habitasse platea dictumst. Quisque gravida commodo volutpat. Vivamus blandit risus in urna venenatis accumsan. Pellentesque habitant morbi.</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+							
+						<p>Email: egdoweb@gmail.com</p>
+						
+						<ul class="contact">
 								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
 								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li>
+								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
 							</ul>
+							
 						</div>
-
+							
 					<!-- Copyright -->
 						<div id="copyright" class="container">
-							&copy; Untitled. All rights reserved.
+							&copy; EGDO 2016.
 						</div>
 
 				</div>
