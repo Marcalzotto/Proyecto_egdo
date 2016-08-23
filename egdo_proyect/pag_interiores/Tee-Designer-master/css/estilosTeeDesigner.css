@@ -10,7 +10,7 @@
 }
 
 #contenedor nav{
-	padding:20px;
+	padding:30px;
 	padding-top: 40px;
 	margin-bottom: 0px;
 	margin-left: 0px;
@@ -18,10 +18,10 @@
 }
 
 #contenedor header nav ul{
-	margin-top:0px;
+	margin-top:-8px;
 	
 	margin-bottom: 0px;
-	
+	margin-left: 5.95em;
 }
 
 
@@ -32,7 +32,7 @@
 
 .logo{
 	margin-left: 20px;
-	margin-right: 10%;
+	margin-right: 7%;
 }
 .circle{
 	width:100px; 
@@ -70,33 +70,44 @@
   border-bottom: 0;
   list-style: none;
   margin: 0;
-  min-width: 16em;
+  min-width: 20em;
   padding: 0;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
 	color:#ffffff;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-weight: bold;
-	letter-spacing: 0.10em;
+	font-weight: 700;
+	font-size: 0.9em;
+  letter-spacing: 0.20em;
+	
+	text-transform: uppercase;
+	
 }
 
 .dropotron > li {
-  border-top: solid 1px #555;
+  border-top: solid 1px #373737;
   margin: 0em;
-  padding-left: 1.5em ;
-  padding-top: 0.5em ;
-  padding-right:1.5em ;
-  padding-bottom: 0.5em;
+  padding-left: 0em ;
+  padding-top: 0em ;
+  padding-right:0em ;
+  padding-bottom: 0em;
 }
 
 .dropotron > li:first-child { 
-	border-top: 0; 
+	border-top: 0;
+	padding-top: 0.5em;
 }
-
+.dropotron > li:last-child { 
+	
+	padding-bottom: 0.5em;
+}
 .dropotron > li > a {
   color: #ffffff;
   display: block;
-  padding: 0.5em 0 0.5em 0;
+  padding: 1.15em 1.70em;
   text-decoration: none;
+  
+ 
+
 }
 
 .dropotron > li.active > a,
@@ -104,18 +115,20 @@
 
 /* Only applies to top level ("level-0") menus */
 
-.dropotron.level-0 { margin-top: 1.25em; }
+.dropotron.level-0 { margin-top: 1.55em; }
 
 .dropotron.level-0:before {
   content: '';
   position: absolute;
-  margin-left: 7.6em;
-  border-bottom: solid 0.5em #2E2E2E;
-  border-left: solid 0.5em transparent;
-  border-right: solid 0.5em transparent;
-  top: -0.5em;
+  margin-left: 9.2em;
+  border-bottom: solid 0.9em #2E2E2E;
+  border-left: solid 0.9em transparent;
+  border-right: solid 0.9em transparent;
+  border-top: solid -0.5em transparent;
+  /*width: 1em;
+  height: 1em;*/
+  top: -0.9em;
 }
-
 
 #footer{
 	background: #191919;

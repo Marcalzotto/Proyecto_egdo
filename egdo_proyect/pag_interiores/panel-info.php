@@ -189,7 +189,7 @@ $("#enviarimagenes").on("submit", function(evento){
 						?>
 
 							<p><b>Descripcion:</b><br><?php echo $datos['descripcion']; ?></p>
-							<img class="number" src="data:image/jpeg;base64,<?php echo base64_encode($datos['img']); ?>"/> 
+							<img class="number" src="data:image/jpeg;base64,<?php echo base64_encode($datos['imagen']); ?>"/> 
 						</section>
 
 						<?php

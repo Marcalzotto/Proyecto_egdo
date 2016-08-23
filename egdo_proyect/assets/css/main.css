@@ -435,11 +435,11 @@
 	@media screen and (min-width: 737px) {
 
 		.row > * {
-			padding: 50px 0 0 50px;
+			padding: 50px 0 0 0;
 		}
 
 		.row {
-			margin: -50px 0 -1px -50px;
+			/*margin: -50px 0 -1px -50px;*/
 		}
 
 		.row.uniform > * {

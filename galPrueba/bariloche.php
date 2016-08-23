@@ -184,29 +184,37 @@ $("#enviarimagenes").on("submit", function(evento){
 
     ?>
           <?php
-      
-$con = "select * from info_viaje";
-$resultado = $conexion->query($con);
-
-while ($datos = $resultado->fetch_assoc()) {
-?>
+    
+                $con = "select * from info_viaje where nombre_lugar = 'Bariloche1'";
+                $resultado = $conexion->query($con);
+                while ($datos = $resultado->fetch_array(MYSQLI_ASSOC)) {
+                    $varias[] = $datos;
+                }
+          ?>
                          
                  <section id="content" class="container">
                <!-- SLIDESHOW -->
                <div id="sliders">
-                      <ul class="bjqs">
-                        <li>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($datos['imagen']); ?>" alt="" title="<?php echo $datos['descripcion']; ?>" />
-                </li>
-            </ul>
-        </div>
+                  <ul class="bjqs">
+                  <?php  
+                    
+                    foreach ($varias as $unaImagen){
+                       echo "<li>
+                              <img src=traerImgInfoViaje.php?id=".$unaImagen["imagen"]."/> 
+                            
+                            </li>";
+                            
+                    }
+
+                  ?>
+                    
+                  </ul>
+              </div>
      
-                      </section>
+                </section>
 
     
-<?php
-};
-?>
+
 
 
         </div> 

@@ -61,7 +61,7 @@ if(empty($titulo)) {
 			die( "El archivo ".$nombreArchivo." es demasiado grande. El tamaño máximo del archivo es de ".$tamañoMaximoKB."Kb." ); }
 		
         else {
-            $traerIdActividad="select id_actividad from actividad where nombre_actividad='info_viaje'";
+            $traerIdActividad="select id_actividad from actividad where nombre_actividad='infoViaje'";
             $verificarId = $conexion->query($traerIdActividad) or die($conexion->error);
                if($verificarId){
                	  $regIdActividad= $verificarId->fetch_array(MYSQLI_ASSOC);
@@ -70,8 +70,8 @@ if(empty($titulo)) {
 
               
 			//Si el tamaño es correcto, subimos los datos
-			$consulta = "insert into info_viaje (nombre_lugar, descripcion, id_actividad, img) 
-			VALUES ('$titulo','$descripcion','$numIdAct','$imagenBinaria')";
+			$consulta = "insert into info_viaje (nombre_lugar, imagen, descripcion, id_actividad) 
+			VALUES ('$titulo','$imagenBinaria','$descripcion','$numIdAct')";
 			//ejecuto consulta
              $guardarRdo= $conexion->query($consulta) or die($conexion->error);
 			//Hacemos la inserción, y si es correcta, se procede

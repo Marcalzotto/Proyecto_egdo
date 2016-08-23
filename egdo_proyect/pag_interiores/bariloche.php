@@ -1,4 +1,5 @@
-<?php include ("../bloqueSeguridad.php");?>
+<?php session_start();?>
+<?php require('conexion.php'); ?>
 
 <!DOCTYPE HTML>
 <!--
@@ -43,6 +44,8 @@
 
       <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
       <link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
+      <link rel="stylesheet" type="text/css" href="../assets/css/form-viaje.css" /> 
+
       <script src="../js/modernizr.js"></script> <!-- Modernizr -->
       <script src="../assets/js/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -55,7 +58,7 @@ $("#enviarimagenes").on("submit", function(evento){
   var formData = new FormData(document.getElementById("enviarimagenes"));
 
   $.ajax({
-    url: "subirImg-Bariloche.php",
+    url: "subirImg.php",
     type: "POST",
     dataType: "HTML",
     data: formData,
@@ -81,11 +84,51 @@ $("#enviarimagenes").on("submit", function(evento){
             
             <div id="header" class="container">
               
+              <h1 class="logo">
+                  <a href="../index.html"><img src="../favicon/favicon-96x96.png" alt=""></a>
+              </h1>
               
               
-							<?php
-							include '../pag_interiores/menu/masterMenu.php';
-							?>
+              
+              <!-- Nav -->
+                <nav id="nav">
+                  
+                  <ul class="myfont">
+                
+                  <li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
+                    
+                    <li class="circle">
+                      <a href="no-sidebar.html">
+                        <img src="../images/shirt.png" alt="Dise&ntilde;ar">
+                      </a>
+                        <ul>
+                          <li><a href="../simulacion_funcionalidades/Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+                          <li><a href="../simulacion_funcionalidades/votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+                          <li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
+                          <li><a href="../simulacion_funcionalidades/subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+                        </ul>
+                      </li>
+                    <li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
+                    <li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
+                    <li class="circle"><a href="infoviaje.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
+                    <li class="circle"><a href="no-sidebar.html">
+                                        <img src="../images/settings.png" alt="configuracion">
+                                      </a>
+                                      <ul>
+                                        <li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
+                                        <li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+                                        <li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+                                        <li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
+                                        <li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
+                                        <li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
+                                      </ul>
+
+
+                    </li>
+
+                    
+                  </ul>
+                </nav>
                 
     
 
@@ -97,9 +140,50 @@ $("#enviarimagenes").on("submit", function(evento){
         <div id="main-wrapper">
 
           <!-- Wide Content -->
-            <section id="content" class="container">
-               <!-- SLIDESHOW -->
-               <div id="sliders">
+             <?php 
+  $admin_curso = 1;
+    require_once("conexion.php");
+            $verificarAdmin = "select * from usuario where id_rol = '$admin_curso'";
+            
+            $verificar = $conexion->query($verificarAdmin) or die($conexion->error);
+
+                         if($verificar){
+                            echo "
+              
+                              <form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
+                            <div class='form-row form-input-name-row'>
+                            
+                                <input type='text' name='nombre' id='nombre' placeholder='nombre'>
+                            
+                            </div>
+                            
+                            <div class='form-row form-input-name-row'>
+
+                                <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
+
+                            </div>
+
+                             <div class='form-row'>
+
+                                          <label>Subir foto
+         
+                                            <input type='file' class='file_input' name='info_imagen' id='info_imagen' />
+                                         </label>
+                                      </div>
+                                     
+                        
+                          <button type='submit'>Subir imagen</button>
+
+                      
+                              </form>
+                                                      ";
+            }
+
+
+
+
+    ?>
+         <div id="sliders">
                       <ul class="bjqs">
                         <li>
                     <img src="../images/cerro_catedral.jpg" alt="" title="Cerros: el cerro catedral es el centro de esquí más grande del hemisferio sur y ofrece una amplia infraestructura de servicios para la práctica de deportes invernales. Está abierto todo el año y cuenta con 40 medios de elevación (entre aerosillas y teleféricos), facilitando el ascenso de 35 mil personas por hora." />
@@ -112,9 +196,7 @@ $("#enviarimagenes").on("submit", function(evento){
                 </li>
             </ul>
         </div>
-     
-    <!-- FIN SLIDESHOW -->
-        </section>
+
 
         </div> 
 

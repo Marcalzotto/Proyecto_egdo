@@ -28,7 +28,7 @@
 		/*tengo que obtener el usuario que sube el disenio y el curso al que pertenece por medio de la sesion*/
 
 		$usuarioYaSubioDisenio = "select d.codigo_tipo, c.descripcion from disenio as d join codigo_disenio as c 
-		on d.codigo_tipo = c.codigo where d.id_usuario_subio = '$id_usuario_sube' and d.codigo_tipo = '$opcion_disenio'";
+		on d.codigo_tipo = c.codigo_tipo where d.id_usuario_subio = '$id_usuario_sube' and d.codigo_tipo = '$opcion_disenio'";
 
 		$disenio = $conexion->query($usuarioYaSubioDisenio) or die($conexion->error);
 

@@ -85,7 +85,7 @@
 								$fecha_apertura = $conjuntoVotacion["fecha_apertura"];
 
 								//$fechaHoy = new datetime(null, new DateTimeZone('America/Argentina/Buenos_Aires'));
-								$fechaHoy = new datetime("2016-07-19 20:00:00"); 
+								$fechaHoy = new datetime("2016-07-15 20:00:00"); 
 
 								$fecha_fin_primer_instancia = new datetime($conjuntoVotacion["fecha_apertura"]);
 								$fecha_fin_primer_instancia->add(new dateInterval('P2D')); 
