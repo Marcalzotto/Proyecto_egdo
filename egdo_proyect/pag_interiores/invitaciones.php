@@ -14,10 +14,10 @@
 		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
-		<link rel="stylesheet" href="../assets/css/index_gral.css" />
-		<link rel="stylesheet" href="../assets/css/slimbox2.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="../css/index_gral.css" />
+		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
 		
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" />
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />-->

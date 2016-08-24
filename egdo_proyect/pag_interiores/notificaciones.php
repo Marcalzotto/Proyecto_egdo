@@ -15,12 +15,12 @@
 		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
-		<link rel="stylesheet" href="../assets/css/index_gral.css" />
-		<link rel="stylesheet" href="../assets/css/slimbox2.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="../css/index_gral.css" />
+		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">

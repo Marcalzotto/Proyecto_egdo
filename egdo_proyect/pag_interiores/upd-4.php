@@ -15,11 +15,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
-		<link rel="stylesheet" href="../assets/css/index_gral.css" />
+		<link rel="stylesheet" href="../css/index_gral.css" />
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -43,12 +43,12 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<link rel="stylesheet" href="../assets/css/form-viaje.css">
-			<link rel="stylesheet" href="../assets/css/form-upd-comentario.css">
+			<link rel="stylesheet" href="../css/form-viaje.css">
+			<link rel="stylesheet" href="../css/form-upd-comentario.css">
 
-			<link rel="stylesheet" href="../assets/css/viajes.css">
+			<link rel="stylesheet" href="../css/viajes.css">
 
-			 <link rel="stylesheet" type="text/css" href="../assets/css/estrellitasCalificacion.css" /> 
+			 <link rel="stylesheet" type="text/css" href="../css/estrellitasCalificacion.css" /> 
 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../assets/js/jquery.min.js"></script>

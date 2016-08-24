@@ -10,11 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
-		<link rel="stylesheet" type="text/css" href="assets/css/common-circle.css" />
-        <link rel="stylesheet" type="text/css" href="assets/css/style-circle.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common-circle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style-circle.css" />
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
@@ -39,8 +39,8 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style-modal.css">
+		<link rel="stylesheet" href="../css/form-elements.css">
+        <link rel="stylesheet" href="../css/style-modal.css">
 
 
 			<link rel="stylesheet" href="css/reset.css">  <!-- CSS reset -->
