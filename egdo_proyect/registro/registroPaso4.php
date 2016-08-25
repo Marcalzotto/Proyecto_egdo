@@ -22,7 +22,7 @@
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" /> 
+		<link rel="stylesheet" href="../css/main.css" /> 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- Mobile Specific Metas
@@ -31,10 +31,10 @@
 
 		<!-- CSS
 		================================================== -->
-		<link rel="stylesheet" href="../assets/css/tmm_form_wizard_style_demo.css" />
-		<link rel="stylesheet" href="../assets/css/grid.css" />
-		<link rel="stylesheet" href="../assets/css/tmm_form_wizard_layout.css" />
-		<link rel="stylesheet" href="../assets/css/fontello.css" />
+		<link rel="stylesheet" href="../css/tmm_form_wizard_style_demo.css" />
+		<link rel="stylesheet" href="../css/grid.css" />
+		<link rel="stylesheet" href="../css/tmm_form_wizard_layout.css" />
+		<link rel="stylesheet" href="../css/fontello.css" />
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
