@@ -54,7 +54,7 @@
 			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
 			
 			<!--Librarys for calendar-->
-			<script src="../assets/js/jquery.1.10.2.js"></script>
+			<script src="../js/jquery.1.10.2.js"></script>
 			<script type="text/javascript" src="../js/jquery.colorbox-min.js"></script>
 			<script type="text/javascript" src="../js/calendarAdminCurso.min.js"></script>
 			<!--<script type="text/javascript" src="../js/calendar.min.js"></script>
@@ -152,12 +152,12 @@
 		
 		<!-- Scripts -->
 			<!--<script src="../assets/js/jquery.min.js"></script>-->
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/skel-viewport.min.js"></script>
-			<script src="../assets/js/util.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
+			<script src="../js/main.js"></script>
 			
 	</body>
 </html>

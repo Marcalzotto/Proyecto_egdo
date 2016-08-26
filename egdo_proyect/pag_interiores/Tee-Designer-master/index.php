@@ -15,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilosTeeDesigner.css">
 		
-		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../js/jquery.min.js"></script>
 		
 		<script>
 
@@ -113,7 +113,7 @@
 	</div>
 	
 		
-			<script src="../../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../../js/jquery.dropotron.min.js"></script>
 </body>
 		
 </html>

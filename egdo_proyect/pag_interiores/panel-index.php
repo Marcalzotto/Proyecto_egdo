@@ -56,7 +56,7 @@ $surname= $row['apellido'];
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><img class="egdo-logo" src="../assets/images/EGDO.png" alt=""></h1>
+								<h1 id="logo"><img class="egdo-logo" src="../images/imagesAdmin/EGDO.png" alt=""></h1>
 
 							<!-- Nav -->
 								<nav id="nav">
@@ -110,7 +110,7 @@ $surname= $row['apellido'];
 				
 			<form class="form-mini" method="post" action="#">
 				
-				<img src="../assets/images/user.png" alt="">
+				<img src="../images/imagesAdmin/user.png" alt="">
 				
 				<div class="form-row">
                     <label><span>Bienvenido Administrador</span></label>
@@ -165,13 +165,13 @@ $surname= $row['apellido'];
 		</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/skel-viewport.min.js"></script>
-			<script src="../assets/js/util.js"></script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
+			<script src="../js/main.js"></script>
 
 	</body>
 </html>

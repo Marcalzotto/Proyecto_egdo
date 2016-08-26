@@ -52,7 +52,7 @@ if ($conexion->connect_error) {
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="../css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../js/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="../css/admin-demo.css">
 		<link rel="stylesheet" href="../css/admin-form-mini.css">
@@ -68,7 +68,7 @@ if ($conexion->connect_error) {
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><img class="egdo-logo" src="../assets/images/EGDO.png" alt=""></h1>
+								<h1 id="logo"><img class="egdo-logo" src="../images/imagesAdmin/EGDO.png" alt=""></h1>
 
 							<!-- Nav -->
 								<nav id="nav">
@@ -240,13 +240,13 @@ $("#acceso").on("submit", function(e){
 		</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/skel-viewport.min.js"></script>
-			<script src="../assets/js/util.js"></script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
+			<script src="../js/main.js"></script>
 
 	</body>
 </html>

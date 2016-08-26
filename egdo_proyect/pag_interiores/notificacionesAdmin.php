@@ -50,7 +50,7 @@
 			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
 			<!--Librarys for lightBox -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
-			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../js/jquery.min.js"></script>
 			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -134,13 +134,13 @@
 		
 		
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/skel-viewport.min.js"></script>
-			<script src="../assets/js/util.js"></script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
+			<script src="../js/main.js"></script>
 			
 	</body>
 </html>
