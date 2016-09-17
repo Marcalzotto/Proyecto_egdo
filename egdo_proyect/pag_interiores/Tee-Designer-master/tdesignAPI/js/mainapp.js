@@ -1,13 +1,20 @@
 var $type="tee",$color="black",$y_pos="front",$nos_icons=0,$nos_text=0,$custom_img=0;
 $(document).ready(function(){
 	
+	
+
 	//ONLOAD
 	$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png) ') ;
 	$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png) ') ;
-	//$("#preview_front, #preview_back , #preview_left, #preview_right").css('background-color', 'blue') ;
-	$("#preview_front,.T_type").removeClass('dis_none');
-	$("#preview_back,.color_pick,.default_samples,.custom_icon,.custom_font").addClass('dis_none') ;
-	//$('.modal').css('dispaly','none');
+	
+
+
+		$("#preview_front, #preview_back , #preview_left, #preview_right").css('background-color', 'white') ;
+		$("#preview_front,.T_type").removeClass('dis_none');
+		$("#preview_back,.color_pick,.default_samples,.custom_icon,.custom_font").addClass('dis_none') ;
+		$('.modal').css('dispaly','none');
+
+	
 
 	//ONLOAD OVER
 	
@@ -244,6 +251,8 @@ function capture() {
 
 
 });
+
+
 
 	function image_icon($srcimg){
 			$("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+$srcimg+"' width='100%' height='100%' /></div>");

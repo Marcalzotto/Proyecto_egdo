@@ -8,7 +8,9 @@ $(document).ready(function() {
         a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
         a.download = 'mymodel.jpg';
         a.click();
+        //lo comentado es para descargar el canvas desde la aplicacion.
       }
+
     });
   });
 

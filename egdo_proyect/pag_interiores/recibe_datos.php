@@ -28,7 +28,7 @@
 		/*tengo que obtener el usuario que sube el disenio y el curso al que pertenece por medio de la sesion*/
 
 		$usuarioYaSubioDisenio = "select d.codigo_tipo, c.descripcion from disenio as d join codigo_disenio as c 
-		on d.codigo_tipo = c.codigo_tipo where d.id_usuario_subio = '$id_usuario_sube' and d.codigo_tipo = '$opcion_disenio'";
+		on d.codigo_tipo = c.id_codigo_disenio where d.id_usuario_subio = '$id_usuario_sube' and d.codigo_tipo = '$opcion_disenio'";
 
 		$disenio = $conexion->query($usuarioYaSubioDisenio) or die($conexion->error);
 
@@ -76,6 +76,7 @@
 							$anchoDeImpresion = $obtenerDimensionesImpresion[0];
 							$altoDeImpresion = $obtenerDimensionesImpresion[1];
 
+							
 							$nombreArchImpresion = $_FILES["vista_impresion"]["tmp_name"];
 							$obtenerContenidoImpresion = $conexion->real_escape_string(file_get_contents($_FILES["vista_impresion"]["tmp_name"]));
 							$obtenerTipoArchImpresion = $_FILES["vista_impresion"]["type"];

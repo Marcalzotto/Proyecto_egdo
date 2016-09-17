@@ -12,7 +12,6 @@
 <script src="tdesignAPI/js/mainapp.js"></script>
 <link rel="stylesheet" href="tdesignAPI/css/jquery-ui.css" />
 <script src="tdesignAPI/js/jquery-ui.js"></script>
-
 <script type="text/javascript">
 	function changeval() {
 		$total = parseInt($("#small").val()) + parseInt($("#medium").val()) + parseInt($("#large").val()) + parseInt($("#xlarge").val()) + parseInt($("#xxlarge").val());
@@ -206,11 +205,15 @@
 		<!--=============================================================-->
 		<!--=========================preview start====================================-->
 
-		<div id='preview_t'>
+		<div id='preview_t' onload="comenzar()">
 			<div id="preview_front">
 				<div class="front_print">
-
+					
 				</div>
+
+				<p id="tipo" style="display:none">tee</p>
+				<p id="color" style="display:none">royal</p>
+				<p id="pos" style="display:none">front</p>
 			</div>
 			<div id="preview_back">
 				<div class="back_print">

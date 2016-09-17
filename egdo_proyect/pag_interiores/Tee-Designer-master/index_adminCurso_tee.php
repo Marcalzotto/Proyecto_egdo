@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/estilosTeeDesigner.css">
 		
 		<script src="../../assets/js/jquery.min.js"></script>
-		
+	
 		<script>
 
 			$(function() {
