@@ -43,7 +43,7 @@
 }
 
 #lbPrevLink:hover {
-	background: transparent url(../images/lightboxIcons/prevlabel.gif) no-repeat 0 15%;
+	background: transparent url(../images/lightboxIcons/left-arrow.png) no-repeat 0 15%;
 }
 
 #lbNextLink {
@@ -51,7 +51,7 @@
 }
 
 #lbNextLink:hover {
-	background: transparent url(../images/lightboxIcons/nextlabel.gif) no-repeat 100% 15%;
+	background: transparent url(../images/lightboxIcons/right-arrow.png) no-repeat 100% 15%;
 }
 
 #lbBottom {

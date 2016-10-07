@@ -131,21 +131,11 @@ CREATE TABLE IF NOT EXISTS `curso` (
 CREATE TABLE IF NOT EXISTS `disenio` (
   `id_disenio` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_tipo` int(11) NOT NULL,
-  `disenio_frontal` mediumblob NOT NULL,
-  `ancho_frontal` smallint(3) NOT NULL,
-  `alto_frontal` smallint(3) NOT NULL,
-  `nombre_imagen` varchar(50) NOT NULL,
-  `tipo_frontal` varchar(20) NOT NULL,
-  `disenio_impresion` mediumblob NOT NULL,
-  `ancho_impresion` smallint(3) NOT NULL,
-  `alto_impresion` smallint(3) NOT NULL,
-  `nombre_impresion` varchar(50) NOT NULL,
-  `tipo_impresion` varchar(20) NOT NULL,
   `id_usuario_subio` int(11) NOT NULL,
-  `id_votacion` int(11) NOT NULL,
   `cantidad_votos` int(11) NOT NULL,
   `votos_segunda_instancia` int(11) NOT NULL,
-  `votacion_pertenece` int(11) NOT NULL,
+  `path_frontal` varchar(100) NOT NULL,
+  `path_espalda` varchar(100) NOT NULL,
   PRIMARY KEY (`id_disenio`),
   KEY `codigo_tipo` (`codigo_tipo`),
   KEY `votacion_pertenece` (`votacion_pertenece`),
@@ -393,9 +383,7 @@ CREATE TABLE IF NOT EXISTS `votacion` (
   `tipo_actividad` int(11) NOT NULL,
   `usuario_apertura` int(11) NOT NULL,
   `curso_pertenece_votacion` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id_votacion`),
-  KEY `id_usuario` (`id_usuario`),
   KEY `usuario_apertura` (`usuario_apertura`),
   KEY `curso_pertenece_votacion` (`curso_pertenece_votacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -462,8 +450,8 @@ ALTER TABLE `comentario`
 --
 ALTER TABLE `disenio`
   ADD CONSTRAINT `disenio_ibfk_1` FOREIGN KEY (`codigo_tipo`) REFERENCES `codigo_disenio` (`id_codigo_disenio`),
-  ADD CONSTRAINT `disenio_ibfk_2` FOREIGN KEY (`votacion_pertenece`) REFERENCES `votacion` (`id_votacion`),
-  ADD CONSTRAINT `disenio_ibfk_3` FOREIGN KEY (`id_votacion`) REFERENCES `votacion` (`id_votacion`);
+  ADD CONSTRAINT `disenio_ibfk_2` FOREIGN KEY (`id_usuario_subio`) REFERENCES `usuario` (`id_usuario`);
+ 
 
 --
 -- Filtros para la tabla `evento`
@@ -527,9 +515,8 @@ ALTER TABLE `usuario_has_actividad`
 -- Filtros para la tabla `votacion`
 --
 ALTER TABLE `votacion`
-  ADD CONSTRAINT `votacion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `votacion_ibfk_2` FOREIGN KEY (`usuario_apertura`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `votacion_ibfk_3` FOREIGN KEY (`curso_pertenece_votacion`) REFERENCES `curso` (`id_curso`);
+  ADD CONSTRAINT `votacion_ibfk_1` FOREIGN KEY (`usuario_apertura`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `votacion_ibfk_2` FOREIGN KEY (`curso_pertenece_votacion`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `votos`

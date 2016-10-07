@@ -4,7 +4,7 @@ $(document).ready(function(){
 	//ONLOAD
 	$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png) ') ;
 	$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png) ') ;
-	//$("#preview_front, #preview_back , #preview_left, #preview_right").css('background-color', 'blue') ;
+	$("#preview_front, #preview_back , #preview_left, #preview_right").css('background-color', 'white') ;
 	$("#preview_front,.T_type").removeClass('dis_none');
 	$("#preview_back,.color_pick,.default_samples,.custom_icon,.custom_font").addClass('dis_none') ;
 	//$('.modal').css('dispaly','none');
@@ -39,16 +39,17 @@ $(document).ready(function(){
 	$("#radio1").click(function(){	//tee
 		$type="tee";
 		change_it();
-		
+		$("#typeCloth").val(2);
 	});
 	$("#radio2").click(function(){	//polo
 		$type="polo";
 		change_it();
-		
+		$("#typeCloth").val(3);
 	});
 	$("#radio3").click(function(){	//hoodie
 		$type="hoodie";
 		change_it();
+		$("#typeCloth").val(1);
 	});
 	/*==========================select type over=====================*/
 	/*==========================select back or front=====================*/
@@ -227,7 +228,7 @@ function capture() {
             onrendered: function(canvas) {
                 document.getElementById("image_reply").appendChild(canvas);
 				//Set hidden field's value to image data (base-64 string)
-				$('#img_front').val(canvas.toDataURL("image/png"));
+				$('#img_front').val(canvas.toDataURL("image/jpeg"));
             }
         });
 	//$('#preview_front').hide();
@@ -236,7 +237,7 @@ function capture() {
             onrendered: function(canvas) {
 				//$('#img_back').val(canvas.toDataURL("image/png"));
                 document.getElementById("image_reply").appendChild(canvas);
-				$('#img_back').val(canvas.toDataURL("image/png"));
+				$('#img_back').val(canvas.toDataURL("image/jpeg"));
 				$("#preview_back").addClass('dis_none') ;
             }
         });
