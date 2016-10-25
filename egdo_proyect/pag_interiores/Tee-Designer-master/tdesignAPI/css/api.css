@@ -13,6 +13,7 @@ span.glyphicon {
     font-size: 3em;
 }
 .design_api{
+	margin-left: 2em;
 	width:968px;
 	height:530px;
 	//background:#fcfcfc;
@@ -561,3 +562,55 @@ padding-top:5px;
 		font-family: 'Open Sans Condensed',sans-serif;
     font-weight: bold;
 }
+.lista_pasos{
+    text-align: center;
+    
+    padding-top: 6em;
+}
+.pasos{
+	margin: 0;
+	padding: 0;
+}
+.pasos li{
+	display: inline-block;
+	margin-left: 4em;
+	margin-right: 4em;
+	padding: 0;
+}
+
+.pasos li div{
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	background-color: #EF2F72;
+	color: #fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-size: 3.4em;
+	border-color: #1D1D1D;
+	border-style: 0.5px solid;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 auto;
+
+}
+
+.pasos li p{
+	color: #fff;
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+
+}
+
+.pasos li .active{
+background-color: #79B800;
+}
+
+/*#canvas{
+	width: 495px;
+	height: 530px;
+	background-color: #fff;
+
+}*/

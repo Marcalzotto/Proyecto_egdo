@@ -61,7 +61,16 @@
 	}
 </script>
 <!--<script type="text/javascript" src="tdesignAPI/js/printImage.js"></script>-->
+<div class="lista_pasos">
+	<ul class="pasos">
+			<li><div class="active">1</div><p>Dise&ntilde;a tu ropa</p></li>
+			<li><div>2</div><p>Vota los dise&ntilde;os</p></li>
+			<li><div>3</div><p>Arma tu pedido</p></li>
+			<li><div>4</div><p>Eleji tu empresa</p></li>
+	</ul>
+</div>
 <div class="container design_api_container">
+	
 	<div class='design_api'>
 		<!--=============================================================-->
 		<div id="menu">
@@ -221,6 +230,9 @@
 
 				</div>
 			</div>
+			<!--<canvas id="canvas">
+				
+			</canvas>-->
 
 		</div>
 		<!--=============================================================-->

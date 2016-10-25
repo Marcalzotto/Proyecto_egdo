@@ -90,7 +90,9 @@
 			</ul>
 		</nav>
 	</header>
+	
 </div>
+
 	<div id="maindiv">
 		
 		<?php

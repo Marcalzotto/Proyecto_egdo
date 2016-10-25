@@ -1,3 +1,9 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700|Open+Sans+Condensed:300,700");
+@import url("font-awesome.min.css");
+@import url("../fonts/OpenSans-CondBold.ttf");
+@import url("../fonts/OpenSans-CondLight.ttf");
+@import url("../fonts/OpenSans-CondLightItalic.ttf");
+
 #contenedor{
 	background-color: #EF2F72;
 	width: 100%;
@@ -70,7 +76,7 @@
   border-bottom: 0;
   list-style: none;
   margin: 0;
-  min-width: 20em;
+  min-width: 19em;
   padding: 0;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
 	color:#ffffff;
@@ -120,7 +126,7 @@
 .dropotron.level-0:before {
   content: '';
   position: absolute;
-  margin-left: 9.2em;
+  margin-left: 8.7em;
   border-bottom: solid 0.9em #2E2E2E;
   border-left: solid 0.9em transparent;
   border-right: solid 0.9em transparent;
@@ -223,4 +229,3 @@
 		font-size: 0.95em;
 }
 
- 
