@@ -1,21 +1,20 @@
-<?php include('../conexion.php');?>
+<?php include('conexion.php');?>
 <link href='https://fonts.googleapis.com/css?family=Nosifer|League+Script|Yellowtail|Permanent+Marker|Codystar|Eater|Molle:400italic|Snowburst+One|Shojumaru|Frijole|Gloria+Hallelujah|Calligraffitti|Tangerine|Monofett|Monoton|Arbutus|Chewy|Playball|Black+Ops+One|Rock+Salt|Pinyon+Script|Orbitron|Sacramento|Sancreek|Kranky|UnifrakturMaguntia|Creepster|Pirata+One|Seaweed+Script|Miltonian|Herr+Von+Muellerhoff|Rye|Jacques+Francois+Shadow|Montserrat+Subrayada|Akronim|Faster+One|Megrim|Cedarville+Cursive|Ewert|Plaster' rel='stylesheet' type='text/css'>
 
-<link href="tdesignAPI/css/api.css" rel="stylesheet">
+<link href="Tee-Designer-Master/tdesignAPI/css/api.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../../css/slimbox2.css">
-<script src="../../js/jquery_min.js"></script>
-<script src="../../js/slimbox2.js"></script>
+<link rel="stylesheet" href="../css/slimbox2.css">
+<script src="../js/jquery_min.js"></script>
+<script src="../js/slimbox2.js"></script>
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-<script src="tdesignAPI/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="tdesignAPI/js/html2canvas.min.js"></script>
-<script type="text/javascript" src="tdesignAPI/js/printImage.js"></script>
-<!--<script src="tdesignAPI/js/pruebaAjax.js"></script>-->
-<script type="text/javascript" src="tdesignAPI/js/modalWindows.js"></script>
-<script src="tdesignAPI/js/jquery.form.js"></script>
-<script src="tdesignAPI/js/mainapp.js"></script>
-<link rel="stylesheet" href="tdesignAPI/css/jquery-ui.css" />
-<script src="tdesignAPI/js/jquery-ui.js"></script>
+<script src="Tee-Designer-Master/tdesignAPI/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="Tee-Designer-Master/tdesignAPI/js/html2canvas.min.js"></script>
+<script type="text/javascript" src="Tee-Designer-Master/tdesignAPI/js/printImage.js"></script>
+<script type="text/javascript" src="Tee-Designer-Master/tdesignAPI/js/modalWindows.js"></script>
+<script src="Tee-Designer-Master/tdesignAPI/js/jquery.form.js"></script>
+<script src="Tee-Designer-Master/tdesignAPI/js/mainapp.js"></script>
+<link rel="stylesheet" href="Tee-Designer-Master/tdesignAPI/css/jquery-ui.css" />
+<script src="Tee-Designer-Master/tdesignAPI/js/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	function changeval() {
@@ -96,11 +95,11 @@
 		<!--=============================================================-->
 		<div id='options'>
 			<div class="T_type">
-				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
+				<div id="radio1" ><img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
 				</div>
-				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/polo.jpg" width="100%" height="100%" />
+				<div id="radio2" ><img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/submenu/polo.jpg" width="100%" height="100%" />
 				</div>
-				<div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
+				<div id="radio3" ><img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
 				</div>
 				<input type="hidden" id="typeCloth" value="2">
 			</div>
@@ -120,13 +119,13 @@
 
 				
 <?php
-	$dir    = 'tdesignAPI/images/Images';
+	$dir    = 'Tee-Designer-Master/tdesignAPI/images/Images';
 	$files1 = scandir($dir);
 	//$files2 = scandir($dir, 1);
 	foreach ($files1 as &$value) {
 		if (strpos($value,'.png') !== false) {
     		//echo 'true';
-			echo '<div class="sample_icons"><img src="tdesignAPI/images/Images/' .$value. '" width="100%" height="100%" /></div>' ;
+			echo '<div class="sample_icons"><img src="Tee-Designer-Master/tdesignAPI/images/Images/' .$value. '" width="100%" height="100%" /></div>' ;
 		}elseif(strpos($value,'.') === false){
 			//echo '<div class="sample_icons"><img src="tdesignAPI/images/folder.png" width="100%" height="100%" />' .$value. '</div>' ;
 		}
@@ -240,9 +239,9 @@
 		<!--======================view start=======================================-->
 
 		<div id='view_mode'>
-			<div  class="mode"><img id="o_front" src="tdesignAPI/images/product/tee/black/black_front.png" width="100%" height="80%" />FRONT
+			<div  class="mode"><img id="o_front" src="Tee-Designer-Master/tdesignAPI/images/product/tee/black/black_front.png" width="100%" height="80%" />FRONT
 			</div>
-			<div  class="mode"><img id="o_back" src="tdesignAPI/images/product/tee/black/black_back.png" width="100%" height="80%" />BACK
+			<div  class="mode"><img id="o_back" src="Tee-Designer-Master/tdesignAPI/images/product/tee/black/black_back.png" width="100%" height="80%" />BACK
 			</div>
 			<div class="mode">
 				<i class="fa fa-binoculars fa-4x preview_images" id="preview_images" data-toggle="modal" data-target=".bs-example-modal-lg"></i>Preview
@@ -252,7 +251,7 @@
 		<?php
 			//include('../conexion.php');
 			$usuario = $_SESSION['id_usuario'];
-			$curso = $_SESSION['curso'];
+			//$curso = $_SESSION['curso'];
 			$buzo = false;
 			$remera = false;
 			$bandera = false;
@@ -264,9 +263,7 @@
 			$frontalBandera = "";
 			$espaldaBandera = "";
 			
-			$query = "select codigo_tipo, path_frontal, path_espalda from disenio as d join usuario as u on 
-			d.id_usuario_subio = u.id_usuario where id_usuario_subio = '$usuario' and u.id_curso = '$curso'";
-			
+			$query = "select codigo_tipo, path_frontal, path_espalda from disenio where id_usuario_subio = '$usuario'";
 			$result = $conexion->query($query);
 			
 			if($result){
@@ -306,7 +303,7 @@
 			<div class="">
 				<ul class="designList">
 					<li class="clothes remera">
-						<img src="tdesignAPI/images/menu_icons/teeDesign.png" width="100" heigth="100" alt="remera">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/teeDesign.png" width="100" heigth="100" alt="remera">
 						<?php 
 							if($remera == true){
 								echo "<div>1</div>";
@@ -315,10 +312,10 @@
 						<!--<div>1</div>-->
 					</li>
 					<li class="del delRemera">
-						<img src="tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
 					</li>
 					<li class="clothes buzo">
-						<img src="tdesignAPI/images/menu_icons/hoodieDesign.png" width="100" heigth="100" alt="buzo">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/hoodieDesign.png" width="100" heigth="100" alt="buzo">
 						<?php
 							if($buzo == true){
 								echo "<div>1</div>";
@@ -327,10 +324,10 @@
 						<!--<div>1</div>-->
 					</li>
 					<li class="del delBuzo">
-						<img src="tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
 					</li>
 					<li class="clothes bandera">
-						<img src="tdesignAPI/images/menu_icons/flagDesign.png" width="100" heigth="100" alt="bandera">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/flagDesign.png" width="100" heigth="100" alt="bandera">
 						<?php
 							if($bandera == true){
 								echo "<div>1</div>";
@@ -339,7 +336,7 @@
 						<!--<div>1</div>-->
 					</li>
 					<li class="del delBandera">
-						<img src="tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
+						<img src="Tee-Designer-Master/tdesignAPI/images/menu_icons/garbage.png" width="30" heigth="30" alt="">
 					</li>
 				</ul>
 				
@@ -527,24 +524,24 @@
 	<?php
 		if($buzo == true){
 			echo "<div id='modal-hoodie'>
-							<img class='front' src=tdesignAPI/".$frontalBuzo." alt='buzo de frente'>
-							<img class='back'  src=tdesignAPI/".$espaldaBuzo." alt='buzo de espalda'>
+							<img class='front' src=Tee-Designer-Master/tdesignAPI/".$frontalBuzo." alt='buzo de frente'>
+							<img class='back'  src=Tee-Designer-Master/tdesignAPI/".$espaldaBuzo." alt='buzo de espalda'>
 							<div><button id='btn-cerrar1'>Cerrar</button></div>
 						</div>";
 		}
 
 		if($remera == true){
 				echo "<div id='modal-tee'>
-								<img class='front' src=tdesignAPI/".$frontalRemera." alt='remera de frente'>
-								<img class='back' src=tdesignAPI/".$espaldaRemera." alt='remera de espalda'>
+								<img class='front' src=Tee-Designer-Master/tdesignAPI/".$frontalRemera." alt='remera de frente'>
+								<img class='back' src=Tee-Designer-Master/tdesignAPI/".$espaldaRemera." alt='remera de espalda'>
 								<div><button id='btn-cerrar2'>Cerrar</button></div>
 							</div>";
 		}	
 
 		if($bandera == true){
 				echo "<div id='modal-flag'>
-								<img class='front' src=tdesignAPI/".$frontalBandera." alt='bandera de frente'>
-								<img class='back' src=tdesignAPI/".$espaldaBandera." alt='bandera de espalda'>
+								<img class='front' src=Tee-Designer-Master/tdesignAPI/".$frontalBandera." alt='bandera de frente'>
+								<img class='back' src=Tee-Designer-Master/tdesignAPI/".$espaldaBandera." alt='bandera de espalda'>
 								<div><button id='btn-cerrar3'>Cerrar</button></div>
 							</div>";
 		}	
@@ -570,11 +567,6 @@
 
 <div class="layer2"></div>
 <div class="messaje"></div>
-<div class="popUp">
-	<p>Ya tienes un dise&ntilde;o guardado anteriormente, si continuas el nuevo dise&ntilde;o reemplazara al anterior.</p>
-	<button id="continuar">Continuar</button>
-	<button id="cancelar">Cancelar</button>
-</div>
 <script>
 	//$('input[type=file]').bootstrapFileInput();
 	//$('.file-inputs').bootstrapFileInput();
@@ -595,5 +587,5 @@
 	});
 
 </script>
-<script type="text/javascript" src="tdesignAPI/js/html2canvas.min.js"></script>
+<script type="text/javascript" src="Tee-Designer-Master/tdesignAPI/js/html2canvas.min.js"></script>
 

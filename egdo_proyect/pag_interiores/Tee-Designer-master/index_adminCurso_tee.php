@@ -1,4 +1,37 @@
-<?php include ("../../bloqueSeguridad.php");?>
+<?php require_once("../../bloqueSeguridad.php");?>
+<?php require_once("../conexion.php");?>
+<?php
+	$flag = 0;
+
+	$queryVerFecha = "select * from actividad_disenio where curso_pertenece_votacion = '$_SESSION[curso]'";
+
+	$result = $conexion->query($queryVerFecha);
+	if($result){
+		
+		if($result->num_rows > 0){
+			
+			$reg = $result->fetch_array(MYSQLI_ASSOC);
+			$fecha_apertura = new DateTime($reg['fecha_apertura']);
+			$fechaHoy = new DateTime();
+			$fechaHoy->format("Y-m-d H:i:s");
+			$interval = $fechaHoy->diff($fecha_apertura);
+			$intervalInDays = $interval->d;
+			if($intervalInDays < 7){
+				$flag = 1;
+			}else if($intervalInDays >= 7 && $intervalInDays < 21){
+				header('location:../votacionAdminCurso.php');
+			
+			}else if($intervalInDays >= 14 && $intervalInDays < 21){
+				$flag = 1;
+			}
+		}
+
+
+	}else{
+		die("Lo sentimos hubo problemas con el servidor");
+	}
+							
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,30 +50,23 @@
     <link rel="stylesheet" href="css/estilosTeeDesigner.css">
 		
 		<script src="../../js/jquery.min.js"></script>
+		<script src="js/disparaEvento.js"></script>
 		
 		<script>
 
-			$(function() {
-				
-				
+			$(function(){
 				$('#main-nav > ul').dropotron({ 
 						offsetY: -50,
 						mode: 'fade',
 						noOpenerFade: true,
 						alignment: 'center'
 				});
-			
 			});
 		</script>
    
-		<script src="js/jquery-1.10.2.js">	</script>
-
-		<script src="js/bootstrap.js">		</script>
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/bootstrap.js"></script>
 		
-		<style>
-
-</style>
-
 </head>
 
 <body>
@@ -96,7 +122,16 @@
 	<div id="maindiv">
 		
 		<?php
-			include 'tdesignAPI/new_applit.php';
+			
+			if($flag == 1){
+				include 'tdesignAPI/new_applit.php';
+			}else if($flag == 0){
+					echo "<p class='msn'>No se ha iniciado la etapa de dise&ntilde;o para este curso, 
+					pulsando aqu&iacute; puedes iniciar el evento.</p>";
+					echo "<button id='btn-disparar'>Disparar Evento</button>";
+					echo "<p class='span'></p>";
+			}
+			
 		?>
 	</div>
 	<div id="footer">

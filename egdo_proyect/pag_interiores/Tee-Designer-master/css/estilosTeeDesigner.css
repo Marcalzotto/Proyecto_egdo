@@ -56,6 +56,22 @@
 	padding: 0;
 	margin: 0;
 	background-color: #333333;
+	text-align: center;
+}
+
+#maindiv p{
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+	color: #fff;
+	font-size: 2em;
+
+}
+.msn{
+	padding-top: 1em;
+}
+.span{
+	padding: 1em;
+	margin: 0;
 }
 
 #main-nav ul {
@@ -227,5 +243,25 @@
 		color: #61666c;
 		overflow: hidden;
 		font-size: 0.95em;
+}
+
+#btn-disparar{
+	-moz-transition: background-color 0.25s ease-in-out;
+    -webkit-transition: background-color 0.25s ease-in-out;
+    -ms-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    background: #79B800;
+    border-radius: 5px;
+    padding: 1.3em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-color: #79B800;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-style: none;
 }
 

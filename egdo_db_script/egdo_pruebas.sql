@@ -40,6 +40,9 @@ alter table disenio add column votacion_pertenece int not null default 9;
 alter table disenio add foreign key (votacion_pertenece) references votacion (id_votacion);
 /*agregar id de votacion a la tabla disenio y relacion foranea del campo a tabla votacion*/ 
 
+/*agregar columna a la tabla disenio */
+alter table disenio add column path_img_doble varchar(100) not null;
+
 create table votos(
 voto int not null primary key,
 id_usuario_voto int not null,

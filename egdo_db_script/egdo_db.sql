@@ -639,3 +639,15 @@ ALTER TABLE `votacion`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Ultimos cambios realizados
+
+ALTER TABLE votos DROP FOREIGN KEY votos_ibfk_4;
+ALTER TABLE votos CHANGE COLUMN votacion_pertenece actividad_disenio_num int;
+
+-- renombrar la tabla votacion por actividad_disenio  
+
+ALTER TABLE votos ADD CONSTRAINT votos_ibfk_4 FOREIGN KEY(actividad_disenio_num) 
+REFERENCES actividad_disenio(actividad_disenio_id);
+
+ALTER TABLE actividad_disenio DROP COLUMN vigente;

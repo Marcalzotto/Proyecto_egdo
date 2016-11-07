@@ -56,12 +56,10 @@
 					<!-- Header -->
 						
 						<div id="header" class="container">
-							
-							
-							
+
 							
 		<?php
-		include '../pag_interiores/menu/masterMenu.php';
+			include '../pag_interiores/menu/masterMenu.php';
 		?>
 								
 		
@@ -71,21 +69,33 @@
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+				<div id="banner-wrapper">
 
-					
+					<!--
+
+						The slider's images (as well as its behavior) can be configured
+						at the top of "assets/js/main.js".
+
+					-->
 
 				
 					
 						
-	<div id="slider">
-	
+					<div id="slider">
 						
-	</div>
-	
-</div>
+					</div>
+				</div>
 
-				
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="intro" class="container">
+							
+						</div>
+						
+						
+				</div>
 				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">

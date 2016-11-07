@@ -29,7 +29,7 @@ if($_POST){
 
 			/*La consulta verifica si existen votos de este usuario para el disenio $id_disenio*/
 
-			$obtenerConjunto = $conexion->query($verificarSiYaVoto) or die($conexion->error);
+			$obtenerConjunto = $conexion->query($verificarSiYaVoto);
 			if($obtenerConjunto){
 
 				$obtenerRegistros = $obtenerConjunto->fetch_array(MYSQLI_ASSOC);
@@ -37,16 +37,16 @@ if($_POST){
 
 				if($cantidadParaEste == 0){
 
-					$buscarVotacionParaVoto = "select votacion_pertenece from disenio where id_disenio = '$id_disenio'";
-					$obtenerNumeroVotacion = $conexion->query($buscarVotacionParaVoto) or die($conexion->error);
+					$buscarIdActividad = "select actividad_disenio_id from actividad_disenio where curso_pertenece_votacion = '$curso_sesion'";
+					$obtenerIdActividad = $conexion->query($buscarIdActividad) or die($conexion->error);
 					
-					if($obtenerNumeroVotacion){
+					if($obtenerIdActividad){
 
-						$regNumeroVotacion = $obtenerNumeroVotacion->fetch_array(MYSQLI_ASSOC);
-						$numeroVotacionVoto = $regNumeroVotacion["votacion_pertenece"]; 
+						$regIdActvidad = $obtenerIdActividad->fetch_array(MYSQLI_ASSOC);
+						$idActividad = $regIdActvidad["actividad_disenio_id"]; 
 					
 						$registrar_voto = "insert into votos values('','$user_voto_id','$id_disenio','$tipo_dis',1,
-							'$numeroVotacionVoto')";
+							'$idActividad')";
 						
 						$conexion->query($registrar_voto) or die($conexion->error);
 

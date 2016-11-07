@@ -1,5 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
-
+<?php include("conexion.php");?>
+<?php include("redireccionarActividad.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -72,17 +73,7 @@
 </header>
 			<!-- Banner Wrapper -->
 <div id="banner-wrapper">
-
-					
-
-				
-					
-						
-	<div id="slider">
-	
-						
-	</div>
-	
+		
 </div>
 
 				
