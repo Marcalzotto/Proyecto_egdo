@@ -215,8 +215,152 @@ height:5%;
 				font-size: 1.8em;
 				text-align: center;
 				font-weight: bold;
-		}		
-}
+		}
+
+		/*estilos lista de pasos*/
+		.lista_pasos{
+    text-align: center;
+    
+    padding-top: 10em;
+		}
+		
+		.pasos{
+			margin: 0;
+			margin-top: 5em;
+			padding: 0;
+		}
+	
+		.pasos li{
+			display: inline-block;
+			margin-left: 1.5em;
+			margin-right: 1.5em;
+			padding: 0;
+		}
+
+		.pasos li div{
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			background-color: #EF2F72;
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 2em;
+			border-color: #1D1D1D;
+			border-style: 0.5px solid;
+			text-align: center;
+			font-weight: bold;
+			margin: 0 auto;
+			line-height: 1.4em;
+		}
+
+		.pasos li p{
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 1em;
+			text-align: center;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.pasos li .active{
+			background-color: #79B800;
+		}
+		
+		/*estilos tablas de talles y medidas de curso*/
+		#formTalles button, #todosLosTalles button, #tablaBandera button{
+    -moz-transition: background-color 0.25s ease-in-out;
+    -webkit-transition: background-color 0.25s ease-in-out;
+    -ms-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+    margin-top: 1.2em;
+    background: #79B800;
+    border-radius: 5px;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-color: #79B800;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-style: none;
+   	margin-left: 3em;
+    margin-right: 3em;
+		}
+
+		 #tabTalles{
+			background: #191919;
+		}
+	
+		#formTalles{
+			text-align: center;
+		}
+		
+		#votacion #respuestaEnvioTalles{
+    text-align: center;
+    color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    padding: 0em;
+    padding-top: 1em;
+    display: none;
+		}
+
+		#votacion #tablaBandera, #votacion #todosLosTalles{
+			text-align: center;
+		}
+	
+		#votacion #formTalles table input, #votacion #tablaBandera table input{
+			display: block;
+		}
+		
+		#votacion #formTalles table, #votacion #todosLosTalles table, #votacion #tablaBandera table{
+    font-family: 'Open Sans Condensed', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+		}
+
+		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+		}
+	
+		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
+			font-size: 1.5em;
+			font-weight: bold;
+			text-align: center;
+			color: #fff;
+		}
+		#votacion #formTalles table th, #votacion #todosLosTalles table th, #votacion #tablaBandera table th{
+			border: 1px solid #dddddd;
+    	text-align: center;
+    	padding: 8px;
+    	font-size: 2em;
+    	font-weight: bold;
+    	color: #fff;
+		}
+		#votacion #formTalles table tr, #votacion #todosLosTalles table tr, #votacion #tablaBandera table tr{
+			text-align: center;
+		}
+		
+		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even){
+    background-color: #79B800;
+		}
+	
+		#votacion #todosLosTalles{
+			margin-top: 2em;
+		}
+
+		#votacion #tablaBandera table td input{
+			margin: 0 auto;
+		}
+
+
+		
+
+}/*termina @media screen and (max-width: 736px)*/
 
 /* Grid */
 
@@ -1797,7 +1941,7 @@ height:5%;
 			/*votacion*/
 			
 			#votacion{
-				margin-top: 2em;
+				/*margin-top: 2em;*/
 				padding: 4em;	
 				
 			}
@@ -2671,6 +2815,7 @@ background: #393939;
 
 		/*Estilos del form de talles*/
 
+
 		#formTalles button, #todosLosTalles button, #tablaBandera button{
     -moz-transition: background-color 0.25s ease-in-out;
     -webkit-transition: background-color 0.25s ease-in-out;
@@ -2761,8 +2906,57 @@ background: #393939;
 			margin: 0 auto;
 		}
 
+
 		
-	}
+		/*estilos lista de pasos*/
+		.lista_pasos{
+    text-align: center;
+    
+    padding-top: 10em;
+		}
+		
+		.pasos{
+			margin: 0;
+			padding: 0;
+		}
+	
+		.pasos li{
+			display: inline-block;
+			margin-left: 4em;
+			margin-right: 4em;
+			padding: 0;
+		}
+
+		.pasos li div{
+			width: 70px;
+			height: 70px;
+			border-radius: 35px;
+			background-color: #EF2F72;
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 3.4em;
+			border-color: #1D1D1D;
+			border-style: 0.5px solid;
+			text-align: center;
+			font-weight: bold;
+			margin: 0 auto;
+			line-height: 1.4em;
+		}
+
+		.pasos li p{
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 1.5em;
+			text-align: center;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.pasos li .active{
+			background-color: #79B800;
+		}
+		
+}
 
 /* Tablet */
 
@@ -2787,6 +2981,55 @@ background: #393939;
 			#intro section:before {
 				left: 15px;
 			}
+
+
+		/*estilos lista de pasos*/
+		.lista_pasos{
+    text-align: center;
+    
+    padding-top: 10em;
+		}
+		
+		.pasos{
+			margin: 0;
+			padding: 0;
+		}
+	
+		.pasos li{
+			display: inline-block;
+			margin-left: 3em;
+			margin-right: 3em;
+			padding: 0;
+		}
+
+		.pasos li div{
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+			background-color: #EF2F72;
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 2.8em;
+			border-color: #1D1D1D;
+			border-style: 0.5px solid;
+			text-align: center;
+			font-weight: bold;
+			margin: 0 auto;
+			line-height: 1.4em;
+		}
+
+		.pasos li p{
+			color: #fff;
+			font-family: 'Open Sans Condensed',sans-serif;
+			font-size: 1em;
+			text-align: center;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.pasos li .active{
+			background-color: #79B800;
+		}
 
 	}
 
@@ -3782,6 +4025,10 @@ li.circle a img{
 	
 	margin-top: 1.6em;
 }
+
+
+
+
 
 
 

@@ -88,6 +88,8 @@
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
+			<script type="text/javascript" src="../js/obtenerMedidaBandera.js"></script>
+			<script type="text/javascript" src="../js/obtenerTallesAlumno.js"></script>
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
@@ -116,6 +118,51 @@
 			<!-- Banner Wrapper -->
 			<div id="banner-wrapper">
 
+				<?php 
+					$var = 0;
+    				//se usa para ver que todo funcione en forma correcta
+    				$fechaPrueba = new datetime("2016-07-19 20:00:00"); 
+						//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
+    				//$fecha_apertura->add(new dateInterval('P6D'));
+
+						$fecha_fin_primer_instancia = new datetime($reg1["fecha_apertura"]);
+													
+						//echo "Fecha fin primer instancia".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
+													
+						$fecha_fin_primer_instancia->add(new dateInterval('P9D')); 
+						//prueba periodo de 2 dias(P2D) real a periodo de 2 minutos y 4 minutos para las fechas
+													
+						//echo "Fecha fin primer instancia + 2 dias".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
+						$fecha_fin_segunda_instancia = new datetime($reg1["fecha_apertura"]);
+
+						//echo "Fecha fin segunda instancia".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
+						$fecha_fin_segunda_instancia->add(new dateInterval('P11D'));
+
+						//echo "Fecha fin segunda instancia + 4 dias".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
+						
+						if($fechaHoy <= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+							
+							echo "<div class='lista_pasos'>
+											<ul class='pasos'>
+												<li><div>1</div><p>Dise&ntilde;a tu ropa</p></li>
+												<li><div class='active'>2</div><p>Vota los dise&ntilde;os</p></li>
+												<li><div>3</div><p>Arma tu pedido</p></li>
+												<li><div>4</div><p>Eleji tu empresa</p></li>
+											</ul>
+										</div>";
+						}else{
+							$var = 1;
+							echo "<div class='lista_pasos'>
+											<ul class='pasos'>
+												<li><div>1</div><p>Dise&ntilde;a tu ropa</p></li>
+												<li><div>2</div><p>Vota los dise&ntilde;os</p></li>
+												<li><div class='active'>3</div><p>Arma tu pedido</p></li>
+												<li><div>4</div><p>Eleji tu empresa</p></li>
+											</ul>
+										</div>";
+						}
+				?>
+
 				<div id="votacion">
 						<div id="alert">
 							<span>No puedes votar dos veces este disenio</span>
@@ -133,33 +180,11 @@
   							<input id="tab3" type="radio" name="tabs">
   							<label for="tab3"><img src="../images/tab_icons/flag.png" alt="">Bandera</label>
     
-    										<?php 
-    											//se usa para ver que todo funcione en forma correcta
-    											$fechaPrueba = new datetime("2016-07-19 20:00:00"); 
-													//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
-    											$fecha_apertura->add(new dateInterval('P6D'));
-
-													$fecha_fin_primer_instancia = new datetime($reg1["fecha_apertura"]);
-													
-													//echo "Fecha fin primer instancia".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
-													
-													$fecha_fin_primer_instancia->add(new dateInterval('P9D')); 
-													//prueba periodo de 2 dias(P2D) real a periodo de 2 minutos y 4 minutos para las fechas
-													
-													//echo "Fecha fin primer instancia + 2 dias".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
-													$fecha_fin_segunda_instancia = new datetime($reg1["fecha_apertura"]);
-
-													//echo "Fecha fin segunda instancia".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
-													$fecha_fin_segunda_instancia->add(new dateInterval('P11D'));
-
-													//echo "Fecha fin segunda instancia + 4 dias".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
-												?>
-
-  								<section id="content1">
+    							<section id="content1">
 
 										<?php
 											
-										if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+										if($fechaHoy <= $fecha_fin_primer_instancia){
 
 										$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
 										where u.id_curso = '$_SESSION[curso]' and d.codigo_tipo = 1";
@@ -186,19 +211,14 @@
 																						width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: ".$unVar['nombre']."</p>
 																						<p>Calificacion: <span>".$unVar['cantidad_votos']."</span><img data-id=".$unVar['id_disenio']." 
 																						data-tipo=".$unVar['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";
-																			
-																			/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$unVar["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unVar["id_disenio"]." "
-    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unVar["nombre"]."</p><p>Calificacion: <span>".$unVar["cantidad_votos"]."</span> 
-    																		<img data-id=".$unVar["id_disenio"]." data-tipo=".$unVar["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-																			}
-
+																		}
 																			echo "</ul>";
 																}
 
 														}else{
 															echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 														}
-													}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+													}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
 																
 																	$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
 																	where d.codigo_tipo = 1 and u.id_curso = '$_SESSION[curso]' order by d.cantidad_votos desc limit 3";
@@ -223,9 +243,6 @@
 																						<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
 																						data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 																					
-																					/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
-    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
 																					}
 
 																					echo "</ul>";
@@ -257,13 +274,8 @@
 																						<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
 																						data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 																		
-																		/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
-    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-																		
 																		echo "</ul>";
 
-																		
 																	}else{
 																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
 																	}
@@ -273,7 +285,6 @@
 													}else{
 														echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 													}
-												
 										?>
   								</section>
     
@@ -309,10 +320,6 @@
 																					width='105' height='105' class='ropa' alt='remera frente'></a><p>Subido por: ".$unRegistro['nombre']."</p>
 																					<p>Calificacion: <span>".$unRegistro['votos_segunda_instancia']."</span><img data-id=".$unRegistro['id_disenio']." 
 																					data-tipo=".$unRegistro['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-    					
-    																/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$unRegistro["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unRegistro["id_disenio"]." "
-    																."width='105' height='105' class='ropa'></a><p>Subido por: ".$unRegistro["nombre"]."</p><p>Calificacion: <span>".$unRegistro["cantidad_votos"]."</span> 
-    																<img data-id=".$unRegistro["id_disenio"]." data-tipo=".$unRegistro["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
     																}
     												
     																echo "</ul>";	
@@ -346,10 +353,6 @@
 																					width='105' height='105' class='ropa' alt='remera frente'></a><p>Subido por: ".$unoMasVotado['nombre']."</p>
 																					<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
 																					data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-
-																			/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
-    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
 																		}
 
 																		echo "</ul>";
@@ -382,10 +385,6 @@
 																					<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
 																					data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 
-																		/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
-    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-																		
 																		echo "</ul>";
 																	}else{
 																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
@@ -393,18 +392,14 @@
 																}else{
 																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 																}
-
-    											}	
-    										
-    									?>
+													}	
+    								?>
   								</section>
     							
     							<section id="content3">
     								<?php
     										
-    										
-
-    											if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+    									if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
 
 														$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
 														where u.id_curso = '$_SESSION[curso]' and d.codigo_tipo = 3";
@@ -431,11 +426,7 @@
 																							width='105' height='105' class='ropa' alt='bandera'></a><p>Subido por: ".$var['nombre']."</p>
 																							<p>Calificacion: <span>".$var['votos_segunda_instancia']."</span><img data-id=".$var['id_disenio']." 
 																							data-tipo=".$var['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-
-    																		/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$var["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$var["id_disenio"]." "
-    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$var["nombre"]."</p><p>Calificacion: <span>".$var["cantidad_votos"]."</span> 
-    																		<img data-id=".$var["id_disenio"]." data-tipo=".$var["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-    																	}
+																			}
 
     																echo "</ul>";
     														}	
@@ -467,11 +458,7 @@
 																					width='105' height='105' class='ropa' alt='bandera'></a><p>Subido por: ".$unoMasVotado['nombre']."</p>
 																					<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
 																					data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-
-																			/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$unoMasVotado["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$unoMasVotado["id_disenio"]." "
-    																			."width='105' height='105' class='ropa'></a><p>Subido por: ".$unoMasVotado["nombre"]."</p><p>Calificacion: <span>".$unoMasVotado["votos_segunda_instancia"]."</span> 
-    																			<img data-id=".$unoMasVotado["id_disenio"]." data-tipo=".$unoMasVotado["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-																		}
+																			}
 
 																		echo "</ul>";
 
@@ -503,10 +490,6 @@
 																					<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
 																					data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 
-																		/*echo "<li><a href=levantar_img_impresion.php?id_imp=".$elGanador["id_disenio"]." rel='lightbox'><img src=levantar_img_frontal.php?id=".$elGanador["id_disenio"]." "
-    																		."width='105' height='105' class='ropa'></a><p>Subido por: ".$elGanador["nombre"]."</p><p>Calificacion: <span>".$elGanador["votos_segunda_instancia"]."</span> 
-    																		 <img data-id=".$elGanador["id_disenio"]." data-tipo=".$elGanador["codigo_tipo"]." src=../images/dropotron_icons/like.png alt=''></p></li>";*/
-																		
 																		echo "</ul>";
 																	}else{
 																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
@@ -515,76 +498,136 @@
 																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 																}
     											}
-    										
-
-    										
     								?>
   								</section>
     							</div>
 										
 										<?php
 											//Verificar la altura de la votacion, si paso la segunda instancia se muestra form con talles
+										if($var == 1){
+											$buscarTalleAnterior = "select talle_buzo, talle_remera from talles_curso where usuario = $_SESSION[id_usuario]";
+											$talles = $conexion->query($buscarTalleAnterior);
+
+											if($talles){
+													if($talles->num_rows > 0){
+														
+														$varr = $talles->fetch_array(MYSQLI_ASSOC);
+														$tBuzo = $varr["talle_buzo"];
+														$tRemera = $varr["talle_remera"];
+														$tBuzo = strtoupper($tBuzo);
+														$tRemera = strtoupper($tRemera);
+													}else{
+														$tBuzo = "N/D";
+														$tRemera = "N/D";
+													}
+											}else{
+												$tBuzo = "N/D";
+												$tRemera = "N/D";
+											}
+
+											echo "<div id='formTalles'>	
+															<h2>Eleg&iacute; tu talle de ropa</h2>
+															
+															<table border='1'>
+																<tr>
+																	<th>Prenda</th>
+																	<th>Talle</th>
+																	<th>Talle elegído anteriormente</th>
+																</tr>
+																<tr>
+																	<td>Buzo</td>
+																	<td><select name='buzo' id='buzo'>
+																				<option value='null'>Seleccionar</option>
+    																		<option value='xs'>XS</option>
+    																		<option value='s'>S</option>
+    																		<option value='m'>M</option>
+    																		<option value='l'>L</option>
+    																		<option value='xl'>XL</option>
+    																		<option value='xxl'>XXL</option>
+																			</select></td>
+																			<td>$tBuzo</td>
+																</tr>
+																<tr>
+																	<td>Remera</td>
+    															<td><select name='remera' id='remera'>
+    																		<option value='null'>Seleccionar</option>
+    																		<option value='xs'>XS</option>
+    																		<option value='s'>S</option>
+    																		<option value='m'>M</option>
+    																		<option value='l'>L</option>
+    																		<option value='xl'>XL</option>
+    																		<option value='xxl'>XXL</option>
+    																	</select></td>
+    																	<td>$tRemera</td>
+																</tr>
+															</table>
+															<button id='tabTalles'>Ver tabla de talles</button><button id='btn-enviar'>Guardar Cambios</button>
+															
+														</div>";
+
+														
+
+														echo "<div id='tablaBandera'>
+																		<h2>Elegi la medida de la bandera</h2>
+																		
+																		
+																		<table border='1'>
+																			<tr>
+																				<th>Item</th>
+																				<th colspan='2'>Medida</th>
+																			</tr>
+																			<tr>
+																				<td rowspan='2'>Bandera</td>
+																				<td>Estandar(1x1,50) Consultar</td>
+																				<td>Otra</td>
+																			</tr>
+																			<tr>
+																				<td><input type='radio' value='estandar' name='medida'></td>
+																				<td><input type='radio' value='otra' name='medida'></td>
+																			</tr>
+																		</table>
+																		<button id='btn-bandera'>Enviar</button><button id='cancelar'>Limpiar</button>
+																		
+																	</div>";
+
+																
+														echo "<div id='todosLosTalles'>";
+
+															$buscartallesAlumnos = "select nombre, talle_buzo, talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario;"; 
+																$allTalles = $conexion->query($buscartallesAlumnos);
+																if($allTalles){
+																	if($allTalles->num_rows > 0){
+																	echo "<h2>Talles de los alumnos de todo el curso</h2>
+    																		<table border='1'>
+    																			<tr>
+    																				<th>Alumno</th>
+    																				<th>Talle Buzo</th>
+    																				<th>Talle Remera</th>
+    																			</tr>";
+    															while($varTalles = $allTalles->fetch_array(MYSQLI_ASSOC)){
+    																	$vecTalles[] = $varTalles;
+    															}		
+    															foreach ($vecTalles as $trTalles) {
+    																	echo"<tr>
+    																				<td>".$trTalles["nombre"]."</td>
+    																				<td>".strtoupper($trTalles["talle_buzo"])."</td>
+    																				<td>".strtoupper($trTalles["talle_remera"])."</td>
+    																			 </tr>";
+    															}		
+    																	
+    															echo "</table>";
+    															echo "<button>Armar Pedido</button>";
+    															
+																	}
+																}
+															echo "</div>";
+    																
+    								}
+
 										$conexion->close();
 										?>
-										<div id="formTalles">
-												<h2>Elejí tu talle de ropa</h2>
-												<table border="1">
-    											<tr>
-    												<th>Prenda</th>
-    												<th>Talle</th>
-    											</tr>
-    											<tr>
-    												<td>Buzo</td>
-    												<td><select name="" id="">
-    															<option value="">Seleccionar</option>	
-    															<option value="">XS</option>
-    															<option value="">S</option>
-    															<option value="">M</option>
-    															<option value="">L</option>
-    															<option value="">XL</option>
-    															<option value="">XXL</option>
-    														</select></td>
-    											</tr>
-    											<tr>
-    												<td>Remera</td>
-    												<td><select name="" id="">
-    															<option value="">Seleccionar</option>
-    															<option value="">XS</option>
-    															<option value="">S</option>
-    															<option value="">M</option>
-    															<option value="">L</option>
-    															<option value="">XL</option>
-    															<option value="">XXL</option>
-    														</select></td>
-    											</tr>
-    											
-    										</table>
-
-    										<button id="tabTalles">Ver tabla de talles</button><button id="btn-enviar">Enviar</button>
-    								</div>
-
-    								<p id="respuestaEnvioTalles">Hola soy Span!</p>
 										
-										<div id="tablaBandera">
-											<h2>Eleji la medida de la bandera</h2>
-											<table border="1">
-												<tr>
-													<th>Item</th>
-													<th colspan="2">Medida</th>
-												</tr>
-												<tr>
-													<td rowspan="2">Bandera</td>
-													<td>Estandar(1x1,50) Consultar</td>
-													<td>Otra</td>
-												</tr>
-												<tr>
-													<td><input type="radio" value="estandar" name="medida"></td>
-													<td><input type="radio" value="otra" name="medida"></td>
-												</tr>
-											</table>
-											<button id="btn-bandera">Enviar</button><button>Cancelar</button>
-										</div>
-    								<div id="todosLosTalles">
+    								<!--<div id="todosLosTalles">
     									<h2>Talles de los alumnos de todo el curso</h2>
     									<table border="1">
     										<tr>
@@ -609,11 +652,9 @@
     										</tr>
     									</table>
     									<button>Armar Pedido</button>
-    								</div>
-							
-					</div>
-					
-					
+    								</div>-->
+						</div>
+				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
@@ -642,9 +683,7 @@
 
 		</div>
 
-		
-		
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/jquery.dropotron.min.js"></script>
 			<script src="../js/skel.min.js"></script>

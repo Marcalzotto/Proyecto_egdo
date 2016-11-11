@@ -321,6 +321,25 @@ CREATE TABLE `votacion` (
   `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE talles_curso(
+	item int primary key not null auto_increment,	
+	codigo_item int not null,
+	talle varchar(3) not null,
+	usuario int not null,
+	curso int not null,
+	foreign key (codigo_item) references codigo_disenio(id_codigo_disenio),
+	foreign key (usuario) references usuario(id_usuario),
+	foreign key (curso) references curso(id_curso)
+);
+
+CREATE TABLE medidas_bandera(
+	id_reg int primary key not null auto_increment,
+	curso int not null,
+	medida varchar(255) not null,
+	num_disenio int not null,
+	foreign key (curso) references curso(id_curso),
+	foreign key (num_disenio) references disenio(id_disenio)
+);
 --
 -- Índices para tablas volcadas
 --

@@ -89,4 +89,6 @@ if($_POST){
 
 	}	
 }
+
+$conexion->close();
 ?>

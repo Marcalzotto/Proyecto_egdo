@@ -150,3 +150,4 @@ id_actividad int not null
 );
 
 select * from imagen;
+
