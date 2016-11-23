@@ -17,7 +17,7 @@
 			$fechaHoy->format("Y-m-d H:i:s");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){
+			if($intervalInDays > 7){ //Poner que es mayor a 7
 				header('location:Tee-Designer-master/index_adminCurso_tee.php');
 			
 			}else if($intervalInDays >= 7 && $intervalInDays < 21){
@@ -90,6 +90,7 @@
 			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
 			<script type="text/javascript" src="../js/obtenerMedidaBandera.js"></script>
 			<script type="text/javascript" src="../js/obtenerTallesAlumno.js"></script>
+			<script type="text/javascript" src="../js/eliminarTallesUsuario.js"></script>
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
@@ -139,8 +140,9 @@
 						$fecha_fin_segunda_instancia->add(new dateInterval('P11D'));
 
 						//echo "Fecha fin segunda instancia + 4 dias".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
-						
-						if($fechaHoy <= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+						$fechaHoy->add(new dateInterval('P13D'));
+
+						if($fechaHoy <= $fecha_fin_primer_instancia || $fechaHoy <= $fecha_fin_segunda_instancia){
 							
 							echo "<div class='lista_pasos'>
 											<ul class='pasos'>
@@ -366,7 +368,8 @@
 																}		
     											}else{
     														
-    														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = '$_SESSION[curso]' order by d.votos_segunda_instancia desc limit 1";
+    														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
+    														d.codigo_tipo = 2 and u.id_curso = '$_SESSION[curso]' order by d.votos_segunda_instancia desc limit 1";
     														
 																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
 
@@ -561,11 +564,29 @@
     																	<td>$tRemera</td>
 																</tr>
 															</table>
-															<button id='tabTalles'>Ver tabla de talles</button><button id='btn-enviar'>Guardar Cambios</button>
 															
 														</div>";
+														echo "<div id='formTallesBotones'>
+																	<button id='tabTalles'>Ver tabla de talles</button><button id='btn-enviar'>Guardar Cambios</button>
+																	</div>";
 
-														
+														echo "<div id='formEliminar'>
+																		<h2>Eliminar Talle</h2>
+																		<table border='1'>
+																			<tr>
+																				<th>Buzo</th>
+																				<th>Remera</th>
+																			</tr>
+																			<tr>
+																				<td><input type='checkbox' name='prenda' value='buzo' id='p1'></td>
+																				<td><input type='checkbox' name='prenda' value='remera' id='p2'></td>
+																			</tr>
+																		</table>
+																	</div>
+																	<div id='formEliminarButtons'>
+																		<button id='btn-eliminar'>Confirmar</button><button id='btn-limpiarchk'>Limpiar</button>
+																	</div>";
+
 
 														echo "<div id='tablaBandera'>
 																		<h2>Elegi la medida de la bandera</h2>
@@ -586,14 +607,16 @@
 																				<td><input type='radio' value='otra' name='medida'></td>
 																			</tr>
 																		</table>
+
 																		<button id='btn-bandera'>Enviar</button><button id='cancelar'>Limpiar</button>
 																		
 																	</div>";
-
+														echo"<div id='botonesMas'><a href='armapedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank'>Armar Pedido</a><a href='empresasAdmin.php'>Paso Siguiente</a></div>";
 																
-														echo "<div id='todosLosTalles'>";
+													/*	echo "<div id='todosLosTalles'>";
 
-															$buscartallesAlumnos = "select nombre, talle_buzo, talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario;"; 
+															$buscartallesAlumnos = "select nombre, talle_buzo, talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario 
+															where tc.curso = $_SESSION[curso];"; 
 																$allTalles = $conexion->query($buscartallesAlumnos);
 																if($allTalles){
 																	if($allTalles->num_rows > 0){
@@ -614,13 +637,15 @@
     																				<td>".strtoupper($trTalles["talle_remera"])."</td>
     																			 </tr>";
     															}		
-    																	
+    																
     															echo "</table>";
-    															echo "<button>Armar Pedido</button>";
+    															echo "<div></div>";
+    															echo "<a href='armapedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank' id='btn-pedido'>Armar Pedido</a>";
     															
 																	}
 																}
-															echo "</div>";
+
+															echo "</div>";*/
     																
     								}
 

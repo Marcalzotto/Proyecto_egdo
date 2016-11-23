@@ -2328,7 +2328,7 @@ text-align: justify;
 
 /*Estilos div Empresas*/
 #banner-wrapper #empresas{
-	margin-top: 5.7em;
+	margin-top: 2.4em;
 	text-align: center;
 	padding: 0.5em;
 }
@@ -2396,6 +2396,21 @@ font-size: 200%;
     margin-top: 0em;
     margin-bottom: 0em;
 }
+
+/*Estilos lista pasos en pagina Empresas*/
+#banner-wrapper #empresas .lista_pasos .pasos li div{
+	font-size: 3.1em;
+}
+
+#banner-wrapper #empresas .lista_pasos .pasos li{
+	margin-left: 4em;
+  margin-right: 4em;
+}
+#banner-wrapper #empresas .lista_pasos{
+	padding-top: 4em;
+}
+
+
 
 /*Estilos para el detalle de las empresas*/
 #banner-wrapper #empresaDetalles{
@@ -2816,7 +2831,7 @@ background: #393939;
 		/*Estilos del form de talles*/
 
 
-		#formTalles button, #todosLosTalles button, #tablaBandera button{
+		#formTallesBotones button, #todosLosTalles button, #tablaBandera button,#formEliminarButtons button{
     -moz-transition: background-color 0.25s ease-in-out;
     -webkit-transition: background-color 0.25s ease-in-out;
     -ms-transition: background-color 0.25s ease-in-out;
@@ -2836,7 +2851,10 @@ background: #393939;
    	margin-left: 3em;
     margin-right: 3em;
 		}
-
+	
+		#formTallesBotones,#formEliminarButtons{
+		text-align: center;
+		}
 		 #tabTalles{
 			background: #191919;
 		}
@@ -2860,42 +2878,53 @@ background: #393939;
 			text-align: center;
 		}
 	
-		#votacion #formTalles table input, #votacion #tablaBandera table input{
+		#votacion #formTalles table input, #votacion #tablaBandera table input, #votacion #formEliminar table input{
 			display: block;
+			text-align: center;
+			margin: auto;
 		}
 		
-		#votacion #formTalles table, #votacion #todosLosTalles table, #votacion #tablaBandera table{
+		#votacion #formTalles table, #votacion #todosLosTalles table, #votacion #tablaBandera table, #votacion #formEliminar table{
     font-family: 'Open Sans Condensed', sans-serif;
     border-collapse: collapse;
     width: 100%;
+    text-align: center;
 		}
 
-		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
+		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td, #votacion #formEliminar table td{
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
+    font-size: 1.5em;
+		font-weight: bold;
+		text-align: center;
+		color: #fff;
 		}
 	
-		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
+		/*#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
 			font-size: 1.5em;
 			font-weight: bold;
 			text-align: center;
 			color: #fff;
-		}
-		#votacion #formTalles table th, #votacion #todosLosTalles table th, #votacion #tablaBandera table th{
+		}*/
+		#votacion #formTalles table th, #votacion #todosLosTalles table th, #votacion #tablaBandera table th, #votacion #formEliminar table th{
 			border: 1px solid #dddddd;
     	text-align: center;
     	padding: 8px;
     	font-size: 2em;
     	font-weight: bold;
     	color: #fff;
+    	/*background: #BB2459; color alternativo de cabecera de tablas*/ 
 		}
-		#votacion #formTalles table tr, #votacion #todosLosTalles table tr, #votacion #tablaBandera table tr{
+		#votacion #formTalles table tr, #votacion #todosLosTalles table tr, #votacion #tablaBandera table tr,#votacion #formEliminar table tr{
 			text-align: center;
+			/*background-color: #191919; color alternativo para las celdas impares*/
 		}
 		
-		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even){
+		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even), #votacion #formEliminar table tr:nth-child(even){
     background-color: #79B800;
+    /*background-color: #333333; color alternativo para las celdas pares*/
+
 		}
 	
 		#votacion #todosLosTalles{
@@ -2905,8 +2934,28 @@ background: #393939;
 		#votacion #tablaBandera table td input{
 			margin: 0 auto;
 		}
+		#votacion #botonesMas{
+			margin-top: 6em;
+			text-align: center;
+		}
+
+		#votacion #botonesMas a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1.4em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #79B800;
+    	padding: 1.4em;
+    	border-radius: 5px;
+    	margin-left: 3em;
+    	margin-right: 3em;
+		}
 
 
+		
+		#votacion #todosLosTalles div{
+			padding: 2em;
+		}
 		
 		/*estilos lista de pasos*/
 		.lista_pasos{
@@ -2956,7 +3005,105 @@ background: #393939;
 			background-color: #79B800;
 		}
 		
-}
+
+		/*estilos tabla arma pedidos*/
+			
+		#pedidos h1,h2{
+			text-align: center;
+			padding: 1em;
+			color: #fff;
+		}
+
+		#pedidos h1{
+			font-size: 2em;
+			
+		}
+
+		#pedidos h2{
+			font-size:1.5em;
+		}
+
+		#pedidos h3{
+			padding: 0.5em;
+			color: #fff;
+			font-size: 1.2em;
+		}
+	
+		#pedidos table input, #votacion #tablaBandera table input{
+			display: block;
+		}
+		
+		#pedidos table{
+    font-family: 'Open Sans Condensed', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+		margin-bottom: 4em;
+		}
+
+		#pedidos table td{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+		}
+	
+		#pedidos table td{
+			font-size: 1.5em;
+			font-weight: bold;
+			text-align: center;
+			color: #fff;
+		}
+		#pedidos table th{
+			border: 1px solid #dddddd;
+    	text-align: center;
+    	padding: 8px;
+    	font-size: 2em;
+    	font-weight: bold;
+    	color: #fff;
+		}
+		#pedidos table tr{
+			text-align: center;
+		}
+		
+		#pedidos table tr:nth-child(even){
+    background-color: #79B800;
+		}
+		
+		#pedidos a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1.2em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #79B800;
+    	padding: 1.4em;
+    	border-radius: 5px;
+    	text-decoration: none;
+		}
+		
+
+		#pedidos ul{
+			text-align: center;
+		}
+	
+		/*Estilos boton para pagina de empresas*/
+
+		#banner-wrapper #empresas #botonesMas a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1.4em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #79B800;
+    	padding: 1.4em;
+    	border-radius: 5px;
+    	margin-left: 3em;
+    	margin-right: 3em;
+		}
+
+		#banner-wrapper #empresas #botonesMas{
+			margin: 5em;
+		}
+
+
+}/*para la mayor resolucion*/
 
 /* Tablet */
 
@@ -4026,9 +4173,14 @@ li.circle a img{
 	margin-top: 1.6em;
 }
 
+#page-wrapper #pedidos{
+	background: #333333;
+	padding: 2em;
+	text-align: center;
+}
 
 
-
+/*estilos del armado de pedidos*/
 
 
 

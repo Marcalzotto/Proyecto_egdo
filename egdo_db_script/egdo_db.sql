@@ -340,6 +340,14 @@ CREATE TABLE medidas_bandera(
 	foreign key (curso) references curso(id_curso),
 	foreign key (num_disenio) references disenio(id_disenio)
 );
+
+CREATE TABLE curso_pdf(
+
+id_arch int primary key not null auto_increment,
+pdf mediumblob not null,
+curso int not null,
+foreign key (curso) references curso(id_curso)
+);
 --
 -- Índices para tablas volcadas
 --

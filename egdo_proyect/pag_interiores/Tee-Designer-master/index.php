@@ -16,9 +16,9 @@
 			$fechaHoy->format("Y-m-d H:i:s");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){
+			if($intervalInDays > 7){
 				$flag = 1;
-			}else if($intervalInDays >= 7 && $intervalInDays < 21){
+			}else if($intervalInDays <= 7 && $intervalInDays < 21){
 				header('location:../votacion.php');
 				
 			}else if($intervalInDays >= 14 && $intervalInDays < 21){

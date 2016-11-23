@@ -571,7 +571,7 @@
 <div class="layer2"></div>
 <div class="messaje"></div>
 <div class="popUp">
-	<p>Ya tienes un dise&ntilde;o guardado anteriormente, si continuas el nuevo dise&ntilde;o reemplazara al anterior.</p>
+	<p>Si ya tienes un dise&ntilde;o guardado anteriormente, al pulsar continuar el nuevo dise&ntilde;o reemplazara al anterior.</p>
 	<button id="continuar">Continuar</button>
 	<button id="cancelar">Cancelar</button>
 </div>

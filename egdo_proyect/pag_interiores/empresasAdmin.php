@@ -83,7 +83,16 @@
 						at the top of "assets/js/main.js".
 
 					-->
+					
 					<div id="empresas">
+						<div class="lista_pasos">
+							<ul class="pasos">
+								<li><div>1</div><p>Dise&ntilde;a tu ropa</p></li>
+								<li><div>2</div><p>Vota los dise&ntilde;os</p></li>
+								<li><div>3</div><p>Arma tu pedido</p></li>
+								<li><div class="active">4</div><p>Eleji tu empresa</p></li>
+							</ul>
+						</div>	
 								<h2>Empresas</h2>	
 								<div>
 									<ul>
@@ -147,6 +156,9 @@
 										
 										
 									</ul>				
+								</div>
+								<div id="botonesMas">
+									<a href="votacionAdminCurso.php">Ir al paso anterior</a>
 								</div>
 					</div>
 					

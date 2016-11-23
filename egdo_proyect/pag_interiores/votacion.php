@@ -16,9 +16,9 @@
 			$fechaHoy->format("Y-m-d H:i:s");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){
+			if($intervalInDays > 7){
 				header('location:Tee-Designer-master/index.php');
-			}else if($intervalInDays >= 7 && $intervalInDays < 21){
+			}else if($intervalInDays <= 7 && $intervalInDays < 21){
 				$flag = 1;
 			}
 		}else{
@@ -83,6 +83,7 @@
 		<script src="../js/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/administrarVotacion.js"></script>
 		<script type="text/javascript" src="../js/obtenerTallesAlumno.js"></script>
+		<script type="text/javascript" src="../js/eliminarTallesUsuario.js"></script>
 			
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
