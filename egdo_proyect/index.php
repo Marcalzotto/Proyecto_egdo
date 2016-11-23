@@ -241,7 +241,13 @@
 	                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
 	                        </div>
 	                        <input class="modal-btn" type="submit"  value="Iniciar Sesion" onclick="javascript:EnviarDatos();"></input>
-	                    </form>
+	                   
+							</br>
+							</br>
+							<a href="recupPass/recupContrasena.php">Recuperar contrase&ntilde;a</a>
+	                    
+
+					   </form>
 	                    <!--<div id="mensaje"> hola</div>-->
         			<script type="text/javascritp">
 					function EnviarDatos(){
