@@ -103,7 +103,7 @@
 				<div id="tmm-form-wizard" class="containers substrate">
 								
 							
-							<form action="../pag_interiores/invitacionesValida.php" method="post" role="form">
+				<form action="../invitaciones/invitacionesEnvio.php" method="post" role="form">
 
 						<div class="form-wizard">
 							
@@ -111,25 +111,74 @@
 
 								<div class="col-md-8 col-sm-7">
 								
-										<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" />
-							</fieldset><!--/ .input-email-->
-							</br>
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" />
-							</fieldset><!--/ .input-email-->
-							</br>
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" />
-							</fieldset><!--/ .input-email-->
-							</br>
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" />
-							</fieldset><!--/ .input-email-->
+										<?php
+											
+												//email
+											$bandera=0;
+											if( empty($_POST['email']) ){
+												
+												$bandera=1;
+												echo "Debe completar el campo email.";
+												
+											}
+											else
+											{	
+													
+													foreach($_POST['email'] as $invitacion)
+													{
+																						
+														// Comprobar mediante  filter_var si es valido el email:
+														if(!filter_var($invitacion,FILTER_VALIDATE_EMAIL )){
+															
+															$bandera=1;
+															echo "- El email '".$invitacion."' no es valido.</br>";
+															
+															}
+														else 
+														{												
+															// Comprobar que no supere cantidad maximo de caracteres:
+															if(strlen($invitacion) > 45){
+															
+																echo "- El email ". $invitacion ." no puede contener mas de 45 caracteres.</br>";
+																$bandera=1;
+															}
+															else{
+															
+																$emailsOk[]=$invitacion;
+																
+															}
+														}
+												
+													}	
+												
+											}
+											
+											if($bandera==0){
+											
+												echo 'Se enviaran invitaciones a los siguientes emails:</br>';
+												foreach($emailsOk as $invitacion){
+												
+													echo '- '.$invitacion.'</br>';
+												
+												}
+												
+												//manera de mandar array por POST o GET
+												$emailsOk = serialize($emailsOk);
+												$emailsOk = urlencode($emailsOk);	
+												
+												
+												echo '<input type="hidden" name="emailsOk" value="'.$emailsOk.'">';
+												echo '<input type="hidden" name="id_curso" value="'.$_POST["id_curso"].'">';
+											}
+											else{
+											
+												echo "<p><a href='registroPaso3.php'>Volver y corregir emails</a></p>";
+											
+											}
+											
+											?>
+											
+											
 									
 
 								</div>
@@ -144,7 +193,7 @@
 						</div>
 						
 						<div class="next">
-							<button class="button button-control" type="submit"><span>Confirmar<b> Invitacion</b></span></button>
+							<button class="button button-control" type="submit"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
 							<div class="button-divider"></div>
 						</div>
 

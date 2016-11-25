@@ -103,72 +103,34 @@
 				<div id="tmm-form-wizard" class="containers substrate">
 								
 							
-							<?php
-											
-												//email
-											$bandera=0;
-											// if( empty($_POST['email']) ){
-												
-												// $bandera=1;
-												// echo "Debe completar el campo email.";
-												
-											// }
-											// else
-											// {	
-													
-													foreach($_POST['email'] as $invitacion)
-													{
-																						
-														// Comprobar mediante  filter_var si es valido el email:
-														if(!filter_var($invitacion,FILTER_VALIDATE_EMAIL )){
-															
-															$bandera=1;
-															echo "- El email '".$invitacion."' no es valido.</br>";
-															
-															}
-														else 
-														{												
-															// Comprobar que no supere cantidad maximo de caracteres:
-															if(strlen($invitacion) > 45){
-															
-																echo "- El email ". $invitacion ." no puede contener mas de 45 caracteres.</br>";
-																$bandera=1;
-															}
-															else{
-															
-																$emailsOk[]=$invitacion;
-																
-															}
-														}
-												
-													}	
-												
-											//}
-											
-											if($bandera==0){
-											
-												echo 'Se enviaran invitaciones a los siguientes emails:</br>';
-												foreach($emailsOk as $invitacion){
-												
-													echo '- '.$invitacion.'</br>';
-												
-												}
-												
-												//manera de mandar array por POST o GET
-												$emailsOk = serialize($emailsOk);
-												$emailsOk = urlencode($emailsOk);	
-												
-												
-												echo '<input type="hidden" name="emailsOk" value="'.$emailsOk.'">';
-												echo '<input type="hidden" name="id_curso" value="'.$_POST["id_curso"].'">';
-											}
-											else{
-											
-												echo "<p><a href='registroPaso3.php'>Volver y corregir emails</a></p>";
-											
-											}
-											
-											?>
+			<form action="../invitaciones/invitacionesEmail.php" method="POST" role="form">
+
+						<div class="form-wizard">
+						
+							<div class="col-md-9 col-sm-7">
+							
+							</br>
+									<div class="rows">
+										
+										<div class="col-md-12 col-sm-12">
+											<fieldset class="input-block">
+												<label for="first-name">Ingrese cantidad de alumnos a invitar</br></label>
+												</br>
+												</br>
+												<input type="text" id="first-name" placeholder="Cantidad de alumnos" name="cant_alumnos"required />													
+											</fieldset><!--/ .input-first-name-->
+										</div>
+									</div><!--/ .row-->
+							</div>
+							
+						</div><!--/ .form-wizard-->
+						
+						<div class="next">
+							<button class="button button-control" type="submit"><span>Paso <b>Siguiente</b></span></button>
+							<div class="button-divider"></div>
+						</div>
+
+					</form><!--/ form-->
 					
 					</div><!--/ .container-->
 				
