@@ -1,5 +1,8 @@
-<?php include ("../bloqueSeguridad.php");?>
-
+<?php include ("../bloqueSeguridad.php");
+			include("ratingbar/_config-rating.php");
+			include("ratingbar/_drawrating.php");
+			include("ratingbar/_drawratingMuestra.php");
+?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -18,9 +21,10 @@
 		<link rel="stylesheet" href="../css/index_gral.css" />
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
-		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+			<link rel="stylesheet" href="../css/rating.css"><!--Estilos Rating Bar-->
+			<!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
+      <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
+			<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
 			<link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
@@ -43,6 +47,8 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
+			<script src="../js/behavior.js"></script>
+			<script src="../js/rating.js"></script>
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/tabs.js"></script>
@@ -104,11 +110,7 @@
 											<ul class="l1">
 													<li><p>Calificacion:</p></li>
 													<li><p class="puntaje">5,0</p></li>
-													<li><span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
-															<span class="marcado">&#9733;</span>
+													<li><p><?=rating_bar1(1,5,'');?></p>
 													</li>
 													<li><img src="../images/dropotron_icons/avatar.png" alt="">:&nbsp;500 en Total.</li>
 													
@@ -122,9 +124,12 @@
 													<li><span>&#9733;</span>1<div style="width: 15px; height: 20px; background:#FE8A59;">0</div></li>
 											</ul>
 								</div>
+								
 								<div class="formCalificar">
+										
 										<h2>Calificar esta empresa</h2>
-										<form>
+										<?=rating_bar(1,5,'');?>
+										<!--<form>
   											<p class="clasificacion">
     												<input id="radio1" type="radio" name="estrellas" value="5">
     												<label class="labelEstrellas" id="label5" for="radio1">★</label>
@@ -137,8 +142,8 @@
     												<input id="radio5" type="radio" name="estrellas" value="1">
     												<label class="labelEstrellas" id="label1" for="radio5">★</label>
   											</p>
-										</form>
-										<p id="texto">No me gusta!</p>
+										</form>-->
+										<p id="texto" class="thanks">Gracias por tu voto!</p>
 								</div>
 								<div id="comentarios">
 									

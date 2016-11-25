@@ -1,4 +1,8 @@
-<?php include ("../bloqueSeguridad.php");?>
+<?php 
+			include ("../bloqueSeguridad.php");
+			include("ratingbar/_config-rating.php");
+			include("ratingbar/_drawratingMuestra.php");
+?>
 
 <!DOCTYPE HTML>
 <!--
@@ -14,9 +18,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		
+			<link rel="stylesheet" href="../css/rating.css"><!--Estilos Rating Bar-->
 		<link rel="stylesheet" href="../css/index_gral.css" />
-		
+	
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
         <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
@@ -43,12 +47,14 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
+			<script src="../js/behavior.js"></script>
+			<script src="../js/rating.js"></script>
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/tabs.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script src="../js/canvasDibujarEstrellas.js"></script>
 		
-	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
 	</head>
@@ -102,13 +108,9 @@
 											<a href="empresa1AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">5,0</p>
-											<ul>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-											</ul>
+											<p><?=rating_bar1(1,5,'');?></p>	
+													
+											
 										</li>
 										
 										<li>
@@ -116,13 +118,7 @@
 											<a href="empresa2AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">4,0</p>
-											<ul>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span>&#9733;</span></li>
-											</ul>
+											<p><?=rating_bar1(1,5,'');?></p>	
 										</li>
 
 										<li>
@@ -130,13 +126,7 @@
 											<a href="empresa3AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">1,7</p>
-											<ul>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span >&#9733;</span></li>
-													<li><span >&#9733;</span></li>
-													<li><span >&#9733;</span></li>
-													<li><span>&#9733;</span></li>
-											</ul>
+											<p><?=rating_bar1(1,5,'');?></p>	
 										</li>
 
 										<li>
@@ -144,24 +134,19 @@
 											<a href="empresa4AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">2,1</p>
-											<ul>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span class="marcado">&#9733;</span></li>
-													<li><span >&#9733;</span></li>
-													<li><span >&#9733;</span></li>
-													<li><span>&#9733;</span></li>
-											</ul>
+											<p><?=rating_bar1(1,5,'');?></p>	
 										</li>
 										
 										
 										
 									</ul>				
 								</div>
+
 								<div id="botonesMas">
 									<a href="votacionAdminCurso.php">Ir al paso anterior</a>
 								</div>
 					</div>
-					
+						
 					
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">

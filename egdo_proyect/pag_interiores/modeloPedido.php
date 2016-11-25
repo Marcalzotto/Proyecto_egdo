@@ -39,12 +39,30 @@
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
-
+		<div id="header-pedido">
+			<div class="cabecera"><img src="../favicon/android-icon-96x96.png" alt=""></div>
+			<div class="cabecera">
+				<ul>
+					<li>Nombre Empresa</li>
+					<li>Direccion, Argentina</li>
+					<li>Telefono</li>
+					<li>Email</li>		
+				</ul>
+			</div>
+		</div>
 			<div id="pedidos">
-				<h1>Armado de pedido solicitado</h1>
-
 				<?php 
-					echo "<h2>Diseños Ganadores</h2>";
+				echo"<h1>Pedido Curso: ".$curso."</h1>";
+					echo "<ul>
+								<li>Nombre Admin</li>
+								<li>Domicilio, Argenitina</li>
+								<li>Email Admin</li>
+								</ul>
+								<ul>
+								<li>Fecha de emision de pedido: xxxx-xx-xx</li>
+								<li>Nombre Escuela</li>
+								<li>Direccion</li>
+								</ul>";
 						$queryGanadores = "select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
 						d.codigo_tipo = 3 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;";
 
@@ -70,7 +88,10 @@
 
 					echo "</ul>";
 
-					$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso';";  
+					/*$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso';";*/
+					
+					$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo != 'N/D' or tc.talle_remera != 'N/D';";
+
 					$allTalles = $conexion->query($buscartallesAlumnos);
 					if($allTalles){
 						if($allTalles->num_rows > 0){
@@ -133,50 +154,55 @@
     										}while ($conexion->next_result());
 										}
 										
-										echo "<table border='1'>
-    											<tr>
-    												<th>Cantidad Total de alumnos</th>
-    												<th>Cantidad Con Talle</th>
-    												<th>Cantidad Sin Talle</th>
-    											</tr>
-    											<tr>	
-    												<td>".$numbers[0]["cantidad"]."</td>
-    												<td>".$numbers[1]["cantidad"]."</td>
-    												<td>".$numbers[2]["cantidad"]."</td>
-													</tr>
+										echo "<table>
+														<tr>
+															<th>Prenda</th>
+															<th>Cantidad Talle S</th>
+															<th>Cantidad Talle M</th>
+															<th>Cantidad Talle L</th>
+															<th>Cantidad Talle XL</th>
+															<th>Cantidad Talle XXL</th>
+															<th>Total</th>
+														</tr>
+														<tr>
+															<td>Buzo</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>25</td>
+														</tr>
+														<tr>
+															<td>Remera</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>5</td>
+															<td>25</td>
+														</tr>
+    											</table>";
+
+    											echo "<h2>Medidas bandera</h2>
+    											<table>
+														<tr>
+															<th>Item</th>
+															<th>Medida</th>
+														</tr>
+														<tr>
+															<td>Bandera</td>
+															<td>Estadanar(1x1,50)</td>
+														</tr>
     											</table>";
 
     					echo "<a href='../pdf/pdfGenerados/generarPdf.php' target='_blank' id='btn-pedido'>Generar PDF</a>
-    								<a href='modeloPedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank'>Ver Modelo de pedido</a>";	
+    								<a href='modeloDePedido.php' target='_blank' id='btn-modelo'>ver modelo de pedido</a>";	
     					$conexion->close();
 				?>
 
 			</div>
-
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							<p>Email: egdoweb@gmail.com</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-							</ul>
-						</div>
-
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-
-				</div>
-
-		</div>
+</div>
 
 		<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>

@@ -153,7 +153,7 @@ height:5%;
 
 	}
 
-	@media screen and (max-width: 736px) {
+	@media screen and (max-width: 736px){
 		
 		body{
 			overflow-x:scroll;
@@ -2593,7 +2593,7 @@ input[type="radio"]:checked ~ .labelEstrellas {
 #empresaDetalles .formCalificar #texto{
 	font-family: 'Open Sans Condensed',sans-serif;
 	color:#fff;
-	font-size: 1.5em;
+	font-size: 1em;
 	display: none;
 	margin-top: 0.5em;
 }
@@ -2829,8 +2829,7 @@ background: #393939;
 				}
 
 		/*Estilos del form de talles*/
-
-
+		
 		#formTallesBotones button, #todosLosTalles button, #tablaBandera button,#formEliminarButtons button{
     -moz-transition: background-color 0.25s ease-in-out;
     -webkit-transition: background-color 0.25s ease-in-out;
@@ -2951,8 +2950,6 @@ background: #393939;
     	margin-right: 3em;
 		}
 
-
-		
 		#votacion #todosLosTalles div{
 			padding: 2em;
 		}
@@ -3101,7 +3098,6 @@ background: #393939;
 		#banner-wrapper #empresas #botonesMas{
 			margin: 5em;
 		}
-
 
 }/*para la mayor resolucion*/
 
@@ -3473,9 +3469,6 @@ background: #393939;
 				padding: 4em 0em;
 			}
 
-		
-		
-
 		/* Nav */
 
 			#nav {
@@ -3817,8 +3810,7 @@ font-size: 200%;
     margin-bottom: 0em;
 }
 
-
-				/*Estilos para detalle de empresas*/
+/*Estilos para detalle de empresas*/
 
 #banner-wrapper #empresaDetalles{
 	margin-top: 8em;
@@ -3840,7 +3832,6 @@ font-size: 200%;
 	
 }
 
-
 #banner-wrapper #empresaDetalles #detalle ul li p img{
 	border-radius: 100px;
 }
@@ -3861,7 +3852,6 @@ color: #fff;
 }
 
 #empresaDetalles #detalle ul li .dato{
-
 	text-align: right;
 }
 
@@ -3907,11 +3897,7 @@ margin-bottom: 1em;
 display: inline-block;
 }
 
-
-
 #empresaDetalles #calificacion ul{
-	
-	
 	margin-right: 0em;
 	text-align: left;
 }
@@ -4018,7 +4004,6 @@ input[type="radio"]:checked ~ .labelEstrellas {
 
 #empresaDetalles .unComentario{
 	background: #2E2E2E;
-  
   padding: 0.5em;
   margin: 0 auto;
   margin-bottom: 0.1em;
@@ -4173,30 +4158,41 @@ li.circle a img{
 	margin-top: 1.6em;
 }
 
+/*estilos del armado de pedidos*/
 #page-wrapper #pedidos{
 	background: #333333;
 	padding: 2em;
+	padding-bottom: 6em; 
 	text-align: center;
 }
+#pedidos ul{
+	display: inline-block;
+	font-family: 'Open Sans Condensed',sans-serif;
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 8em;
+  margin-left: 8em;
+  margin-top: 2em;
+}
 
+#header-pedido{
+    text-align: center;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    color: #fff;
+		font-size: 1.1em;
+}
 
-/*estilos del armado de pedidos*/
-
-
-
-
-
-
-
-
-
-/*a.center {
-padding-top:5px;
-    line-height:1em;
-  
-    text-align:center;
-    color:white;
-}	*/
- 
+#header-pedido .cabecera{
+	margin-top: 1em;
+  margin-left: 14em;
+  margin-right: 14em;
+  margin-bottom: 1em; 
+  display: inline-block;
 	
-	
+}
+
+#header-pedido .cabecera ul li{
+	margin-bottom: 0.2em;
+}
