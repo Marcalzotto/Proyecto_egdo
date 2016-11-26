@@ -17,10 +17,10 @@
 			$fechaHoy->format("Y-m-d H:i:s");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
-			if($intervalInDays > 7){ //Poner que es mayor a 7
+			if($intervalInDays < 7){ //Poner que es mayor a 7
 				header('location:Tee-Designer-master/index_adminCurso_tee.php');
 			
-			}else if($intervalInDays >= 7 && $intervalInDays < 21){
+			}else if($intervalInDays >= 7){
 				$flag = 1;
 			}
 		}else{

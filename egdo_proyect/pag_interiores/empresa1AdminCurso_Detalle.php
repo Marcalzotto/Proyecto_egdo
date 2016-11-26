@@ -1,7 +1,5 @@
-<?php include ("../bloqueSeguridad.php");
-			include("ratingbar/_config-rating.php");
-			include("ratingbar/_drawrating.php");
-			include("ratingbar/_drawratingMuestra.php");
+<?php include("../bloqueSeguridad.php");
+			include("conexion.php");
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -21,7 +19,7 @@
 		<link rel="stylesheet" href="../css/index_gral.css" />
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-			<link rel="stylesheet" href="../css/rating.css"><!--Estilos Rating Bar-->
+			
 			<!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
       <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 			<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
@@ -47,14 +45,12 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<script src="../js/behavior.js"></script>
-			<script src="../js/rating.js"></script>
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/tabs.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<script src="../js/calificacionPalabras.js"></script>
 			<script src="../js/subirComentario.js"></script>
+			<script src="../js/getCalificacion.js"></script>
 	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
@@ -90,6 +86,12 @@
 						at the top of "assets/js/main.js".
 
 					-->
+					<?php
+						$query = "select valor_calificacion from calificacion where id_empresa = 1";
+						$conjunto = $conexion->query($query) or die($conexion->error);
+						$val = $conjunto->fetch_array(MYSQLI_ASSOC);
+						$valor = $val["valor_calificacion"];
+					?>
 					<div id="empresaDetalles">
 								<h2>Detalle de Empresa</h2>
 
@@ -110,39 +112,39 @@
 											<ul class="l1">
 													<li><p>Calificacion:</p></li>
 													<li><p class="puntaje">5,0</p></li>
-													<li><p><?=rating_bar1(1,5,'');?></p>
+													<li id="estrellas"><p id="estrellas-cambia"></p>
 													</li>
-													<li><img src="../images/dropotron_icons/avatar.png" alt="">:&nbsp;500 en Total.</li>
+													<li><img src="../images/dropotron_icons/avatar.png" alt="">:&nbsp;<?php echo 1;?> en Total.</li>
 													
 											</ul>
 											<ul class="l2">
 													
-													<li><span>&#9733;</span>5<div style="width: 250px; height: 20px; background:#9EBF59;">500</div></li>
-													<li><span>&#9733;</span>4<div style="width: 15px; height: 20px; background:#ACD532;">0</div></li>
-													<li><span>&#9733;</span>3<div style="width: 15px; height: 20px; background:#FED733;">0</div></li>
-													<li><span>&#9733;</span>2<div style="width: 15px; height: 20px; background:#FEB133;">0</div></li>
-													<li><span>&#9733;</span>1<div style="width: 15px; height: 20px; background:#FE8A59;">0</div></li>
+													<li><span>&#9733;</span>5<div style="width: 250px; height: 20px; background:#9EBF59;"><?php if($valor == 5){echo 1;}else{echo 0;} ?></div></li>
+													<li><span>&#9733;</span>4<div style="width: 15px; height: 20px; background:#ACD532;"><?php if($valor == 4){echo 1;}else{echo 0;} ?></div></li>
+													<li><span>&#9733;</span>3<div style="width: 15px; height: 20px; background:#FED733;"><?php if($valor == 3){echo 1;}else{echo 0;} ?></div></li>
+													<li><span>&#9733;</span>2<div style="width: 15px; height: 20px; background:#FEB133;"><?php if($valor == 2){echo 1;}else{echo 0;} ?></div></li>
+													<li><span>&#9733;</span>1<div style="width: 15px; height: 20px; background:#FE8A59;"><?php if($valor == 1){echo 1;}else{echo 0;} ?></div></li>
 											</ul>
 								</div>
 								
 								<div class="formCalificar">
 										
 										<h2>Calificar esta empresa</h2>
-										<?=rating_bar(1,5,'');?>
-										<!--<form>
+										
+										<form>
   											<p class="clasificacion">
-    												<input id="radio1" type="radio" name="estrellas" value="5">
-    												<label class="labelEstrellas" id="label5" for="radio1">★</label>
-   													<input id="radio2" type="radio" name="estrellas" value="4">
-    												<label class="labelEstrellas" id="label4" for="radio2">★</label>
+    												<input id="radio5" type="radio" name="estrellas" value="5">
+    												<label class="labelEstrellas" id="label5" for="radio5">★</label>
+   													<input id="radio4" type="radio" name="estrellas" value="4">
+    												<label class="labelEstrellas" id="label4" for="radio4">★</label>
     												<input id="radio3" type="radio" name="estrellas" value="3">
     												<label class="labelEstrellas" id="label3" for="radio3">★</label>
-    												<input id="radio4" type="radio" name="estrellas" value="2">
-   													<label class="labelEstrellas" id="label2" for="radio4">★</label>
-    												<input id="radio5" type="radio" name="estrellas" value="1">
-    												<label class="labelEstrellas" id="label1" for="radio5">★</label>
+    												<input id="radio2" type="radio" name="estrellas" value="2">
+   													<label class="labelEstrellas" id="label2" for="radio2">★</label>
+    												<input id="radio1" type="radio" name="estrellas" value="1">
+    												<label class="labelEstrellas" id="label1" for="radio1">★</label>
   											</p>
-										</form>-->
+										</form>
 										<p id="texto" class="thanks">Gracias por tu voto!</p>
 								</div>
 								<div id="comentarios">

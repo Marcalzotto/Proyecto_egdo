@@ -678,3 +678,5 @@ ALTER TABLE votos ADD CONSTRAINT votos_ibfk_4 FOREIGN KEY(actividad_disenio_num)
 REFERENCES actividad_disenio(actividad_disenio_id);
 
 ALTER TABLE actividad_disenio DROP COLUMN vigente;
+
+ALTER TABLE calificacion add column valor_calificacion int not null;

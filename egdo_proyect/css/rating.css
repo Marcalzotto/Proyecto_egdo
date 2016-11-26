@@ -60,7 +60,8 @@ See readme.txt for full credit details.
 .unit-rating a.r10-unit:hover{width: 300px;}
 
 .unit-rating li.current-rating {
-	background: url(../images/star_rating_img/starrating-egdo-definitivo.jpg) left bottom;
+	/*background: url(../images/star_rating_img/starrating-egdo-definitivo.jpg) left bottom;*/
+	/*background: url(../images/star_rating_img/starrating-egdo-definitivo.jpg) left bottom;*/
 	/*position: absolute;*/
 	height: 30px;
 	display: block;
@@ -71,7 +72,7 @@ See readme.txt for full credit details.
 .voted {color:#999;}
 .thanks {
 		color:#fff;
-    margin-right: 37em;
+    /*margin-right: 37em;*/
     margin-top: 1em;
     font-family: 'Open Sans Condensed',sans-serif;
     font-size: 1em;

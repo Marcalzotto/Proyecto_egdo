@@ -1,7 +1,6 @@
 <?php 
 			include ("../bloqueSeguridad.php");
-			include("ratingbar/_config-rating.php");
-			include("ratingbar/_drawratingMuestra.php");
+			
 ?>
 
 <!DOCTYPE HTML>
@@ -108,7 +107,7 @@
 											<a href="empresa1AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">5,0</p>
-											<p><?=rating_bar1(1,5,'');?></p>	
+											<p></p>	
 													
 											
 										</li>
@@ -118,7 +117,7 @@
 											<a href="empresa2AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">4,0</p>
-											<p><?=rating_bar1(1,5,'');?></p>	
+											<p></p>	
 										</li>
 
 										<li>
@@ -126,7 +125,7 @@
 											<a href="empresa3AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">1,7</p>
-											<p><?=rating_bar1(1,5,'');?></p>	
+											<p></p>	
 										</li>
 
 										<li>
@@ -134,7 +133,7 @@
 											<a href="empresa4AdminCurso_Detalle.php"><img width="70" height="70" src="../images/empresas_logos/logotipo.jpg" alt=""></a>
 											<p>Calificacion:</p>
 											<p class="puntaje">2,1</p>
-											<p><?=rating_bar1(1,5,'');?></p>	
+											<p></p>	
 										</li>
 										
 										
