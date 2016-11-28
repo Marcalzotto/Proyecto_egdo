@@ -40,17 +40,22 @@
 								<img src="../images/settings.png" alt="configuracion">
 						   </a>
 								<ul>
-									<li><a href="../pag_interiores/invitaciones.php">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
+									<li><a href="../invitaciones/invitaciones.php">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../pag_interiores/notificacionesAdmin.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../pag_interiores/agendaAdmin.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-									<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
+									<li><a href="../perfil/editarPerfil.php">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 									<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 								</ul>
 
 		</li>
 									
 	</ul>
-	<div class="bienvenida">Hola </br><?php echo $_SESSION['nombre']; ?>!!</div>
+
+<?php include ("../consultasTablas/consultaUsuario.php");?>	
+	
+	
+	
+	<div class="bienvenida">Hola </br><?php echo $row['nombre']; ?>!!</div>
 		
 </nav>

@@ -14,6 +14,12 @@
 		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
+		<link rel="stylesheet" href="../css/tmm_form_wizard_style_demo.css" />
+		<link rel="stylesheet" href="../css/grid.css" />
+		<link rel="stylesheet" href="../css/tmm_form_wizard_layout.css" />
+		<link rel="stylesheet" href="../css/fontello.css" />
+		<link rel="stylesheet" href="../css/form-elements.css" />
+		
 		<link rel="stylesheet" href="../css/index_gral.css" />
 		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
 		
@@ -89,30 +95,48 @@
 							
 						</div>
 							<h2>Envia invitaciones</h2>
+							
+							<div id="contents">
+
+			<div class="form-container">
+
+				<div id="tmm-form-wizard" class="containers substrate">
 								
 							
+			<form action="../invitaciones/invitacionesEmail.php" method="POST" role="form">
+
+						<div class="form-wizard">
+						
+							<div class="col-md-9 col-sm-7">
 							
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
-							</fieldset><!--/ .input-email-->
 							</br>
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
-							</fieldset><!--/ .input-email-->
-							</br>
-							<fieldset class="input-block">
-										<label for="email"></label>		
-										<input class="emailInvitacion" type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
-							</fieldset><!--/ .input-email-->
-  
-  							
-										<!--/<p id="respuestaDisparo">Hola soy Span!</p>-->
+									<div class="rows">
 										
-										<div id="formDisparaVotacion">
-    									<button data-num="1" id="btn-disparar">Enviar</button>
-    								</div>
+										<div class="col-md-12 col-sm-12">
+											<fieldset class="input-block">
+												<label for="first-name">Ingrese cantidad de alumnos a invitar</br></label>
+												</br>
+												</br>
+												<input type="text" id="first-name" placeholder="Cantidad de alumnos" name="cant_alumnos"required />													
+											</fieldset><!--/ .input-first-name-->
+										</div>
+									</div><!--/ .row-->
+							</div>
+							
+						</div><!--/ .form-wizard-->
+						
+						<div class="next">
+							<button class="button button-control" type="submit"><span>Paso <b>Siguiente</b></span></button>
+							<div class="button-divider"></div>
+						</div>
+
+					</form><!--/ form-->
+					
+					</div><!--/ .container-->
+				
+					</div><!--/ .form-container-->
+
+					</div><!--/ #content-->
 							
 					</div>
 					

@@ -917,7 +917,7 @@
 			/*	Stage Icons	 */
 			.head-icon {
 				display: block;
-				background: url(../images/header-sprite.png) no-repeat 0 0;
+				background: url(../images/imagesAdmin/header-sprite.png) no-repeat 0 0;
 			}
 
 				.head-icon.head-icon-lock { background-position: 10px -22px; }
@@ -925,27 +925,27 @@
 				.tmm-success > .head-icon.head-icon-lock,
 				.tmm-current > .head-icon.head-icon-lock { background-position: 10px -423px; } /**/
 
-				.head-icon.head-icon-user { background: url(../images/academy-greys.png) no-repeat 0 0; } /*background-position: 8px -107px;*/
+				.head-icon.head-icon-user { background: url(../images/imagesAdmin/academy-greys.png) no-repeat 0 0; } /*background-position: 8px -107px;*/
 
 				.tmm-success > .head-icon.head-icon-user,
-				.tmm-current > .head-icon.head-icon-user { background: url(../images/academy.png) no-repeat 0 0;  } /*background-position: 9px -506px;*/
+				.tmm-current > .head-icon.head-icon-user { background: url(../images/imagesAdmin/academy.png) no-repeat 0 0;  } /*background-position: 9px -506px;*/
 
-				.head-icon.head-icon-payment { background: url(../images/group-grey.png) no-repeat 0 0; } /*background-position: 9px -206px;*/
+				.head-icon.head-icon-payment { background: url(../images/imagesAdmin/group-grey.png) no-repeat 0 0; } /*background-position: 9px -206px;*/
 
 				.tmm-success > .head-icon.head-icon-payment,
-				.tmm-current > .head-icon.head-icon-payment { background: url(../images/group.png) no-repeat 0 0; } /*background-position: 9px -606px;*/
+				.tmm-current > .head-icon.head-icon-payment { background: url(../images/imagesAdmin/group.png) no-repeat 0 0; } /*background-position: 9px -606px;*/
 
-				.head-icon.head-icon-details { background: url(../images/checked-grey.png) no-repeat 0 0; } /*background-position: 8px -312px;*/
+				.head-icon.head-icon-details { background: url(../images/imagesAdmin/checked-grey.png) no-repeat 0 0; } /*background-position: 8px -312px;*/
 
 				.tmm-success > .head-icon.head-icon-details,
-				.tmm-current > .head-icon.head-icon-details { background: url(../images/checked.png) no-repeat 0 0; } /*background-position: 8px -713px;*/
+				.tmm-current > .head-icon.head-icon-details { background: url(../images/imagesAdminAdmin/images/checked.png) no-repeat 0 0; } /*background-position: 8px -713px;*/
 				/*	end Stage Icons	 */
 
 
 			/*	Form Icons  */	
 			.form-icon {
 				display: block;
-				/*background: url(../images/educative-academy-buildings2.png) no-repeat 0 0;*/
+				/*background: url(../images/imagesAdmin/educative-academy-buildings2.png) no-repeat 0 0;*/
 			}
 
 				.form-icon.form-icon-user  { background-position: right -19px; }
@@ -957,13 +957,13 @@
 				.form-icon.form-icon-phone { background-position: right -158px; }
 
 			/*	Form title Icons  */	
-			/*.form-icon.title-icon-user	   { background: url(../images/educative-green.png) no-repeat 0 0;background-position: -10px -1px;} background-position: -10px -25px;*/
+			/*.form-icon.title-icon-user	   { background: url(../images/imagesAdmin/educative-green.png) no-repeat 0 0;background-position: -10px -1px;} background-position: -10px -25px;*/
 
-			/*.form-icon.title-icon-lock	   { background: url(../images/padlock.png) no-repeat 0 0;} background-position: -10px -70px;*/
+			/*.form-icon.title-icon-lock	   { background: url(../images/imagesAdmin/padlock.png) no-repeat 0 0;} background-position: -10px -70px;*/
 
-			/*.form-icon.title-icon-payment  { background: url(../images/email.png) no-repeat 0 0; } background-position: -10px -211px;*/
+			/*.form-icon.title-icon-payment  { background: url(../images/imagesAdmin/email.png) no-repeat 0 0; } background-position: -10px -211px;*/
 
-			/*.form-icon.title-icon-card     { background: url(../images/mail.png) no-repeat 0 0;  } background-position: 0px -260px;*/
+			/*.form-icon.title-icon-card     { background: url(../images/imagesAdmin/mail.png) no-repeat 0 0;  } background-position: 0px -260px;*/
 
 		/* ---------------------------------------------------------------------- */
 		/*	FORM COLOR CONFIGURATIONS
