@@ -42,12 +42,17 @@
 									<li><a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../pag_interiores/notificaciones.php">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../pag_interiores/agenda.php">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-									<li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
+									<li><a href="../perfil/editarPerfil.php">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 									<li><a href="../login/logout.php">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 								</ul>
 
 		</li>
 		
 	</ul>
-	<div class="bienvenida">Hola </br><?php echo $_SESSION['nombre']; ?>!!</div>
+	
+<?php include ("../consultasTablas/consultaUsuario.php");?>	
+	
+	
+	
+	<div class="bienvenida">Hola </br><?php echo $row['nombre']; ?>!!</div>
 </nav><!-- Fin Nav -->
