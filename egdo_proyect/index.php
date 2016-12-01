@@ -83,7 +83,7 @@
 										<li class="circle"> <!-- circle -->
 											<a href="#comenza">COMENZA</a>
 										</li>
-										<li class="circle"><a href="pag_interiores/empresa.php">EMPRESAS</a></li>
+										<li class="circle"><a href="contactoEmpresas/empresa.php">EMPRESAS</a></li>
 										<li class="break"><a href="registro/registroPaso1.php">REGISTRO</a></li> 
 										<li class="circle"><a href="#contacto">CONTACTO</a></li>
 									</ul>
@@ -187,32 +187,9 @@
 					
 				</div>
 				
-				<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-					<div id="contacto">
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							
-						<p>Email: egdoweb@gmail.com</p>
-						
-						<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
-							</ul>
-							
-						</div>
-							
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-					</div>
-				</div>
+				<?php
+					include '../pag_interiores/menu/masterFooter.php';
+				?>
 
 		</div>
 
