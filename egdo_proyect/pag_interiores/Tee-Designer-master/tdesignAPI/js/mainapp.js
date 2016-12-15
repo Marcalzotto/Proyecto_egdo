@@ -41,8 +41,8 @@ $(document).ready(function(){
 		change_it();
 		$("#typeCloth").val(2);
 	});
-	$("#radio2").click(function(){	//polo
-		$type="polo";
+	$("#radio2").click(function(){	//antes polo, ahora flag
+		$type="flag"; 
 		change_it();
 		$("#typeCloth").val(3);
 	});
@@ -55,18 +55,18 @@ $(document).ready(function(){
 	/*==========================select back or front=====================*/
 	$("#o_front").click(function(){
 		$y_pos="front";
-				$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_'+$y_pos+'.png) ') ;
-				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png');
-				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png');
+				$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_'+$y_pos+'.jpg) ') ;
+				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.jpg');
+				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.jpg');
 				$("#preview_front").removeClass('dis_none') ;
 				$("#preview_back").addClass('dis_none') ;
 		
 	});
 	$("#o_back").click(function(){
 		$y_pos="back";
-				$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_'+$y_pos+'.png) ') ;
-				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png');
-				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png');
+				$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_'+$y_pos+'.jpg) ') ;
+				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.jpg');
+				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.jpg');
 				$("#preview_back").removeClass('dis_none') ;
 				$("#preview_front").addClass('dis_none') ;
 		
@@ -102,10 +102,10 @@ $(document).ready(function(){
 		change_it();
 	});
 	function change_it(){
-				$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png) ') ;
-				$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png) ') ;
-				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.png');
-				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.png');
+				$("#preview_back").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.jpg) ') ;
+				$("#preview_front").css('background-image', 'url(tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.jpg) ') ;
+				$("#o_front").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_front.jpg');
+				$("#o_back").attr('src','tdesignAPI/images/product/'+$type+'/'+$color+'/'+$color+'_back.jpg');
 		
 	}
 	/*==========================select COLOR OVER=====================*/

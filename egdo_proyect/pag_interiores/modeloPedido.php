@@ -27,6 +27,12 @@
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 -->
+<?php
+	$buscarDatosUsuario = "select * from usuario where id_rol = 2 and id_curso = '$curso';";
+	$result = $conexion->query($buscarDatosUsuario) or die("Problemas con el servidor");
+	$datosUsuario = $result->fetch_array(MYSQLI_ASSOC);
+
+?>
 <html>
 	<head>
 		<title>Untitled</title>
@@ -52,18 +58,22 @@
 		</div>
 			<div id="pedidos">
 				<?php 
+				date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+				$fechaPedido = new DateTime();
+				$fechaPedido->format("dd-mm-yy");
 				echo"<h1>Pedido Curso: ".$curso."</h1>";
 					echo "<ul>
-								<li>Nombre Admin</li>
+								<li>".$datosUsuario["nombre"]." ".$datosUsuario["apellido"]."</li>
 								<li>Domicilio, Argenitina</li>
-								<li>Email Admin</li>
+								<li>".$datosUsuario["email"]."</li>
 								</ul>
 								<ul>
-								<li>Fecha de emision de pedido: xxxx-xx-xx</li>
+								<li>Fecha de emision de pedido: ".$fechaPedido->format("d-m-Y")."</li>
 								<li>Nombre Escuela</li>
 								<li>Direccion</li>
 								</ul>";
-						$queryGanadores = "select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
+						$queryGanadores = "select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_frontal from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
 						d.codigo_tipo = 3 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;";
 
 						$titulos = array("Buzo", "Remera", "Bandera");
@@ -75,7 +85,11 @@
         					if ($result = $conexion->store_result()) {
            					  while ($row = $result->fetch_array(MYSQLI_ASSOC)){
                 				echo "<h3>".$titulos[$i]."</h3>"."</br>";
+                				if($i == 2){
+												echo "<li><img src='Tee-Designer-master/tdesignAPI/$row[path_frontal]' alt='img ganadora'></li>"."</br>";
+                				}else{
             						echo "<li><img src='Tee-Designer-master/tdesignAPI/$row[path_img_doble]' alt='img ganadora'></li>"."</br>";
+            						}
             					}
             				$result->free();
         					}
@@ -129,19 +143,18 @@
     				}
 					}
 
-										$traerTotales = "select count(id_usuario) as cantidad from usuario where id_curso = '$curso'; 
-																		select count(u.id_usuario) as cantidad from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo is not null and tc.talle_remera is not null;
-																		 select count(u.id_usuario) as cantidad from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo is null and tc.talle_remera is null;";
+$traerTotales = "select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 's';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'm';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'l';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xl';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xxl';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 's';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'm';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'l';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xl';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xxl';";								 
+										
 										$ind=0;					 
 										if ($conexion->multi_query($traerTotales)) {
-    									
+													   										
     										do{
         							/* almacenar primer juego de resultados */
         									if($result = $conexion->store_result()) {
            					  			
            					  		$row = $result->fetch_array(MYSQLI_ASSOC);
                 					
-                					$numbers[] = $row;
+                					$talles[] = $row;
             							
             								
             								$result->free();
@@ -153,8 +166,14 @@
         									}
     										}while ($conexion->next_result());
 										}
-										
-										echo "<table>
+
+
+		$total_buzo = 0;
+		$total_remeras = 0;		
+		$total_buzo = $total_buzo + $talles[0]['cantidad'] + $talles[1]['cantidad'] + $talles[2]['cantidad'] + $talles[3]['cantidad'] + $talles[4]['cantidad'];
+		$total_remeras = $total_remeras +	$talles[5]['cantidad'] + $talles[6]['cantidad'] + $talles[7]['cantidad'] + $talles[8]['cantidad'] + $talles[9]['cantidad']; 									
+													
+													echo "<table>
 														<tr>
 															<th>Prenda</th>
 															<th>Cantidad Talle S</th>
@@ -163,27 +182,34 @@
 															<th>Cantidad Talle XL</th>
 															<th>Cantidad Talle XXL</th>
 															<th>Total</th>
-														</tr>
-														<tr>
+														</tr>";
+													echo"<tr>
 															<td>Buzo</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>25</td>
+															<td>".$talles[0]['cantidad']."</td>
+															<td>".$talles[1]['cantidad']."</td>
+															<td>".$talles[2]['cantidad']."</td>
+															<td>".$talles[3]['cantidad']."</td>
+															<td>".$talles[4]['cantidad']."</td>
+															<td>".$total_buzo."</td>
 														</tr>
 														<tr>
 															<td>Remera</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>5</td>
-															<td>25</td>
+															<td>".$talles[5]['cantidad']."</td>
+															<td>".$talles[6]['cantidad']."</td>
+															<td>".$talles[7]['cantidad']."</td>
+															<td>".$talles[8]['cantidad']."</td>
+															<td>".$talles[9]['cantidad']."</td>
+															<td>".$total_remeras."</td>
 														</tr>
     											</table>";
-
+    								
+    								$buscarTalleBandera = "select medida from medidas_bandera where curso = '$curso'";
+    								$bandera = $conexion->query($buscarTalleBandera) or die("Problemas con el servidor");
+    								$medida = $bandera->fetch_array(MYSQLI_ASSOC);
+    								$medidaBandera = $medida["medida"];			
+    											if($medidaBandera == ""){
+    												$medidaBandera = 'N/D';
+    											}
     											echo "<h2>Medidas bandera</h2>
     											<table>
 														<tr>
@@ -192,7 +218,7 @@
 														</tr>
 														<tr>
 															<td>Bandera</td>
-															<td>Estadanar(1x1,50)</td>
+															<td>".$medidaBandera."</td>
 														</tr>
     											</table>";
 

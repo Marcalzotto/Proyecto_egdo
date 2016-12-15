@@ -22,7 +22,7 @@ if($resultSet){
 
 		//$fechaHoy->format('Y-m-d H:i:s');
 
-		$fechaHoy = date('Y-m-d H:i:s');
+		$fechaHoy = date('Y-m-d');
 		$queryInsert = "insert into actividad_disenio values('','$fechaHoy','','$user','$curso')";
 
 		$result = $conexion->query($queryInsert) or die($conexion->error);

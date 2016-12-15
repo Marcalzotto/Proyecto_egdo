@@ -1,0 +1,101 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700|Open+Sans+Condensed:300,700");
+@import url("../../../fonts/font-awesome/css/font-awesome.min.css");
+
+/*
+	Wide Angle by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+*/
+@font-face {
+    font-family: 'know_your_productregular';
+    src: url('../../../fonts/know_your_product-webfont.eot');
+    src: url('../../../fonts/know_your_product-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../../fonts/know_your_product-webfont.woff') format('woff'),
+         url('../../../fonts/know_your_product-webfont.ttf') format('truetype'),
+         url('../../../fonts/know_your_product-webfont.svg#know_your_productregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#page-wrapper{
+	background-color: #333333;
+	font-family: 'Open Sans Condesed',sans-serif;
+	font-weight: bold;
+	color: #fff;
+}
+
+#header-pedido{
+background-color: #191919;
+text-align: center;
+padding-top: 2em;
+}
+#header-pedido .cabecera{
+
+	
+}
+
+/*#header-pedido .cabecera1{
+	text-align: center;
+	
+}*/
+
+
+#header-pedido .cabecera ul{
+list-style: none;
+text-align: center;
+}
+
+
+#pedidos{
+	text-align: center;
+	/*padding-bottom: 2em;
+	padding-left:2em;
+	padding-right: 2em; */
+	padding: 2em;
+}
+
+#pedidos ul{
+	list-style: none;
+}
+#pedidos .disenios{
+	margin-top: 5em;
+	text-align: center;
+}
+
+#pedidos .disenios li{
+
+}
+#pedidos .table{
+	margin: 0 auto;
+  margin-top: 3em;
+ 	color:#fff;
+	font-family: 'Open Sans Condesed',sans-serif;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+	border-spacing: 0;
+}
+
+#pedidos .last{
+	margin-bottom: 5em;
+}
+.table .color{
+	background:#BB2459;
+	border-width: 0.5px;
+	border: 1px solid #fff;
+	margin: 0;
+}
+#pedidos .table .tr .td{
+	
+	border: 1px solid #fff;
+  padding: 0;
+  margin: 0;
+	
+	
+}
+.table .tr{
+	border: 1px solid #fff;
+	margin: 0;
+}
+

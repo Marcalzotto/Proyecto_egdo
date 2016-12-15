@@ -70,6 +70,14 @@
 			<li><div>4</div><p>Eleji tu empresa</p></li>
 	</ul>
 </div>
+<div id="tiempo-finalizar">
+	<?php 
+	$finalizacion = 7;
+
+	$finalizacion = $finalizacion - $intervalInDays;  
+	echo "Finaliza en: ".$finalizacion." Dias.";
+	?>
+</div>
 <div class="container design_api_container">
 	
 	<div class='design_api'>
@@ -98,7 +106,7 @@
 			<div class="T_type">
 				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
 				</div>
-				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/polo.jpg" width="100%" height="100%" />
+				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/flag.jpg" width="100%" height="100%" />
 				</div>
 				<div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
 				</div>

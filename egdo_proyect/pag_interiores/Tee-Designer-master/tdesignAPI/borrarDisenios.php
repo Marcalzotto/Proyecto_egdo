@@ -29,7 +29,7 @@ $respuesta = "";
 
 		if($tipoPrenda == 1 || $tipoPrenda == 2 || $tipoPrenda == 3){
 		
-		$queryVerificar = "select id_disenio, path_frontal, path_espalda from disenio where codigo_tipo = '$tipoPrenda' and id_usuario_subio = '$usuario_sube'";
+		$queryVerificar = "select id_disenio, path_frontal, path_espalda, path_img_doble from disenio where codigo_tipo = '$tipoPrenda' and id_usuario_subio = '$usuario_sube'";
 		
 		$resultados = $conexion->query($queryVerificar);
 		
@@ -45,7 +45,8 @@ $respuesta = "";
 					
 					$del1 = unlink($var['path_frontal']);
 					$del2 = unlink($var['path_espalda']);
-					if($del1 && $del2){
+					$del3 = unlink($var['path_img_doble']);
+					if($del1 && $del2 && $del3){
 						$respuesta = "Los disenios fueron borrados con exito";
 						echo $respuesta;
 					}else{

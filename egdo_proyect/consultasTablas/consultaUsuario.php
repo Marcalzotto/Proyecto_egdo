@@ -20,5 +20,5 @@ $result = $conexion->query($buscarUsuario);
 $row = mysqli_fetch_array($result);//devuelve info utilizando nombre de campo (mysql_fetch_array da error, agregar i)
 
 
-mysqli_close($conexion);
+//mysqli_close($conexion);
 ?>

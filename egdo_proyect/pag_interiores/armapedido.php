@@ -27,6 +27,12 @@
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 -->
+<?php
+	$buscarDatosUsuario = "select * from usuario where id_rol = 2 and id_curso = '$curso';";
+	$result = $conexion->query($buscarDatosUsuario) or die("Problemas con el servidor");
+	$datosUsuario = $result->fetch_array(MYSQLI_ASSOC);
+
+?>
 <html>
 	<head>
 		<title>Untitled</title>
@@ -39,15 +45,37 @@
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
-
+		<div id="header-pedido">
+			<div class="cabecera"><img src="../favicon/android-icon-96x96.png" alt=""></div>
+			<div class="cabecera">
+				<ul>
+					<li>Nombre Empresa</li>
+					<li>Direccion, Argentina</li>
+					<li>Telefono</li>
+					<li>Email</li>		
+				</ul>
+			</div>
+		</div>
 			<div id="pedidos">
-				<h1>Armado de pedido solicitado</h1>
-
 				<?php 
-					echo "<h2>Diseños Ganadores</h2>";
-						$queryGanadores = "select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
-						d.codigo_tipo = 3 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;";
+				date_default_timezone_set('America/Argentina/Buenos_Aires');
 
+				$fechaPedido = new DateTime();
+				$fechaPedido->format("dd-mm-yy");
+				echo"<h1>Pedido Curso: ".$curso."</h1>";
+					echo "<ul>
+								<li>".$datosUsuario["nombre"]." ".$datosUsuario["apellido"]."</li>
+								<li>Domicilio, Argenitina</li>
+								<li>".$datosUsuario["email"]."</li>
+								</ul>
+								<ul>
+								<li>Fecha de emision de pedido: ".$fechaPedido->format("d-m-Y")."</li>
+								<li>Nombre Escuela</li>
+								<li>Direccion</li>
+								</ul>";
+						$queryGanadores = "select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_img_doble from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 2 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;select d.path_frontal from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
+						d.codigo_tipo = 3 and u.id_curso = $curso order by d.votos_segunda_instancia desc limit 1;";
+						echo "</br></br></br></br></br>";
 						$titulos = array("Buzo", "Remera", "Bandera");
 						$i = 0;
 						echo "<ul>";
@@ -57,7 +85,11 @@
         					if ($result = $conexion->store_result()) {
            					  while ($row = $result->fetch_array(MYSQLI_ASSOC)){
                 				echo "<h3>".$titulos[$i]."</h3>"."</br>";
+                				if($i == 2){
+												echo "<li><img src='Tee-Designer-master/tdesignAPI/$row[path_frontal]' alt='img ganadora'></li>"."</br>";
+                				}else{
             						echo "<li><img src='Tee-Designer-master/tdesignAPI/$row[path_img_doble]' alt='img ganadora'></li>"."</br>";
+            						}
             					}
             				$result->free();
         					}
@@ -70,7 +102,10 @@
 
 					echo "</ul>";
 
-					$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso';";  
+					/*$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso';";*/
+					
+					$buscartallesAlumnos = "select u.nombre, tc.talle_buzo, tc.talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo != 'N/D' or tc.talle_remera != 'N/D';";
+
 					$allTalles = $conexion->query($buscartallesAlumnos);
 					if($allTalles){
 						if($allTalles->num_rows > 0){
@@ -108,19 +143,18 @@
     				}
 					}
 
-										$traerTotales = "select count(id_usuario) as cantidad from usuario where id_curso = '$curso'; 
-																		select count(u.id_usuario) as cantidad from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo is not null and tc.talle_remera is not null;
-																		 select count(u.id_usuario) as cantidad from usuario as u left join talles_curso tc on u.id_usuario = tc.usuario where u.id_curso = '$curso' and tc.talle_buzo is null and tc.talle_remera is null;";
+$traerTotales = "select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 's';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'm';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'l';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xl';select count(talle_buzo) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xxl';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 's';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'm';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'l';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xl';select count(talle_remera) as cantidad from talles_curso where curso = '$curso' and talle_buzo = 'xxl';";								 
+										
 										$ind=0;					 
 										if ($conexion->multi_query($traerTotales)) {
-    									
+													   										
     										do{
         							/* almacenar primer juego de resultados */
         									if($result = $conexion->store_result()) {
            					  			
            					  		$row = $result->fetch_array(MYSQLI_ASSOC);
                 					
-                					$numbers[] = $row;
+                					$talles[] = $row;
             							
             								
             								$result->free();
@@ -132,51 +166,69 @@
         									}
     										}while ($conexion->next_result());
 										}
-										
-										echo "<table border='1'>
-    											<tr>
-    												<th>Cantidad Total de alumnos</th>
-    												<th>Cantidad Con Talle</th>
-    												<th>Cantidad Sin Talle</th>
-    											</tr>
-    											<tr>	
-    												<td>".$numbers[0]["cantidad"]."</td>
-    												<td>".$numbers[1]["cantidad"]."</td>
-    												<td>".$numbers[2]["cantidad"]."</td>
-													</tr>
+
+
+		$total_buzo = 0;
+		$total_remeras = 0;		
+		$total_buzo = $total_buzo + $talles[0]['cantidad'] + $talles[1]['cantidad'] + $talles[2]['cantidad'] + $talles[3]['cantidad'] + $talles[4]['cantidad'];
+		$total_remeras = $total_remeras +	$talles[5]['cantidad'] + $talles[6]['cantidad'] + $talles[7]['cantidad'] + $talles[8]['cantidad'] + $talles[9]['cantidad']; 									
+													
+													echo "<table>
+														<tr>
+															<th>Prenda</th>
+															<th>Cantidad Talle S</th>
+															<th>Cantidad Talle M</th>
+															<th>Cantidad Talle L</th>
+															<th>Cantidad Talle XL</th>
+															<th>Cantidad Talle XXL</th>
+															<th>Total</th>
+														</tr>";
+													echo"<tr>
+															<td>Buzo</td>
+															<td>".$talles[0]['cantidad']."</td>
+															<td>".$talles[1]['cantidad']."</td>
+															<td>".$talles[2]['cantidad']."</td>
+															<td>".$talles[3]['cantidad']."</td>
+															<td>".$talles[4]['cantidad']."</td>
+															<td>".$total_buzo."</td>
+														</tr>
+														<tr>
+															<td>Remera</td>
+															<td>".$talles[5]['cantidad']."</td>
+															<td>".$talles[6]['cantidad']."</td>
+															<td>".$talles[7]['cantidad']."</td>
+															<td>".$talles[8]['cantidad']."</td>
+															<td>".$talles[9]['cantidad']."</td>
+															<td>".$total_remeras."</td>
+														</tr>
+    											</table>";
+    								
+    								$buscarTalleBandera = "select medida from medidas_bandera where curso = '$curso'";
+    								$bandera = $conexion->query($buscarTalleBandera) or die("Problemas con el servidor");
+    								$medida = $bandera->fetch_array(MYSQLI_ASSOC);
+    								$medidaBandera = $medida["medida"];			
+    											if($medidaBandera == ""){
+    												$medidaBandera = 'N/D';
+    											}
+    											echo "<h2>Medidas bandera</h2>
+    											<table>
+														<tr>
+															<th>Item</th>
+															<th>Medida</th>
+														</tr>
+														<tr>
+															<td>Bandera</td>
+															<td>".$medidaBandera."</td>
+														</tr>
     											</table>";
 
-    					echo "<a href='../pdf/pdfGenerados/generarPdf.php' target='_blank' id='btn-pedido'>Generar PDF</a>
-    								<a href='modeloPedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank'>Ver Modelo de pedido</a>";	
+    					echo "<a href='../pdf/pdfGenerados/generarPdf.php?curso=".base64_encode($curso)."' target='_blank' id='btn-pedido'>Generar PDF</a>
+    								<a href='../pdf/pdfGenerados/pruebaPdf.php?curso=".base64_encode($curso)."' target='_blank' id='btn-modelo'>ver modelo de pedido</a>";	
     					$conexion->close();
 				?>
 
 			</div>
-
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							<p>Email: egdoweb@gmail.com</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-							</ul>
-						</div>
-
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-
-				</div>
-
-		</div>
+</div>
 
 		<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>

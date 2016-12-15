@@ -12,7 +12,7 @@ require_once("conexion.php");
 		//$talleRemera = $_POST["remeraTalle"];
 
 
-		if(!$talleBuzo && !$talleRemera){
+		if($talleBuzo == "null" && $talleRemera == "null"){
 			echo -1; //"Por favor llena todos los campos de este formulario"; //mensaje error -1
 		}else if(strcmp($talleBuzo, "xs") != 0 && strcmp($talleBuzo, "s") != 0 && strcmp($talleBuzo, "m") != 0 && strcmp($talleBuzo, "l") != 0 && strcmp($talleBuzo, "xl") != 0 && strcmp($talleBuzo, "xxl") != 0 && strcmp($talleBuzo, "null") != 0){
 			echo -2; //"El talle elegido de buzo no concuerda con los proporcionados :".$talleBuzo; //mensaje error -2
@@ -65,10 +65,21 @@ require_once("conexion.php");
 						echo -4; //"Hubo problemas al cambiar los talles, intenta de nuevo mas tarde";//mensaje error -4
 					}
 				}else{
-			
+						
+						if($talleBuzo == "null"){
+						$talleBuzo = "N/D";
+						
+						}
+						if($talleRemera == "null"){
+						$talleRemera = "N/D";
+						
+						}
+
 			$insercion = "insert into talles_curso values('','$talleBuzo','$talleRemera','$_SESSION[id_usuario]','$_SESSION[curso]')"; 
 					$inserted = $conexion->query($insercion);
 					if($inserted){
+
+					
 						echo $talleBuzo."-".$talleRemera; //"La operacion se ha realizado con exito";//vienen los talles
 					}else{
 						echo -5; //"Hubo problemas al guardar tus talles";//mensaje error -5

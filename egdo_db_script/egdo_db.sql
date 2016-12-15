@@ -348,6 +348,15 @@ pdf mediumblob not null,
 curso int not null,
 foreign key (curso) references curso(id_curso)
 );
+
+CREATE TABLE comentario_empresas(
+id_comentario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+comentario VARCHAR(2000) NOT NULL,
+id_empresa INT NOT NULL,
+id_usuario INT NOT NULL,
+FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa),
+FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
 --
 -- Índices para tablas volcadas
 --
@@ -680,3 +689,6 @@ REFERENCES actividad_disenio(actividad_disenio_id);
 ALTER TABLE actividad_disenio DROP COLUMN vigente;
 
 ALTER TABLE calificacion add column valor_calificacion int not null;
+ALTER TABLE actividad_disenio CHANGE COLUMN fecha_apertura fecha_apertura date;
+ALTER TABLE comentario CHANGE COLUMN comentario comentario VARCHAR(1000);
+ALTER TABLE comentario_empresas CHANGE COLUMN fecha fecha DATETIME NOT NULL;

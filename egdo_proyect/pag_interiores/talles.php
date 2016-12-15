@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" href="../css/talles.css" />
 	
@@ -19,16 +19,16 @@
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-				<div id="header-wrapper">
+				<!--<div id="header-wrapper">-->
 
 					<!-- Header -->
-						<div id="header" class="container">
+						<!--<div id="header" class="container">-->
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="index.html"><span>Wide <b>Angle</b></span></a></h1>
+								<!--<h1 id="logo"><a href="index.html"><span>Wide <b>Angle</b></span></a></h1>-->
 
 							<!-- Nav -->
-								<nav id="nav">
+								<!--<nav id="nav">
 									<ul>
 										<li>
 											<a href="#">Dropdown</a>
@@ -56,7 +56,7 @@
 
 						</div>
 
-				</div>
+				</div>-->
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
@@ -281,10 +281,10 @@
 				</div>
 
 			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
+				<!--<div id="footer-wrapper">-->
 
 					<!-- Footer -->
-						<div id="footer" class="container">
+						<!--<div id="footer" class="container">
 							<header>
 								<h2>lorem ipsum dolor sit amet</h2>
 							</header>
@@ -295,25 +295,25 @@
 								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
 								<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li>
 							</ul>
-						</div>
+						</div>-->
 
 					<!-- Copyright -->
-						<div id="copyright" class="container">
+						<!--<div id="copyright" class="container">
 							&copy; Untitled. All rights reserved.
-						</div>
+						</div>-->
 
-				</div>
+				<!--</div>
 
-		</div>
+		</div>-->
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
+		<!--	<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>-->
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<!--<script src="../js/main.js"></script>-->
 
 	</body>
 </html>

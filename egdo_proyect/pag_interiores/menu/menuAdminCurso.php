@@ -16,10 +16,10 @@
 				<img src="../images/shirt.png" alt="Dise&ntilde;ar">
 			</a>
 				<ul>
-					<li><a href="../pag_interiores/Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-					<li><a href="../pag_interiores/votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
+					<li><a href="../pag_interiores/Tee-Designer-Master/index_adminCurso_tee.php">Dise&ntilde;o<img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
+					<!--<li><a href="../pag_interiores/votacionAdminCurso.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
 					<li><a href="../pag_interiores/empresasAdmin.php">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-					<li><a href="../pag_interiores/subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
+					<li><a href="../pag_interiores/subir_arch_adminCurso.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>-->
 				</ul>
 		</li>
 		<li class="circle"><a href="../pag_interiores/fiesta.php"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>

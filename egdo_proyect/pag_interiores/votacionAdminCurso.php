@@ -1,10 +1,12 @@
 <?php require_once("../bloqueSeguridad.php");?>
 <?php require_once("conexion.php");?>
 <?php 
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;
-
-	$queryVerFecha = "select * from actividad_disenio where usuario_apertura = '$_SESSION[id_usuario]' 
-										and curso_pertenece_votacion = '$_SESSION[curso]'";
+	$curso = $_SESSION['curso'];
+	$usuario = $_SESSION['id_usuario'];
+	$queryVerFecha = "select * from actividad_disenio where usuario_apertura = '$usuario' 
+										and curso_pertenece_votacion = '$curso'";
 
 	$result = $conexion->query($queryVerFecha);
 	if($result){
@@ -14,20 +16,17 @@
 			$reg1 = $result->fetch_array(MYSQLI_ASSOC);
 			$fecha_apertura = new DateTime($reg1['fecha_apertura']);
 			$fechaHoy = new DateTime();
-			$fechaHoy->format("Y-m-d H:i:s");
+			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
 			if($intervalInDays < 7){ //Poner que es mayor a 7
 				header('location:Tee-Designer-master/index_adminCurso_tee.php');
-			
 			}else if($intervalInDays >= 7){
 				$flag = 1;
 			}
 		}else{
 			header('location:Tee-Designer-master/index_adminCurso.php');
 		}
-
-
 	}else{
 		die("Lo sentimos hubo problemas con el servidor");
 	}
@@ -76,10 +75,7 @@
 			
 			<!-- modal  -->
 			
-			
-			
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
 			<script type="text/javascript" src="../js/jquery_min.js"></script>
@@ -119,14 +115,15 @@
 			<!-- Banner Wrapper -->
 			<div id="banner-wrapper">
 
-				<?php 
+				<?php
+					include("conexion.php"); 
 					$var = 0;
     				//se usa para ver que todo funcione en forma correcta
-    				$fechaPrueba = new datetime("2016-07-19 20:00:00"); 
+    				//$fechaPrueba = new datetime("2016-07-19 20:00:00"); 
 						//echo "fecha de Hoy".$fechaHoy->format("Y-m-d H:i:s")."</br>";
-    				//$fecha_apertura->add(new dateInterval('P6D'));
+    				$fecha_apertura->add(new dateInterval('P7D'));
 
-						$fecha_fin_primer_instancia = new datetime($reg1["fecha_apertura"]);
+						$fecha_fin_primer_instancia = new DateTime($reg1['fecha_apertura']);
 													
 						//echo "Fecha fin primer instancia".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
 													
@@ -134,15 +131,23 @@
 						//prueba periodo de 2 dias(P2D) real a periodo de 2 minutos y 4 minutos para las fechas
 													
 						//echo "Fecha fin primer instancia + 2 dias".$fecha_fin_primer_instancia->format("Y-m-d H:i:s")."</br>";
-						$fecha_fin_segunda_instancia = new datetime($reg1["fecha_apertura"]);
+						$fecha_fin_segunda_instancia = new DateTime($reg1['fecha_apertura']);
 
 						//echo "Fecha fin segunda instancia".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
-						$fecha_fin_segunda_instancia->add(new dateInterval('P11D'));
+						$fecha_fin_segunda_instancia->add(new dateInterval('P12D'));
 
 						//echo "Fecha fin segunda instancia + 4 dias".$fecha_fin_segunda_instancia->format("Y-m-d H:i:s")."</br>";
-						$fechaHoy->add(new dateInterval('P13D'));
+						//$fechaHoy->add(new dateInterval('P13D'));
+						include('funciones/obtenerMaximoDisenio.php');
+						include("funciones/funcion_imprimir_disenios.php");
+						include('funciones/funcion_imprimir_formularios_talles.php');
+						
 
-						if($fechaHoy <= $fecha_fin_primer_instancia || $fechaHoy <= $fecha_fin_segunda_instancia){
+						$maxBuzo = obtener_cantidad_ganadores($conexion,1,$curso);
+						$maxRemera = obtener_cantidad_ganadores($conexion,2,$curso);
+						$maxBandera = obtener_cantidad_ganadores($conexion,3,$curso);
+						
+						if($fechaHoy <= $fecha_fin_segunda_instancia){
 							
 							echo "<div class='lista_pasos'>
 											<ul class='pasos'>
@@ -152,13 +157,22 @@
 												<li><div>4</div><p>Eleji tu empresa</p></li>
 											</ul>
 										</div>";
-						}else{
-							$var = 1;
+						}else if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
+							
 							echo "<div class='lista_pasos'>
 											<ul class='pasos'>
 												<li><div>1</div><p>Dise&ntilde;a tu ropa</p></li>
 												<li><div>2</div><p>Vota los dise&ntilde;os</p></li>
 												<li><div class='active'>3</div><p>Arma tu pedido</p></li>
+												<li><div>4</div><p>Eleji tu empresa</p></li>
+											</ul>
+										</div>";
+						}else{
+									echo "<div class='lista_pasos'>
+											<ul class='pasos'>
+												<li><div>1</div><p>Dise&ntilde;a tu ropa</p></li>
+												<li><div class='active'>2</div><p>Vota los dise&ntilde;os</p></li>
+												<li><div>3</div><p>Arma tu pedido</p></li>
 												<li><div>4</div><p>Eleji tu empresa</p></li>
 											</ul>
 										</div>";
@@ -169,8 +183,19 @@
 						<div id="alert">
 							<span>No puedes votar dos veces este disenio</span>
 						</div>
-							<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>
-								
+						<?php
+								if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+								print "<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>";
+								}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+								print "<h2>Vota el mejor dise&ntilde;o, solo puedes votar 1.</h2>";
+								}else if($fechaHoy > $fecha_fin_segunda_instancia){
+									if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
+								print "<h2>Votacion finalizada</h2>";
+									}else{
+								print "<h2>Votacion empatada, esperando desempate.</h2>";		
+									}
+								}
+						?>
 							<div id="main">
   
   							<input id="tab1" type="radio" name="tabs" checked>
@@ -185,499 +210,63 @@
     							<section id="content1">
 
 										<?php
-											
-										if($fechaHoy <= $fecha_fin_primer_instancia){
-
-										$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
-										where u.id_curso = '$_SESSION[curso]' and d.codigo_tipo = 1";
-
-														$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
-
-														if($resultSetTipo1){
-													
-																$cant_regs = $resultSetTipo1->num_rows;
-
-																if($cant_regs == 0){
-																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para la votacion</p>";
-																}else{
-																
-																		while($reg = $resultSetTipo1->fetch_array(MYSQLI_ASSOC)){
-																			$varRegistros[] = $reg;
-																		}
-
-																			echo "<ul class=primer_instancia>";
-
-																		foreach($varRegistros as $unVar){
-																			
-																			echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unVar['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unVar['path_frontal']." 
-																						width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: ".$unVar['nombre']."</p>
-																						<p>Calificacion: <span>".$unVar['cantidad_votos']."</span><img data-id=".$unVar['id_disenio']." 
-																						data-tipo=".$unVar['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";
-																		}
-																			echo "</ul>";
-																}
-
-														}else{
-															echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-														}
-													}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
-																
-																	$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-																	where d.codigo_tipo = 1 and u.id_curso = '$_SESSION[curso]' order by d.cantidad_votos desc limit 3";
-																
-																	$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
-
-																	if($consultaMasVotados){
-																		
-																			$cantidadDeRegistros = $consultaMasVotados->num_rows;
-																			if($cantidadDeRegistros > 0){
-																			
-																					echo "<ul class=segunda_instancia>";		
-																				
-																					while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
-																						$arrayMasVotados1[] = $deAunGanador;
-																					}
-
-																					foreach($arrayMasVotados1 as $unoMasVotado){
-																					
-																					echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_frontal']." 
-																						width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: ".$unoMasVotado['nombre']."</p>
-																						<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
-																						data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-																					
-																					}
-
-																					echo "</ul>";
-
-																			}else{
-																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
-																			}
-
-																	}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																	}	
-													}else if($fechaHoy >= $fecha_fin_segunda_instancia){
-																/*ESTE CODIGO AHORA VA EN LA PANTALLA DONDE SE ELIJE EL LISTADO DE TALLES*/
-														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where d.codigo_tipo = 1 and u.id_curso = '$_SESSION[curso]' order by d.votos_segunda_instancia desc limit 1";
-																
-																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
-
-																if($traerGanador){
-																	$hayUnGanador = $traerGanador->num_rows;
-
-																	if($hayUnGanador > 0){
-																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
-																		echo "<ul class=tercer_instancia>";
-
-																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
-
-																		echo "<li><a href=Tee-Designer-master/tdesignAPI/".$elGanador['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$elGanador['path_frontal']." 
-																						width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: ".$elGanador['nombre']."</p>
-																						<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
-																						data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-																		
-																		echo "</ul>";
-
-																	}else{
-																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
-																	}
-																}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																}
-													}else{
-														echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-													}
+								
+								imprimir_disenios($conexion,$fecha_apertura,$fecha_fin_primer_instancia,$fecha_fin_segunda_instancia,$curso,1);
+									
 										?>
   								</section>
     
   								<section id="content2">
-    									<?php
-    										
-    										if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
-
-    												$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
-														where u.id_curso = '$_SESSION[curso]' and d.codigo_tipo = 2";
-    												
-														$resultSet = $conexion->query($qry) or die($conexion->error);
-    										
-    												if($resultSet){
-
-    														$cant_regs = $resultSet->num_rows;
-    											
-    														if($cant_regs == 0){
-    												
-    																echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
-    											
-    														}else{
-    													
-    																while($registro = $resultSet->fetch_array(MYSQLI_ASSOC)){
-    																	$contenerRegistros[] = $registro;
-    																}
-    											
-    																echo "<ul class=primer_instancia>";
-
-    																foreach ($contenerRegistros as $unRegistro) {
-
-    																echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unRegistro['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unRegistro['path_frontal']." 
-																					width='105' height='105' class='ropa' alt='remera frente'></a><p>Subido por: ".$unRegistro['nombre']."</p>
-																					<p>Calificacion: <span>".$unRegistro['votos_segunda_instancia']."</span><img data-id=".$unRegistro['id_disenio']." 
-																					data-tipo=".$unRegistro['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-    																}
-    												
-    																echo "</ul>";	
-    														}
-    												}else{
-    													
-    													echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-    												}
-    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
-
-    													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-																	where d.codigo_tipo = 2 and u.id_curso = '$_SESSION[curso]' order by d.cantidad_votos desc limit 3";
-    													
-															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
-
-															if($consultaMasVotados){
-																		
-																$cantidadDeRegistros = $consultaMasVotados->num_rows;
-																
-																if($cantidadDeRegistros > 0){
-																			
-																		echo "<ul class=segunda_instancia>";		
-																				
-																		while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
-																			$arrayMasVotados2[] = $deAunGanador;
-																		}
-																		
-																		foreach($arrayMasVotados2 as $unoMasVotado){
-																			
-																			echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_frontal']." 
-																					width='105' height='105' class='ropa' alt='remera frente'></a><p>Subido por: ".$unoMasVotado['nombre']."</p>
-																					<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
-																					data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-																		}
-
-																		echo "</ul>";
-
-																	}else{
-																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
-																	}
-
-																}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																}		
-    											}else{
-    														
-    														$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario where 
-    														d.codigo_tipo = 2 and u.id_curso = '$_SESSION[curso]' order by d.votos_segunda_instancia desc limit 1";
-    														
-																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
-
-																if($traerGanador){
-																	$hayUnGanador = $traerGanador->num_rows;
-
-																	if($hayUnGanador > 0){
-																		
-																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
-																		echo "<ul class=tercer_instancia>";
-
-																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
-																		
-																		echo "<li><a href=Tee-Designer-master/tdesignAPI/".$elGanador['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$elGanador['path_frontal']." 
-																					width='105' height='105' class='ropa' alt='remera frente'></a><p>Subido por: ".$elGanador['nombre']."</p>
-																					<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
-																					data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-
-																		echo "</ul>";
-																	}else{
-																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
-																	}
-																}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																}
-													}	
-    								?>
+    							<?php
+    								
+    							imprimir_disenios($conexion,$fecha_apertura,$fecha_fin_primer_instancia,$fecha_fin_segunda_instancia,$curso,2);
+    									
+    							?>
   								</section>
     							
     							<section id="content3">
-    								<?php
-    										
-    									if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+    							<?php
 
-														$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
-														where u.id_curso = '$_SESSION[curso]' and d.codigo_tipo = 3";
-
-    												$resultSetTipo2 = $conexion->query($qry) or die($conexion->error);
-
-    												if($resultSetTipo2){
-    										
-    													$cant_regs = $resultSetTipo2->num_rows; 	
-
-    														if($cant_regs == 0){
-    																echo "<p id=no-ul>No hay dise&ntilde;os subidos para esta votacion.</p>";
-																}else{
-    													
-    																while($reg2 = $resultSetTipo2->fetch_array(MYSQLI_ASSOC)){
-    																	$vector[] = $reg2; 
-    																}
-    										
-    																echo "<ul class=primer_instancia>";
-
-    																	foreach ($vector as $var) {
-    																		
-    																		echo "<li><a href=Tee-Designer-master/tdesignAPI/".$var['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$var['path_frontal']." 
-																							width='105' height='105' class='ropa' alt='bandera'></a><p>Subido por: ".$var['nombre']."</p>
-																							<p>Calificacion: <span>".$var['votos_segunda_instancia']."</span><img data-id=".$var['id_disenio']." 
-																							data-tipo=".$var['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-																			}
-
-    																echo "</ul>";
-    														}	
-    												}else{
-    														echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-    												}
-    											}else if($fechaHoy >= $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
-    													
-    													$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-															where d.codigo_tipo = 3 and u.id_curso = '$_SESSION[curso]' order by d.cantidad_votos desc limit 3";
-															
-															$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
-
-															if($consultaMasVotados){
-																	
-																$cantidadDeRegistros = $consultaMasVotados->num_rows;
-																
-																if($cantidadDeRegistros > 0){
-																				
-																		echo "<ul class=segunda_instancia>";		
-																				
-																		while($deAunGanador = $consultaMasVotados->fetch_array(MYSQLI_ASSOC)){
-																			$arrayMasVotados3[] = $deAunGanador;
-																		}
-
-																		foreach($arrayMasVotados3 as $unoMasVotado){
-																			
-																			echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_frontal']." 
-																					width='105' height='105' class='ropa' alt='bandera'></a><p>Subido por: ".$unoMasVotado['nombre']."</p>
-																					<p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span><img data-id=".$unoMasVotado['id_disenio']." 
-																					data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-																			}
-
-																		echo "</ul>";
-
-																	}else{
-																				echo "<p id=no-ul >No hay dise&ntilde;os subidos para la segunda instancia de votacion</p>";
-																	}
-
-																}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																}		
-    											}else{
-
-    												$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-    												where d.codigo_tipo = 3 and u.id_curso = '$_SESSION[curso]' order by d.votos_segunda_instancia desc limit 1";
-    												
-																$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
-
-																if($traerGanador){
-																	$hayUnGanador = $traerGanador->num_rows;
-
-																	if($hayUnGanador > 0){
-																		echo "<p id=ganador>Dise&ntilde;o ganador!</p>";
-																		echo "<ul class=tercer_instancia>";
-
-																		$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
-
-																		echo "<li><a href=Tee-Designer-master/tdesignAPI/".$elGanador['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$elGanador['path_frontal']." 
-																					width='105' height='105' class='ropa' alt='bandera'></a><p>Subido por: ".$elGanador['nombre']."</p>
-																					<p>Calificacion: <span>".$elGanador['votos_segunda_instancia']."</span><img data-id=".$elGanador['id_disenio']." 
-																					data-tipo=".$elGanador['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
-
-																		echo "</ul>";
-																	}else{
-																		echo "<p id=no-ul >No hay dise&ntilde;os subidos para esta votacion</p>";
-																	}
-																}else{
-																	echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
-																}
-    											}
-    								?>
+    							imprimir_disenios($conexion,$fecha_apertura,$fecha_fin_primer_instancia,$fecha_fin_segunda_instancia,$curso,3);	
+    									
+    							?>
   								</section>
     							</div>
 										
 										<?php
-											//Verificar la altura de la votacion, si paso la segunda instancia se muestra form con talles
-										if($var == 1){
-											$buscarTalleAnterior = "select talle_buzo, talle_remera from talles_curso where usuario = $_SESSION[id_usuario]";
-											$talles = $conexion->query($buscarTalleAnterior);
+										
+										imprimir_forms_talles($conexion, $maxBuzo, $maxRemera, $maxBandera, $usuario, $curso);
+										
+										
 
-											if($talles){
-													if($talles->num_rows > 0){
-														
-														$varr = $talles->fetch_array(MYSQLI_ASSOC);
-														$tBuzo = $varr["talle_buzo"];
-														$tRemera = $varr["talle_remera"];
-														$tBuzo = strtoupper($tBuzo);
-														$tRemera = strtoupper($tRemera);
-													}else{
-														$tBuzo = "N/D";
-														$tRemera = "N/D";
-													}
-											}else{
-												$tBuzo = "N/D";
-												$tRemera = "N/D";
+										if(isset($_GET["grabado"])){
+											$grabado = $_GET["grabado"];
+											
+											switch ($grabado) {
+													case 1:
+													echo "<p class='aviso-pdf'>El pdf se reemplazo con exito</p>";
+													break;
+
+													case 2:
+													echo "<p class='aviso-pdf'>Hubo un error al intentar reemplazar el pdf</p>";
+													break;
+
+													case 3:
+													echo "<p class='aviso-pdf'>El pdf se guardo con exito</p>";
+													break;
+
+													case 4:
+													echo "<p class='aviso-pdf'>hubo un error al intentar guardar el pdf</p>";
+													break;
+												
+												default:
+													echo "<p class='aviso-pdf'>hubo un error inesperado</p>";
+													break;
 											}
-
-											echo "<div id='formTalles'>	
-															<h2>Eleg&iacute; tu talle de ropa</h2>
-															
-															<table border='1'>
-																<tr>
-																	<th>Prenda</th>
-																	<th>Talle</th>
-																	<th>Talle elegído anteriormente</th>
-																</tr>
-																<tr>
-																	<td>Buzo</td>
-																	<td><select name='buzo' id='buzo'>
-																				<option value='null'>Seleccionar</option>
-    																		<option value='xs'>XS</option>
-    																		<option value='s'>S</option>
-    																		<option value='m'>M</option>
-    																		<option value='l'>L</option>
-    																		<option value='xl'>XL</option>
-    																		<option value='xxl'>XXL</option>
-																			</select></td>
-																			<td>$tBuzo</td>
-																</tr>
-																<tr>
-																	<td>Remera</td>
-    															<td><select name='remera' id='remera'>
-    																		<option value='null'>Seleccionar</option>
-    																		<option value='xs'>XS</option>
-    																		<option value='s'>S</option>
-    																		<option value='m'>M</option>
-    																		<option value='l'>L</option>
-    																		<option value='xl'>XL</option>
-    																		<option value='xxl'>XXL</option>
-    																	</select></td>
-    																	<td>$tRemera</td>
-																</tr>
-															</table>
-															
-														</div>";
-														echo "<div id='formTallesBotones'>
-																	<button id='tabTalles'>Ver tabla de talles</button><button id='btn-enviar'>Guardar Cambios</button>
-																	</div>";
-
-														echo "<div id='formEliminar'>
-																		<h2>Eliminar Talle</h2>
-																		<table border='1'>
-																			<tr>
-																				<th>Buzo</th>
-																				<th>Remera</th>
-																			</tr>
-																			<tr>
-																				<td><input type='checkbox' name='prenda' value='buzo' id='p1'></td>
-																				<td><input type='checkbox' name='prenda' value='remera' id='p2'></td>
-																			</tr>
-																		</table>
-																	</div>
-																	<div id='formEliminarButtons'>
-																		<button id='btn-eliminar'>Confirmar</button><button id='btn-limpiarchk'>Limpiar</button>
-																	</div>";
-
-
-														echo "<div id='tablaBandera'>
-																		<h2>Elegi la medida de la bandera</h2>
-																		
-																		
-																		<table border='1'>
-																			<tr>
-																				<th>Item</th>
-																				<th colspan='2'>Medida</th>
-																			</tr>
-																			<tr>
-																				<td rowspan='2'>Bandera</td>
-																				<td>Estandar(1x1,50) Consultar</td>
-																				<td>Otra</td>
-																			</tr>
-																			<tr>
-																				<td><input type='radio' value='estandar' name='medida'></td>
-																				<td><input type='radio' value='otra' name='medida'></td>
-																			</tr>
-																		</table>
-
-																		<button id='btn-bandera'>Enviar</button><button id='cancelar'>Limpiar</button>
-																		
-																	</div>";
-														echo"<div id='botonesMas'><a href='armapedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank'>Armar Pedido</a><a href='empresasAdmin.php'>Paso Siguiente</a></div>";
-																
-													/*	echo "<div id='todosLosTalles'>";
-
-															$buscartallesAlumnos = "select nombre, talle_buzo, talle_remera from usuario as u join talles_curso tc on u.id_usuario = tc.usuario 
-															where tc.curso = $_SESSION[curso];"; 
-																$allTalles = $conexion->query($buscartallesAlumnos);
-																if($allTalles){
-																	if($allTalles->num_rows > 0){
-																	echo "<h2>Talles de los alumnos de todo el curso</h2>
-    																		<table border='1'>
-    																			<tr>
-    																				<th>Alumno</th>
-    																				<th>Talle Buzo</th>
-    																				<th>Talle Remera</th>
-    																			</tr>";
-    															while($varTalles = $allTalles->fetch_array(MYSQLI_ASSOC)){
-    																	$vecTalles[] = $varTalles;
-    															}		
-    															foreach ($vecTalles as $trTalles) {
-    																	echo"<tr>
-    																				<td>".$trTalles["nombre"]."</td>
-    																				<td>".strtoupper($trTalles["talle_buzo"])."</td>
-    																				<td>".strtoupper($trTalles["talle_remera"])."</td>
-    																			 </tr>";
-    															}		
-    																
-    															echo "</table>";
-    															echo "<div></div>";
-    															echo "<a href='armapedido.php?curso=".base64_encode($_SESSION["curso"])."' target='_blank' id='btn-pedido'>Armar Pedido</a>";
-    															
-																	}
-																}
-
-															echo "</div>";*/
-    																
-    								}
-
+											
+										}
 										$conexion->close();
 										?>
-										
-    								<!--<div id="todosLosTalles">
-    									<h2>Talles de los alumnos de todo el curso</h2>
-    									<table border="1">
-    										<tr>
-    											<th>Alumno</th>
-    											<th>Talle Buzo</th>
-    											<th>Talle Remera</th>
-    										</tr>
-    										<tr>
-    											<td>Pepe</td>
-    											<td>XS</td>
-    											<td>S</td>
-    										</tr>
-    										<tr>
-    											<td>Jose</td>
-    											<td>L</td>
-    											<td>M</td>
-    										</tr>
-    										<tr>
-    											<td>Marcos</td>
-    											<td>M</td>
-    											<td>M</td>
-    										</tr>
-    									</table>
-    									<button>Armar Pedido</button>
-    								</div>-->
 						</div>
 				
 				<!-- Footer Wrapper -->

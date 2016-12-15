@@ -13,16 +13,13 @@
 			$reg = $result->fetch_array(MYSQLI_ASSOC);
 			$fecha_apertura = new DateTime($reg['fecha_apertura']);
 			$fechaHoy = new DateTime();
-			$fechaHoy->format("Y-m-d H:i:s");
+			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
-			if($intervalInDays > 7){
+			if($intervalInDays < 7){
 				$flag = 1;
-			}else if($intervalInDays <= 7 && $intervalInDays < 21){
+			}else if($intervalInDays >= 7){
 				header('location:../votacion.php');
-				
-			}else if($intervalInDays >= 14 && $intervalInDays < 21){
-				$flag = 1;
 			}
 		}
 

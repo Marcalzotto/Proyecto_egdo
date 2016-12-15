@@ -358,7 +358,6 @@ height:5%;
 		}
 
 
-		
 
 }/*termina @media screen and (max-width: 736px)*/
 
@@ -2414,7 +2413,7 @@ font-size: 200%;
 
 /*Estilos para el detalle de las empresas*/
 #banner-wrapper #empresaDetalles{
-	margin-top: 5.7em;
+	margin-top: 5em;
 	text-align: center;
 	padding: 0.5em;
 }
@@ -2497,23 +2496,23 @@ margin-right: 0.25em;
 
 
 #empresaDetalles #calificacion .l1{
-
 margin-bottom: 1em;
-margin-left: 3em;
+margin-left: 0em;
+display: inline-block
 }
 
 
 
 #empresaDetalles #calificacion ul{
-	display: inline-block;
-	margin-left: 3em;
+	/*display: inline-block;*/
+	margin-left: 11.2em;
 	margin-right: 0em;
 	text-align: left;
 }
 
 #empresaDetalles  #calificacion .l1 li span{
-color:grey;
-font-size: 150%;
+color:#fff;
+font-size: 120%;
 }
 #empresaDetalles  #calificacion ul li .marcado{
 color:#79B800;
@@ -2534,6 +2533,15 @@ color:#79B800;
 font-size: 120%;
 }
 
+#calificacion .l2 li span:nth-child(odd){
+color:#fff;
+font-size: 120%;
+}
+#calificacion .l2 li .num{
+	color:#fff;
+	font-size: 120%;
+	margin-left: 0.3em;
+}
 /*Estilos que pertenecen a la calificacion*/
 
 /*#empresaDetalles #formCalificar h2{
@@ -2616,11 +2624,22 @@ input[type="radio"]:checked ~ .labelEstrellas {
   font-size: 1.2em;
   
 }
-#empresaDetalles .unComentario p{
-	
-
+#empresaDetalles .unComentario .foto{
+	float: left;
 }
 
+
+#empresaDetalles .unComentario p{
+	white-space:normal;
+	overflow-wrap: break-word;
+	text-align: justify;
+	margin-bottom: 0.5em;
+}
+
+#empresaDetalles .unComentario .nombre a{
+	color: #fff;
+	font-weight: 700;
+}
 #empresaDetalles .unComentario .tiempo{
 	margin-top: 0.5em;
 }
@@ -2639,6 +2658,7 @@ input[type="radio"]:checked ~ .labelEstrellas {
 		text-align: left;
 		background: #fff;
 		line-height: 1.1em;
+		font-size: 1.2em;
 		font-family: 'Open Sans Condensed',sans-serif;
    	border-radius: 3px;
     padding: 0.4em;
@@ -2850,7 +2870,20 @@ background: #393939;
    	margin-left: 3em;
     margin-right: 3em;
 		}
-	
+		
+		#formTallesBotones a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1.5em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #79B800;
+    	padding: 1em;
+    	padding-right: 2em;
+    	padding-left: 2em;
+    	border-radius: 5px;
+    	margin-left: 3em;
+    	margin-right: 3em;
+		}
 		#formTallesBotones,#formEliminarButtons{
 		text-align: center;
 		}
@@ -2948,6 +2981,15 @@ background: #393939;
     	border-radius: 5px;
     	margin-left: 3em;
     	margin-right: 3em;
+		}
+		
+		#votacion .aviso-pdf{
+			font-family: 'Open Sans Condensed',sans-serif;
+			color:#fff;
+			font-size: 1.5em;
+			font-weight: bold;
+			text-align: center;
+			padding-top: 4em;
 		}
 
 		#votacion #todosLosTalles div{
@@ -4205,15 +4247,36 @@ li.circle a img{
 	height: 30px;
 	width: 150px;
 	position: relative;
-	background: url(../images/star_rating_img/starrating-egdo-definitivo.jpg) top left repeat-x;
+	background: url(../images/star_rating_img/rating_bar_egdo.png) top left repeat-x;
 }
 
 #estrellas-cambia{
-	background: url(../images/star_rating_img/starrating-egdo-definitivo.jpg) left bottom;*/
-	position: absolute;
+	background: url(../images/star_rating_img/rating_bar_egdo.png) left bottom;
+	position: relative;
 	height: 30px;
 	width: 150px;
 	display: block;
 	text-indent: -9000px;
 	z-index: 1;
+}
+
+#empresas div ul li .estrellas{
+	list-style:none;
+	margin: 0px !important;
+	padding:0px !important;
+	height: 30px;
+	width: 150px;
+	position: relative;
+	background: url(../images/star_rating_img/rating_bar_egdo.png) top left repeat-x;
+}
+
+#empresas div ul li .estrellas-cambia{
+	background: url(../images/star_rating_img/rating_bar_egdo.png) left bottom;
+	height: 30px;
+	width: 150px;
+	display: block;
+	text-indent: -9000px;
+	z-index: 1;
+	position: relative;
+	top: -1.36em;
 }

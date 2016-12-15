@@ -1,5 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700|Open+Sans+Condensed:300,700");
-@import url("font-awesome.min.css");
+@import url("../../../css/font-awesome.min.css");
 @import url("../fonts/OpenSans-CondBold.ttf");
 @import url("../fonts/OpenSans-CondLight.ttf");
 @import url("../fonts/OpenSans-CondLightItalic.ttf");
@@ -265,3 +265,10 @@
     border-style: none;
 }
 
+#tiempo-finalizar{
+	color: #fff;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  margin-top: 1em;
+}

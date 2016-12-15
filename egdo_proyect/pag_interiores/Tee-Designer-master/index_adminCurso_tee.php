@@ -13,7 +13,7 @@
 			$reg = $result->fetch_array(MYSQLI_ASSOC);
 			$fecha_apertura = new DateTime($reg['fecha_apertura']);
 			$fechaHoy = new DateTime();
-			$fechaHoy->format("Y-m-d H:i:s");
+			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
 			$intervalInDays = $interval->d;
 			if($intervalInDays < 7){//para pasar a votacion poner que es > 7
