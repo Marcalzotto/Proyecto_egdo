@@ -285,28 +285,9 @@
 						
 			
 
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper" class="footer-main-color">
-
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							<p>Email: egdoweb@gmail.com</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-							</ul>
-						</div>
-
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-
-				</div>
+			<?php
+					include '../pag_interiores/menu/masterFooter.php';
+			?>
 
 		</div>
 

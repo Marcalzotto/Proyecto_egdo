@@ -33,19 +33,30 @@ $maxCaracteresName = "45";
 $maxCaracteresEmail = "45";
 $maxCaracteresMensaje = "250";
 
+
 //Si los input son de mayor tamaño, se "muere" el resto del código y muestra la respuesta correspondiente
 if(strlen($namePOST) > $maxCaracteresName) {
-	die('El nombre de usuario no puede superar los '.$maxCaracteresUsername.' caracteres');
+	die('El nombre de usuario no puede superar los '.$maxCaracteresName.' caracteres');
 };
 
 if(strlen($emailPOST) > $maxCaracteresEmail) {
-	die('El apellido de usuario no puede superar los '.$maxCaracteresUsername.' caracteres');
+	die('El email no puede superar los '.$maxCaracteresEmail.' caracteres');
 };
-
 
 if(strlen($messagePOST) > $maxCaracteresMensaje) {
-	die('La contraseña no puede superar los '.$maxCaracteresPassword.' caracteres');
+	die('La contraseña no puede superar los '.$maxCaracteresMensaje.' caracteres');
 };
+
+//email
+if( empty($emailPOST) )
+	die('El campo email no puede estar vacio');
+else
+{
+	// Comprobar mediante  filter_var si es valido el email:
+	if(!filter_var($emailPOST,FILTER_VALIDATE_EMAIL )){
+		die('El email debe tener un formato valido');
+	}
+}
 
 //Pasamos el input del usuario a minúsculas para compararlo después con
 //el campo "usernamelowercase" de la base de datos
@@ -63,24 +74,56 @@ if(strlen($messagePOST) > $maxCaracteresMensaje) {
 //Si el valor del input del usuario es igual a alguno que ya exista, mostramos un mensaje de error
 if(empty($namePOST) || empty($emailPOST) || empty($messagePOST)) {
 	die('Debes introducir datos válidos');
-} else {
-//Si no hay errores, procedemos a encriptar la contraseña
-//Lectura recomendada: https://mimentevuela.wordpress.com/2015/10/08/establecer-blowfish-como-salt-en-crypt-2/
-	
-	 //$hash = password_hash($repassPOST, PASSWORD_BCRYPT); 
-	 
-	 //Armamos la consulta para introducir los datos
-	//$consulta = "INSERT INTO `mmv005` (username, usernamelowercase, password) 
-	//VALUES ('$userPOST', '$userPOSTMinusculas' , '$passwordConSalt')";
-	
+} 
+
+else {
 	$consulta = "INSERT INTO contacto (nombre_empresa, email, mensaje) VALUES ('$namePOST','$emailPOST','$messagePOST')";
 	
 	//Si los datos se introducen correctamente, mostramos los datos
 	//Sino, mostramos un mensaje de error
 	if(mysqli_query($conexion, $consulta)) {
-		die('<script>$(".acceso").val("");</script> Consulta enviada <br> ');
-	} else {
-		die('Error');
+		
+		
+		require '../registro/Mailer/PHPMailerAutoload.php';
+											
+		$mail = new PHPMailer;
+		$mail->isSMTP();                                      // Activamos SMTP para mailer
+		$mail->Host = 'p3plcpnl0173.prod.phx3.secureserver.net';                       // Especificamos el host del servidor SMTP
+		$mail->SMTPAuth = true;                               // Activamos la autenticacion
+		$mail->Username = 'public@ocrend.com';       // Correo SMTP
+		$mail->Password = 'Prinick2016';                // Contraseña SMTP
+		$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
+		$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
+		$mail->From = 'tucorreo@gmail.com';
+		$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
+		$mail->isHTML(true); //Decimos que lo que enviamos es HTML
+		$mail->CharSet = 'UTF-8';  // Configuramos el charset 
+		
+		$mensaje = 'La empresa <b>'.$namePOST.'</b> dejo un mensaje: <h2>"'.$messagePOST.'"</h2><br>Correo electronico: '.$emailPOST;
+		
+		//Agregamos a todos los destinatarios
+		$mail->addAddress('noenmorel@gmail.com',$namePOST);
+		
+		//Añadimos el asunto del mail
+		$mail->Subject = 'Consulta enviada por una empresa mediante Web';
+
+		//Mensaje del email
+		$mail->Body = '<div align="center"><img src="http://i66.tinypic.com/10nua77.png"></div><br><br>'.$mensaje;
+		
+		if(!$mail->send()) {
+		
+			echo 'error al enviar email';
+			
+		} 
+		else {											
+			mysqli_close($conexion);
+			die('<script>$(".acceso").val("");</script> Consulta enviada <br> ');
+		}
+ 
+	}
+		
+	 else {
+			die('Error al guardar datos');
 	};
 };//Fin comprobación if(empty($userPOST) || empty($passPOST))
 ?>

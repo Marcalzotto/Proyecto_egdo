@@ -324,31 +324,9 @@ die("La conexion falló: " . $conexion->connect_error);
 					</div>
 					
 					
-				<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
-
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							
-						<p>Email: egdoweb@gmail.com</p>
-						
-						<ul class="contact">
-								<li><a href="no-sidebar.html" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="no-sidebar.html" class="icon fa-instagram"><span>Instagram</span></a></li>
-						</ul>
-							
-						</div>
-							
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-
-				</div>
+				<?php
+					include '../pag_interiores/menu/masterFooter.php';
+				?>
 
 		</div>
 

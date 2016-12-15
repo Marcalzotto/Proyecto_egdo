@@ -115,14 +115,14 @@ if ($conexion->connect_error) {
 							<form method="post" id="acceso">
 								<div class="row 50%">
 									<div class="6u 12u(mobile)">
-										<input class="text" type="text" name="name" id="name" placeholder="Nombre Empresa">
+										<input class="text" type="text" name="name" id="name" placeholder="Nombre Empresa" required>
 									</div>
 									<div class="6u 12u(mobile)">
-										<input class="text" type="text" name="email" id="email" placeholder="Email">
+										<input class="text" type="text" name="email" id="email" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="row 50%">
-									<div class="12u"><textarea name="message" placeholder="Mensaje" rows="6"></textarea></div>
+									<div class="12u"><textarea name="message" placeholder="Mensaje" rows="6" required></textarea></div>
 								</div>
 								<div class="row">
 									<div class="12u">
@@ -184,28 +184,9 @@ $("#acceso").on("submit", function(e){
 
 				</div>
 			
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper" class="footer-main-color">
-
-					<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							<p>Email: egdoweb@gmail.com</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-							</ul>
-						</div>
-
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
-
-				</div>
+			<?php
+					include '../pag_interiores/menu/masterFooter.php';
+			?>
 
 		</div>
 
