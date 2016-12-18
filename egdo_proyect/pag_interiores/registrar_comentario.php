@@ -4,10 +4,14 @@
 	if($_POST){
 		$empresa = base64_decode($_POST["empresa"]);
 		$user = base64_decode($_POST["user"]);
-
-		$id_empresa = filter_var($empresa, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
-		$id_usuario = filter_var($user, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
-		$comentario = filter_var($_POST["comentario"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+		$patter_num = '[^0-9]';
+		$patter_coment = '[<>&]';
+		//$id_empresa = filter_var($empresa, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+		//$id_usuario = filter_var($user, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+		//$comentario = filter_var($_POST["comentario"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+		$id_empresa = ereg_replace($patter_num, '', $empresa);
+		$id_usuario = ereg_replace($patter_num, '', $user);
+		$comentario = ereg_replace($patter_coment, '', $_POST["comentario"]);
 		
 		$fecha_comentario = new DateTime();
 		$fecha_insertar = $fecha_comentario->format("Y-m-d H:i");

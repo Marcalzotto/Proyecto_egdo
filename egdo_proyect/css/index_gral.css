@@ -3689,6 +3689,14 @@ background: #393939;
 				text-align: center;
 				color:#fff;
 			}
+
+			#si_file{
+				position: absolute;
+    		top: 30.5em;
+    		left: 38em;
+    		color: #fff;
+    		font-family: 'Open Sans Condensed',sans-serif;
+			}
 /*boton subir vista de impresion*/
 			.form #impresion{
 				position: relative;
