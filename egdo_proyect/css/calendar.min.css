@@ -327,11 +327,16 @@ label.error{
 	color:red;
 }
 .formulario input[type=submit] {
-	background-color: #79B800;
+	background-color: #79B800;;
+	
 	border:0;
 	color:#fff;
 	padding:5px;
 	border-radius:5px; 
+}
+
+div.formulario button{
+	background: green;
 }
 	
 p.ok{
@@ -347,4 +352,8 @@ p.ko{
 	color:#fff;
 	padding:5px;
 	border-radius:5px;
+}
+
+#close{
+	background-color: blue;
 }

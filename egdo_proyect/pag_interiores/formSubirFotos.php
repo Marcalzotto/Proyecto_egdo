@@ -45,6 +45,7 @@
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
+			<script src="../js/check_if_arch2.js"></script>
 			<script src="../js/subirFotosEventos.js"></script>
 	</head>
 	<body class="homepage">
@@ -94,7 +95,10 @@
 														<p id="subir_frontal">Subir Foto</p>
 														<input type="file" name="foto_evento" id="d_frontal">
 													</div>
-											
+													<div id="si_file" style="position: absolute; top: 24em; left: 28em; color: #fff;
+    																						font-family: 'Open Sans Condensed',sans-serif; font-size:1.3em;
+    																						">Ningun archivo seleccionado 
+    											</div>
 													
 											
 													<div id="btn-enviar">

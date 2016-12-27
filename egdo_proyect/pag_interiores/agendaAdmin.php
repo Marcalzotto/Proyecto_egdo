@@ -59,9 +59,10 @@
 			<script type="text/javascript" src="../js/calendarAdminCurso.min.js"></script>
 			<!--<script type="text/javascript" src="../js/calendar.min.js"></script>
 			<script type="text/javascript" src="../js/agenda.js"></script>-->
-			
+			<script src="../js/cerrarColorBox2.js"></script>
 			
 			<script type="text/javascript" src="../js/agendaAdminCurso.js"></script>
+			
 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<!--<script src="../assets/js/jquery.min.js"></script>

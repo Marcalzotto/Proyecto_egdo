@@ -5,6 +5,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_es.js "></script>
+		<!--<script src="../js/cerrarColorBox2.js"></script>-->
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link href="../css/calendar.min.css" rel="stylesheet">
 	</head>
@@ -120,6 +121,7 @@
 		
 		}
 		?>-->
+		<button id="close">Cerrar</button>
 		</div>
 		<script>
 		$(document).ready(function()
