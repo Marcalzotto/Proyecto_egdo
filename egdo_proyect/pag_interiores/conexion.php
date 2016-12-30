@@ -1,7 +1,7 @@
 <?php
 
 /*archivo para conectarse a la base de datos*/
-
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 $conexion = new mysqli("localhost","root","","egdo_db");
 if($conexion->connect_errno){
 	die("Error en la conexion con la base de datos: ".$conexion->connect_error);

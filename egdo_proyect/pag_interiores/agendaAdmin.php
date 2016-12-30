@@ -1,4 +1,5 @@
-<?php include ("../bloqueSeguridad.php");?>
+<?php include ("../bloqueSeguridad.php");
+			include ("conexion.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -15,9 +16,9 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
-		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
-		<link rel="stylesheet" type="text/css" href="../css/calendar.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/colorbox.css">
+		<link rel="stylesheet" href="../css/estilos-calendar.css">
+		<!--<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">-->
+		
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -48,25 +49,13 @@
 			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
-
-			<!--Librarys for lightBox -->
-			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
-			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
-			
 			<!--Librarys for calendar-->
-			<script src="../js/jquery.1.10.2.js"></script>
-			<script type="text/javascript" src="../js/jquery.colorbox-min.js"></script>
-			<script type="text/javascript" src="../js/calendarAdminCurso.min.js"></script>
-			<!--<script type="text/javascript" src="../js/calendar.min.js"></script>
-			<script type="text/javascript" src="../js/agenda.js"></script>-->
-			<script src="../js/cerrarColorBox2.js"></script>
-			
-			<script type="text/javascript" src="../js/agendaAdminCurso.js"></script>
+			<!--<script src="../js/jquery.1.10.2.js"></script>-->
+			<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 			
 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<!--<script src="../assets/js/jquery.min.js"></script>
-			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
 			
 
 			
@@ -107,17 +96,9 @@
 						at the top of "assets/js/main.js".
 
 					-->
-
-					<div id="agenda">
-						<div class="calendar" data-color="normal">
-							<div data-role="day" data-day="<?php echo date("Ynd",mktime(0,0,0,date("m"),date("d")+1,date("Y"))); ?>">
-								<div data-role="event" data-name="Viaje de egresados" data-start="9.00" data-end="9.30" data-location="Buenos Aires">
-					
-								</div>
-							</div>
+						<div class="calendario_ajax">
+							<div class="cal"></div><div id="mask"></div>
 						</div>
-
-					</div>
 				</div>
 					
 					
@@ -159,6 +140,137 @@
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
+			<!--librarys for calendar-->
+			<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+			<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/localization/messages_es.js "></script>
+		
+	<script>
+	function generar_calendario(mes,anio)
+	{
+		var agenda=$(".cal");
+		agenda.html("<img src='../images/calendar-img/,loading.gif'>");
+		$.ajax({
+			type: "GET",
+			url: "ajax_calendario.php",
+			cache: false,
+			data: { mes:mes,anio:anio,accion:"generar_calendario" }
+		}).done(function( respuesta ) 
+		{
+			agenda.html(respuesta);
+		});
+	}
+		
+	function formatDate (input) {
+		var datePart = input.match(/\d+/g),
+		year = datePart[0].substring(2),
+		month = datePart[1], day = datePart[2];
+		return day+'-'+month+'-'+year;
+	}
+		
+		$(document).ready(function()
+		{
+			/* GENERAMOS CALENDARIO CON FECHA DE HOY */
+			generar_calendario("<?php if (isset($_GET["mes"])) echo $_GET["mes"]; ?>","<?php if (isset($_GET["anio"])) echo $_GET["anio"]; ?>");
+			
+			
+			/* AGREGAR UN EVENTO */
+			$(document).on("click",'a.add',function(e) 
+			{
+				e.preventDefault();
+				var id = $(this).data('evento');
+				var fecha = $(this).attr('rel');
+				
+				$('#mask').fadeIn(1000).html("<div id='nuevo_evento' class='window' rel='"+fecha+"'>Agregar un evento el "+formatDate(fecha)+"</h2><a href='#' class='close' rel='"+fecha+"'>&nbsp;</a><div id='respuesta_form'></div><form class='formeventos'><input type='text' name='evento_titulo' id='evento_titulo' class='required'><input type='button' name='Enviar' value='Guardar' class='enviar'><input type='hidden' name='evento_fecha' id='evento_fecha' value='"+fecha+"'></form></div>");
+			});
+			
+			/* LISTAR EVENTOS DEL DIA */
+			$(document).on("click",'a.modal',function(e) 
+			{
+				e.preventDefault();
+				var fecha = $(this).attr('rel');
+				
+				$('#mask').fadeIn(1000).html("<div id='nuevo_evento' class='window' rel='"+fecha+"'>Eventos del "+formatDate(fecha)+"</h2><a href='#' class='close' rel='"+fecha+"'>&nbsp;</a><div id='respuesta'></div><div id='respuesta_form'></div></div>");
+				$.ajax({
+					type: "GET",
+					url: "ajax_calendario.php",
+					cache: false,
+					data: { fecha:fecha,accion:"listar_evento" }
+				}).done(function( respuesta ) 
+				{
+					$("#respuesta_form").html(respuesta);
+				});
+			
+			});
+		
+			$(document).on("click",'.close',function (e) 
+			{
+				e.preventDefault();
+				$('#mask').fadeOut();
+				setTimeout(function() 
+				{ 
+					var fecha=$(".window").attr("rel");
+					var fechacal=fecha.split("-");
+					generar_calendario(fechacal[1],fechacal[0]);
+				}, 500);
+			});
+		
+			//guardar evento
+			$(document).on("click",'.enviar',function (e) 
+			{
+				e.preventDefault();
+				if ($("#evento_titulo").valid()==true)
+				{
+					$("#respuesta_form").html("<img src='images/loading.gif'>");
+					var evento=$("#evento_titulo").val();
+					var fecha=$("#evento_fecha").val();
+					$.ajax({
+						type: "GET",
+						url: "ajax_calendario.php",
+						cache: false,
+						data: { evento:evento,fecha:fecha,accion:"guardar_evento" }
+					}).done(function( respuesta2 ) 
+					{
+						$("#respuesta_form").html(respuesta2);
+						$(".formeventos,.close").hide();
+						setTimeout(function() 
+						{ 
+							$('#mask').fadeOut('fast');
+							var fechacal=fecha.split("-");
+							generar_calendario(fechacal[1],fechacal[0]);
+						}, 3000);
+					});
+				}
+			});
+				
+			//eliminar evento
+			$(document).on("click",'.eliminar_evento',function (e) 
+			{
+				e.preventDefault();
+				var current_p=$(this);
+				$("#respuesta").html("<img src='images/loading.gif'>");
+				var id=$(this).attr("rel");
+				$.ajax({
+					type: "GET",
+					url: "ajax_calendario.php",
+					cache: false,
+					data: { id:id,accion:"borrar_evento" }
+				}).done(function( respuesta2 ) 
+				{
+					$("#respuesta").html(respuesta2);
+					current_p.parent("p").fadeOut();
+				});
+			});
+				
+			$(document).on("click",".anterior,.siguiente",function(e)
+			{
+				e.preventDefault();
+				var datos=$(this).attr("rel");
+				var nueva_fecha=datos.split("-");
+				generar_calendario(nueva_fecha[1],nueva_fecha[0]);
+			});
+
+		});
+		</script>
 			
 	</body>
 </html>

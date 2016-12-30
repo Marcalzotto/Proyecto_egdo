@@ -1,4 +1,5 @@
-<?php include ("../bloqueSeguridad.php");?>
+<?php include ("../bloqueSeguridad.php");
+			include ("conexion.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -15,8 +16,9 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
-		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
-		<link rel="stylesheet" type="text/css" href="../css/calendar.min.css">
+		<link rel="stylesheet" href="../css/estilos-calendar.css">
+		<!--<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/calendar.min.css">-->
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -48,23 +50,18 @@
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
 
-			<!--Librarys for lightBox -->
-			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
-			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
+		
 			
 			<!--Librarys for calendar-->
-			<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-			<script type="text/javascript" src="../js/calendar.min.js"></script>
-			<script type="text/javascript" src="../js/agenda.js"></script>-->
+			
 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
-			<script type="text/javascript" src="../js/calendar.min.js"></script>
-			<script type="text/javascript" src="../js/agendaAdminCurso.js"></script>
+			<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 			
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 		
 	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
@@ -102,16 +99,7 @@
 
 					-->
 
-					<div id="agenda">
-						<div class="calendar" data-color="normal">
-							<div data-role="day" data-day="<?php echo date("Ynd",mktime(0,0,0,date("m"),date("d")+1,date("Y"))); ?>">
-								<div data-role="event" data-name="Viaje de egresados" data-start="9.00" data-end="9.30" data-location="Buenos Aires">
 					
-								</div>
-							</div>
-						</div>
-
-					</div>
 				</div>
 					
 					

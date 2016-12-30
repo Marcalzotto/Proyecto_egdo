@@ -72,6 +72,9 @@ width:40%;
 height:5%;
 }
 
+#page-wrapper{
+	background: #333333;
+}
 /* Containers */
 
 	.container {
@@ -3286,6 +3289,7 @@ background: #393939;
 				-ms-transition: -ms-transform 0.5s ease;
 				transition: transform 0.5s ease;
 				padding-bottom: 1px;
+				background-color: #333333;
 			}
 
 			#titleBar {
