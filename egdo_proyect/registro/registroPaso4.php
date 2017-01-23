@@ -1,51 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 -->
-<html class="not-ie no-js" lang="en">
+<html>
 	<head>
-		
-		<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,500,700%7cCourgette%7cRaleway:400,700,500%7cCourgette%7cLato:700' rel='stylesheet' type='text/css'>
-		
-		<!-- Basic Page Needs
-		================================================== -->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		
-		
 		<title>EGDO</title>
-		<!-- Google Web Fonts
-		================================================== -->
-		
-		
-		<!--<meta charset="utf-8" /> -->
+		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../css/main.css" /> 
+		<link rel="stylesheet" href="../css/mainRegistro.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
-		<!-- Mobile Specific Metas
-		================================================== -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-		<!-- CSS
-		================================================== -->
-		<link rel="stylesheet" href="../css/tmm_form_wizard_style_demo.css" />
-		<link rel="stylesheet" href="../css/grid.css" />
-		<link rel="stylesheet" href="../css/tmm_form_wizard_layout.css" />
-		<link rel="stylesheet" href="../css/fontello.css" />
-		
-		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
@@ -59,117 +26,136 @@
 		<div id="page-wrapper">
 
 			<!-- Header Wrapper -->
-					<div id="header-wrapper">
+				<div id="header-wrapper">
 
 					<!-- Header -->
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../images/imagesAdmin/EGDO.png" alt=""></a></h1>
+								<h1 id="logo">
+									<a href="../index.php"><img class="egdo-logo-register" src="../images/imagesAdmin/EGDO.png" alt=""></a>
+								</h1>
 
-							<!-- Nav Elimado-->
-								
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="circle">
+											<a href="../index.php">COMENZA</a>
+										</li>
+										<li class="circle">
+											<a href="../contactoEmpresas/empresa.php">EMPRESAS</a>
+										</li>
+										<li class="break circle">
+											<a href="registroPaso1.php">REGISTRO</a>
+										</li>
+										<li class="circle">
+											<a href="#contacto">CONTACTO</a>
+										</li>
+									</ul>
+								</nav>
+
 						</div>
 
-					</div>
+				</div>
 
 			<!-- Main Wrapper -->
-				
-					<!-- Wide Content -->
-						
+				<div id="main-wrapper">
 
-			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-		<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate">
-
-					<div class="rows">
-
-						<div class="col-xs-12">
-							<h2 class="form-login-heading">Segui los pasos,<span> registrate y registra tu curso</span></h2>
-						</div>
-
-					</div><!--/ .row-->
-
-					<div class="rows stage-container">
-
-						<div class="stage tmm-success col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-lock"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Crear cuenta</h3>
-								<div class="stage-info">
-									Ingresar datos personales 
-									nombre email password
-								</div> 
-							</div>
-						</div><!--/ .stage-->
-						
-						<div class="stage tmm-success col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-user"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Datos del Curso</h3>
-								<div class="stage-info">
-									Ingresar nombre escuela
-									curso cantidad alumnos
-								</div>  
-							</div>
-						</div><!--/ .stage-->
-						
-						<div class="stage tmm-success col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-payment"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Enviar Invitaciones</h3>
-								<div class="stage-info">
-									Invita a tus compa&ntilde;eros
-									ingresando sus email
-								</div>
-							</div>
-						</div><!--/ .stage-->
-						
-						<div class="stage tmm-current col-md-3 col-sm-3">
-							<div class="stage-header head-icon head-icon-details"></div>
-							<div class="stage-content">
-								<h3 class="stage-title">Confirma Invitaciones</h3>
-								<div class="stage-info">
-									Vas a enviar invitaciones
-									los siguientes email
-								</div>  
-							</div>
-						</div><!--/ .stage-->
-
-					</div><!--/ .row-->
-
-					<div class="rows">
-
-						<div class="col-xs-12">
-
-							<div class="form-header">
-								<div class="form-title form-icon title-icon-payment">
-									<b><i class="fa fa-check" aria-hidden="true"></i>Confirmar Invitaciones</b>
-								</div>
-								<div class="steps">
-									Paso 4 - 4
-								</div>
-							</div><!--/ .form-header-->
-
-						</div>
-
-					</div><!--/ .row-->
-
-					<form role="form" method="post" action="registroFinal.php">
-
-						<div class="form-wizard">
+					
+						<!-- Main -->
+						<div id="intro" class="container">
 							
-							<div class="rows">
-
-								<div class="col-md-8 col-sm-7">
-
-									<div class="data-container">
+							<div class="row"> <!-- Row Principal -->	
+							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>SEGUI LOS PASOS, REGISTRATE Y REGISTRA TU CURSO</h2>
+									</header> 
+									
+									<div class="row uniform">
+									
+									<!-- Break -->
+									<div class="3u">
+										<span class="fa-stack fa-lg icon-sucess">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+										</span> 
+										<header>
+											<h5>1.CREAR TU CUENTA <i class="fa fa-check-circle" aria-hidden="true"></i></h5>
+										</header>
+											
+									</div>
+									
+									<!-- Break -->
+									<div class="3u">
+										<span class="fa-stack fa-lg icon-sucess">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-university fa-stack-1x fa-inverse"></i>
+										</span> 
+										<header>
+											<h5>2.DATOS DEL CURSO <i class="fa fa-check-circle" aria-hidden="true"></i></h5>
+										</header>
+										
+									</div>
+									
+									<!-- Break -->
+									<div class="3u">
+										<span class="fa-stack fa-lg icon-sucess">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-users fa-stack-1x fa-inverse"></i>
+										</span> 
+										<header>
+											<h5>3.ENVIAR INVITACIONES <i class="fa fa-check-circle" aria-hidden="true"></i></h5>
+										</header>
+										
+									</div>
+									
+									<!-- Break -->
+									<div class="3u$">
+										<span class="fa-stack fa-lg icon-active">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
+										</span> 
+										<header>
+											<h5>4.CONFIRMAR INVITACIONES</h5>
+										</header>
+										
+									</div>
+									
+								</div>
+								
+								
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
+						</div>	
+							
+						<!-- Wide Content -->
+						<section id="content" class="container">
+						<div class="row"> <!-- Row Principal -->
+								<section class="12u 12u">
+									
+									<hr class="major"/>
+									
+									<div class="row uniform">
+										
+										<div class="-2u 3u">
+											<h5 class="subheader-step"><i class="fa fa-check" aria-hidden="true"></i>&nbsp; CONFIRMAR INVITACIONES</h5>
+										</div>
+										<div class="-4u 3u$">
+											<h5 class="subheader-step">PASO 4-4 </h5>
+										</div>
+										
+									</div>
+									
+									<hr class="major"/>	
+									
+									<div class="12u 12u$(medium)"> <!-- Sec Datos Alumno -->
 									
 										
-											<?php
+										<div class="row uniform 50%">	
+										
+										<?php
 											
 												//email
 											$bandera=0;
@@ -235,70 +221,59 @@
 											}
 											
 											?>
-											
-											
-											
 										
+										</div>
 									
-									</div><!--/ .data-container  -->
-
-								</div>
-
-							</div><!--/ .row-->
+								
+										
+									</div> <!-- /Sec Datos Alumno -->
+								
+								</section>
+								
+								
+								
+								
+							</div> <!-- /Row Principal -->
 							
-						</div><!--/ .form-wizard-->
+							
+						</section>
 
-						<div class="prev">
-							<!--/<button class="button button-control" type="button" onclick="window.location.href='registroPaso3.php?cant_alumnos='"><span>Paso Anterior <b>Enviar Invitaciones</b></span></button>
-							<div class="button-divider"></div>-->
+				</div>
+
+			<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
+
+					<div id="contacto"> <!-- Ancla -->
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter"><span>Twitter</span></a></li>
+							</ul>
+						</div> <!-- /Footer -->
+					</div>
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; Egdo 2016.
 						</div>
-						
-						<div class="next">
-							<button class="button button-control" type="submit"><span>Enviar<b>Confirmar Datos</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-
-					</form><!--/ form onclick="window.location.href='../registro/registroFinal.php'"  -->
-
-				</div><!--/ .container-->
-
-			</div><!--/ .form-container-->
-
-		</div><!--/ #content-->
-
-
-
-		
-	
-
-		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
-
-
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-		<!--[if lt IE 9]>
-				<script src="js/respond.min.js"></script>
-		<![endif]-->
-		
-		<!--<script src="js/tmm_form_wizard_custom.js"></script>-->
-						
-						
-			
-
-			<?php
-					include '../pag_interiores/menu/masterFooter.php';
-			?>
+				
+				</div> <!-- /Footer Wrapper -->
 
 		</div>
 
 		<!-- Scripts -->
-			<script src="../js/jquery.min.js"></script>
-			<script src="../js/jquery.dropotron.min.js"></script>
-			<script src="../js/skel.min.js"></script>
-			<script src="../js/skel-viewport.min.js"></script>
-			<script src="../js/util.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/skel-viewport.min.js"></script>
+			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../js/main.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
