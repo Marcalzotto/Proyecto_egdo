@@ -5,7 +5,7 @@ $(function(){
 	
 	var formData = new FormData(document.getElementById("formulario"));
 			formData.append("clave","valor");
-
+			alert("enviando fotos");
 			var direccion = "sube_fotos_eventos.php";
 			
 			$.ajax({

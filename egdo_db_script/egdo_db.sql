@@ -364,6 +364,8 @@ CREATE TABLE IF NOT EXISTS `tcalendario` (
   `evento` text NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE 
 --
 -- Índices para tablas volcadas
 --
@@ -465,7 +467,8 @@ ALTER TABLE `mensajes_privado`
 --
 ALTER TABLE `notificaciones`
   ADD PRIMARY KEY (`id_notificacion`);
-
+  
+  
 --
 -- Indices de la tabla `rol`
 --
@@ -699,3 +702,21 @@ ALTER TABLE calificacion add column valor_calificacion int not null;
 ALTER TABLE actividad_disenio CHANGE COLUMN fecha_apertura fecha_apertura date;
 ALTER TABLE comentario CHANGE COLUMN comentario comentario VARCHAR(1000);
 ALTER TABLE comentario_empresas CHANGE COLUMN fecha fecha DATETIME NOT NULL;
+
+-- MODIFICACIONES DE LA TABLA tcalendario
+ALTER TABLE tcalendario ADD COLUMN color VARCHAR(7) NOT NULL;
+ALTER TABLE tcalendario ADD COLUMN icono VARCHAR(200) NULL;
+ALTER TABLE tcalendario ADD COLUMN hora TIME NOT NULL;
+ALTER TABLE tcalendario ADD COLUMN barrio VARCHAR(75) NOT NULL;
+ALTER TABLE tcalendario ADD COLUMN calle VARCHAR(50) NOT NULL;
+ALTER TABLE tcalendario ADD COLUMN altura NUMERIC(11) NOT NULL;
+ALTER TABLE tcalendario ADD COLUMN curso_eventos INT(11) NOT NULL;
+ALTER TABLE tcalendario ADD CONSTRAINT curso_eventos_fk FOREIGN KEY(curso_eventos) references curso(id_curso);
+-- Modificaciones de prueba
+ALTER TABLE tcalendario CHANGE COLUMN color color VARCHAR(7) NULL;
+ALTER TABLE tcalendario CHANGE COLUMN icono icono VARCHAR(200) NULL;
+ALTER TABLE tcalendario CHANGE COLUMN hora hora TIME NULL;
+ALTER TABLE tcalendario CHANGE COLUMN barrio barrio VARCHAR(75) NULL;
+ALTER TABLE tcalendario CHANGE COLUMN altura altura NUMERIC(11) NULL;
+ALTER TABLE tcalendario CHANGE COLUMN curso_eventos curso_eventos INT(11) NULL;
+ALTER TABLE tcalendario ADD COLUMN tipo_evento VARCHAR(200) NULL;

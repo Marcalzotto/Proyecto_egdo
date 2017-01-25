@@ -1,7 +1,8 @@
 <?php
 error_reporting(-1);
+require_once("../bloqueSeguridad.php");
 require_once("conexion.php");
-
+$rol = $_SESSION["id_rol"];
 function fecha ($valor)
 {
 	$timer = explode(" ",$valor);
@@ -19,31 +20,86 @@ function buscar_en_array($fecha,$array)
 	}
 }
 
-switch ($_GET["accion"])
+switch ($_POST["accion"])
 {
 	case "listar_evento":
 	{
-		$query=$conexion->query("select * from tcalendario where fecha='".$_GET["fecha"]."' order by id asc");
+		$query=$conexion->query("select * from tcalendario where fecha='".$_POST["fecha"]."' and curso_eventos='".$_SESSION["curso"]."' order by id asc");
 		if ($fila=$query->fetch_array())
 		{
 			do
-			{
-				echo "<p>".$fila["evento"]."<a href='#' class='eliminar_evento' rel='".$fila["id"]."' title='Eliminar este Evento del ".fecha($_GET["fecha"])."'><img src='images/delete.png'></a></p>";
+			{	
+				if($rol == 1 || $rol == 2)
+				echo "<p class='evento'>".$fila["evento"]."<a href='#' class='eliminar_evento' rel='".$fila["id"]."' title='Eliminar este Evento del ".fecha($_POST["fecha"])."'><img src='../images/calendar-img/delete.png'></a><a href='#' class='modificar_evento' rel='".$fila["id"]."' title='Modificar los datos del Evento del ".fecha($_POST["fecha"])."'><img src='../images/calendar-img/edit.png'></a><a href='#' class='ver_evento' rel='".$fila["id"]."' title='Ver datos Evento del ".fecha($_POST["fecha"])."'><img src='../images/calendar-img/binoculars.png'></a><img src='".$fila["icono"]."' alt='".$fila["tipo_evento"]."'></p>";
+				else
+				echo "<p class='evento'>".$fila["evento"]."<a href='#' class='ver_evento' rel='".$fila["id"]."' title='Ver datos Evento del ".fecha($_POST["fecha"])."'><img src='../images/calendar-img/binoculars.png'></a><img src='".$fila["icono"]."' alt='".$fila["tipo_evento"]."'></p>";
 			}
 			while($fila=$query->fetch_array());
 		}
 		break;
 	}
+	case "ver_datos_evento":
+	{
+		$query=$conexion->query("select * from tcalendario where id ='".$_POST["id"]."' and fecha='".$_POST["fecha"]."' ");
+		if($fila = $query->fetch_array()){
+			echo "<p class='datos'>Nombre: ".$fila["evento"]."</p>
+			<p class='datos'>Color: ".$fila["color"]."</p>
+			<p class='datos'>Icono: <img src=".$fila["icono"]." alt=".$fila["tipo_evento"]."/> ".$fila["tipo_evento"]."</p>
+			<p class='datos'>Hora: ".$fila["hora"]." Hs</p>
+			<p class='datos'>Barrio: ".$fila["barrio"]."</p>
+			<p class='datos'>Calle: ".$fila["calle"]."</p>
+			<p class='datos'>Altura: ".$fila["altura"]."</p>";
+		}else{
+			echo "<p class='error'>No pudimos traer los datos, porque hubo errores en el servidor.</p>";
+		}
+		break;
+	}
 	case "guardar_evento":
 	{
-		$query=$conexion->query("insert into tcalendario (fecha,evento) values ('".$_GET["fecha"]."','".strip_tags($_GET["evento"])."')");
+			$curso = base64_decode($_POST["curso_evento"]);
+			$arch = "";
+		//$query=$conexion->query("insert into tcalendario (fecha,evento,color,icono,hora,barrio,calle,altura,curso_eventos) values ('".$_GET["fecha"]."','".strip_tags($_GET["evento"])."','".$_GET["color"]."','".$arch."','".$_GET["tiempo"]."','".$_GET["barrio"]."','".$_GET["calle"]."','".$_GET["altura"]."','".$_GET["curso"]."')");
+		$query=$conexion->query("insert into tcalendario (fecha,evento,color,icono,hora,barrio,calle,altura,curso_eventos,tipo_evento) values ('".$_POST["evento_fecha"]."','".strip_tags($_POST["evento_titulo"])."','".$_POST["color"]."','".$_POST["icono"]."','".$_POST["evento_hora"]."','".$_POST["evento_lugar"]."','".$_POST["calle"]."','".$_POST["altura"]."','".$curso."','".$_POST["evento_tipo"]."')");
 		if ($query) echo "<p class='ok'>Evento guardado correctamente.</p>";
 		else echo "<p class='error'>Se ha producido un error guardando el evento.</p>";
 		break;
 	}
+	case "solicitar_datos":
+	{
+		$query=$conexion->query("select * from tcalendario where id ='".$_POST["id"]."' and fecha='".$_POST["fecha"]."' ");
+		if($fila = $query->fetch_array()){
+			echo "<input type='text' name='evento_titulo' id='evento_titulo' class='required' placeholder='Escribe el nombre del evento' value='".$fila["evento"]."'/><p id='field1'></p>
+						<select name='color' id='color' class='required'><option value='0'>Elegir Color</option><option value='1' selected='selected'>Cyan</option></select><p id='field2'></p>
+						<div id='div_visible'><img src='".$fila["icono"]."' alt='".$fila["tipo_evento"]."'/>".$fila["tipo_evento"]."</div><div id='lista' class='none'><li class='item'>Seleccionar icono</li><li class='item'><img src='../images/evento_icons/transport.png' alt='Transporte' />Viaje de Egresados</li><li class='item'><img src='../images/evento_icons/party.png' alt='Fiesta de egresados' />Fiesta de Egresados</li><li class='item'><img src=../images/evento_icons/upd.png alt='upd' />UPD</li><li class='item'><img src=../images/evento_icons/money.png alt='pagos' />Pagos</li><li class='item'><img src=../images/evento_icons/calendar.png alt='otros' />Otros</li></div><p id='field3'></p>	
+						<label for='evento_hora'>Elegir la hora del evento</label><input type='time' name='evento_hora' id='evento_hora' class='required' value='".$fila["hora"]."' placeholder='Escribe la hora del evento'><p id='field4'></p>
+						<input type='text' name='evento_lugar' id='evento_lugar' class='required' value='".$fila["barrio"]."' placeholder='Barrio'><p id='field5'></p>
+						<input type='text' name='calle' id='calle' placeholder='Calle' value='".$fila["calle"]."' /><input type='number' name='altura' id='altura' value='".$fila["altura"]."' placeholder='altura' min='0' max='100000'/>
+						<div class='fields67'><p id='field6'></p><p id='field7'></p></div>
+						<input type='button' name='Enviar' value='Guardar' class='modificar'><input type='button' id='limpiar_form' value='limpiar'/>
+						<input type='hidden' name='evento_fecha' id='evento_fecha' value='".$fila["fecha"]."' /><input type='hidden' id='curso_evento' name='curso_evento' value='".$_SESSION["curso"]."' />
+						<input type='hidden' name='evento_id' id='evento_id' value='".$fila["id"]."' />
+						<input type='hidden' name='accion' value='modificar_evento' />
+						<input type='hidden' name='icono' id='icono' value='".$fila["icono"]."'/>
+						<input type='hidden' id='evento_tipo' name='evento_tipo' value='".$fila["tipo_evento"]."'/>";
+
+		}else{
+			echo "<p class='error'>No pudimos traer los datos, porque hubo errores en el servidor.</p>";
+		}
+		break;
+	}
+	case "modificar_evento":
+	{
+
+		$query=$conexion->query("update tcalendario set evento ='".$_POST["evento_titulo"]."', color ='".$_POST["color"]."', hora ='".$_POST["evento_hora"]."', barrio ='".$_POST["evento_lugar"]."', calle ='".$_POST["calle"]."', altura ='".$_POST["altura"]."' where id ='".$_POST["evento_id"]."' and fecha ='".$_POST["evento_fecha"]."' ");
+		//$query=$conexion->query("update tcalendario set evento ='".$_POST["evento"]."', color ='".$_POST["color"]."', hora ='".$_POST["tiempo"]."' where id ='".$_POST["id"]."' and fecha ='".$_POST["fecha"]."' ");	
+		//Esta quedaria en caso que no haya que pasar archivos
+		if($query) echo "<p class='ok'>Evento modificado correctamente.</p>";
+		else echo "<p class='error'>Se ha producido un error guardando el evento. ".$conexion->error."</p>";
+		break;
+	}
 	case "borrar_evento":
 	{
-		$query=$conexion->query("delete from tcalendario where id='".$_GET["id"]."' limit 1");
+		$query=$conexion->query("delete from tcalendario where id='".$_POST["id"]."' limit 1");
 		if ($query) echo "<p class='ok'>Evento eliminado correctamente.</p>";
 		else echo "<p class='error'>Se ha producido un error eliminando el evento.</p>";
 		break;
@@ -51,7 +107,7 @@ switch ($_GET["accion"])
 	case "generar_calendario":
 	{
 		$fecha_calendario=array();
-		if ($_GET["mes"]=="" || $_GET["anio"]=="") 
+		if ($_POST["mes"]=="" || $_POST["anio"]=="") 
 		{
 			$fecha_calendario[1]=intval(date("m"));
 			if ($fecha_calendario[1]<10) $fecha_calendario[1]="0".$fecha_calendario[1];
@@ -59,10 +115,10 @@ switch ($_GET["accion"])
 		} 
 		else 
 		{
-			$fecha_calendario[1]=intval($_GET["mes"]);
+			$fecha_calendario[1]=intval($_POST["mes"]);
 			if ($fecha_calendario[1]<10) $fecha_calendario[1]="0".$fecha_calendario[1];
 			else $fecha_calendario[1]=$fecha_calendario[1];
-			$fecha_calendario[0]=$_GET["anio"];
+			$fecha_calendario[0]=$_POST["anio"];
 		}
 		$fecha_calendario[2]="01";
 		
@@ -147,8 +203,8 @@ switch ($_GET["accion"])
 						else echo "$dia";
 						
 						/* agregamos enlace a nuevo evento si la fecha no ha pasado */
-						if (date("Y-m-d")<=$fecha_completa /*&& es_finde($fecha_completa)==false*/) echo "<a href='#' data-evento='#nuevo_evento' title='Agregar un Evento el ".fecha($fecha_completa)."' class='add agregar_evento' rel='".$fecha_completa."'>&nbsp;</a>";
-						
+						if (date("Y-m-d")<=$fecha_completa && ($rol == 1 || $rol == 2)/*&& es_finde($fecha_completa)==false*/) echo "<a href='#' data-evento='#nuevo_evento' title='Agregar un Evento el ".fecha($fecha_completa)."' class='add agregar_evento' rel='".$fecha_completa."'>&nbsp;</a>";
+						 
 						echo "</td>";
 						$dia+=1;
 					}
@@ -161,6 +217,11 @@ switch ($_GET["accion"])
 			$mesanterior=date("Y-m-d",mktime(0,0,0,$fecha_calendario[1]-1,01,$fecha_calendario[0]));
 			$messiguiente=date("Y-m-d",mktime(0,0,0,$fecha_calendario[1]+1,01,$fecha_calendario[0]));
 			echo "<p class='toggle'>&laquo; <a href='#' rel='$mesanterior' class='anterior'>Mes Anterior</a> - <a href='#' class='siguiente' rel='$messiguiente'>Mes Siguiente</a> &raquo;</p>";
+		break;
+	}
+	default:
+	{
+		echo "<p class='alert'>No hemos podido procesar tu peticion.</p>";
 		break;
 	}
 }

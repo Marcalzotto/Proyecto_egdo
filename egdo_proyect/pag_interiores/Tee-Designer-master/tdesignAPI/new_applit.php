@@ -72,10 +72,11 @@
 </div>
 <div id="tiempo-finalizar">
 	<?php 
-	$finalizacion = 7;
-
-	$finalizacion = $finalizacion - $intervalInDays;  
-	echo "Finaliza en: ".$finalizacion." Dias.";
+	
+		$finalizacion = 7;
+		$finalizacion = $finalizacion - $intervalInDays;  
+		echo "Finaliza en: ".$finalizacion." Dias.";
+	
 	?>
 </div>
 <div class="container design_api_container">

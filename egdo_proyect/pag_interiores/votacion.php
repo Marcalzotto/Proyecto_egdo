@@ -18,11 +18,17 @@
 			$fechaHoy = new DateTime();
 			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
+			$intervalInYear = $interval->y;
+			$intervalInMonth = $interval->m;
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){
-				header('location:Tee-Designer-master/index.php');
+			if($intervalInYear > 0){
+				$flag = 1;
+			}else if($intervalInMonth > 0){
+				$flag = 1;
 			}else if($intervalInDays >= 7){
 				$flag = 1;
+			}else{
+				header('location:Tee-Designer-master/index.php');
 			}
 		}else{
 			header('location:Tee-Designer-master/index.php');

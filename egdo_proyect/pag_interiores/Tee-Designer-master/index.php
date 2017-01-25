@@ -15,11 +15,17 @@
 			$fechaHoy = new DateTime();
 			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
+			$intervalInYear = $interval->y;
+			$intervalInMonth = $interval->m;
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){
-				$flag = 1;
+			if($intervalInYear > 0){
+				header('location:../votacion.php');
+			}else if($intervalInMonth > 0){
+				header('location:../votacion.php');
 			}else if($intervalInDays >= 7){
 				header('location:../votacion.php');
+			}else{
+				$flag = 1;
 			}
 		}
 

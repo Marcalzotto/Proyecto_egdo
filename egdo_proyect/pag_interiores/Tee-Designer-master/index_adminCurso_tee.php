@@ -15,12 +15,18 @@
 			$fechaHoy = new DateTime();
 			$fechaHoy->format("Y-m-d");
 			$interval = $fechaHoy->diff($fecha_apertura);
+			$intervalInYear = $interval->y;
+			$intervalInMonth = $interval->m;
 			$intervalInDays = $interval->d;
-			if($intervalInDays < 7){//para pasar a votacion poner que es > 7
-				$flag = 1;
-			}else if($intervalInDays >= 7){ // y aca poner que es menor a 7
-				header('location:../votacionAdminCurso.php');
 			
+			if($intervalInYear > 0){
+				header('location:../votacionAdminCurso.php');
+			}else if($intervalInMonth > 0){
+				header('location:../votacionAdminCurso.php');
+			}else if($intervalInDays >= 7){
+				header('location:../votacionAdminCurso.php');
+			}else{
+				$flag = 1;
 			}
 		}
 

@@ -7,35 +7,107 @@ img{border:0}
 /*body {text-align:center;background:#e9e9e9}*/
 
 .calendario_ajax{margin:90px auto;width:700px;position:relative;}
-	.calendario_ajax h2{text-align:center;margin:0 0 10px 0;font-size:1.5em;color:#fff; padding-top: 20px;}
+.calendario_ajax h2{text-align:center;margin:0 0 10px 0;font-size:1.5em;color:#fff; padding-top: 20px;
+font-family: 'Open Sans Condened',sans-serif;}
 
-	.calendario_ajax table.calendario {margin:0;width:100%;border:solid #ccc;border-width:1px 0 0 1px}
-		.calendario th {border:0;font-weight:500;background:#666;color:white;padding:10px;font-size:0.85em;height:40px}
-		.calendario td{padding:10px;text-align:center;border:solid #79B800;border-width:0 1px 1px 0;white-space:pre-line;font-size:2em;width:14.28%;color:#666;position:relative;background:#fff;height:80px}
-	.calendario td.desactivada {background:#e9e9e9;}
-	.calendario td.hoy{font-weight:500}
-		a.agregar_evento{display:block;position:absolute;right:0;top:0; background:#e9e9e9 url(../images/calendar-img/add.png) 50% 50% no-repeat;border-radius:0 0 10px 10px;width:24px;height:24px;text-decoration:none}
-	.calendario td a{color:red;text-decoration:none;}
+.calendario_ajax table.calendario {margin:0;width:100%;border:solid #ccc;border-width:1px 0 0 1px}
+.calendario th {border:0;font-weight:500;background:#666;color:white;padding:10px;font-size:0.85em;height:40px;
+font-family: 'Open Sans Condesed', sans-serif;}
+.calendario td{padding:10px;text-align:center;border:solid #79B800;border-width:0 1px 1px 0;
+	white-space:pre-line;font-size:2em;width:14.28%;color:#666;position:relative;background:#fff;height:80px;
+	vertical-align: middle;}
 
-	.verde,.ok{font-weight:500;background:green;color:#fff}
-	.rojo{font-weight:500;background:red;color:#fff}
-	
-	
-	.toggle {background:#fff; text-align: center;}
-		.siguiente,.anterior{color:red;text-decoration:none;line-height:40px;}
+.calendario td.desactivada {background:#e9e9e9;}
+.calendario td.hoy{font-weight:500}
+a.agregar_evento{display:block;position:absolute;right:0;top:0; 
+background:#e9e9e9 url(../images/calendar-img/add.png) 50% 50% no-repeat;border-radius:0 0 10px 10px;width:24px;
+height:24px;text-decoration:none}
 
-	#mask {position:absolute;left:0;top:0;z-index:9000;background:#000;display:none;width:100%;height:100%;}
+.calendario td a{color:red;text-decoration:none;}
 
-	#respuesta_form,#respuesta{clear:both;padding:20px 0}
+.verde,.ok{font-weight:500;background:green;color:#fff;}
+.rojo{font-weight:500;background:red;color:#fff}
+.alert{font-weight:500;background:yellow;color:#fff}
+.window .error{color:#fff; background: red;}
+.toggle {background:#fff; text-align: center; margin-right: -1px; margin-top: 1px;}
+.siguiente,.anterior{color:#ef2f72;text-decoration:none;line-height:40px; font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.2em;font-weight: 600;}
+
+#mask {position:absolute;left:0;top:0;z-index:9000;background:#000;display:none;width:100%;height:100%;}
+
+#respuesta_form,#respuesta,#respuesta_form2,#respuesta_form3{clear:both;padding:20px 0}
   
-	.window {position:absolute;top:20px;right:20px;left:20px;bottom:20px;display:block;z-index:9999;padding:20px;background-color:#ffffff;overflow:auto}
+.window {position:absolute;top:20px;right:20px;left:20px;bottom:20px;display:block;z-index:9999;padding:20px;
+	background-color:#ffffff;overflow:auto}
 
-		.window h2{text-align:center;margin:0 0 10px 0;font-size:1.5em;color:#000}
-		.window a.close{position:absolute;right:0;top:0;padding:10px;background:#e9e9e9 url(../images/calendar-img/delete.png) 50% 50% no-repeat;text-decoration:none}
-		.window p{margin:0 0 5px 0;font-size:1em;border:1px solid #e9e9e9;text-align:left;padding:10px;clear:both;}
-		
-		.window form{padding:10px;clear:both;background:#e9e9e9;float:left;width:100%;position:relative}
-		.window input[type=text]{border:0;background:white;width:64%;padding:5px;float:left}
-		.window input[type=button]{border:0;width:35%;background:#ccc;float:right;padding:5px}
-		.window p img{vertical-align:middle;float:right;border:0;width:16px;height:16px}
-		label.error {position:absolute;left:13px;top:13px;padding:0;width:20px;height:20px;background:#fff url(../images/calendar-img/delete.png) 50% 50% no-repeat;text-decoration:none;overflow:hidden;text-indent:-999em}
+.window h2{text-align:center;margin:0 0 10px 0;font-size:1.5em;color:#000}
+.window a.close,a.close2,a.close3{position:absolute;right:0;top:0;padding:10px;
+background:#e9e9e9 url(../images/calendar-img/delete.png) 50% 50% no-repeat;text-decoration:none}
+
+
+.window p{margin:0 0 5px 0;font-size:1em;border:1px solid #e9e9e9;text-align:left;padding:10px;clear:both; }
+.window form{padding:10px;clear:both;background:#e9e9e9;float:left;width:100%;position:relative}
+.window input[type=text]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}
+.window input[name=evento_hora]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}
+.window select[name=color]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}
+/*.window select[name=arch]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}*/
+.window input[type=file]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}
+.window input[type=button]{border:0;width:35%;background:#ccc;float:left;padding:5px;margin-top: 0em;
+margin-left: 3.7em;}
+.window input[type=reset]{border:0;width:35%;background:#ccc;float:right;padding:5px;margin-top: 0em;
+margin-right: 3.7em;}
+.window input[name=calle]{border:0;background:white;width:45%;padding:5px;float:left; margin-bottom: 1em;}
+.window input[name=altura]{border:0;background:white;width:45%;padding:5px;float:right; margin-bottom: 1em;}
+.window label[for=arch]{color: #000;margin-bottom: 1em;}
+.window label[for=evento_hora]{color: #000;margin-bottom: 1em;margin-top: 1em;}
+.window p img{vertical-align:middle;float:right;border:0;width:16px;height:16px;margin-right: 10px;}
+#field1{display: none; color:red;}
+#field2{display: none; color:red;}
+#field3{display: none; color:red;}
+#field4{display: none; color:red;}
+#field5{display: none; color:red;}
+#field6{visibility:visible; color:red;}
+#field7{visibility:visible; color:red;}
+.window .fields67{display:inline-flex;}
+.window .datos{margin-top: 30px;}
+label.error {position:absolute;left:13px;top:13px;padding:0;width:20px;height:20px;
+background:#fff url(../images/calendar-img/delete.png) 50% 50% no-repeat;text-decoration:none;overflow:hidden;
+text-indent:-999em}
+
+/*estilos lista con imagenes*/
+.window .formeventos #lista li{
+	color:#000;
+	list-style: none;
+	display: none;
+	padding: 4px;
+}
+.window .formeventos #lista li:hover{
+	background: #1E90FF;
+	color:#fff;
+	cursor:default;
+}
+
+.window .formeventos #lista{
+	position: absolute;
+	width: 600px;
+	background: #fff;
+	border: 0;
+}
+
+.window .formeventos #div_visible{
+	background: #fff;
+    height: 40px;
+    position: relative;
+    margin-top: 6.65em;
+    padding-top: 0.82em;
+    padding-left: 0.3em;
+    color: #000;
+}
+
+.window .formeventos #lista li img{
+	margin-right: 0.5em;
+}
+
+.window .formeventos #div_visible img{
+		margin-right: 0.5em;
+}
