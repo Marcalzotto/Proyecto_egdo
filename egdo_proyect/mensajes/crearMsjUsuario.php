@@ -103,7 +103,7 @@ WHERE T.id_rol=2 and T.id_curso='$id_curso' and T.estadoActivacion=1
 					or die("Problemas en el select:".mysql_error());
 			echo '<div class="form-group">';
 
-echo '<select class="campoCrear" class="form-control" id="sel1" name="usuario_destino">';						
+echo '<select class="campoCrear" class="form-control" id="sel1" name="id_receptor">';						
 						echo '<option value=""></option>';
 						while($fila = mysql_fetch_array($consulta)) {
 							echo"<option value='".$fila['id_usuario']."'>".$fila['nombre']." ".$fila['apellido']." (".$fila['descripcion_rol'].")</option>";
