@@ -38,7 +38,7 @@
 			
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/form-elements.css">
         <link rel="stylesheet" href="css/style-modal.css">
 
@@ -49,11 +49,7 @@
 			<script src="js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="js/mainModal.js"></script> <!-- Gem jQuery -->
-
-		
-			
 	
-
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -67,7 +63,7 @@
 
 							<!-- Logo 161-->
 								<h1 id="logo">
-								<iframe src="1288e5eb40a06a54c95ee388396a8ed57724741c1654/1288e5eb40a06a54c95ee388396a8ed57724741c1654.html" width="100%" height="150" frameborder="0" scrolling="no" allowTransparency="true"></iframe> 
+								<iframe src="logo-animado/logo.html" width="100%" height="150" frameborder="0" scrolling="no" allowTransparency="true"></iframe> 
 								
 							<!-- Flecha 
 							
@@ -109,6 +105,7 @@
 						Login <i class="fa fa-lock" aria-hidden="true"></i> 
 						</a>
 						</div>
+										
 					</div>
 					<div id="slider">
 						<div class="caption">
