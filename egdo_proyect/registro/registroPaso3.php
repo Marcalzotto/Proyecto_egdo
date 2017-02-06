@@ -152,11 +152,15 @@
 									
 									<div class="12u 12u$(medium)"> <!-- Sec Datos Alumno -->
 									
+									<!-- form start -->
+									<form action="../registro/registroPaso4.php" method="post" role="form">
+									
 									<!-- row uniform 50% -->
 									
 									<div class="row uniform 50%">	
+										
 										<!-- Break -->
-										<div class="-2u 2u">
+										<div class="-2u 5u">
 										
 										<?php
 										
@@ -180,10 +184,16 @@
 										
 										</div>
 										
+										<!-- Break -->
+										<div class="-2u 5u$">
+											<button type="submit" class="button special fit small" name="btn-save" id="btn-save">
+											Siguiente <i class="fa fa-angle-right" aria-hidden="true"></i>
+											</button>
+										</div>
 										
-									</div>
+									</div> <!-- /row uniform 50% -->
 									
-									
+								</form>	
 										
 								</div> <!-- /Sec Datos Alumno -->
 								
