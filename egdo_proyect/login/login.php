@@ -42,7 +42,7 @@ if ($result->num_rows === 1) {
 
 		 if($row['id_rol']==1){
 		 
-			header('Location: ../pag_interiores/panel-index.php');
+			header('Location: ../admin/admin-index.php');
 			
 		 }
 		 else {
