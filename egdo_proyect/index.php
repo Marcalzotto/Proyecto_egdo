@@ -187,10 +187,31 @@
 					
 				</div>
 				
-				<?php
-					include '../pag_interiores/menu/masterFooter.php';
-				?>
-
+			<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
+					
+					<div id="contacto"> <!-- Ancla -->
+					
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter"><span>Twitter</span></a></li>
+							</ul>
+						</div>
+							
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; EGDO 2016.
+						</div>
+					
+					</div> <!-- /Ancla -->
+				</div>
 		</div>
 
 	<!-- MODAL -->	
