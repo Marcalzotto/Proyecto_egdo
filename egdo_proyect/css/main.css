@@ -1,11 +1,23 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700|Open+Sans+Condensed:300,700");
-@import url("font-awesome.min.css");
-
+/*@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700|Open+Sans+Condensed:300,700");*/
+@import url("../fonts/font-awesome/css/font-awesome.min.css");
+@import url("../fonts/font-awesome/css/font-awesome.css");
 /*
 	Wide Angle by Pixelarity
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('../fonts/OpenSansCondbold/OpenSans-CondBold-webfont.eot');
+    src: url('../fonts/OpenSansCondbold/OpenSans-CondBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSansCondbold/OpenSans-CondBold-webfont.woff') format('woff'),
+         url('../fonts/OpenSansCondbold/OpenSans-CondBold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSansCondbold/OpenSans-CondBold-webfont.svg#open_sans_condensedbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 @font-face {
     font-family: 'know_your_productregular';
     src: url('../fonts/know_your_product-webfont.eot');
