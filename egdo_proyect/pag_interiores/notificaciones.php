@@ -1,6 +1,10 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include("conexion.php");?>
 <?php include('funciones/obtener_mes.php');?>
+<?php 
+	include('funciones/generar_notificacion.php');
+	generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php include('funciones/add_extencion.php');?>
 <!DOCTYPE HTML>

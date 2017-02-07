@@ -1,7 +1,10 @@
 <?php require_once("../bloqueSeguridad.php");?>
 <?php require_once("conexion.php");?>
+<?php 
+	include('funciones/generar_notificacion.php');
+	generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('funciones/cantidad_notificaciones.php');?>
-<?php include('funciones/generar_notificacion.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;

@@ -1,7 +1,7 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include("conexion.php");?>
-<?php include("funciones/generar_notificacion2.php");
-	generar_notificacion2($conexion,$_SESSION["curso"]);
+<?php include("funciones/generar_notificacion.php");
+	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <!DOCTYPE HTML>
@@ -61,17 +61,11 @@
 						
 						<div id="header" class="container">
 							
-							
-							
-							
-		<?php
-			include '../pag_interiores/menu/masterMenu.php';
-		?>
+						<?php
+							include '../pag_interiores/menu/masterMenu.php';
+						?>
 								
-		
-
 						</div>
-				
 				</div>
 </header>
 			<!-- Banner Wrapper -->
@@ -89,8 +83,6 @@
 	
 </div>
 
-				
-				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
@@ -120,9 +112,7 @@
 
 		</div>
 
-		
-		
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/jquery.dropotron.min.js"></script>
 			<script src="../js/skel.min.js"></script>

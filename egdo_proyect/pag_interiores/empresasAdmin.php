@@ -3,6 +3,8 @@
 			include("conexion.php");
 			include("funciones/calcular_calificacion_empresa.php");
 			include("funciones/calcular_nuevo_ancho.php");
+			include('funciones/generar_notificacion.php');
+			generar_notificacion($conexion,$_SESSION["curso"]);
 			include('funciones/cantidad_notificaciones.php');
 ?>
 

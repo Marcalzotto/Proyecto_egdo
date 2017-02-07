@@ -1,8 +1,7 @@
 <?php
 function cantidad_notificaciones($conexion,$usuario,$curso){
 
-
-	$query = "select count(id_notificacion) as cant from notificaciones where curso_notificacion = '$curso' and id_notificacion not in(
+		$query = "select count(id_notificacion) as cant from notificaciones where curso_notificacion = '$curso' and id_notificacion not in(
 						select id_notificacion from notificacion_vista_por where usuario = '$usuario' 
 						and curso_notificacion = '$curso');";
 											

@@ -1,9 +1,8 @@
 <?php
 require_once("../bloqueSeguridad.php");
 require_once("conexion.php");
-include("funciones/generar_notificacion.php");
 
-	if($_POST){
+if($_POST){
 		
 		$talleBuzo = addslashes(htmlspecialchars($_POST["buzoTalle"]));
 		$talleRemera = addslashes(htmlspecialchars($_POST["remeraTalle"]));
@@ -12,8 +11,7 @@ include("funciones/generar_notificacion.php");
 		//$talleBuzo = $_POST["buzoTalle"];
 		//$talleRemera = $_POST["remeraTalle"];
 
-
-		if($talleBuzo == "null" && $talleRemera == "null"){
+	if($talleBuzo == "null" && $talleRemera == "null"){
 			echo -1; //"Por favor llena todos los campos de este formulario"; //mensaje error -1
 		}else if(strcmp($talleBuzo, "xs") != 0 && strcmp($talleBuzo, "s") != 0 && strcmp($talleBuzo, "m") != 0 && strcmp($talleBuzo, "l") != 0 && strcmp($talleBuzo, "xl") != 0 && strcmp($talleBuzo, "xxl") != 0 && strcmp($talleBuzo, "null") != 0){
 			echo -2; //"El talle elegido de buzo no concuerda con los proporcionados :".$talleBuzo; //mensaje error -2
@@ -32,7 +30,6 @@ include("funciones/generar_notificacion.php");
 				$case = 2;
 			}
 
-			
 			$verificarEligioTalles = "select * from talles_curso where usuario = '$_SESSION[id_usuario]'";
 			$resultSet = $conexion->query($verificarEligioTalles);
 
@@ -63,7 +60,7 @@ include("funciones/generar_notificacion.php");
 				
 					if($updated){
 						$fecha = new DateTime();
-						generar_notificacion($conexion,"Has actualizado tus talles de ropa","votacionAdminCurso.php","../images/shirt.png",$_SESSION['curso'],$fecha->format("Y-m-d H:i:s"));
+						
 						echo $talleBuzo."-".$talleRemera; //vienen los talles
 					}else{
 						echo -4; //"Hubo problemas al cambiar los talles, intenta de nuevo mas tarde";//mensaje error -4
@@ -83,7 +80,6 @@ include("funciones/generar_notificacion.php");
 					$inserted = $conexion->query($insercion);
 					if($inserted){
 
-						generar_notificacion($conexion,"Has elegido tus talles de ropa","votacionAdminCurso.php","../images/shirt.png",$_SESSION['curso']);
 						echo $talleBuzo."-".$talleRemera; //"La operacion se ha realizado con exito";//vienen los talles
 					}else{
 						echo -5; //"Hubo problemas al guardar tus talles";//mensaje error -5

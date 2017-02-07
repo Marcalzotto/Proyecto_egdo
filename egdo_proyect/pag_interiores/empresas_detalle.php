@@ -6,6 +6,8 @@
 			include('funciones/funcion_obtener_cantidad_votos.php');
 			include('funciones/calcular_ancho_barritas.php');
 			include('funciones/obtener_mes.php');
+			include('funciones/generar_notificacion.php');
+			generar_notificacion($conexion,$_SESSION["curso"]);
 			include('funciones/cantidad_notificaciones.php');
 ?>
 <!DOCTYPE HTML>
@@ -76,14 +78,10 @@
 						
 						<div id="header" class="container">
 							
-							
-							
 							<?php
 							include '../pag_interiores/menu/masterMenu.php';
 							?>
-								
-		
-
+						
 						</div>
 				
 				</div>
@@ -304,8 +302,6 @@
 
 		</div>
 
-		
-		
 		<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/jquery.dropotron.min.js"></script>
@@ -317,7 +313,6 @@
 			<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
 			<script src="../js/jquery.charcounter.js"></script>
 			<script src="../js/countDown.js"></script>
-			
 			
 	</body>
 </html>

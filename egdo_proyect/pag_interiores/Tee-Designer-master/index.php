@@ -1,7 +1,10 @@
 <?php require_once("../../bloqueSeguridad.php");?>
 <?php require_once("../conexion.php");?>
 <?php include("../funciones/cantidad_notificaciones.php");?>
-<?php include("../funciones/generar_notificacion.php");?>
+<?php 
+	include('../funciones/generar_notificacion.php');
+	generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php
 	$flag = 0;
 
@@ -31,7 +34,6 @@
 			}
 		}
 
-
 	}else{
 		die("Lo sentimos hubo problemas con el servidor");
 	}
@@ -60,7 +62,6 @@
 
 			$(function() {
 				
-				
 				$('#main-nav > ul').dropotron({ 
 						offsetY: -50,
 						mode: 'fade',
@@ -71,13 +72,10 @@
 			});
 		</script>
    
-		<script src="js/jquery-1.10.2.js">	</script>
-
-		<script src="js/bootstrap.js">		</script>
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/bootstrap.js"></script>
 		
-		<style>
-
-</style>
+		<style></style>
 
 </head>
 

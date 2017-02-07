@@ -1,5 +1,9 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include('conexion.php');?>
+<?php 
+  include('funciones/generar_notificacion.php');
+  generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 
 <!DOCTYPE HTML>
@@ -61,14 +65,10 @@
             
             <div id="header" class="container">
               
-              
-              
               <?php
-				include '../pag_interiores/menu/masterMenu.php';
-			?>
-                
-    
-
+				        include '../pag_interiores/menu/masterMenu.php';
+			         ?>
+            
             </div>
         
         </div>

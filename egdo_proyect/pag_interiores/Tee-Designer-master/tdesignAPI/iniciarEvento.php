@@ -2,7 +2,6 @@
 
 session_start();
 include('../../conexion.php');
-include('../../funciones/generar_notificacion.php');
 $user = $_SESSION['id_usuario'];
 $curso = $_SESSION['curso'];
 

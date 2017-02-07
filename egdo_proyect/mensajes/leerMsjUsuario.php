@@ -1,5 +1,9 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include('../pag_interiores/conexion.php');?>
+<?php 
+	include('../pag_interiores/funciones/generar_notificacion.php');
+	generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('../pag_interiores/funciones/cantidad_notificaciones.php');?>
 
 <!DOCTYPE HTML>
@@ -60,14 +64,10 @@
 						
 						<div id="header" class="container">
 							
-							
-							
 							<?php
 							include '../pag_interiores/menu/masterMenu.php';
 							?>
 								
-		
-
 						</div>
 				
 				</div>
@@ -86,8 +86,6 @@
     mysql_select_db("egdo_db", $conexion) 
       or die("Problemas en la seleccion de la base de datos");
     ?>
-
-
 
 <?php 
 

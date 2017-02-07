@@ -1,5 +1,9 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include('conexion.php');?>
+<?php 
+  include('funciones/generar_notificacion.php');
+  generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <!DOCTYPE HTML>
 <!--
@@ -41,7 +45,6 @@
       
       <!-- modal  -->
       
-
       <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
       <link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
       <script src="../js/modernizr.js"></script> <!-- Modernizr -->
@@ -60,14 +63,10 @@
             
             <div id="header" class="container">
               
-              
-              
               <?php
 				        include '../pag_interiores/menu/masterMenu.php';
-			         ?>
-                
-    
-
+			        ?>
+            
             </div>
         
         </div>

@@ -1,5 +1,9 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php include ("conexion.php");?>
+<?php 
+	include('funciones/generar_notificacion.php');
+	generar_notificacion($conexion,$_SESSION["curso"]);
+?>
 <?php include('funciones/cantidad_notificaciones.php');?>			
 <!DOCTYPE HTML>
 <!--
@@ -43,10 +47,7 @@
 			
 			<!-- modal  -->
 			
-			
-			
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<!--<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
 			<!--Librarys for calendar-->
@@ -61,8 +62,6 @@
 
 			
 			<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-		
-	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
 	</head>
@@ -76,14 +75,10 @@
 						
 						<div id="header" class="container">
 							
-							
-							
 							<?php
-							include '../pag_interiores/menu/masterMenu.php';
+								include '../pag_interiores/menu/masterMenu.php';
 							?>
 								
-		
-
 						</div>
 				
 				</div>
@@ -131,9 +126,7 @@
 
 		</div>
 
-		
-		
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<!--<script src="../assets/js/jquery.min.js"></script>-->
 			<script src="../js/jquery.dropotron.min.js"></script>
 			<script src="../js/skel.min.js"></script>
@@ -628,7 +621,7 @@
 				var nueva_fecha=datos.split("-");
 				generar_calendario(nueva_fecha[1],nueva_fecha[0]);
 			});
-
+		
 		});
 		</script>
 			

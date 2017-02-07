@@ -43,11 +43,7 @@
 			<meta name="theme-color" content="#ffffff">
 			
 			<!-- modal  -->
-			
-			
-			
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
 			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
@@ -91,7 +87,6 @@
 																select id_notificacion from notificacion_vista_por where usuario = '$_SESSION[id_usuario]' 
 																and curso_notificacion = '$_SESSION[curso]');";
 								
-								
 								if ($conexion->multi_query($multi_insert)) {
     						
     							do{
@@ -118,28 +113,18 @@
 							}
 						}
 
-							
 						?>	
 						<?php
-						
 							include '../pag_interiores/menu/masterMenu.php';
 						?>
 								
-		
-
 						</div>
-				
-				</div>
-</header>
+					</div>
+		</header>
 			<!-- Banner Wrapper -->
 				<div id="banner-wrapper">
-
-					<!--
-
-						The slider's images (as well as its behavior) can be configured
-						at the top of "assets/js/main.js".
-
-					-->
+					<!--The slider's images (as well as its behavior) can be configured
+						at the top of "assets/js/main.js".-->
 
 					<div id="contenerNotificaciones">
 							
@@ -182,11 +167,8 @@
 								}
 								
 							?>
-						
-	
-					</div>
+						</div>
 				</div>
-					
 					
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
@@ -216,9 +198,7 @@
 
 		</div>
 
-		
-		
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/jquery.dropotron.min.js"></script>
 			<script src="../js/skel.min.js"></script>

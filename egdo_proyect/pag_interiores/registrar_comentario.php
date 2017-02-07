@@ -63,7 +63,6 @@
 			echo -1;
 		}
 
-
-		$conexion->close();
+	$conexion->close();
 	}
 ?>
