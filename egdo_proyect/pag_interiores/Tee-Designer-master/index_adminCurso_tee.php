@@ -1,5 +1,7 @@
 <?php require_once("../../bloqueSeguridad.php");?>
 <?php require_once("../conexion.php");?>
+<?php include("../funciones/cantidad_notificaciones.php");?>
+<?php include("../funciones/generar_notificacion.php");?>
 <?php
 	$flag = 0;
 
@@ -79,21 +81,18 @@
 		<nav id="main-nav">
 			<ul>
 				<li class="logo"><a href="indexUsuarioAdminCurso.php"><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
-				<li class="circle"><a href="#"><img src="tdesignAPI/images/upd.png" alt=""></a></li>
+				<li class="circle"><a href="../upd.php"><img src="tdesignAPI/images/upd.png" alt=""></a></li>
 				<li class="circle"><a href="#">
 					<img src="tdesignAPI/images/shirt.png" alt=""></a>
 						<ul>
-							<li><a href="../indexUsuarioAdminCurso.php">Pagina Principal 
-								<img src="../../images/dropotron_icons/principal.png" alt="" style="float:right"></a></li>
-							<li><a href="../votacionAdminCurso.php">Votaci&oacute;n 
-								<img src="../../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-							<li><a href="../empresasAdmin.php">Empresas 
-								<img src="../../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-							<li><a href="../subir_arch_adminCurso.php">Subi tus dise&ntilde;os 
-								<img src="../../images/dropotron_icons/upload.png" alt="subir disenios" style="float:right"></a></li>
+							<li>
+								<a href="../indexUsuarioAdminCurso.php">Pagina Principal 
+										<img src="../../images/dropotron_icons/principal.png" alt="" style="float:right">
+								</a>
+							</li>
 						</ul>		
 				</li>
-				<li class="circle"><a href="#"><img src="tdesignAPI/images/party.png" alt=""></a></li>
+				<li class="circle"><a href="../fiesta.php"><img src="tdesignAPI/images/party.png" alt=""></a></li>
 				<li class="circle">
 					<a href="#">
 						<img src="tdesignAPI/images/foto-evento.png" alt="">
@@ -106,14 +105,28 @@
 						<li><a href="../formSubirFotosAdmin.php">Subi tus fotos<img src="../../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
 					</ul>
 				</li>
-				<li class="circle"><a href="infoviajeAdminEgdo.php"><img src="tdesignAPI/images/bus.png" alt=""></a></li>
+				<li class="circle"><a href="../infoviajeAdminEgdo.php"><img src="tdesignAPI/images/bus.png" alt=""></a></li>
 				<li class="circle"><a href="#"><img src="tdesignAPI/images/settings.png" alt=""></a>
 																			<ul>
-																				<li><a href="#">Manda tu invitacion <img src="../../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../notificacionesAdmin.php">Notificaciones<img src="../../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../../invitaciones/invitaciones.php">Manda tu invitacion <img src="../../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li>
+																					<a href="../notificacionesAdmin.php">Notificaciones
+																					<?php 
+																						$cant = cantidad_notificaciones($conexion,$_SESSION['id_usuario'],$_SESSION['curso']);
+
+																						if($cant > 0){
+																							echo "<div class='num_notificaciones'>".$cant."</div>";
+																						}else if($cant == 0){
+																							//echo "<div class='num_notificaciones'>10</div>";
+																							echo "<img src='../../images/dropotron_icons/alarm.png' alt='alarma' style='float:right'>";
+																						}else{
+																							echo "<div class='num_notificaciones'>".$cant."</div>";
+																						}
+																					?>
+																					</a></li>
 																				<li><a href="../agendaAdmin.php">Agenda<img src="../../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="#">Perfil <img src="../../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
+																				<li><a href="../../perfil/editarPerfil.php">Perfil <img src="../../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
 																				<li><a href="../../login/logout.php">Logout <img src="../../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
 																			</ul>
 				</li>

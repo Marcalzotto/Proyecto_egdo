@@ -1,4 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
+<?php include('../pag_interiores/conexion.php');?>
+<?php include('../pag_interiores/funciones/cantidad_notificaciones.php');?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -155,9 +157,9 @@
 
 												//recibo id del curso creado
 												//$id_curso="2";
-												$id_curso=$_SESSION['id_curso'];
+												$id_curso=$_SESSION['curso'];
 												//echo 'el id curso es:'.$id_curso;
-
+												//Esta parte la corrijio marcos cambie id_curso por curso.
 
 												//saco el numero de elementos
 												$longitud = count($emailsOk);

@@ -365,8 +365,19 @@ CREATE TABLE IF NOT EXISTS `tcalendario` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE 
---
+CREATE TABLE `notificacion_vista_por`(
+	id_reg INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	usuario INT NOT NULL,
+	id_notificacion INT NOT NULL,
+	borrada BOOL NULL,
+	curso_notificacion INT NOT NULL
+);
+
+CREATE TABLE tipo_notificaciones(
+id_notificaciones INT NOT NULL PRIMARY KEY,
+resumen VARCHAR(200) NOT NULL
+);
+-- 	
 -- Índices para tablas volcadas
 --
 
@@ -466,9 +477,15 @@ ALTER TABLE `mensajes_privado`
 -- Indices de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
+  ADD COLUMN icono VARCHAR(200) NOT NULL,
   ADD PRIMARY KEY (`id_notificacion`);
-  
-  
+
+-- Indices para la tabla notificacion_vista_por
+
+ALTER TABLE `notificacion_vista_por`
+  ADD FOREIGN KEY (usuario) REFERENCES usuario(id_usuario),
+  ADD FOREIGN KEY (id_notificacion) REFERENCES notificaciones(id_notificacion),
+  ADD FOREIGN KEY (curso_notificacion) REFERENCES curso(id_curso); 
 --
 -- Indices de la tabla `rol`
 --
@@ -720,3 +737,31 @@ ALTER TABLE tcalendario CHANGE COLUMN barrio barrio VARCHAR(75) NULL;
 ALTER TABLE tcalendario CHANGE COLUMN altura altura NUMERIC(11) NULL;
 ALTER TABLE tcalendario CHANGE COLUMN curso_eventos curso_eventos INT(11) NULL;
 ALTER TABLE tcalendario ADD COLUMN tipo_evento VARCHAR(200) NULL;
+
+-- Modificaciones para la tabla notificaciones
+ALTER TABLE notificaciones DROP COLUMN curso_notificacion;
+DROP TABLE notificacion_vista_por;
+ALTER TABLE notificaciones ADD COLUMN curso_notificacion INT NOT NULL;
+ALTER TABLE notificaciones ADD FOREIGN KEY(curso_notificacion) REFERENCES curso(id_curso);
+ALTER TABLE notificaciones ADD COLUMN fecha_hora DATETIME;
+ALTER TABLE notificaciones CHANGE COLUMN fecha_hora fecha_hora DATETIME NOT NULL;
+ALTER TABLE notificaciones ADD COLUMN tipo_notificacion INT NOT NULL;
+ALTER TABLE notificaciones ADD FOREIGN KEY (tipo_notificacion) references tipo_notificaciones(id_notificaciones);
+
+INSERT INTO tipo_notificaciones VALUES(1,"NOTIFICACIONES DE BIENVENIDA");
+INSERT INTO tipo_notificaciones VALUES(2,"NOTIFICACIONES DE LUGARES TURISTICOS");
+INSERT INTO tipo_notificaciones VALUES(3,"APERTURA ETAPA 1 DISENIO");
+INSERT INTO tipo_notificaciones VALUES(4,"APERTURA ETAPA 2 DISENIO");
+INSERT INTO tipo_notificaciones VALUES(5,"NOTIFICACION DISENIOS GANADORES");
+INSERT INTO tipo_notificaciones VALUES(6,"APERTURA DE ETAPA 3 DISENIO");
+INSERT INTO tipo_notificaciones VALUES(7,"APERTURA DE ETAPA 4 DISENIO");
+INSERT INTO tipo_notificaciones VALUES(8,"NOTIFICACION INICIO DE PROPUESTA DE LUGARES UPD");
+INSERT INTO tipo_notificaciones VALUES(9,"NOTIFICACION AVISO DE FINALIZACION DE PROPUESTA DE LUGARES UPD");
+INSERT INTO tipo_notificaciones VALUES(10,"NOTIFICACIONES INICIO DE CALIFICACION DE LUGARES UPD");
+INSERT INTO tipo_notificaciones VALUES(11,"NOTIFICACIONES DE LUGAR GANADOR UPD");
+INSERT INTO tipo_notificaciones VALUES(12,"NOTIFICACION INICIO DE PROPUESTA DE LUGARES FIESTA DE EGRESADOS");
+INSERT INTO tipo_notificaciones VALUES(13,"NOTIFICACION AVISO DE FINALIZACION DE PROPUESTA DE LUGARES FIESTA DE EGRESADOS");
+INSERT INTO tipo_notificaciones VALUES(14,"NOTIFICACIONES INICIO DE CALIFICACION DE LUGARES FIESTA DE EGRESADOS");
+INSERT INTO tipo_notificaciones VALUES(15,"NOTIFICACIONES LUGAR GANADOR FIESTA DE EGRESADOS");
+
+ALTER TABLE notificaciones CHANGE COLUMN resumen resumen VARCHAR(200) NOT NULL;

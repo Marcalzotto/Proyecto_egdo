@@ -1,5 +1,7 @@
 <?php require_once("../bloqueSeguridad.php");?>
 <?php require_once("conexion.php");?>
+<?php include('funciones/cantidad_notificaciones.php');?>
+<?php include('funciones/generar_notificacion.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;
@@ -216,11 +218,11 @@
     
     							<section id="content1">
 
-										<?php
+									<?php
 								
-								imprimir_disenios($conexion,$fecha_apertura,$fecha_fin_primer_instancia,$fecha_fin_segunda_instancia,$curso,1);
+									imprimir_disenios($conexion,$fecha_apertura,$fecha_fin_primer_instancia,$fecha_fin_segunda_instancia,$curso,1);
 									
-										?>
+									?>
   								</section>
     
   								<section id="content2">
@@ -242,7 +244,7 @@
 										
 										<?php
 										
-										imprimir_forms_talles($conexion, $maxBuzo, $maxRemera, $maxBandera, $usuario, $curso);
+										imprimir_forms_talles($conexion, $maxBuzo, $maxRemera, $maxBandera, $usuario, $curso, $fechaHoy, $fecha_fin_segunda_instancia);
 										
 										
 

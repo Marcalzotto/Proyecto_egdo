@@ -1,6 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
 <?php require('conexion.php'); ?>
-
+<?php include('funciones/cantidad_notificaciones.php');?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity

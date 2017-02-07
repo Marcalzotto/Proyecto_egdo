@@ -1,10 +1,12 @@
-<?php include("../bloqueSeguridad.php");
+<?php 
+			include("../bloqueSeguridad.php");
 			include('conexion.php');
 			include('funciones/calcular_calificacion_empresa.php');
 			include('funciones/calcular_nuevo_ancho.php');
 			include('funciones/funcion_obtener_cantidad_votos.php');
 			include('funciones/calcular_ancho_barritas.php');
 			include('funciones/obtener_mes.php');
+			include('funciones/cantidad_notificaciones.php');
 ?>
 <!DOCTYPE HTML>
 <!--

@@ -1,5 +1,8 @@
 <?php include ("../bloqueSeguridad.php");?>
-
+<?php include("conexion.php");?>
+<?php include('funciones/obtener_mes.php');?>
+<?php include('funciones/cantidad_notificaciones.php');?>
+<?php include('funciones/add_extencion.php');?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -55,6 +58,7 @@
 			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script src="../js/borrar_notificacion.js"></script>
 		
 	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
@@ -70,7 +74,56 @@
 						
 						<div id="header" class="container">
 							
+						<?php
+						$resultSet = $conexion->query("select id_notificacion from notificaciones where curso_notificacion = '$_SESSION[curso]' and id_notificacion not in(
+																					 select id_notificacion from notificacion_vista_por where usuario = '$_SESSION[id_usuario]' 
+																					 and curso_notificacion = '$_SESSION[curso]');");
+						
+						$multi_insert = "";
+
+						if($resultSet){
+							if($resultSet->num_rows > 0){
+								while($row = $resultSet->fetch_array(MYSQLI_ASSOC)){
+									$ids[] = $row;
+								}
+
+								foreach ($ids as $id) {
+									$multi_insert.="insert into notificacion_vista_por values('','$_SESSION[id_usuario]','$id[id_notificacion]',0,'$_SESSION[curso]');";
+								}
+
+								$multi_insert.="select count(id_notificacion) as cant from notificaciones where curso_notificacion = '$_SESSION[curso]' and id_notificacion not in(
+																select id_notificacion from notificacion_vista_por where usuario = '$_SESSION[id_usuario]' 
+																and curso_notificacion = '$_SESSION[curso]');";
+								
+
+								if ($conexion->multi_query($multi_insert)) {
+    						
+    							do{
+        					/* almacenar primer juego de resultados */
+        					if ($result = $conexion->store_result()) {
+            				
+            				while ($row = $result->fetch_row()){
+                			
+               				$cant_notificaciones = $row[0];
+                			
+            				}
+            				$result->free();
+        					}
+        					/* mostrar divisor */
+        						if ($conexion->more_results()) {
+            				//printf("-----------------\n");
+        						}
+    							}while ($conexion->next_result());
+								}
+							//fin del algoritmo para multi consultas
+
 							
+							}else{
+								$cant_notificaciones = 0;
+							}
+						}
+
+						?>	
 							
 							<?php
 							include '../pag_interiores/menu/masterMenu.php';
@@ -94,12 +147,45 @@
 
 					<div id="contenerNotificaciones">
 						
-							<a href="#"><img src="../images/avatar_64.png" alt=""><p>Bienvenido a egdo.</p>
-							<p class="fecha">Hace 1h</p></a>
-							<a href="votacion.php"><img src="../images/shirt.png" alt=""><p>Se ha abierto la votacion dise&ntilde;os</p>
-								<p class="fecha">Hace 1h</p></a>
-							<a href="#"><img src="../images/bus.png" alt=""><p>Hay lugares que podrian interesarte para ir de viaje.</p></a>
-							
+							<?php
+								$resultSet = $conexion->query("select * from notificaciones n join notificacion_vista_por nvp on n.id_notificacion = nvp.id_notificacion where n.curso_notificacion = '$_SESSION[curso]' and nvp.usuario = '$_SESSION[id_usuario]' and nvp.borrada = 0 order by n.tipo_notificacion;");
+								if($resultSet){	
+									if($resultSet->num_rows > 0){
+										
+										while($row = $resultSet->fetch_array(MYSQLI_ASSOC)) {
+											$notificaciones[] = $row;
+										}
+
+										foreach ($notificaciones as $notificacion){
+											
+											$fecha_separar = split("-", $notificacion["fecha_hora"]);
+											$aaaa = $fecha_separar[0];
+											$mm = $fecha_separar[1];
+											$dd = $fecha_separar[2];
+
+											$mes_nombre = get_mes($mm);
+
+											$tiempo = split(" ", $dd);
+											$dia = $tiempo[0];
+											$hora = $tiempo[1];
+
+											$separar_hora = split(":", $hora);
+											$horas = $separar_hora[0];
+											$minutos = $separar_hora[1];
+											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
+
+											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
+											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." u=".$_SESSION["id_usuario"]." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+										}
+
+									}else{
+									echo "<h2>No tiene notificaciones pendientes</h2>";
+									}
+								}else{
+									echo "Hubo un problema con el servidor, intente nuevamente mas tarde";
+								}
+								
+							?>
 						
 	
 					</div>

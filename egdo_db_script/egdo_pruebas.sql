@@ -151,3 +151,60 @@ id_actividad int not null
 
 select * from imagen;
 
+-- Pruebas realizadas ultimamente
+select * from actividad_disenio;
+delete from actividad_disenio where actividad_disenio_id = 6;
+
+select * from votos;
+select * from disenio;
+
+select count(id_disenio) as ganadores from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
+where u.id_curso = 2 and codigo_tipo = 3 and votos_segunda_instancia in(
+										select max(d.votos_segunda_instancia) from disenio as d 
+										where d.codigo_tipo = 3);
+
+select * from talles_curso;
+select talle_buzo, talle_remera from talles_curso where usuario = '';
+select id_rol from usuario where id_usuario = '' and id_curso = 2;
+select * from usuario where id_rol = 2 and id_curso = 2;
+
+select * from curso_pdf;
+select * from empresa;
+select * from calificacion;
+
+select * from empresa e join calificacion c on e.id_empresa = c.id_empresa;
+
+delete from calificacion where id_empresa = 1;
+select * from comentario_empresas;
+delete from comentario_empresas where id_empresa = 1;
+select * from tcalendario;
+delete from tcalendario where id = 21946;
+update tcalendario set evento = 'Un nombre', color = 1, hora = '20:03:00' where id = 21961 and fecha= '2017-01-06';
+
+insert into notificaciones values("","Hola buenos dias german","http://german.com","../carpeta/icono.png",3,'2017-01-27 17:25:00');
+delete from notificaciones where curso_notificacion = 2; 
+
+
+
+select * from notificaciones;
+
+
+insert into notificacion_vista_por values("",6,4,0,2);
+insert into notificacion_vista_por values("",6,5,0,2);
+insert into notificacion_vista_por values("",6,8,0,2);
+select * from notificacion_vista_por;
+select count(id_notificacion) from notificaciones where curso_notificacion = 2 and id_notificacion not in(
+	select id_notificacion from notificacion_vista_por where usuario = 6 and curso_notificacion = 2);
+
+
+delete from notificacion_vista_por where id_notificacion = 4; 
+select * from notificaciones n join notificacion_vista_por nvp on n.id_notificacion = nvp.id_notificacion where n.curso_notificacion = 2 and nvp.usuario = 6 and nvp.borrada = 0;
+select * from actividad_disenio;
+
+insert into notificaciones values('','La votacion termino, mira los disenios ganadores.','votacion','../images/shirt.png',2,'2017-02-02 18:40:00',5);
+					
+insert into notificaciones values('','Ya puedes elegir tus talles de ropa.','votacion','../images/shirt.png',2,'2017-02-02 18:40:00',6);
+					
+insert into notificaciones values('','Ya puedes elegir la empresa que confeccione tus disenios.','empresas','../images/shirt.png',2,'2017-02-02 18:40:00',7);
+
+select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 5 or tipo_notificacion = 6 or tipo_notificacion = 7 and curso_notificacion = 2;

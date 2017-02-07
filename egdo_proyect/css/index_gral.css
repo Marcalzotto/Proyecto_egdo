@@ -1866,7 +1866,17 @@ height:5%;
 						border-right: solid 0.8em transparent;
 					}
 
-					
+				.dropotron a div{
+					background: red;
+    			height: 20px;
+   			  width: 20px;
+    			text-align: center;
+    			border-radius: 10px;
+    			padding-top: 2px;
+					display: inline-block;
+    			margin-top: -5px;
+    			float: right;
+				}
 
 		/* Content */
 
@@ -2757,6 +2767,13 @@ background: #393939;
 
 #contenerNotificaciones a img{
 	float: left;
+}
+
+#contenerNotificaciones a .del{
+	margin-left: 639px;
+  margin-top: -24px;
+  z-index: 10000;
+  
 }
 #contenerNotificaciones a p{
 	vertical-align: text-top;

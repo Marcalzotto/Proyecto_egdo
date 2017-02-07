@@ -3,6 +3,7 @@
 			include("conexion.php");
 			include("funciones/calcular_calificacion_empresa.php");
 			include("funciones/calcular_nuevo_ancho.php");
+			include('funciones/cantidad_notificaciones.php');
 ?>
 
 <!DOCTYPE HTML>

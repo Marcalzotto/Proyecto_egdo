@@ -1,4 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
+<?php include('conexion.php');?>
+<?php include('funciones/cantidad_notificaciones.php');?>
 
 <!DOCTYPE HTML>
 <!--
@@ -78,18 +80,18 @@
             <section id="content" class="container">
                <!-- SLIDESHOW -->
                <div id="sliders">
-                      <ul class="bjqs">
-                        <li>
-                    <img src="../images/balneario_camboriu.jpg" alt="" title="El Balneario de Camboriú posee exuberantes y hermosas playas, las cuáles se destacan por ser un agradable atractivo para el turismo tanto nacional como internacional. Si bien vale la pena visitarlas a todas, la Playa Central logra imponerse por sobre las demás, por sus aguas mansas y cristalinas y su completa infraestructura turística completa." />
-                </li>
-                <li>
-                    <img src="../images/cristo_luz_camboriu.jpg" alt="" title="Cristo Luz: dos de sus mayores privilegios son las increíbles vistas que permite obtener de toda la ciudad y el espectáculo de luces de 86 tonos que se inicia todos los días a las 20hs. Este show, que puede divisarse desde hasta 15 kilómetros de distancia, es una de las atracciones más típicas que tiene la ciudad." />
-                </li>
-                <li>
-                    <img src="../images/waterplay_camboriu.jpg" alt="" title="Water Play: el complejo dispone de 7 piscinas, 5 cinco toboganes de agua todo incluido y la parte de actividades de barro, trecking hasta un mirador sobre el morro, circuito de supervivencia, tirolesa, metegol humano, football mixto, mareados, ring humano, gomones, etc. Acompañados por un equipo de personas especializadas en este tipo de actividades recreativas y con un cierre que hará que esta excursión sea la preferida de los estudiantes.." />
-                </li>
-            </ul>
-        </div>
+                  <ul class="bjqs">
+                    <li>
+                      <img src="../images/balneario_camboriu.jpg" alt="" title="El Balneario de Camboriú posee exuberantes y hermosas playas, las cuáles se destacan por ser un agradable atractivo para el turismo tanto nacional como internacional. Si bien vale la pena visitarlas a todas, la Playa Central logra imponerse por sobre las demás, por sus aguas mansas y cristalinas y su completa infraestructura turística completa." />
+                    </li>
+                    <li>
+                      <img src="../images/cristo_luz_camboriu.jpg" alt="" title="Cristo Luz: dos de sus mayores privilegios son las increíbles vistas que permite obtener de toda la ciudad y el espectáculo de luces de 86 tonos que se inicia todos los días a las 20hs. Este show, que puede divisarse desde hasta 15 kilómetros de distancia, es una de las atracciones más típicas que tiene la ciudad." />
+                    </li>
+                    <li>
+                      <img src="../images/waterplay_camboriu.jpg" alt="" title="Water Play: el complejo dispone de 7 piscinas, 5 cinco toboganes de agua todo incluido y la parte de actividades de barro, trecking hasta un mirador sobre el morro, circuito de supervivencia, tirolesa, metegol humano, football mixto, mareados, ring humano, gomones, etc. Acompañados por un equipo de personas especializadas en este tipo de actividades recreativas y con un cierre que hará que esta excursión sea la preferida de los estudiantes.." />
+                    </li>
+                  </ul>
+                </div>
      
     <!-- FIN SLIDESHOW -->
                       </section>

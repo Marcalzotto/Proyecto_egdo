@@ -73,10 +73,7 @@ echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble
 			echo "<p id=no-ul >Lo sentimos hubo un problema con el servidor.</p>";
 		}	
 }else if($fechaHoy > $fsi){
-																/*ESTE CODIGO AHORA VA EN LA PANTALLA DONDE SE ELIJE EL LISTADO DE TALLES*/
-		/*$buscarGanador = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-		where d.codigo_tipo = '$tipo_prenda' and u.id_curso = '$curso' order by d.votos_segunda_instancia desc limit 1";*/
-		
+																
 		$buscarGanador = "select * from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
 											where u.id_curso = '$curso' and di.codigo_tipo = '$tipo_prenda' and di.votos_segunda_instancia in(
 											select max(d.votos_segunda_instancia) from disenio as d where d.codigo_tipo = '$tipo_prenda');";												

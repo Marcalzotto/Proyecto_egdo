@@ -1,4 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
+<?php include('../pag_interiores/conexion.php');?>
+<?php include('../pag_interiores/funciones/cantidad_notificaciones.php');?>
 
 
 <!DOCTYPE HTML>

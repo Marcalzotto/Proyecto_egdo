@@ -1,6 +1,7 @@
 <?php
 require_once("../bloqueSeguridad.php");
 require_once("conexion.php");
+include("funciones/generar_notificacion.php");
 
 	if($_POST){
 		
@@ -59,7 +60,10 @@ require_once("conexion.php");
 					}
 
 					$updated = $conexion->query($queryActualizar);
+				
 					if($updated){
+						$fecha = new DateTime();
+						generar_notificacion($conexion,"Has actualizado tus talles de ropa","votacionAdminCurso.php","../images/shirt.png",$_SESSION['curso'],$fecha->format("Y-m-d H:i:s"));
 						echo $talleBuzo."-".$talleRemera; //vienen los talles
 					}else{
 						echo -4; //"Hubo problemas al cambiar los talles, intenta de nuevo mas tarde";//mensaje error -4
@@ -79,7 +83,7 @@ require_once("conexion.php");
 					$inserted = $conexion->query($insercion);
 					if($inserted){
 
-					
+						generar_notificacion($conexion,"Has elegido tus talles de ropa","votacionAdminCurso.php","../images/shirt.png",$_SESSION['curso']);
 						echo $talleBuzo."-".$talleRemera; //"La operacion se ha realizado con exito";//vienen los talles
 					}else{
 						echo -5; //"Hubo problemas al guardar tus talles";//mensaje error -5

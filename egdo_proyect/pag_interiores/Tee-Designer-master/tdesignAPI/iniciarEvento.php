@@ -2,6 +2,7 @@
 
 session_start();
 include('../../conexion.php');
+include('../../funciones/generar_notificacion.php');
 $user = $_SESSION['id_usuario'];
 $curso = $_SESSION['curso'];
 
@@ -22,11 +23,14 @@ if($resultSet){
 
 		//$fechaHoy->format('Y-m-d H:i:s');
 
-		$fechaHoy = date('Y-m-d');
-		$queryInsert = "insert into actividad_disenio values('','$fechaHoy','','$user','$curso')";
+		$fechaHoy = new DateTime();
+		$fecha_ins = $fechaHoy->format("Y-m-d");
+
+		$queryInsert = "insert into actividad_disenio values('','$fecha_ins','','$user','$curso')";
 
 		$result = $conexion->query($queryInsert) or die($conexion->error);
 		if($result){
+			
 			$response = "El evento se ha lanzado con exito, pulsa f5 para ver los cambios";
 			echo $response;
 		}else{

@@ -152,6 +152,16 @@
   top: -0.9em;
 }
 
+.dropotron li a div{
+	background: red;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 2px;
+    display: inline-block;
+    float: right;
+}
 #footer{
 	background: #191919;
 	margin: 0;

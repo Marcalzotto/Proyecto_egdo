@@ -1,4 +1,6 @@
 <?php session_start();?>
+
+<?php include('funciones/cantidad_notificaciones.php');?>
 <?php require('conexion.php'); ?>
 
 <!DOCTYPE HTML>

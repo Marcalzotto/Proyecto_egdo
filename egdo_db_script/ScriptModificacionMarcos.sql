@@ -39,3 +39,4 @@ cambiar campo estado_votacion varchar por vigente boolean not null
 alter table Votacion add foreign key (id_usuario) references Usuario(id_usuario);
 alter table Votacion add column curso_pertenece_votacion int not null;
 alter table Votacion add foreign key (curso_pertenece_votacion) references Curso(id_curso);
+

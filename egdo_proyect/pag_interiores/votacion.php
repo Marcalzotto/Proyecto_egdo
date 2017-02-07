@@ -1,5 +1,6 @@
 <?php require_once("../bloqueSeguridad.php");?>
 <?php require_once("conexion.php");?>
+<?php include('funciones/cantidad_notificaciones.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;
@@ -242,7 +243,7 @@
     		</div>
 										
 						<?php
-							imprimir_forms_talles($conexion,$maxBuzo, $maxRemera, $maxBandera, $usuario, $curso);
+							imprimir_forms_talles($conexion,$maxBuzo, $maxRemera, $maxBandera, $usuario, $curso, $fechaHoy, $fecha_fin_segunda_instancia);
 							$conexion->close();
 						?>
 				</div>

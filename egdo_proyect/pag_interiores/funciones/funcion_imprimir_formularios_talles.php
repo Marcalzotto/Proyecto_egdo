@@ -1,8 +1,8 @@
 <?php
-function imprimir_forms_talles($conexion,$maxB, $maxR, $maxBand, $user, $curso){
+function imprimir_forms_talles($conexion,$maxB, $maxR, $maxBand, $user, $curso, $fechaHoy, $fsi){
 	
 
-	if($maxB == 1 && $maxR == 1 && $maxBand == 1){
+	if($maxB == 1 && $maxR == 1 && $maxBand == 1 && $fechaHoy > $fsi){
 				$buscarTalleAnterior = "select talle_buzo, talle_remera from talles_curso where usuario = '$user'";
 				$talles = $conexion->query($buscarTalleAnterior);
 
