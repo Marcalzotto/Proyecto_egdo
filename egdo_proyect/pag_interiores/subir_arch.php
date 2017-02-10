@@ -50,7 +50,8 @@
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script src="../js/subirArchDisenios.js"></script> <!--Sube los archivos
+			<script src="../js/subirArchDisenios.js"></script> <!--Sube los archivos-->
+			<script src="../js/tomarDatos.js"></script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">

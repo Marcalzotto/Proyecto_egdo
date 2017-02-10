@@ -43,13 +43,13 @@
 								<ul>
 									<li><a href="../invitaciones/invitaciones.php">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 									<li><a href="../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-									<li><a href="../pag_interiores/notificacionesAdmin.php">Notificaciones<?php
+									<li><a class="notificacion" href="../pag_interiores/notificacionesAdmin.php">Notificaciones<?php
 												
 												if($cant > 0){
 													echo "<div class='num_notificaciones'>".$cant."</div>";
 												}else if($cant == 0){
 													//echo "<div class='num_notificaciones'>10</div>";
-													echo "<img src='../images/dropotron_icons/alarm.png' alt='agenda' style='float:right'>";
+													echo "<img src='../images/dropotron_icons/alarm.png' alt='alarma' style='float:right'>";
 												}else{
 												echo "<div class='num_notificaciones'>".$cant."</div>";
 												}

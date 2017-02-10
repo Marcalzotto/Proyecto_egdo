@@ -49,14 +49,15 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-		    <link rel="stylesheet" type="text/css" href="../css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="../css/form-validation.css" /> 
+		  <link rel="stylesheet" type="text/css" href="../css/demo.css" />
+      <link rel="stylesheet" type="text/css" href="../css/form-validation.css" /> 
  
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-	
+			<script src="../js/tomarDatos.js"></script>
+
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">

@@ -61,7 +61,7 @@
 		
 		<script src="../../js/jquery.min.js"></script>
 		<script src="js/disparaEvento.js"></script>
-		
+		<script src="js/tomarDatos2.js"></script>
 		<script>
 
 			$(function(){
@@ -115,7 +115,7 @@
 																				<li><a href="../../invitaciones/invitaciones.php">Manda tu invitacion <img src="../../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
 																				<li><a href="../../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
 																				<li>
-																					<a href="../notificacionesAdmin.php">Notificaciones
+																					<a class="notificacion" href="../notificacionesAdmin.php">Notificaciones
 																					<?php 
 																						$cant = cantidad_notificaciones($conexion,$_SESSION['id_usuario'],$_SESSION['curso']);
 

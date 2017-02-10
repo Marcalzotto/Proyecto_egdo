@@ -53,12 +53,12 @@
 			<!--Librarys for calendar-->
 			<!--<script src="../js/jquery.1.10.2.js"></script>-->
 			<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-			
+			<script src="../js/tomarDatos.js"></script>
 			<!--Libreria especial para select con imagenes-->
 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<!--<script src="../assets/js/jquery.min.js"></script>
-			
+		
 
 			
 			<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->

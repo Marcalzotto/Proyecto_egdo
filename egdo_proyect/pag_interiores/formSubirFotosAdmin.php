@@ -53,6 +53,7 @@
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/check_if_arch2.js"></script>
 			<script src="../js/subirFotosEventos.js"></script>
+			<script src="../js/tomarDatos.js"></script>
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">

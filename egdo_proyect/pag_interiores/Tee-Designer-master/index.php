@@ -74,7 +74,7 @@
    
 		<script src="js/jquery-1.10.2.js"></script>
 		<script src="js/bootstrap.js"></script>
-		
+		<script src="js/tomarDatos2.js"></script>
 		<style></style>
 
 </head>
@@ -113,7 +113,7 @@
 				<li class="circle"><a href=""><img src="tdesignAPI/images/settings.png" alt=""></a>
 																			<ul>
 																				<li><a href="../../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-																				<li><a href="../notificaciones.php">Notificaciones
+																				<li><a class="notificacion" href="../notificaciones.php">Notificaciones
 																						<?php 
 																						$cant = cantidad_notificaciones($conexion,$_SESSION['id_usuario'],$_SESSION['curso']);
 
