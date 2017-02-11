@@ -9,7 +9,7 @@
 
 	
 	<ul class="myfont">
-
+	<!--<li class="circle"><a href="../pag_interiores/indexUsuarioAdminCurso.php"><img src="../favicon/favicon-96x96.png" alt=""></a></li>-->
 	<li class="circle"><a href="../pag_interiores/upd.php"><img src="../images/upd.png" alt="UPD"></a></li>
 		
 		<li class="circle">

@@ -90,7 +90,7 @@ switch ($_POST["accion"])
 	case "modificar_evento":
 	{
 
-		$query=$conexion->query("update tcalendario set evento ='".$_POST["evento_titulo"]."', color ='".$_POST["color"]."', hora ='".$_POST["evento_hora"]."', barrio ='".$_POST["evento_lugar"]."', calle ='".$_POST["calle"]."', altura ='".$_POST["altura"]."' where id ='".$_POST["evento_id"]."' and fecha ='".$_POST["evento_fecha"]."' ");
+		$query=$conexion->query("update tcalendario set evento ='".$_POST["evento_titulo"]."', color ='".$_POST["color"]."', icono = '".$_POST["icono"]."', hora ='".$_POST["evento_hora"]."', barrio ='".$_POST["evento_lugar"]."', calle ='".$_POST["calle"]."', altura ='".$_POST["altura"]."' where id ='".$_POST["evento_id"]."' and fecha ='".$_POST["evento_fecha"]."' ");
 		//$query=$conexion->query("update tcalendario set evento ='".$_POST["evento"]."', color ='".$_POST["color"]."', hora ='".$_POST["tiempo"]."' where id ='".$_POST["id"]."' and fecha ='".$_POST["fecha"]."' ");	
 		//Esta quedaria en caso que no haya que pasar archivos
 		if($query) echo "<p class='ok'>Evento modificado correctamente.</p>";

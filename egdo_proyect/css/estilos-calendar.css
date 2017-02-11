@@ -7,7 +7,7 @@ img{border:0}
 /*body {text-align:center;background:#e9e9e9}*/
 
 .calendario_ajax{margin:90px auto;width:700px;position:relative;}
-.calendario_ajax h2{text-align:center;margin:0 0 10px 0;font-size:1.5em;color:#fff; padding-top: 20px;
+.calendario_ajax h2{text-align:center;margin:0 0 10px 0;font-size:1.4em;color:#fff; padding-top: 20px;
 font-family: 'Open Sans Condened',sans-serif;}
 
 .calendario_ajax table.calendario {margin:0;width:100%;border:solid #ccc;border-width:1px 0 0 1px}
@@ -45,7 +45,7 @@ height:24px;text-decoration:none}
 background:#e9e9e9 url(../images/calendar-img/delete.png) 50% 50% no-repeat;text-decoration:none}
 
 
-.window p{margin:0 0 5px 0;font-size:1em;border:1px solid #e9e9e9;text-align:left;padding:10px;clear:both; }
+.window p{margin:0 0 5px 0;font-size:1em;border:1px solid #e9e9e9;text-align:left;padding:10px;clear:both; line-height: 1em;}
 .window form{padding:10px;clear:both;background:#e9e9e9;float:left;width:100%;position:relative}
 .window input[type=text]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}
 .window input[name=evento_hora]{border:0;background:white;width:100%;padding:5px;float:left; margin-bottom: 1em;}

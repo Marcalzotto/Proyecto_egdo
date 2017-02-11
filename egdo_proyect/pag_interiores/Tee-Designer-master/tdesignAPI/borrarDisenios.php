@@ -55,7 +55,7 @@ $respuesta = "";
 					}
 					
 				}else{
-					$resuesta = "La operacion no pudo concretarse porque hubo errores";
+					$respuesta = "La operacion no pudo concretarse porque hubo errores";
 					echo $respuesta;
 				}
 			}else{
