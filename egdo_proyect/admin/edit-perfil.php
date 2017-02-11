@@ -1,5 +1,4 @@
 <?php
-session_start();
 include ("../bloqueSeguridad.php");
 ?>
 <!DOCTYPE HTML>

@@ -163,7 +163,7 @@
 											if($conexion ->query($consulta)=== TRUE){
 												echo "<div class='box success'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Registro eliminado correctamente</div>";
 											}else {
-												 echo "<div class='box danger'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Error al eliminar al registro  </div>" . $conn->error;
+												 echo "<div class='box danger'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Error al eliminar al registro  </div>" . $conexion->error;
 											}	
 										}
 										$conexion->close();			

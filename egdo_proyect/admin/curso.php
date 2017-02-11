@@ -173,15 +173,17 @@
 											</tr>
 										</thead>
 										<tbody>
-											<?php
-        require_once 'dbconfig.php';
+		<?php
         
-        $stmt = $db_con->prepare("SELECT id_curso,nombre_escuela,localidad,curso_anio,curso_letra,
+		require('config_bd.php');								
+	
+		$consulta = ("SELECT id_curso,nombre_escuela,localidad,curso_anio,curso_letra,
 		cant_alumnos,fecha_creacion FROM curso ORDER BY id_curso DESC");
-        $stmt->execute();
-		while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			?>
+		$result = $conexion ->query($consulta);
+		if ($result->num_rows >0) {
+		while($row = $result->fetch_assoc()){
+		
+		?>
 			<tr>
 			<td><?php echo $row['id_curso']; ?></td>
 			<td><?php echo $row['nombre_escuela']; ?></td>
@@ -201,10 +203,12 @@
 				</a>
 			</td>
 			</tr>
-			<?php
-			
-			}
-			?>
+		<?php
+		}
+		}
+		//}
+		$conexion->close();		
+		?>
 										</tbody>
 									</table>
 								</div>
