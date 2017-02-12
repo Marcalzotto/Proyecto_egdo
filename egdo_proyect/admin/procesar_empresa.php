@@ -9,11 +9,6 @@ require('config_bd.php');
 $nombre_empresaPOST = $_POST["emp_name"];
 $telefonoPOST = $_POST["emp_tel"];
 $callePOST = $_POST["emp_calle"];
-$alturaPOST = $_POST["emp_nro"];
-$localidadPOST = $_POST["emp_loc"];
-$codigo_postalPOST = $_POST["emp_cp"];
-$partidoPOST = $_POST["emp_part"];
-$provinciaPOST = $_POST["emp_prov"];
 $emailPOST = $_POST["emp_mail"];
 $pagina_webPOST = $_POST["emp_www"];
 $facebookPOST = $_POST["emp_face"];
@@ -28,11 +23,6 @@ $cuitPOST = $_POST["emp_cuit"];
 $nombre_empresaPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $nombre_empresaPOST));
 $telefonoPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $telefonoPOST));
 $callePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $callePOST));
-$alturaPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $alturaPOST));
-$localidadPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $localidadPOST));
-$codigo_postalPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $codigo_postalPOST));
-$partidoPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $partidoPOST));
-$provinciaPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $provinciaPOST));
 $emailPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $emailPOST));
 $pagina_webPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $pagina_webPOST));
 $facebookPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $facebookPOST));
@@ -52,9 +42,9 @@ $maxCaracteresDatos = "45";
 //telefono 
 $maxCaracteresTelefono = "20";
 //altura
-$maxCaracteresAltura = "11";
+//$maxCaracteresAltura = "11";
 //codigo_postal
-$maxCaracteresCodigoPostal = "10";
+//$maxCaracteresCodigoPostal = "10";
 //url
 $maxCaracteresURL = "100";
 
@@ -62,10 +52,7 @@ $maxCaracteresURL = "100";
 //Si los input son de mayor tamaño, se "muere" el resto del código y muestra la respuesta correspondiente
 //Si el input de usuario o contraseña está vacío, mostramos un mensaje de error
 //Si el valor del input del usuario es igual a alguno que ya exista, mostramos un mensaje de error
-if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){  
-	echo 'Valor incorrecto';
-	die();  
-}else if(empty($nombre_empresaPOST)) {
+if(empty($nombre_empresaPOST)) {
 	echo "Nombre empresa es requerido."; // wrong details 
 	die();
 }else if(strlen($nombre_empresaPOST) > $maxCaracteresDatos) {
@@ -82,36 +69,6 @@ if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){
 	die();
 }else if(strlen($callePOST) > $maxCaracteresDatos) {
 	echo "Calle no puede superar los 45 caracteres"; // wrong details 
-	die();
-}else if(empty($alturaPOST)) {
-	echo "Altura es requerido."; // wrong details 
-	die();
-}else if(strlen($alturaPOST) > $maxCaracteresAltura) {
-	echo "Altura no puede superar los 11 caracteres";// wrong details 
-	die();
-}else if(empty($localidadPOST)) {
-	echo "Localidad es requerido"; // wrong details 
-	die();
-}else if(strlen($localidadPOST) > $maxCaracteresDatos) {
-	echo "Localidad no puede superar los 45 caracteres";// wrong details 
-	die();
-}else if(empty($codigo_postalPOST)) {
-	echo "CP es requerido"; // wrong details 
-	die();
-}else if(strlen($codigo_postalPOST) > $maxCaracteresCodigoPostal) {
-	echo "CP no puede superar los 10 caracteres"; // wrong details 
-	die();
-}else if(empty($partidoPOST)) {
-	echo "Partido es requerido"; // wrong details 
-	die();
-}else if(strlen($partidoPOST) > $maxCaracteresDatos) {
-	echo "Partido no puede superar los 45 caracteres"; // wrong details 
-	die();
-}else if(empty($provinciaPOST)) {
-	echo "Provincia es requerido"; // wrong details 
-	die();
-}else if(strlen($provinciaPOST) > $maxCaracteresDatos) {
-	echo "Provincia no puede superar los 45 caracteres"; // wrong details 
 	die();
 }else if(empty($emailPOST)) {
 	echo "Email es requerido"; // wrong details 
@@ -182,11 +139,12 @@ if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){
 				$nombrePOST = mb_strtoupper($nombre_empresaPOST);
 				$telefonoPOST = mb_strtoupper($telefonoPOST);
 				$callePOST = mb_strtoupper($callePOST);
-				$localidadPOST = mb_strtoupper($localidadPOST);
-				$partidoPOST = mb_strtoupper($partidoPOST);
-				$provinciaPOST = mb_strtoupper($provinciaPOST);
+				//$localidadPOST = mb_strtoupper($localidadPOST);
+				//$partidoPOST = mb_strtoupper($partidoPOST);
+				//$provinciaPOST = mb_strtoupper($provinciaPOST);
 	
-				$consulta = ("INSERT INTO empresa (nombre_empresa, telefono, calle, altura, localidad, codigo_postal, partido, provincia,email, pagina_web, facebook, twitter, instagram, fecha_alta, cuit,logo) VALUES ('$nombrePOST', '$telefonoPOST','$callePOST','$alturaPOST','$localidadPOST','$codigo_postalPOST','$partidoPOST','$provinciaPOST','$emailPOST','$pagina_webPOST','$facebookPOST','$twitterPOST','$instagramPOST','$fechaPOST','$cuitPOST','$imagenBinaria')");
+				$consulta = ("INSERT INTO empresa (nombre_empresa, telefono, calle, email, pagina_web, facebook, twitter, instagram, fecha_alta, cuit,logo) VALUES ('$nombrePOST', '$telefonoPOST','$callePOST',
+				'$emailPOST','$pagina_webPOST','$facebookPOST','$twitterPOST','$instagramPOST','$fechaPOST','$cuitPOST','$imagenBinaria')");
 	
 	
 				//Si los datos se introducen correctamente, mostramos los datos
