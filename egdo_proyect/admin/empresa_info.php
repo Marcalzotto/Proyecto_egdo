@@ -88,16 +88,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
