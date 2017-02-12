@@ -1,5 +1,4 @@
 <?php
-//session_start();
 include ("../bloqueSeguridad.php");
 ?>
 <!DOCTYPE HTML>
@@ -188,9 +187,7 @@ include ("../bloqueSeguridad.php");
 										
 											<!-- Break -->
 											<div class="-2u 8u$">
-												<button type="submit" class="button button-big ver" name="btn-save" id="btn-save">
-												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;editar perfil
-												</button>
+												<a href="edit-perfil.php" class="button button-big adds"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Editar Perfil</a>
 											</div>
 										</div> <!-- /Sec Datos User -->
 									

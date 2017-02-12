@@ -2,7 +2,7 @@
 
 	include("conexion.php");
 
-		$buscarMax = "select count(id_disenio) as ganadores from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
+	/*	$buscarMax = "select count(id_disenio) as ganadores from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
 											where u.id_curso = 2 and codigo_tipo = 1 and votos_segunda_instancia in(
 																													select max(d.votos_segunda_instancia) from disenio as d);";
 		
@@ -18,7 +18,7 @@
     					$cont = 0;	
     			do{
         					/* almacenar primer juego de resultados */
-        		if ($result = $conexion->store_result()) {
+        	/*	if ($result = $conexion->store_result()) {
             				
             				while ($row = $result->fetch_row()){
                 			
@@ -30,7 +30,7 @@
             				$result->free();
         					}
         					/* mostrar divisor */
-        						if ($conexion->more_results()) {
+        					/*	if ($conexion->more_results()) {
             				printf("-----------------\n");
         						}
     							}while ($conexion->next_result());
@@ -42,37 +42,39 @@
 		}*/
 
 		//echo $vec[0][0]." ".$vec[1][0]." ".$vec[2][0]."</br>";
-		echo $vec[0]." ".$vec[1]." ".$vec[2]."</br>";
+		//echo $vec[0]." ".$vec[1]." ".$vec[2]."</br>";
 
-		$query = "select * from notificaciones";
+		$query = "select resumen,link,icono,fecha_hora from notificaciones";
 		$result = $conexion->query($query);
 		
 		if($result){
-			echo "Single query ok</br>";
-			$multi_inserts = "insert into tipo_notificaciones values(16,'notificacion de prueba');";
-			$multi_inserts .= "insert into tipo_notificaciones values(17,'notificacion de prueba');";
-			$multi_inserts .= "insert into tipo_notificaciones values(18,'notificacion de prueba');";
-			
-			//if ($conexion->multi_query($multi_inserts) === true) {
-    			echo "Multi query ok";
-			//}else{
-				//echo $conexion->error;
-			//}
-
+		
+			if($result->num_rows > 0){
+				while($regs = $result->fetch_row()){
+					$vector[] = $regs;
+				}
+			}else{
+				echo "no hay notificaciones";
+			}
 
 		}else{
 			echo "Error".$conexion->error;
+		}
+
+		echo "Resumen - Link - Icono - Fecha_hora</br>";
+		foreach ($vector as $reg){
+		echo $reg[0]." - ".$reg[1]." - ".$reg[2]." - ".$reg[3]."</br>";
 		}
 
 		$fechaHoy = new DateTime();
 		//$fechaMostrar = $fechaHoy->format("Y-m-d H:i:s");
 		//echo "</br> Esta es la fecha de hoy: ".$fechaMostrar;
 
-		if(isset($fechaHoy)){
+		/*if(isset($fechaHoy)){
 			echo "La fecha esta creada";
 		}else{
 			echo "No esta la creada";
-		}
+		}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">

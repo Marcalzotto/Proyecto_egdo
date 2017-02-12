@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../css/mainAdmin.css" />
+		<link rel="stylesheet" href="../css/mainRegistro.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
@@ -154,7 +154,7 @@
 									
 									<div class="row uniform 50%">	
 										<!-- Break -->
-										<div class="-2u 8u">
+										<div class="-2u 2u">
 										
 										<?php
     // Arrays para guardar errores:
@@ -256,12 +256,13 @@
 					if( count($aErrores) > 0 )
 					{
 						echo "<p>ERRORES ENCONTRADOS:</p>";
-
+					
+						$email=$_POST["email"];
 						// Mostrar los errores:
 						for( $contador=0; $contador < count($aErrores); $contador++ )
 							echo $aErrores[$contador]."<br/>";
-							echo "<p><a href='registroPaso2.php'>Volver y completar nuevamente</a></p>";
-					}
+							echo "<p><a href='registroPaso2.php?email=$email'>Volver y completar nuevamente</a></p>";
+					}	
 					else
 					{		
 							//Validado los campos se inserta los datos a la base y se redirecciona al paso 3
@@ -289,7 +290,7 @@
 											</script>"; 
 									 die('Error: ' . mysqli_error());
 									 mysqli_close($conexion);
-									 header('Location: registroPaso2.php');
+									 header('Location: registroPaso2.php?email=$email');
 								 }
 								 else {
 									

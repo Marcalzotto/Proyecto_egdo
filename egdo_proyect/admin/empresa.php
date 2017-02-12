@@ -180,15 +180,17 @@
 											</tr>
 										</thead>
 										<tbody>
-											<?php
-        require_once 'dbconfig.php';
-        
-        $stmt = $db_con->prepare("SELECT id_empresa,nombre_empresa,logo,telefono,calle,altura,localidad,partido,provincia,email,pagina_web,
-		fecha_alta,cuit FROM empresa ORDER BY id_empresa DESC");
-        $stmt->execute();
-		while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			?>
+		<?php
+		
+		require('config_bd.php');								
+	
+		$consulta = ("SELECT id_empresa,nombre_empresa,logo,telefono,calle,altura,localidad,
+		partido,provincia,email,pagina_web,fecha_alta,cuit FROM empresa ORDER BY id_empresa DESC");
+		$result = $conexion ->query($consulta);
+		if ($result->num_rows >0) {
+		while($row = $result->fetch_assoc()){
+		
+		?>
 			<tr>
 			<td><?php echo $row['id_empresa']; ?></td>
 			<td><?php echo $row['nombre_empresa']; ?></td>
@@ -220,10 +222,12 @@
 			</td>
 			
 			</tr>
-			<?php
-			
-			}
-			?>
+		<?php
+		}
+		}
+		//}
+		$conexion->close();	
+		?>
 										</tbody>
 									</table>
 								</div>

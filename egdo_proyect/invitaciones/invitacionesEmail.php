@@ -150,7 +150,7 @@
 											// Mostrar los errores:
 											for( $contador=0; $contador < count($aErrores); $contador++ )
 												echo $aErrores[$contador]."<br/>";
-												echo "<p><a href='registroPaso2.php'>Volver y completar nuevamente</a></p>";
+												echo "<p><a href='../invitaciones/invitaciones.php'>Volver y completar nuevamente</a></p>";
 										}
 										else
 										{	

@@ -153,7 +153,7 @@
 										
 										require('config_bd.php');
 										$id_curso=base64_decode($_GET['cur']);
-										if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){  
+										if(filter_var($id_curso, FILTER_VALIDATE_INT) === false){  
 											echo 'Valor incorrecto';  
 										}else{  
 											
@@ -162,7 +162,7 @@
 											if($conexion ->query($consulta)=== TRUE){
 												echo "<div class='box success'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Registro eliminado correctamente</div>";
 											}else {
-												 echo "<div class='box danger'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Error al eliminar al registro  </div>" . $conn->error;
+												 echo "<div class='box danger'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Error al eliminar al registro  </div>" . $conexion->error;
 											}	
 										}
 										$conexion->close();			
