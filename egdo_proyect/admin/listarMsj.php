@@ -181,10 +181,9 @@
 					FROM mensajes_privado AS mp INNER JOIN usuario AS u ON mp.id_emisor=u.id_usuario
 					WHERE mp.id_receptor='$id_usuario'
 					");
-		$result = $conexion ->query($consulta);
-		if ($result->num_rows >0) {
-		while($row = $result->fetch_assoc()){
-													
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){											
 		?>									
 												
 											
@@ -202,12 +201,11 @@
 			</td>
 			</tr>
 		<?php
-		
 		}
 		}
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
 		//}
-		$conexion->close();	
-											
+		mysqli_close($conexion);
 		?>
 										</tbody>
 									</table>
