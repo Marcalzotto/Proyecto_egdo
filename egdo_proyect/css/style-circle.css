@@ -16,16 +16,16 @@
 }
 
 .circulo-img-1 { 
-	background-image: url('../../images/imagesAdmin/login-password.png');
+	background-image: url('../images/imagesAdmin/login-password.png');
 	/*background-color:#6A8458; */
 }
 
 .circulo-img-2 { 
-	background-image: url('../../images/imagesAdmin/test-quiz.png');
+	background-image: url('../images/imagesAdmin/test-quiz.png');
 }
 
 .circulo-img-3 { 
-	background-image: url('../../images/imagesAdmin/like.png');
+	background-image: url('../images/imagesAdmin/like.png');
 }
 
 .circulo-info {
