@@ -1672,6 +1672,40 @@ height:5%;
 				margin: 0;
 			}
 
+/* Slider Interno*/
+
+	#sliderInterno {
+		position: relative;
+		margin: 70px auto;
+		width: 100%;
+		cursor: default;
+	}
+
+		#sliderInterno .caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(32, 32, 32, 0.75);
+			z-index: 3;
+			text-align: center;
+		}
+
+			#sliderInterno .caption h2 {
+				font-weight: 700;
+				color: #ffffff;
+				text-transform: uppercase;
+			}
+
+			#sliderInterno .caption p {
+				opacity: 0.5;
+				font-weight: 700;
+				color: #ffffff;
+				font-family: 'Open Sans Condensed', sans-serif;
+				text-transform: uppercase;
+				margin: 0;
+			}
+
 /*Estilos slider foto evento*/
 #main-wrapper h2{
 		padding: 2em;
