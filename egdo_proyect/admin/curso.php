@@ -180,7 +180,14 @@
 		$consulta = ("SELECT id_curso,nombre_escuela,localidad,curso_anio,curso_letra,
 		cant_alumnos,fecha_creacion FROM curso ORDER BY id_curso DESC");
 		$result = $conexion ->query($consulta);
+		if (!$result) {
+					printf("Error: %s\n", mysqli_error($conexion));
+					exit();
+					}
+		
 		if ($result->num_rows >0) {
+		
+		
 		while($row = $result->fetch_assoc()){
 		
 		?>

@@ -3,7 +3,7 @@ session_start();
 
 $host_db = "localhost";
 $user_db = "root";
-$pass_db = "32636185";
+$pass_db = "";
 $db_name = "egdo_db";
 $tbl_name = "usuario";
 

@@ -164,12 +164,8 @@
 												<th>ID</th>
 												<th>Nombre</th>
 												<th>Logo</th>
-												<th>Tel&eacute;fono</th>
 												<th>Calle</th>
-												<th>Altura</th>
-												<th>Localidad</th>
-												<th>Partido</th>
-												<th>Provincia</th>
+												<th>Tel&eacute;fono</th>
 												<th>Email</th>
 												<th>Pagina_Web</th>
 												<th>Fecha_Alta</th>
@@ -184,23 +180,18 @@
 		
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_empresa,nombre_empresa,logo,telefono,calle,altura,localidad,
-		partido,provincia,email,pagina_web,fecha_alta,cuit FROM empresa ORDER BY id_empresa DESC");
-		$result = $conexion ->query($consulta);
-		if ($result->num_rows >0) {
-		while($row = $result->fetch_assoc()){
+		$consulta = ("SELECT id_empresa,nombre_empresa,logo,telefono,calle,email,pagina_web,fecha_alta,cuit FROM empresa ORDER BY id_empresa DESC");
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
 		
 		?>
 			<tr>
 			<td><?php echo $row['id_empresa']; ?></td>
 			<td><?php echo $row['nombre_empresa']; ?></td>
 			<td><img class="logo-mini" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="Logo"/></td>
-			<td><?php echo $row['telefono']; ?></td>
 			<td><?php echo $row['calle']; ?></td>
-			<td><?php echo $row['altura']; ?></td>
-			<td><?php echo $row['localidad']; ?></td>
-			<td><?php echo $row['partido']; ?></td>
-			<td><?php echo $row['provincia']; ?></td>
+			<td><?php echo $row['telefono']; ?></td>
 			<td><?php echo $row['email']; ?></td>
 			<td><?php echo $row['pagina_web']; ?></td>
 			<td><?php echo $row['fecha_alta']; ?></td>
@@ -225,8 +216,13 @@
 		<?php
 		}
 		}
+		else{
+				echo"<tfoot><tr><td>0 results </td></tr></tfoot>";
+			}
+		
+		
 		//}
-		$conexion->close();	
+		mysqli_close($conexion);	
 		?>
 										</tbody>
 									</table>
