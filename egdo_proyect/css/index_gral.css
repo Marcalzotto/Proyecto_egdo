@@ -66,6 +66,12 @@
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
+
+	
+#menuCirculos{
+width:40px;
+height:5px;
+}
 	
 .emailInvitacion{
 width:40%;
@@ -1731,7 +1737,7 @@ height:5%;
 			}
 
 			#header {
-				padding: 1.4em 0em;
+				padding: 0.5em;
 			}
 
 		
@@ -1739,12 +1745,10 @@ height:5%;
 		/* Nav */
 
 			#nav {
-				text-align: center;
+				
 				position: absolute;
-				top: 40px; /* 4.5em */
-				left: 0;
-				width: 100%;
-				height: 4em;
+				top: 22px; /* 4.5em */
+				left: 200px;
 				cursor: default;
 			}
 
@@ -1866,17 +1870,7 @@ height:5%;
 						border-right: solid 0.8em transparent;
 					}
 
-				.dropotron a div{
-					background: red;
-    			height: 20px;
-   			  width: 20px;
-    			text-align: center;
-    			border-radius: 10px;
-    			padding-top: 2px;
-					display: inline-block;
-    			margin-top: -5px;
-    			float: right;
-				}
+					
 
 		/* Content */
 
@@ -2768,13 +2762,6 @@ background: #393939;
 #contenerNotificaciones a img{
 	float: left;
 }
-
-#contenerNotificaciones a .del{
-	margin-left: 639px;
-  margin-top: -24px;
-  z-index: 10000;
-  
-}
 #contenerNotificaciones a p{
 	vertical-align: text-top;
   margin: 0;
@@ -3529,7 +3516,7 @@ background: #393939;
 
 			#header {
 				position: relative;
-				padding: 4em 0em;
+				padding: 0.5px;
 			}
 
 		/* Nav */

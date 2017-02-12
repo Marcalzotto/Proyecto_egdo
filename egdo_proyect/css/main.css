@@ -1540,8 +1540,8 @@
 	}
 
 		#slider .caption {
-			position: absolute;
-			bottom: 0;
+			position: relative;
+			bottom: -38%;
 			left: 0;
 			width: 100%;
 			background-color: rgba(32, 32, 32, 0.75);
@@ -1828,7 +1828,7 @@
 			}
 
 				#slider .caption {
-					padding: 3.5em 0 3.5em 0;
+					padding: 3.5em 0 9.5em 0;
 				}
 
 					#slider .caption h2 {
@@ -2247,10 +2247,6 @@
 				height: 360px;
 			}
 
-				#slider .caption {
-					padding: 2.5em 1.5em 2.5em 1.5em;
-				}
-
 					#slider .caption h2 {
 						letter-spacing: 0.15em;
 						font-size: 1.25em;
@@ -2322,8 +2318,8 @@ padding-top:5px;
 
 	.login {
 	position: absolute;
-	top: 15%;
-	left: 0;
+	top: 2%;
+	left: 0%;
 	width: 100%;
 	height: 50%;
 	padding: 1.5rem 2.5rem;
