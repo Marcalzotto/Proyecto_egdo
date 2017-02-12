@@ -176,15 +176,18 @@
 											</tr>
 										</thead>
 										<tbody>
-											<?php
-        require_once 'dbconfig.php';
-        
-        $stmt = $db_con->prepare("SELECT id_usuario,nombre,apellido,email,contrasenia,fechaAltaUsuario,
-		id_rol,id_curso,id_confirmacion,estadoActivacion FROM usuario ORDER BY id_usuario DESC");
-        $stmt->execute();
-		while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			?>
+		<?php
+        require('config_bd.php');
+		
+		$consulta = ("SELECT id_usuario,nombre,apellido,email,contrasenia,fechaAltaUsuario,
+		id_rol,id_curso,id_confirmacion,estadoActivacion FROM usuario WHERE (id_rol=2 OR id_rol=3 )
+		ORDER BY id_usuario DESC");
+		
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
+		
+		?>
 			<tr>
 			<td><?php echo $row['id_usuario']; ?></td>
 			<td><?php echo $row['nombre']; ?></td>
@@ -208,8 +211,10 @@
 			</td>
 			</tr>
 			<?php
-			
 			}
+			}
+			else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
+			mysqli_close($conexion);
 			?>
 										</tbody>
 									</table>

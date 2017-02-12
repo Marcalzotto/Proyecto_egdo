@@ -69,13 +69,19 @@ if(filter_var($id_usuario, FILTER_VALIDATE_INT) === false){
 } else if(strlen($user_emailPOST) > $maxCaracteresDatos) {
 	echo "Email no puede superar los 45 caracteres.";// wrong details 
 	die();
+}else if(empty($user_rolPOST)) {
+	echo "Rol es requerido."; // wrong details 
+	die();
 }else if (filter_var($user_rolPOST, FILTER_VALIDATE_INT) === false) { 
 	echo "Rol valor incorrecto."; // wrong details 
 	die();
 } else if (strlen($user_rolPOST) > $maxCaracteresRol ){
 	echo "Rol no debe tener mas 11 caracteres."; // wrong details 
 	die();
-} else if (filter_var($user_cursoPOST, FILTER_VALIDATE_INT) === false) { 
+} else if(empty($user_cursoPOST)) {
+	echo "Curso es requerido."; // wrong details 
+	die();
+}else if (filter_var($user_cursoPOST, FILTER_VALIDATE_INT) === false) { 
 	echo "Curso valor incorrecto."; // wrong details 
 	die();
 }else if (strlen($user_cursoPOST) > $maxCaracteresCurso ){

@@ -7,8 +7,8 @@ jQuery(function($){
 				user_name: { required:true, minlength: 4, maxlength: 45},
 				user_apellido: { required:true, minlength: 4, maxlength: 45},
 				user_email: { required: true, email: true },
-				user_rol: { required: true },
-				user_curso: { required: true },
+				user_rol: { required: true, maxlength: 1 },
+				user_curso: { required: true, maxlength: 3 },
 				user_estado: { required: true },
 				
 			}, /* fin rules */
@@ -18,8 +18,8 @@ jQuery(function($){
 				user_apellido:{required: "Campo obligatorio",minlength: "El nombre es muy corto",
 				maxlength:"El nombre es muy largo"},
 				user_email:{required: "Campo obligatorio",email:"Formato no valido"},
-				user_rol: { required: "Campo obligatorio" },
-				user_curso: { required: "Campo obligatorio" },
+				user_rol: { required: "Campo obligatorio", maxlength:" Rol muy largo" },
+				user_curso: { required: "Campo obligatorio", maxlength:" Curso muy largo" },
 				user_estado: { required: "Campo obligatorio" },
 			}, /* fin messages */
 		

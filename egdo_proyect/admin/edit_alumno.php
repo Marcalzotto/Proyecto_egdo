@@ -191,46 +191,12 @@
 										<!-- Break -->
 										<div class="-1u 2u"><span>Rol</span></div>
 										<div class="-1u 5u$">
-										<div class="select-wrapper">
-										<select class="select" name="user_rol" value=''>
-										<?php
-										//require('config_bd.php');
-										$consulta = ('SELECT * FROM rol');
-										$result = $conexion ->query($consulta);
-										if ($result->num_rows >0) {
-											while($row = $result->fetch_array()){
-											echo'<option value='.$row["id_rol"].'>'.$row["descripcion_rol"].'</option>';	
-											}
-										} else {
-												echo '<option value=""> sin resultado </option>';
-										}
-										
-										?>
-										</select>
+										<span><input type='text' name='user_rol' class="form-class" placeholder='Rol Usuario' value='<?php echo $row['id_rol']; ?>'/></span>
 										</div>
-										</div>
-										
 										<!-- Break -->
 										<div class="-1u 2u"><span>Curso</span></div>
 										<div class="-1u 5u$">
-										<div class="select-wrapper">
-										<select class="select" name="user_curso" value=''>
-										<option value="null">NULO</option>
-										<?php
-										//require('config_bd.php');
-										$consulta = ('SELECT id_curso,nombre_escuela,localidad FROM curso');
-										$result = $conexion ->query($consulta);
-										if ($result->num_rows >0) {
-											while($row = $result->fetch_array()){
-											echo'<option value='.$row['id_curso'].'>'.$row['nombre_escuela'].'-'.$row['localidad'].'</option>';	
-											}
-										} else {
-												echo '<option value="NULL"> NULL </option>';
-										}
-										
-										?>
-										</select>
-										</div>
+										<span><input type='text' name='user_curso' class="form-class" placeholder='Curso Usuario' value='<?php echo $row['id_curso']; ?>'/></span>
 										</div>
 										<!-- Break -->
 										<div class="-1u 2u"><span>Estado Activación</span></div>

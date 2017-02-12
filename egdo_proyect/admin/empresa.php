@@ -216,11 +216,7 @@
 		<?php
 		}
 		}
-		else{
-				echo"<tfoot><tr><td>0 results </td></tr></tfoot>";
-			}
-		
-		
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
 		//}
 		mysqli_close($conexion);	
 		?>

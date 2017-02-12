@@ -180,30 +180,17 @@
 										<div class="select-wrapper">
 										<select class="select" name="user_rol" id="user_rol">
 										<option value="">seleccione</option>
-										<?php
-										require('config_bd.php');
-										$consulta = ('SELECT * FROM rol');
-										$result = $conexion ->query($consulta);
-										if ($result->num_rows >0) {
-											while($row = $result->fetch_array()){
-											echo'<option value='.$row['id_rol'].'>'.$row['descripcion_rol'].'</option>';	
-											}
-										} else {
-												echo '<option value=""> "selecccione"</option>';
-										}
-										$conexion->close();
-										?>
+										<option value="2">Administrador Curso</option>
+										<option value="3">Usuario</option>
 										</select>
 										</div>
 										</div>
-										
 										<!-- Break -->
 										<div class="-1u 2u"><span>Curso</span></div>
 										<div class="-1u 5u$">
 										<div class="select-wrapper">
 										<select class="select" name="user_curso" id="user_curso">
 										<option value="">seleccione</option>
-										<option value="null">NULO</option>
 										<?php
 										require('config_bd.php');
 										$consulta = ('SELECT id_curso,nombre_escuela,localidad FROM curso');
