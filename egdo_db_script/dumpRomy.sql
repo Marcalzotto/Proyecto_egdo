@@ -1,7 +1,7 @@
 ALTER TABLE `comentario` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
 ALTER TABLE `comentario_empresas` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
 ALTER TABLE `fiesta` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
-ALTER TABLE `disenio` ADD `estado_mpderar` BOOLEAN NOT NULL DEFAULT FALSE ;
+ALTER TABLE `disenio` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
 ALTER TABLE `upd` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
 
 ALTER TABLE empresa DROP FOREIGN KEY empresa_ibfk_1;
