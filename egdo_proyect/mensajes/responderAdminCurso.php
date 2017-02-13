@@ -21,8 +21,8 @@
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
-		<link rel="stylesheet" type="text/css" href="../css/style-assets.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style-assets.css" />		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -81,37 +81,51 @@
 	
 	<div id="bandejaEntrada">
 
-	
-	<?php
-
-
-    
+	    <?php
 
     $conexion = mysql_connect("localhost", "root", "")
       or die("Problemas en la conexion");
     
     mysql_select_db("egdo_db", $conexion) 
       or die("Problemas en la seleccion de la base de datos");
-  
-	
-	echo '<div ALIGN="left" style="font-size:130%"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a></div><br /><br />';
+    ?>
 
-		
-		@$id_receptor = $_POST['id_receptor'];
-		@$asunto = $_POST['asunto'];
-		@$mensaje = $_POST['mensaje'];
-		
-			//Establecemos zona horaria para obtener fecha
-			date_default_timezone_set('America/Argentina/Buenos_Aires');
-			$fecha_hora = date("Y-n-d-H-i-s");
-			
-			$sql = "INSERT INTO mensajes_privado (id_receptor,id_emisor,fecha_hora,asunto,mensaje) VALUES ('".$id_receptor."','".$_SESSION['id_usuario']."','".$fecha_hora."','".$asunto."','".$mensaje."')";
-			mysql_query($sql,$conexion);
-			echo "</br></br></br></br><div id='mensaje' ALIGN='center'>MENSAJE ENVIADO CORRECTAMENTE!!</div>";
-	
 
+
+<?php 
+
+# Obtenemos el mensaje privado
+$id = $_POST['id_mensaje'];
+//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+$sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+
+$res = mysql_query($sql, $conexion) or die(mysql_error());
+$row = mysql_fetch_assoc($res);
 ?>
- 
+
+
+<div id="menu"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a> </div><br /><br />
+<div class="descripcion"><strong>De</strong></div> 
+<div class="campo"><?=$row['nombre']?> <?=$row['apellido']?></div>
+<div class="descripcion"><strong>Fecha</strong></div> 
+<div class="campo"><?=$row['fecha_hora']?><br /></div>
+<div class="descripcion"><strong>Asunto</strong></div> 
+<div class="campo"><?=$row['asunto']?></div>
+<div class="descripcion"><strong>Mensaje</strong></div>
+<div class="campoMensaje"><?=$row['mensaje']?></div>
+
+<form method="post" action="../mensajes/enviarAdminCurso.php" >
+
+	
+	<?php echo '<input type="hidden" name="id_receptor" value="'.$row["id_emisor"].'">';?>
+	<?php echo '<input type="hidden" name="asunto" value="'.$row["asunto"].'">';?>
+	
+	<textarea class="campoMensaje" name="mensaje"></textarea></br>
+	
+	<input class="enviar" type="submit" name="enviar" value="Enviar" />
+	
+</form>
+
 	
 	</div>
 	

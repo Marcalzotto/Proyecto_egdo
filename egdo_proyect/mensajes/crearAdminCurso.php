@@ -1,10 +1,5 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php include('../pag_interiores/conexion.php');?>
-<?php 
-	include('../pag_interiores/funciones/generar_notificacion.php');
-	generar_notificacion($conexion,$_SESSION["curso"]);
-?>
-<?php include('../pag_interiores/funciones/cantidad_notificaciones.php');?>
+
 
 <!DOCTYPE HTML>
 <!--
@@ -20,6 +15,9 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
+		
+		<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -53,7 +51,7 @@
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script src="../js/tomarDatos.js"></script>
+	
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
