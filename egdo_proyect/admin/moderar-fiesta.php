@@ -1,28 +1,35 @@
-<?php
-include ("../bloqueSeguridad.php");
-?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>EGDO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/mainAdmin.css" />
+		<link rel="stylesheet" href="assets/css/mainAdmin.css" /> 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script type="text/javascript"  src="assets/js/jquery-1.12.3.js"></script>
+		<script type="text/javascript"  src="assets/js/jquery-1.12.3.min.js"></script>
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/manifest.json">
+		<link rel="manifest" href="../favicon/manifest.json">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+
+		<!-- DataTables-->
+		<script type="text/javascript"  src="assets/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"  src="assets/js/configDatatables.js"></script>
+		<link href="assets/css/datatables.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	
 	</head>
 	<body class="no-sidebar">
@@ -75,41 +82,26 @@ include ("../bloqueSeguridad.php");
 											<ul>
 												<li><a class="list-group-item" href="moderar-comentario.php"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Comentarios Actividades</a></li>
 												<li><a class="list-group-item" href="moderar-comentarioEmpresas.php"><i class="fa fa-comments-o" aria-hidden="true"></i></i>&nbsp; Comentarios Empresas</a></li>
-												<li><a class="list-group-item" href="moderar-disenio.php">
-													<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño</a>
-												</li>
 												<li>
-													<span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; UPD</a></span>
+													<span><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Imagenes</a></span>
 													<ul> <!-- Sub items -->
 														<li>
-															<a class="list-group-item" href="moderar-UPD.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
+															<a class="list-group-item" href="moderar-disenio.php">
+																<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño
 															</a>
 														</li>
-														<li>
-															<a class="list-group-item" href="moderar-UPD1.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
-																Galeria 2
-															</a>
-														</li>
-													</ul> <!-- /Sub items -->	
-												</li>	
-												<li>
-													<span><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Fiesta</a></span>
-													<ul> <!-- Sub items -->
 														<li>
 															<a class="list-group-item" href="moderar-fiesta.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
+																<i class="fa fa-music" aria-hidden="true"></i>&nbsp; Fiesta
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-fiesta1.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
-																Galeria 2
+															<a class="list-group-item" href="moderar-UPD.php">
+															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
 														</li>
-													</ul> <!-- /Sub items -->	
-												</li>	
+													</ul> <!-- /Sub Items  -->
+												</li>
 											</ul>
 										</li>
 										<!-- Item setting -->
@@ -127,84 +119,92 @@ include ("../bloqueSeguridad.php");
 											</ul>
 										</li>
 									</ul>
-								</nav> <!--/ Nav -->
+								</nav> <!-- /Nav -->
 
 						</div>
 
 				</div>
+
 			<!-- Main Wrapper -->
-				<?php
-					require('config_bd.php');
-					
-					$id_usuario=$_SESSION["id_usuario"];
-					
-					//$id_usuario=1;
-					
-					$consulta= "SELECT nombre,apellido FROM usuario WHERE id_usuario='$id_usuario'";
-					
-					$query = $conexion->query($consulta);
-					while ($row=$query->fetch_array()) {
-						$nombre= $row['nombre'];
-						$apellido= $row['apellido'];
-					}
- 
-					mysqli_close($conexion); 
-				?>
-				
-				
 				<div id="main-wrapper">
 
-					<!-- Main -->
-						<div id="intro" class="container">
+					<!-- Wide Content -->
+						<section id="content" class="container">
 							
-							<div class="row"> <!-- Row Principal -->	
-								
-								<div class="12u$">	
-									<hr class="major"/>
-										<div class="-5u 2u">	
-											<img src="../images/imagesAdmin/user-avatar.png" alt=""/>
-										</div>
-									<hr class="major"/>
-								
+							<h3>Control de Imagenes Fiesta</h3>
+							
+							<hr class="major"/>
+							
+							<div>
+							
+							<div class="">
+									<table id="example" class="alt hover order-column" cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Nombre</th>
+												<th>Calle</th>
+												<th>Altura</th>
+												<th>Telefono</th>
+												<th>Imagen_1</th>
+												<th>Imagen_2</th>
+												<th>Usuario Propuesta</th>
+												<th>Estado</th>
+												<th>Moderar1</th>
+												<th>Moderar2</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+		<?php
+		require('config_bd.php');								
+	
+		$consulta = ("SELECT id_fiesta,nombre,calle,altura,telefono,imagen1,imagen2,id_usuario_propuesta,estado_moderar
+					FROM fiesta");
+		$result = $conexion ->query($consulta);
+		if ($result->num_rows >0) {
+		while($row = $result->fetch_assoc()){
+													
+		?>
+			<tr>
+			<td><?php echo $row['id_fiesta']; ?></td>
+			<td><?php echo $row['nombre']; ?></td>
+			<td><?php echo $row['calle']; ?></td>
+			<td><?php echo $row['altura']; ?></td>
+			<td><?php echo $row['telefono']; ?></td>
+			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen1']); ?>" /></td>
+			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen2']); ?>" /></td>
+			<td><?php echo $row['id_usuario_propuesta']; ?></td>
+			<td><?php echo $row['estado_moderar']; ?></td>
+			<td>
+				<a href="detalle-fiesta.php?mod=<?php echo $id_protegido=base64_encode($row['id_fiesta']);?>" class="edit-link" href="#" title="Detalles">
+				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
+				</a>
+			</td>
+			<td>
+				<a href="detalle-fiesta2.php?mod=<?php echo $id_protegido=base64_encode($row['id_fiesta']);?>" class="edit-link" href="#" title="Detalles">
+				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
+				</a>
+			</td>
+			
+			</tr>
+		<?php
+		
+		}
+		}
+		//}
+		$conexion->close();	
+											
+		?>
+										</tbody>
+									</table>
 								</div>
-								
-									
-								<div class="12u$">	
-									
-									<header>
-										<h2>Bienvenido Administrador</h2>
-									</header>
-									
-									<!-- form start -->
-									<form role="form" id="add-user" autocomplete="off" method="post" action="">
-									
-										<div class="row uniform 50%">	<!-- Sec Datos User -->
-											
-											
-											<!-- Break -->
-											<input type='hidden' name='user' value='<?php echo $id_protegido=base64_encode($row['id_usuario']); ?>'/>
-											
-											<!-- Break -->
-											<div class="-4u 4u$"><span>Nombre: <?php echo $nombre ?></span></div>
-											
-											<!-- Break -->
-											<div class="-4u 4u$"><span>Apellido: <?php echo $apellido ?></span></div>
-										
-											<!-- Break -->
-											<div class="-2u 8u$">
-												<a href="edit-perfil.php" class="button button-big adds"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Editar Perfil</a>
-											</div>
-										</div> <!-- /Sec Datos User -->
-									
-									</form>
-										
-								</div>
+							</div>			
 							
-							</div>	<!-- /Row Principal -->
-							
-						</div>
+						</section>
 
-				</div> <!-- /Main Wrapper -->
+				
+				</div>
 
 			<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
@@ -239,6 +239,6 @@ include ("../bloqueSeguridad.php");
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
-
+	
 	</body>
 </html>

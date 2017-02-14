@@ -4,15 +4,25 @@
 	pixelarity.com @pixelarity
 	License: pixelarity.com/license
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>EGDO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/mainAdmin.css" />
+		<link rel="stylesheet" href="assets/css/mainAdmin.css" /> 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<script type="text/javascript" src="assets/js/jquery-1.11.1.js"></script>
+		<script type="text/javascript"  src="assets/js/jquery-1.12.3.js"></script>
+		<script type="text/javascript"  src="assets/js/jquery-1.12.3.min.js"></script>
+		
+		<!-- Jquery Validate -->
+		<script type="text/javascript" src="assets/js/jquery.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+		<script type="text/javascript" src="assets/js/additional-methods.js"></script>
+		<script type="text/javascript" src="assets/js/functionFiesta1.js"></script>
+		
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
@@ -21,7 +31,7 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-	
+
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
@@ -105,7 +115,7 @@
 											</a>
 											<ul>
 												<li><a class="list-group-item" href="edit-perfil.php"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Editar Perfil</a></li>
-												<li><a class="list-group-item" href="listarMsj.php"><i class="fa fa-inbox" aria-hidden="true"></i>&nbsp; Mensaje</a></li>
+												<li><a class="list-group-item" href="bandeja.php"><i class="fa fa-inbox" aria-hidden="true"></i>&nbsp; Mensaje</a></li>
 												<li><a class="list-group-item" href="../login/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Cerrar Sesion</a></li>
 											</ul>
 										</li>
@@ -118,61 +128,181 @@
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-					
+
 					<!-- Wide Content -->
-						<section id="intro" class="container">
+						<div id="intro" class="container">
 							
-							<div class="row"> <!-- Row Principal -->
-								<section class="12u 12u">
-									<header>
-										<h2>Registro Empresas</h2>
-									</header>
-									<hr class="major"/>
-									
-									<div class="row uniform">
-										<div class="12u">
-											<a href="empresa.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Empresas</a>
-											<hr class="major"/>
-										</div>
+							<div class="row">
+								
+									<section class="12u 12u(mobile)">
+										<header>
+											<h2>Control de Imagenes</h2>
+										</header>
+										<hr class="major"/>
+											
+											<a href="moderar-fiesta.php" class="button button-big adds"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagenes</a>
 										
-										<div class="12u"> 
-											<div id="error" class=""> </div>
-										</div>
+										<hr class="major"/>
 									
-									</div>
+									</section>
+									
+									<section class="12u 12u(mobile)">
+										<header>
+											<h2>Datos de Lugar</h2>
+										</header>
+									</section>
+									
 									<?php
 										
-										require('config_bd.php');
-										$id_empresa=base64_decode($_GET['emp']);
-										if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){  
+										include('config_bd.php');
+										 
+										$id_fiesta=base64_decode($_GET['mod']);
+										if(filter_var($id_fiesta, FILTER_VALIDATE_INT) === false){  
 											echo 'Valor incorrecto';  
 										}else{  
+											$conexion;
 											
+											//if($_GET['idempresa']>0){
+											$consulta = 
+											("SELECT f.id_fiesta,f.nombre AS lugar,f.calle,f.altura,f.telefono,
+											f.imagen1,f.imagen2,f.id_usuario_propuesta,u.nombre,u.apellido
+											FROM fiesta AS f INNER JOIN usuario AS u ON f.id_usuario_propuesta = u.id_usuario
+											WHERE id_fiesta='$id_fiesta'");
 											
-											$consulta = ("DELETE e, c
-														FROM empresa AS e INNER JOIN calificacion AS c
-														WHERE e.id_empresa = c.id_empresa
-														AND e.id_empresa = '$id_empresa'"
-														);
-											if($conexion ->query($consulta)=== TRUE){
-												echo "<div class='box success'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Registro eliminado correctamente</div>";
-											}else {
-												 echo "<div class='box danger'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Error al eliminar al registro  </div>" . $conexion->error;
-											}	
-										}
-										$conexion->close();			
+											$result=mysqli_query($conexion,$consulta);
+											if (!$result) {
+											printf("Error: %s\n", mysqli_error($conexion));
+											exit();
+											}
+											while ($row = mysqli_fetch_array($result)){
+											//$result = $conexion ->query($consulta);
+											//if ($result->num_rows >0) {
+											//	while($row = $result->fetch_assoc()){
+													
 									?>
 									
-								
-								</section>
-								
-								
-								
-								
-							</div> <!-- /Row Principal -->
+									<section class="6u 12u(mobile)"> <!-- section uss-->
+										<header>
+											<h3> <i class="fa fa-user" aria-hidden="true"></i> Datos de Usuario</h3>
+										</header>
+									    
+										<div class="row uniform 25%">
+											<!-- Break -->
+											<div class="-3u 1u"><span>Nombre: </span></div>
+												
+											<div class="-1u 5u$">
+												<span><?php echo $row['nombre']; ?></span>
+											</div>
+											
+											<!-- Break -->
+											<div class="-3u 1u">
+												<span>Apellido: </span>
+											</div>
+											
+											<div class="-1u 5u$">
+												<span><?php echo $row['apellido']; ?></span>
+											</div>
+											
+										</div>
+									
+									</section> <!-- /section uss-->
+									
+									<section class="6u 12u$(mobile)"> <!-- section uss-->
+										<header>
+											<h3> <i class="fa fa-picture-o" aria-hidden="true"></i> Datos de Lugar</h3>
+										</header>
+									    
+										<div class="row uniform 25%">
+											<!-- Break -->
+											<div class="-2u 4u"><span>Lugar Fiesta: </span></div>
+												
+											<div class="-1u 3u$">
+												<span><?php echo $row['lugar']; ?></span>
+											</div>
+											
+											<!-- Break -->
+											<div class="-2u 4u">
+												<span>Dirección: </span>
+											</div>
+											
+											<div class="-1u 3u$">
+												<span><?php echo $row['calle']; ?> <?php echo $row['altura']; ?></span>
+											</div>
+											
+										</div>
+									
+									</section> <!-- /section uss-->
+									
+									<section class="12u 12u(mobile)">
+										
+										
+									<header>	
+										<h2>Seleccionar Imagen </h2>
+									</header>	
+										
+									
+									</section>
+									
+									
+									<section class="6u 12u(mobile)"> <!-- section uss-->
+										
+									
+										<div class="-2u 8u$">
+										<img class="mod-img-fiesta" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen2']); ?>" />
+										</div>
+										
+									</section> <!-- /section uss-->
+									
+									<section class="6u 12u$(mobile)"> <!-- section image -->
+										
+										<header>	
+											<h2>Seleccione Imagen </h2>
+										</header>
+										
+										<header>
+											<h3> <i class="fa fa-picture-o" aria-hidden="true"></i> Imagen 1</h3>
+										</header>
+									
+										<!-- form start -->
+										
+										<form role="form" id="form-fiesta" autocomplete="off" method="post" enctype="multipart/form-data">
+									
+										<div class="row uniform 50%">	
+										<!-- Break -->
+										<input type='hidden' name='form-fiesta' value='<?php echo $id_protegido=base64_encode($row['id_fiesta']); ?>'/>
+										
+										<!-- Break -->
+										<div class="-1u 2u"><span>Imagen</span></div>
+										<div class="-1u 5u$"><input type="file" name='imagen' id='imagen' class="form-class"/></div>
+										
+										<!-- Break -->
+										<div class="-2u 8u$">
+											<button type="submit" class="button" name="btn-save" id="btn-save">
+											<i class="fa fa-upload" aria-hidden="true"></i> Subir
+											</button>
+										</div>
+								    
+										<div id="error"> </div>
+										
+										</div>
+									
+										</form> <!-- form start -->
+										
+										
+									</section> <!-- /section image -->
+							
+									<?php
+										}
+										}
+										//}
+										$conexion->close();	
+											
+									?>
 							
 							
-						</section> <!-- Wide Content -->
+							</div>
+							
+						</div>
 
 				</div>
 
@@ -209,6 +339,6 @@
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
-
+	
 	</body>
 </html>
