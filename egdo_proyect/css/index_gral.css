@@ -2784,6 +2784,13 @@ background: #393939;
     margin-top: 1.7em;
 }
 
+#contenerNotificaciones h2{
+	font-size: 3em;
+  padding: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
 /*Estilo alterta notificaciones*/
 #cant_notificaciones{
 

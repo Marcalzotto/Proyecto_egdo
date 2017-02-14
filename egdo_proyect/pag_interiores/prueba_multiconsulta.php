@@ -81,14 +81,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		#caja{
+				
+				border-color: blue;
+				border-style: solid;
+				font-size: 50px;
+		}
+	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="../js/jquery-color/jquery.color.js"></script>
 	<script>
 		//setInterval(function(){
 			//$("ul li:contains('Rafael')").css({"color":"blue"});
 
 		//},10000);	
+	$(document).ready(function(){
+			
+			$("#boton").click(function(){
+			
+			$("#caja").animate({"border-color":"red"},700);
+			//$("#caja").css({"border-color":"red"});
+			//$("#caja").animate({"border-width":"3"},100);
+			});
+	});
+	
 
 </script>
+
 </head>
 <body>
 <!--<div id="fb-root"></div>
@@ -121,6 +141,7 @@ echo "<ul>
 	<li>Rafael</li>
 </ul>"; ?>
 
-
+<div id="caja">german</div>
+<button id="boton">Ejecutar</button>
 </body>
 </html>

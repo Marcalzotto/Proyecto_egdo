@@ -49,13 +49,12 @@
 			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
 			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
 			<!--Librarys for lightBox -->
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
-			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
 			
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/borrar_notificacion.js"></script>
-		
+			<script src="../js/traerNotificacion.js"></script>
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
 	</head>
@@ -155,9 +154,10 @@
 											$minutos = $separar_hora[1];
 
 											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
-											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
-											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." u=".$_SESSION["id_usuario"]." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='flat icon'>
+											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
 										}
+
 
 									}else{
 									echo "<h2>No tiene notificaciones pendientes</h2>";
@@ -167,6 +167,7 @@
 								}
 								
 							?>
+							
 						</div>
 				</div>
 					
@@ -206,6 +207,7 @@
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
+			<script src="../js/jquery-color/jquery.color.js"></script>
 			
 	</body>
 </html>

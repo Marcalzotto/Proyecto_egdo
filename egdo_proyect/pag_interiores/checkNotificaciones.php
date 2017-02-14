@@ -5,14 +5,14 @@ include("funciones/cantidad_notificaciones.php");
 $fechaHoy = new DateTime();
 $curso = $_SESSION["curso"];
 $usuario = $_SESSION["id_usuario"];
-$num = rand(0,3);
+//$num = rand(0,3);
 	if($_POST){
 		$check = $_POST["check"];
 		
 		if($check == true){//empieza if
 			
 			//Notificacion cuando el admin dispara el evento de disenio y cuando se pasa a votacion
-		/*	$fecha_ins = $fechaHoy->format("Y-m-d H:i:s");
+			$fecha_ins = $fechaHoy->format("Y-m-d H:i:s");
 			$buscar_etapa2 = "select * from actividad_disenio where curso_pertenece_votacion = '$curso'";
 	
 			if($result = $conexion->query($buscar_etapa2)){
@@ -149,8 +149,8 @@ $num = rand(0,3);
 			//consulta para traer la cantidad de notificaciones que no fueron vistas por el usuario logueado
 			$cantidad = cantidad_notificaciones($conexion,$usuario,$curso);
 			echo $cantidad;
-	*/
-			echo $num;
+	
+			//echo $num;
 /*termina if*/	
 		}else{
 			echo -1;

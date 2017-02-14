@@ -63,7 +63,7 @@
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/borrar_notificacion.js"></script>
-		
+			<script src="../js/traerNotificacion.js"></script>
 	
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
@@ -179,7 +179,7 @@
 											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
 
 											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
-											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." u=".$_SESSION["id_usuario"]." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
 										}
 
 									}else{
@@ -234,6 +234,8 @@
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
+			<script src="../js/jquery-color/jquery.color.js"></script>
+			
 			
 	</body>
 </html>

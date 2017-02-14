@@ -208,3 +208,11 @@ insert into notificaciones values('','Ya puedes elegir tus talles de ropa.','vot
 insert into notificaciones values('','Ya puedes elegir la empresa que confeccione tus disenios.','empresas','../images/shirt.png',2,'2017-02-02 18:40:00',7);
 
 select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 5 or tipo_notificacion = 6 or tipo_notificacion = 7 and curso_notificacion = 2;
+
+update notificacion_vista_por set borrada = 0 where id_notificacion = 100;
+
+
+select id_notificacion,resumen, link, icono, fecha_hora, tipo_notificacion from 
+notificaciones where curso_notificacion = 2 and id_notificacion not in(
+select id_notificacion from notificacion_vista_por where usuario = 6 
+						and curso_notificacion = 2);

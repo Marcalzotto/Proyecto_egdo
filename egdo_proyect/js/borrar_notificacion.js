@@ -14,11 +14,18 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				if(data == -1){
-					alert("hubo un error en el servidor");
+					alert("hubo un error en inesperado");
 					
 				}else{
-					$(e.target).closest("a").fadeOut(500);
-					
+						if(data == 1){
+							$(e.target).closest("a").fadeOut(500);
+							setTimeout(function(){
+								$("#contenerNotificaciones").append("<h2>No tiene notificaciones pendientes</h2>");
+							},500);
+						
+						}else{
+							$(e.target).closest("a").fadeOut(500);
+						}
 				}
 				
 			}
