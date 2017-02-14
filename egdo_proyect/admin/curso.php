@@ -96,16 +96,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
@@ -179,9 +169,10 @@
 	
 		$consulta = ("SELECT id_curso,nombre_escuela,localidad,curso_anio,curso_letra,
 		cant_alumnos,fecha_creacion FROM curso ORDER BY id_curso DESC");
-		$result = $conexion ->query($consulta);
-		if ($result->num_rows >0) {
-		while($row = $result->fetch_assoc()){
+		$result = mysqli_query($conexion, $consulta);
+		//if (!$result){ printf("Error: %s\n", mysqli_error($conexion));exit();}
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
 		
 		?>
 			<tr>
@@ -206,8 +197,9 @@
 		<?php
 		}
 		}
+		else{ echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
 		//}
-		$conexion->close();		
+		mysqli_close($conexion);		
 		?>
 										</tbody>
 									</table>

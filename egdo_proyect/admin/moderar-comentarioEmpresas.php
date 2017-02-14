@@ -97,16 +97,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
@@ -161,14 +151,16 @@
 												</tr>
 										</thead>
 										<tbody>
-											<?php
-        require_once 'dbconfig.php';
+		<?php
         
-        $stmt = $db_con->prepare("SELECT * FROM comentario_empresas ORDER BY id_comentario DESC");
-        $stmt->execute();
-		while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-		{
-			?>
+		require('config_bd.php');								
+	
+		$consulta = ("SELECT id_comentario,comentario,id_empresa,id_usuario,estado_moderar FROM comentario_empresas ORDER BY id_comentario DESC");
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
+		
+		?>
 			<tr>
 			<td><?php echo $row['id_comentario']; ?></td>
 			<td><?php echo $row['comentario']; ?></td>
@@ -181,10 +173,13 @@
 				</a>
 			</td>
 			</tr>
-			<?php
-			
-			}
-			?>
+		<?php
+		}
+		}
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
+		//}
+		mysqli_close($conexion);	
+		?>
 										</tbody>
 									</table>
 								</div>

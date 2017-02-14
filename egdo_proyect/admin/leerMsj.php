@@ -97,16 +97,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
@@ -160,23 +150,22 @@
 							</div> <!-- /sub cabecera -->
 							
 							<hr class="major"/> <!-- /sub cabecera -->
-								<?php
+		<?php
 										
-										require('config_bd.php');
-										$id_mensaje=base64_decode($_GET['lMsj']);
-										if(filter_var($id_mensaje, FILTER_VALIDATE_INT) === false){  
-											echo 'Valor incorrecto';  
-										}else{  
-											
-											//if($_GET['idempresa']>0){
-											$consulta = ("SELECT mp.id_mensaje,mp.asunto,mp.mensaje,mp.fecha_hora,
-											mp.id_emisor,mp.id_receptor,u.nombre,u.apellido
-											FROM mensajes_privado AS mp INNER JOIN usuario AS u ON mp.id_emisor=u.id_usuario WHERE id_mensaje='$id_mensaje'");
-											$result = $conexion ->query($consulta);
-											if ($result->num_rows >0) {
-												while($row = $result->fetch_assoc()){
-													
-								?>
+		require('config_bd.php');
+		$id_mensaje=base64_decode($_GET['lMsj']);
+		if(filter_var($id_mensaje, FILTER_VALIDATE_INT) === false){  
+			echo 'Valor incorrecto';  
+		}else{  
+			//if($_GET['idempresa']>0){
+		$consulta = ("SELECT mp.id_mensaje,mp.asunto,mp.mensaje,mp.fecha_hora,
+					mp.id_emisor,mp.id_receptor,u.nombre,u.apellido
+					FROM mensajes_privado AS mp INNER JOIN usuario AS u ON mp.id_emisor=u.id_usuario WHERE id_mensaje='$id_mensaje'");
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
+		
+		?>
 		<div class="table-wrapper">
 			<table class="segMsj" cellspacing="0" width="100%">
 					<thead>
@@ -217,14 +206,15 @@
 			</tbody>
 			</table>					
 		</div>
-									<?php
-										}
-										}
-										}
-										//}
-										$conexion->close();	
+		<?php
+		}
+		} 
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
+		}
+		//}
+		mysqli_close($conexion);	
 											
-									?>
+		?>
 					</section>
 
 				</div>

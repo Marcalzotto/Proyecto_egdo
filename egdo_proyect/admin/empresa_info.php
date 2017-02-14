@@ -88,16 +88,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
@@ -136,12 +126,12 @@
 			}else{  
 				
 				//if($_GET['idempresa']>0){
-				$consulta = ("SELECT nombre_empresa,telefono,calle,altura,localidad,codigo_postal,partido,provincia,email,pagina_web,
-							facebook,twitter,instagram,cuit,logo FROM empresa WHERE id_empresa='$id_empresa'");
-				$result = $conexion ->query($consulta);
-				if ($result->num_rows >0) {
-				while($row = $result->fetch_assoc()){
-													
+				$consulta = ("SELECT nombre_empresa,telefono,calle,email,pagina_web,facebook,twitter,
+							instagram,cuit,logo FROM empresa WHERE id_empresa='$id_empresa'");
+				$result = mysqli_query($conexion, $consulta);
+				if (mysqli_num_rows($result) > 0) {
+				while($row = mysqli_fetch_assoc($result)){
+				
 			?>
 			
 			
@@ -186,7 +176,7 @@
 										</div>
 										<!-- Break -->
 										<div class="6u">
-											<span><?php echo $row['calle']; ?>&nbsp;-&nbsp;<?php echo $row['altura']; ?>&nbsp;-&nbsp;<?php echo $row['localidad']; ?>&nbsp;-&nbsp;<?php echo $row['partido']; ?>&nbsp;-&nbsp;<?php echo $row['provincia']; ?>&nbsp;-&nbsp;<?php echo $row['codigo_postal']; ?>
+											<span><?php echo $row['calle']; ?>&nbsp;&nbsp
 											</span>
 										</div>
 										<!-- Break -->
@@ -252,7 +242,7 @@
 				}
 				}
 				//}
-				$conexion->close();	
+				mysqli_close($conexion);
 			?>
 			<!-- Footer Wrapper -->
 				<div id="footer-wrapper">

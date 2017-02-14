@@ -92,16 +92,6 @@
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-evento.php">
-																<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Evento
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-imagen.php">
-															<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Imagen Varias
-															</a>
-														</li>
-														<li>
 															<a class="list-group-item" href="moderar-UPD.php">
 															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
 															</a>
@@ -173,21 +163,6 @@
 										<!-- Break -->
 										<div class="-1u 2u"><span>Calle </span></div>
 										<div class="-1u 5u$"><span><input type='text' name='emp_calle' class="form-class" placeholder='Calle'/></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><span>Altura </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_nro' class="form-class" placeholder='1111'/></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><span>Localidad </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_loc' class="form-class" placeholder='Localidad'/></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><span>C&oacute;digo Postal</span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_cp' class="form-class" placeholder='1111'/></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><span>Partido </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_part' class="form-class" placeholder='Partido'/></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><span>Provincia </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_prov' class="form-class" placeholder='Provincia'/></span></div>
 										<!-- Break -->
 										<div class="-1u 2u"><span>Tel&eacute;fono </span></div>
 										<div class="-1u 5u$"><span><input type='text' name='emp_tel' class="form-class" placeholder='11-1111-1111'/></span></div>
