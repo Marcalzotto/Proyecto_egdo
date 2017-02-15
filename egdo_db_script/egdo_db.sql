@@ -83,23 +83,31 @@ CREATE TABLE `comentario` (
   `fecha_hora` datetime DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `id_actividad` int(11) DEFAULT NULL
+   	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+CREATE TABLE contacto(
+id_contacto INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nombre_empresa VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+mensaje VARCHAR(250) NOT NULL
 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Estructura de tabla para la tabla `curso`
 --
 
 CREATE TABLE `curso` (
-  `id_curso` int(11) NOT NULL,
+  `id_curso` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_escuela` varchar(45) DEFAULT NULL,
-  `numero_escuela` int(11) DEFAULT NULL,
   `localidad` varchar(70) DEFAULT NULL,
-  `nombre_curso` varchar(45) DEFAULT NULL,
+  `curso_anio` int(3) DEFAULT NULL,
+  `curso_letra` varchar(3) DEFAULT NULL,
   `cant_alumnos` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -291,10 +299,38 @@ CREATE TABLE `usuario` (
   `nombre` varchar(45) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `contrasenia` varchar(45) DEFAULT NULL,
+  `contrasenia` varchar(256) DEFAULT NULL,
+  `fechaAltaUsuario` datetime NOT NULL,
   `id_rol` int(11) DEFAULT NULL,
-  `id_curso` int(11) DEFAULT NULL
+  `id_curso` int(11) DEFAULT NULL,
+  `id_confirmacion` varchar(100) NOT NULL,
+  `estadoActivacion` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Inserts tabla usuario
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `email`, `contrasenia`, `fechaAltaUsuario`, `id_rol`, `id_curso`, `id_confirmacion`, `estadoActivacion`) VALUES
+(1, 'NOELIA', 'MOREL', 'noe@egdo.com', '$2y$10$2xooZFK2pLKzLs0SXj1xb.ClC1CxIWmVJjt9SAEEFtzwGOxaoqN0m', '0000-00-00 00:00:00', 1, 2, '0', 1),
+(2, 'Romina', 'Velasco', 'romy@egdo.com', '$2y$10$fe4F.UXndVqbKzpTtcuAn.sTEM8NtoXOyQ80Zsjw2kkdpjZPLhSku', '0000-00-00 00:00:00', 1, NULL, '0', 0),
+(3, 'Marcos', 'Scalzotto', 'marcos@egdo.com', '$2y$10$mrw6qL8YQ1HJQB558IotxeygRWYXSyeH38yzr.TciwLKHkui/246e', '0000-00-00 00:00:00', 1, NULL, '0', 0),
+(4, 'Paula', 'Neri', 'pau@egdo.com', '$2y$10$2WM7X14LYBGQrO.PdNb52OEsybRcR/5fSK48acVUaN92XLXDVMzUe', '0000-00-00 00:00:00', 1, NULL, '0', 0),
+(6, 'NOELIA', 'MOREL', 'noe@gmail.com', '$2y$10$oq6gXZBLb9o5ff0r5vwfY.AeJyAbwaiu1hEEGSVPxA/P/YAfSr/Vy', '2016-07-15 02:25:13', 2, 2, '578873b9d99ba', 1),
+(7, 'Noe', 'Rodriguez', 'noe@live.com', '$2y$10$tpVP.6mbpIb.PRge/LsisOQs1vgRSRvzBEAKjDyU9FPIwEFCOgOMi', '2016-07-15 02:34:10', 3, 2, '578875d207524', 1),
+(8, 'Jose', NULL, 'jose@egdo.com', '$2y$10$7/jeZbGKcI1b/UPvN7AY4e3ZFdV016vXLCtcof8oQ2eWqHlJ4Q4U.', '2016-07-15 02:34:10', 3, 2, '578875d535ff2', 0),
+(9, 'Luis', NULL, 'luis@egdo.com', '$2y$10$7/jeZbGKcI1b/UPvN7AY4e3ZFdV016vXLCtcof8oQ2eWqHlJ4Q4U.', '2016-07-15 02:34:10', 3, 2, '578875d8c3a5f', 0),
+(10, 'Maria', NULL, 'maria@egdo.com', '$2y$10$7/jeZbGKcI1b/UPvN7AY4e3ZFdV016vXLCtcof8oQ2eWqHlJ4Q4U.', '2016-07-15 02:34:10', 3, 2, '578875dc1d6f5', 0),
+(11, 'MATIAS', 'PEREZ', 'noenmorel@gmail.com', '$2y$10$.u1a24LQki3Srdvb8PSHou7lixkocPMUFjUWUBXUyESOizOof6FLe', '2016-07-15 02:39:43', 2, 3, '5788771f23a79', 1),
+(12, 'Mario', 'Diaz', 'noeliamorel@live.com', '$2y$10$QhjrM9pt8xINB25ejC9KDeTxna6M2jMi/9St/ngM9yCEUgJgvwjcG', '2016-07-15 02:46:20', 3, 3, '578878ac88e84', 1),
+(13, NULL, NULL, 'liliana@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878afcb1d7', 0),
+(14, NULL, NULL, 'daniel@egdo.com', NULL, '2016-07-15 02:46:20', 3, 3, '578878b2dfaa7', 0),
+(16, NULL, NULL, 'marcos.scalzotto@gmail.com', NULL, '2017-01-30 19:54:08', 3, 2, '588fc410b75e2', 0),
+(17, NULL, NULL, 'marcos.scalzotto@gmail.com', NULL, '2017-01-30 19:54:16', 3, 2, '588fc418dbdbc', 0),
+(18, NULL, NULL, 'marcos.scalzotto@gmail.com', NULL, '2017-01-30 19:54:27', 3, 2, '588fc423ef4cd', 0),
+(19, 'marcos', 'sczlz', 'marcos.scalzotto@hotmail.com', '$2y$10$4i8XY62Y74Vi9QacgYz2iuQ/F9gQ4YfXLrGW1i68pfFoSshFPx40K', '2017-02-10 19:29:13', 2, NULL, '589e3eb94384b', 0),
+(20, 'marcos', 'klklkllkk', 'marcos.scalzotto24@gmail.com', '$2y$10$w35pgoEmpqsRRSuz.P25KefYOaDnN03oRvjhdCFSWzXcsqbPW2fFe', '2017-02-10 19:35:17', 2, 4, '589e4025e6535', 1),
+(21, NULL, NULL, 'noenmorel@gmail.com', NULL, '2017-02-10 19:53:00', 3, 4, '589e444c196e5', 0),
+(22, NULL, NULL, 'pauuu.10.03@gmail.com', NULL, '2017-02-10 19:53:00', 3, 4, '589e4455703b4', 0),
+(23, NULL, NULL, 'marcos.scalzotto@gmail.com', NULL, '2017-02-10 21:14:01', 3, 2, '589e5749920d2', 0),
+(24, NULL, NULL, 'noenmorel@gmail.com', NULL, '2017-02-10 21:14:01', 3, 2, '589e574b2c445', 0);
 
 -- --------------------------------------------------------
 
@@ -765,3 +801,86 @@ INSERT INTO tipo_notificaciones VALUES(14,"NOTIFICACIONES INICIO DE CALIFICACION
 INSERT INTO tipo_notificaciones VALUES(15,"NOTIFICACIONES LUGAR GANADOR FIESTA DE EGRESADOS");
 
 ALTER TABLE notificaciones CHANGE COLUMN resumen resumen VARCHAR(200) NOT NULL;
+
+-- MODIFICACIONES ROMINA
+-- ALTERS PARA TABLA COMENTARIO-COMENTARIO EMPRESAS-FIESTA-DISEÑO-UPD
+ALTER TABLE `comentario` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE `comentario_empresas` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE `fiesta` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
+ALTER TABLE `disenio` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
+ALTER TABLE `upd` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
+
+ALTER TABLE `empresa` DROP `altura`, DROP `localidad`, DROP `codigo_postal`, DROP `partido`, DROP `provincia`;
+ALTER TABLE `empresa` ADD `logo` MEDIUMBLOB NULL;
+
+ALTER TABLE `empresa` CHANGE `facebook` `facebook` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `empresa` CHANGE `pagina_web` `pagina_web` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `empresa` CHANGE `twitter` `twitter` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `empresa` CHANGE `instagram` `instagram` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+-- BORRADOS EN CASCADA Y ACTUALIZACIONES EN CASCADA
+
+ALTER TABLE `agenda` DROP FOREIGN KEY `agenda_ibfk_1`; 
+ALTER TABLE `agenda` ADD CONSTRAINT `agenda_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `calificacion` DROP FOREIGN KEY `calificacion_ibfk_1`; 
+ALTER TABLE `calificacion` ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE; 
+ALTER TABLE `calificacion` DROP FOREIGN KEY `calificacion_ibfk_2`; 
+ALTER TABLE `calificacion` ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `egdo_db`.`empresa`(`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `comentario` DROP FOREIGN KEY `comentario_ibfk_1`; 
+ALTER TABLE `comentario` ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `comentario_empresas` DROP FOREIGN KEY `comentario_empresas_ibfk_2`; 
+ALTER TABLE `comentario_empresas` ADD CONSTRAINT `comentario_empresas_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `curso_pdf` DROP FOREIGN KEY `curso_pdf_ibfk_1`; 
+ALTER TABLE `curso_pdf` ADD CONSTRAINT `curso_pdf_ibfk_1` FOREIGN KEY (`curso`) REFERENCES `egdo_db`.`curso`(`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE disenio DROP FOREIGN KEY disenio_ibfk_1;
+ALTER TABLE `disenio` ADD FOREIGN KEY (`id_usuario_subio`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- MAS ALTERS
+
+ALTER TABLE `evento` ADD INDEX(`id_usuario`);
+ALTER TABLE `evento` ADD FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `fiesta` ADD INDEX(`id_usuario_propuesta`);
+ALTER TABLE `fiesta` ADD FOREIGN KEY (`id_usuario_propuesta`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `medidas_bandera` DROP FOREIGN KEY `medidas_bandera_ibfk_1`; ALTER TABLE `medidas_bandera` ADD CONSTRAINT `medidas_bandera_ibfk_1` FOREIGN KEY (`curso`) REFERENCES `egdo_db`.`curso`(`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `mensajes_privado` ADD INDEX(`id_emisor`);
+ALTER TABLE `mensajes_privado` ADD FOREIGN KEY (`id_emisor`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `mensajes_privado` ADD INDEX(`id_receptor`);
+ALTER TABLE `mensajes_privado` ADD FOREIGN KEY (`id_receptor`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `notificacion_vista_por` DROP FOREIGN KEY `notificacion_vista_por_ibfk_1`; 
+ALTER TABLE `notificacion_vista_por` ADD CONSTRAINT `notificacion_vista_por_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `notificacion_vista_por` DROP FOREIGN KEY `notificacion_vista_por_ibfk_3`; 
+ALTER TABLE `notificacion_vista_por` ADD CONSTRAINT `notificacion_vista_por_ibfk_3` FOREIGN KEY (`curso_notificacion`) REFERENCES `egdo_db`.`curso`(`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `talles_curso` DROP FOREIGN KEY `talles_curso_ibfk_2`; 
+ALTER TABLE `talles_curso` ADD CONSTRAINT `talles_curso_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `talles_curso` DROP FOREIGN KEY `talles_curso_ibfk_3`; 
+ALTER TABLE `talles_curso` ADD CONSTRAINT `talles_curso_ibfk_3` FOREIGN KEY (`curso`) REFERENCES `egdo_db`.`curso`(`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `tcalendario` DROP FOREIGN KEY `curso_eventos_fk`; 
+ALTER TABLE `tcalendario` ADD CONSTRAINT `curso_eventos_fk` FOREIGN KEY (`curso_eventos`) REFERENCES `egdo_db`.`curso`(`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `upd` ADD INDEX(`id_usuario_propuesta`);
+ALTER TABLE `upd` ADD FOREIGN KEY (`id_usuario_propuesta`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `actividad_disenio` ADD INDEX(`usuario_apertura`);
+ALTER TABLE `actividad_disenio` ADD FOREIGN KEY (`usuario_apertura`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- DATE TIMESTAMP
+
+ALTER TABLE `fiesta` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `disenio` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ; 
+
+ALTER TABLE `upd` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
