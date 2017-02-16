@@ -18,6 +18,9 @@
 	<link rel="stylesheet" href="../css/admin-form-basic.css">
 	<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 	
+	<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
+	
 	</head>
 	<body class="no-sidebar">
 				

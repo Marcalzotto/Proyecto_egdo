@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="../css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" href="../css/talles.css" />
+		<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 	
 	</head>
 	<body class="no-sidebar">
