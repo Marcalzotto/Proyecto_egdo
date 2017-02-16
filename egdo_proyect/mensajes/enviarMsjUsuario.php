@@ -90,15 +90,6 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 	
 	<?php
 
-
-    
-
-    $conexion = mysql_connect("localhost", "root", "")
-      or die("Problemas en la conexion");
-    
-    mysql_select_db("egdo_db", $conexion) 
-      or die("Problemas en la seleccion de la base de datos");
-  
 	
 	echo '<div ALIGN="left" style="font-size:130%"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />';
 
@@ -112,7 +103,8 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			$fecha_hora = date("Y-n-d-H-i-s");
 			
 			$sql = "INSERT INTO mensajes_privado (id_receptor,id_emisor,fecha_hora,asunto,mensaje) VALUES ('".$id_receptor."','".$_SESSION['id_usuario']."','".$fecha_hora."','".$asunto."','".$mensaje."')";
-			mysql_query($sql,$conexion);
+			
+			$conexion->query($sql) or die($conexion->error);
 			echo "</br></br></br></br><div id='mensaje' ALIGN='center'>MENSAJE ENVIADO CORRECTAMENTE!!</div>";
 	
 

@@ -85,29 +85,10 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 
 	
 	<div id="bandejaEntrada">
-<?php
-
-    $conexion = mysql_connect("localhost", "root", "")
-      or die("Problemas en la conexion");
-    
-    mysql_select_db("egdo_db", $conexion) 
-      or die("Problemas en la seleccion de la base de datos");
-    ?>
-	
-	<?php
-	//$sqlCapacidad = "SELECT max_msj_priv FROM usuario WHERE usuario='".$_SESSION['usuario']."'";
-	//$resultado = mysql_query($sqlCapacidad, $conexion) or die(mysql_error());
-	//$rowCapacidad = mysql_fetch_assoc($resultado);
-	//echo '<h3 ALIGN="left"> Bienvenido usuario: &nbsp;&nbsp;&nbsp;'.$_SESSION['usuario'].' </h3>
-	//	  <h3 ALIGN="left"> Limite de almacenamiento: &nbsp;&nbsp;&nbsp;'.$rowCapacidad['max_msj_priv'].' mensajes</h3>'
-	?>
 
 <?php
-	
-	# Buscamos los mensajes privados
-//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."'";
 $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."'";
-$res = mysql_query($sql, $conexion) or die(mysql_error());
+$res = $conexion->query($sql) or die($conexion->error);
 
 ?>
 <div id="menu"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a></div><br /><br />
@@ -120,8 +101,11 @@ $res = mysql_query($sql, $conexion) or die(mysql_error());
 	  <th class="columna"><strong>Eliminar</strong></td>
     </tr>
     <?php
+	
+	
+	
 	$i = 0; 
-	while($row = mysql_fetch_assoc($res)){ ?>
+	while($row = $res->fetch_array(MYSQLI_ASSOC)){ ?>
     <tr class="fila">
 	  <td class="columna"><?=$i+1?></td>
       <td class="columna"><a class="linkLeer" href="../mensajes/leerAdminCurso.php?id_mensaje=<?=$row['id_mensaje']?>"><?=$row['asunto']?></a></td>

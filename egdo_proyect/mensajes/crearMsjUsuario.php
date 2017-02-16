@@ -86,17 +86,6 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 	
 	<div id="bandejaEntrada">
 
- <?php
-    
-
-    $conexion = mysql_connect("localhost", "root", "")
-      or die("Problemas en la conexion");
-    
-    mysql_select_db("egdo_db", $conexion) 
-      or die("Problemas en la seleccion de la base de datos");
-    ?>
-
-
 <div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />
 
 <form method="post" action="../mensajes/enviarMsjUsuario.php" >
@@ -104,18 +93,18 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 <div class="descripcion">Para
 <?php
 $id_curso=$_SESSION['curso'];
-$consulta=mysql_query("SELECT A.descripcion_rol, T.* 
+$sql="SELECT A.descripcion_rol, T.* 
 FROM rol A INNER JOIN 
 usuario T ON A.id_rol=T.id_rol 
 WHERE T.id_rol=2 and T.id_curso='$id_curso' and T.estadoActivacion=1
-", $conexion)
-					or die("Problemas en el select:".mysql_error());
+";
+$res = $conexion->query($sql) or die($conexion->error);
 			echo '<div class="form-group">';
 
 echo '<select class="campoCrear" class="form-control" id="sel1" name="id_receptor">';						
 						echo '<option value=""></option>';
-						while($fila = mysql_fetch_array($consulta)) {
-							echo"<option value='".$fila['id_usuario']."'>".$fila['nombre']." ".$fila['apellido']." (".$fila['descripcion_rol'].")</option>";
+						while($row = $res->fetch_array(MYSQLI_ASSOC)) {
+							echo"<option value='".$row['id_usuario']."'>".$row['nombre']." ".$row['apellido']." (".$row['descripcion_rol'].")</option>";
 						}					
 						echo '</select></div>';
 ?>
