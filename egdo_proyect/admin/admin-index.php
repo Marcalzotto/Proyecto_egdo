@@ -35,7 +35,7 @@ include ("../bloqueSeguridad.php");
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="../assets/images/EGDO.png" alt=""/></a></h1>
+								<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="assets/images/EGDO.png" alt=""/></a></h1>
 
 							<!-- Nav -->
 								<nav id="nav">

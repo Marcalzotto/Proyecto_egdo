@@ -33,7 +33,7 @@
 						<div id="header" class="container">
 
 							<!-- Logo -->
-								<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="../assets/images/EGDO.png" alt=""/></a></h1>
+								<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="assets/images/EGDO.png" alt=""/></a></h1>
 
 							<!-- Nav -->
 								<nav id="nav">
@@ -73,25 +73,40 @@
 											<ul>
 												<li><a class="list-group-item" href="moderar-comentario.php"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Comentarios Actividades</a></li>
 												<li><a class="list-group-item" href="moderar-comentarioEmpresas.php"><i class="fa fa-comments-o" aria-hidden="true"></i></i>&nbsp; Comentarios Empresas</a></li>
+												<li><a class="list-group-item" href="moderar-disenio.php">
+													<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño</a>
+												</li>
 												<li>
-													<span><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Imagenes</a></span>
+													<span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; UPD</a></span>
 													<ul> <!-- Sub items -->
 														<li>
-															<a class="list-group-item" href="moderar-disenio.php">
-																<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño
+															<a class="list-group-item" href="moderar-UPD.php">
+																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
 															</a>
 														</li>
+														<li>
+															<a class="list-group-item" href="moderar-UPD1.php">
+																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
+																Galeria 2
+															</a>
+														</li>
+													</ul> <!-- /Sub items -->	
+												</li>	
+												<li>
+													<span><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Fiesta</a></span>
+													<ul> <!-- Sub items -->
 														<li>
 															<a class="list-group-item" href="moderar-fiesta.php">
-																<i class="fa fa-music" aria-hidden="true"></i>&nbsp; Fiesta
+																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
 															</a>
 														</li>
 														<li>
-															<a class="list-group-item" href="moderar-UPD.php">
-															<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;UPD
+															<a class="list-group-item" href="moderar-fiesta1.php">
+																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
+																Galeria 2
 															</a>
 														</li>
-													</ul> <!-- /Sub Items  -->
+													</ul> <!-- /Sub items -->	
 												</li>
 											</ul>
 										</li>
