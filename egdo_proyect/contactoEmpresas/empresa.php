@@ -1,41 +1,3 @@
-<?php
-session_start();
-
-//session_start();
-//if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
-	//print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
-//$id_usuario=$_SESSION["id_usuario"];
-
-?>
-<?php
-
-$host_db = "localhost";
-$user_db = "root";
-$pass_db = "";
-$db_name = "egdo_db";
-$tbl_name = "contacto";
-
-$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-if ($conexion->connect_error) {
- die("La conexion falló: " . $conexion->connect_error);
-}
-
-//$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
-//$sql1= "select * from usuario where id_usuario= 1 ";
-//1
-//$query = $conexion->query($sql1);
-//while ($row=$query->fetch_array()) {
-
-//$name= $row['nombre'];
-//$surname= $row['apellido'];
-
-//}
- 
- mysqli_close($conexion); 
- ?>
-
-
 <!DOCTYPE html>
 <!--
 	Wide Angle by Pixelarity
@@ -48,12 +10,11 @@ if ($conexion->connect_error) {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mainRegistro.css" />
+		<!--<link rel="stylesheet" href="../css/main.css" /> -->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<script src="../js/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		
-		
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -89,51 +50,108 @@ if ($conexion->connect_error) {
 							<!-- Logo -->
 								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../images/imagesAdmin/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Eliminado -->
-								
+							
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="circle">
+											<a href="../index.php">COMENZA</a>
+										</li>
+										<li class="circle">
+											<a href="../contactoEmpresas/empresa.php">EMPRESAS</a>
+										</li>
+										<li class="break circle">
+											<a href="../registro/registroPaso1.php">REGISTRO</a>
+										</li>
+										<li class="circle">
+											<a href="#contacto">CONTACTO</a>
+										</li>
+									</ul>
+								</nav> <!-- /Nav -->	
 						</div>
-
 				</div>
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
 
-					<!-- Wide Content -->
-						<section id="content" class="container">
-							<header>
-								<h2>Contactanos</h2>
-							<p>Si sos fabricante de indumentaria para egresados, contactate con nosotros.</p>
-							</header>
-							
-							<header>
-						<h2></h2>
+						<!-- Main -->
+						<div id="intro" class="container">
 						
-					</header>
-					<div class="box container 75%">
+							<div class="row"> <!-- Row Principal -->	
+							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>SI SOS FABRICANTE DE INDUMENTARIA CONTACTATE CON NOSOTROS</h2>
+									</header>
 
-					<!-- Contact Form -->
+								
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
+						</div>
+						
+						<!-- Wide Content -->
+						<section id="content" class="container">
+							
+						<div class="row"> <!-- Row Principal -->
+				
+						<section class="12u 12u">
+							<hr class="major"/>
+									
+									<div class="row uniform">
+										
+										<div class="-2u 3u">
+											<h5 class="subheader-step"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; INGRESA TUS DATOS </h5>
+										</div>
+										
+									</div>
+							<hr class="major"/>	
+							
+							<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+							
+							
+							<!-- Contact Form -->
 							<form method="post" id="acceso">
+								
 								<div class="row 50%">
-									<div class="6u 12u(mobile)">
-										<input class="text" type="text" name="name" id="name" placeholder="Nombre Empresa" required>
+									
+									<!-- Break -->
+									<div class="-2u 2u"><span>Nombre Empresa</span></div>
+									<div class="-1u 5u$">
+									<input class="text" type="text" name="name" id="name" placeholder="Nombre Empresa" required>
 									</div>
-									<div class="6u 12u(mobile)">
-										<input class="text" type="text" name="email" id="email" placeholder="Email" required>
+									
+									<!-- Break -->
+									<div class="-2u 2u"><span>Email</span></div>
+									<div class="-1u 5u$">
+									<input class="text" type="text" name="email" id="email" placeholder="Email" required>
 									</div>
-								</div>
-								<div class="row 50%">
-									<div class="12u"><textarea name="message" placeholder="Mensaje" rows="6" required></textarea></div>
-								</div>
-								<div class="row">
-									<div class="12u">
-										<ul class="actions">
-											<li><input type="submit" class="button" name="acceso"  value="enviar"></li>
-											<li><div id="mensaje"></div></li>
-										</ul>
+									
+									<!-- Break -->
+									<div class="-2u 2u"><span>Mensaje</span></div>
+									<div class="-1u 5u$">
+										<textarea name="message" placeholder="Mensaje" rows="6" required></textarea>
 									</div>
+									
+									<div class="-5u 5u$">
+										<input type="submit" class="button special fit small" name="acceso"  value="enviar">
+									</div>
+									
+									<div id="mensaje"></div>
+								
 								</div>
+								
 							</form>
-							<script>
+							
+							</div> <!-- /Sec Datos Empresa -->
+							
+						</section>
+							
+						</div> <!-- /Row Principal -->	
+							
+							
+							
+<script>
 //Guardamos el controlador del div con ID mensaje en una variable
 var mensaje = $("#mensaje");
 //Ocultamos el contenedor
@@ -179,15 +197,34 @@ $("#acceso").on("submit", function(e){
 
 </script>
 
-					</div>
+					
 						</section>
 
 				</div>
 			
-			<?php
-					include '../pag_interiores/menu/masterFooter.php';
-			?>
+			<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
 
+					<div id="contacto"> <!-- Ancla -->
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram" target="_blank"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook" target="_blank"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter" target="_blank"><span>Twitter</span></a></li>
+							</ul>
+						</div> <!-- /Footer -->
+					</div>
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; Egdo 2016.
+						</div>
+				
+				</div> <!-- /Footer Wrapper -->
 		</div>
 
 		<!-- Scripts -->
