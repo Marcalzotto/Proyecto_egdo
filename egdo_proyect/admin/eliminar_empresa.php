@@ -164,11 +164,13 @@
 										}else{  
 											
 											
-											$consulta = ("DELETE e, c
-														FROM empresa AS e INNER JOIN calificacion AS c
-														WHERE e.id_empresa = c.id_empresa
-														AND e.id_empresa = '$id_empresa'"
-														);
+											$consulta = ("DELETE emp,calif,ce
+														FROM empresa AS emp
+														INNER JOIN calificacion AS calif
+														INNER JOIN comentario_empresas AS ce
+														WHERE emp.id_empresa = calif.id_empresa
+														AND calif.id_empresa = ce.id_empresa
+														AND emp.id_empresa = '$id_empresa'");
 											if($conexion ->query($consulta)=== TRUE){
 												echo "<div class='box success'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Registro eliminado correctamente</div>";
 											}else {
