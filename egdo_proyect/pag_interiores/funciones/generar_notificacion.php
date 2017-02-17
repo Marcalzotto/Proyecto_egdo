@@ -185,6 +185,105 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		}
 
 	}
+	
+	//notificacion de cuando se lanza la propuesta de lugares para fiesta
+	//junto con verficacion de finalizacion de plazo para subir lugares, si quedan 5 para finalizar
+	$buscar_fiesta_lanzado = "select * from evento where id_actividad = 3 and id_curso = '$curso'";
+	if($result = $conexion->query($buscar_fiesta_lanzado)){
+		if($result->num_rows > 0){
+			$reg = $result->fetch_array(MYSQLI_ASSOC);
+			$fecha_fiesta = new datetime($reg["fecha_hora"]);
+			$buscar_sinotificacion = "select count(id_notificacion) as cantidad from notificaciones where tipo_notificacion = 12 and curso_notificacion = '$curso'";
+			
+			if($result = $conexion->query($buscar_sinotificacion)){
+				$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$cantidad = $reg["cantidad"];
+				
+				if($cantidad == 0){
+					
+					$insertarNotificacion = "insert into notificaciones values('','Ya puedes empezar a proponer tu lugar para la fiesta de egresados.','fiesta','../images/fiesta_egdo.png','$curso','$fecha_ins',12)";
+					if(!$result = $conexion->query($insertarNotificacion)){
+						die("Falla al crear notificacion: ".$conexion->error);	
+					}
+				}else{
+					$intervalo = $fechaHoy->diff($fecha_fiesta);
+					$intervaloAnio = $intervalo->y;
+					$intervaloMes = $intervalo->m;
+					$intervaloDias = $intervalo->d;
+					if($intervaloAnio == 0 && $intervaloMes == 0 && ($intervaloDias >= 10 && $intervaloDias < 15)){
+						$buscar_sinotificacion = "select count(id_notificacion) as cantidad from notificaciones where tipo_notificacion = 13 and curso_notificacion = '$curso'";
+						if($result = $conexion->query($buscar_sinotificacion)){
+								$reg = $result->fetch_array(MYSQLI_ASSOC);
+								$cantidad = $reg["cantidad"];
+								if($cantidad == 0){
+									$insertarNotificacion = "insert into notificaciones values('','Ya propusiste lugar para la fiesta? Sino lo hiciste hacelo quedan 5 dias o menos.','fiesta','../images/fiesta_egdo.png','$curso','$fecha_ins',13)";
+									if(!$result = $conexion->query($insertarNotificacion)){
+										die("Error al insertar notifcacion advertencia fiesta: ".$conexion->error);
+									}
+								}
+						}else{
+							die("Error al buscar finalizacion de dias fiesta: ".$conexion->error);
+						}
+					}
+				}
+			}else{
+				die("Falla al buscar notificacion fiesta: ".$conexion->error);
+			}
+			
+		}
+	}else{
+		die("Error al buscar el evento fiesta: ".$conexion->error);
+	}
+
+	//notificacion de cuando se lanza la propuesta de lugares para upd
+	//junto con verficacion de finalizacion de plazo para subir lugares, si quedan 5 para finalizar
+	$buscar_upd_lanzado = "select * from evento where id_actividad = 2 and id_curso = '$curso'";
+	if($result = $conexion->query($buscar_upd_lanzado)){
+		if($result->num_rows > 0){
+			$reg = $result->fetch_array(MYSQLI_ASSOC);
+			$fecha_upd = new datetime($reg["fecha_hora"]);
+			$buscar_sinotificacion = "select count(id_notificacion) as cantidad from notificaciones where tipo_notificacion = 8 and curso_notificacion = '$curso'";
+			
+			if($result = $conexion->query($buscar_sinotificacion)){
+				$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$cantidad = $reg["cantidad"];
+				
+				if($cantidad == 0){
+					
+					$insertarNotificacion = "insert into notificaciones values('','Ya puedes empezar a proponer tu lugar para el UPD.','upd','../images/upd.png','$curso','$fecha_ins',8)";
+					if(!$result = $conexion->query($insertarNotificacion)){
+						die("Falla al crear notificacion: ".$conexion->error);	
+					}
+				}else{
+					$intervalo = $fechaHoy->diff($fecha_upd);
+					$intervaloAnio = $intervalo->y;
+					$intervaloMes = $intervalo->m;
+					$intervaloDias = $intervalo->d;
+					if($intervaloAnio == 0 && $intervaloMes == 0 && ($intervaloDias >= 10 && $intervaloDias < 15)){
+						$buscar_sinotificacion = "select count(id_notificacion) as cantidad from notificaciones where tipo_notificacion = 9 and curso_notificacion = '$curso'";
+						if($result = $conexion->query($buscar_sinotificacion)){
+								$reg = $result->fetch_array(MYSQLI_ASSOC);
+								$cantidad = $reg["cantidad"];
+								if($cantidad == 0){
+									$insertarNotificacion = "insert into notificaciones values('','Ya propusiste lugar para el UPD? Sino lo hiciste hacelo quedan 5 dias o menos.','upd','../images/upd.png','$curso','$fecha_ins',9)";
+									if(!$result = $conexion->query($insertarNotificacion)){
+										die("Error al insertar notifcacion advertencia upd: ".$conexion->error);
+									}
+								}
+						}else{
+							die("Error al buscar finalizacion de dias upd: ".$conexion->error);
+						}
+					}
+				}
+			}else{
+				die("Falla al buscar notificacion upd: ".$conexion->error);
+			}
+			
+		}
+	}else{
+		die("Error al buscar el evento upd: ".$conexion->error);
+	}
+
 
 }//aca termina la funcion		
 

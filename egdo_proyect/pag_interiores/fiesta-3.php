@@ -84,7 +84,7 @@
           <!-- Wide Content -->
             <section id="content" class="container">
                <!-- SLIDESHOW -->
-               <div id="sliders">
+               <!--<div id="sliders">
                       <ul class="bjqs">
                         <li>
                     <img src="../images/mia-quinta.jpg" alt="" title="MiaQuinta, es un salón del oeste de gran capacidad, que tiene cercania inmediata con Capital Federal y es de muy fácil acceso." />
@@ -93,7 +93,7 @@
                     <img src="../images/mia-quinta-2.jpg" alt="" title="Servicios que ofrecen, entre otros: Catering, opción gourmet y parrilla;Salón con capacidad desde 100 a 250 personas;Sonido e iluminación; Máquina de humo y espuma; pantalla y proyector de video y dvd, estacionamiento interno etc." />
                 </li>
             </ul>
-        </div>
+        </div>-->
      
                       </section>
 

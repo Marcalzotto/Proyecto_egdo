@@ -173,6 +173,10 @@ exit;
 			
 		?>
 	</div>
+	<div id="advertisment">
+		<h2>No puede ver esta herramienta porque el dispositivo es demasiado pequenio, la resolucion debe ser mayor a 1200px.</h2>
+
+	</div>
 	<div id="footer">
 		<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
 		
@@ -189,7 +193,7 @@ exit;
 
 	</div>
 	
-		
+			<script src="../../js/jquery.min.js"></script>
 			<script src="../../js/jquery.dropotron.min.js"></script>
 </body>
 		

@@ -57,6 +57,8 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			<script src="../js/iniciar_fiesta.js"></script>
+			<script src="../js/validar_fiesta_upd.js"></script>
 
 	</head>
 <body class="homepage">
@@ -80,8 +82,9 @@
 </header>
 			<!-- Main Wrapper  -->
 				<div id="main-wrapper-ad">
-
+						
 					<!-- Wide Content -->
+						
 						<section id="content" class="container">
 							
 						<!--	<ul class="nav2">
@@ -98,18 +101,26 @@
 							<div class="main-content"> <!-- main content -->
 
 								<!-- You only need this form and the form-validation.css -->
+								<?php	
 
-								<form class="form-validation" enctype="multipart/form-data" method="post" action="fiesta-2.php">
+							$buscarSiDisparoFiesta = "select count(id_evento) as evento from evento where id_actividad = 3 and id_curso = $_SESSION[curso]";
+							if($result = $conexion->query($buscarSiDisparoFiesta)){
+									$reg = $result->fetch_array(MYSQLI_ASSOC);
+									$evento = $reg["evento"];
+									if($evento == 1){
 
-									<div class="form-title-row">
+					echo "<form id='form_fiesta' class='form-validation' enctype='multipart/form-data' method='post'> <!--debe ir a fiesta-2.php-->
+
+									<div class='form-title-row'>
 										<h1>Formulario Fiesta</h1>
 									</div>
 
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Nombre</span>
-											<input type="text" name="name">
+											<input type='text' name='name' id='name'>
+										
 										</label>
 
 										<!--
@@ -117,18 +128,18 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 									
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Direcci&oacute;n</span>
-											<input type="text" name="name">
+											<input type='text' name='dir' id='dir'>
 										</label>
 
 										<!--
@@ -136,32 +147,32 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-									<div class="form-row form-input-email-row">
+									<div class='form-row form-input-email-row'>
 
 										<label>
 											<span>Tel&eacute;fono</span>
-											<input type="email" name="email">
+											<input type='text' name='cell_phone' id='cell_phone'>
 										</label>
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Redes</span>
-											<input type="text" name="name">
+											<input type='text' name='redes' id='redes'>
 										</label>
 
 										<!--
@@ -169,18 +180,18 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 									
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Web</span>
-											<input type="text" name="name">
+											<input type='text' name='web_page' id='web_page'>
 										</label>
 
 										<!--
@@ -188,18 +199,19 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-                                    <div class="form-row form-input-name-row">
+                                    <div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Detalles</span>
-											<input type="text" name="name">
+											<textarea name='detalles' id='detalles' cols='10' rows='5'></textarea>
+											<!--<input type='text' name='detalles' id='detalles'>-->
 										</label>
 
 										<!--
@@ -207,29 +219,33 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
 
 
-									 <div class="form-row">
-                    <div class="form-radio-buttons">
+									 <div class='form-row'>
+                    <div class='form-radio-buttons'>
 
                         <div>
                             <label>
-                                    <span>Foto 1<input type="radio" name="name">
-                           <input type="file" class="file_input" name="file" /> </span>
+                                    <span>Foto Perfil Lugar<input type='radio' name='name'>
+                           <input type='file' class='file_input' name='file_perfil' id='file_perfil'/> 
+													 <input type='hidden' name='name_foto_perfil' id='name_foto_perfil'/>
+                           </span>
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                <span>Foto 2<input type="radio" name="name">
-                                <input type="file" class="file_input" name="file" /></span>
+                                <span>Foto Lugar<input type='radio' name='name'>
+                                <input type='file' class='file_input' name='file_lugar' id='file_lugar'/>
+                                <input type='hidden' name='name_foto_lugar' id='name_foto_lugar'>
+                                </span>
                             </label>
                         </div>
 
@@ -237,19 +253,37 @@
                 </div>
 								  
 
-									<div class="form-row">
+									<div class='form-row buttons'>
 
-										<button type="submit">Submit Form</button>
+										<button type='submit'>Enviar</button>
+										<input type='reset' value='borrar'>
 
 									</div>
 
-								</form>
+								</form>";
 
+								}else{//termina if evento
+										$rol = $_SESSION["id_rol"];
+										if($rol == 3){
+											echo "<h2>El evento fiesta aun no esta lista, debes esperar que el administador del curso lo inicie.</h2>";
+										}else{
+											echo "<h3>El evento fiesta aun no inicio</h3>
+	
+														<button id='iniciar_fiesta' rel='3'>Iniciar Evento</button>
 
+														<h3 class='respond'></h3>";
+										}	
+								}		
+							
+							}else{
+								echo "<h2>Lo Sentimos hubo un errores inesperados, por favor intenta mas tarde.</h2>";
+							}
+						
+							?>
 							</div> <!-- /main content -->
 
 						</section>
-
+						
 				</div>  <!--main wrapper-->
 
 											

@@ -3,10 +3,13 @@ include("../bloqueSeguridad.php");
 include("conexion.php");
 include("funciones/add_extencion.php");
 include("funciones/obtener_mes.php");
-
+include("funciones/generar_notificacion.php");
+$curso = $_SESSION["curso"];
+generar_notificacion($conexion,$curso);
+	
 	if($_POST){
 		if($_POST["check"] == true){
-			$curso = $_SESSION["curso"];
+		
 			$usuario = $_SESSION["id_usuario"];
 			$rol = $_SESSION["id_rol"];
 
@@ -36,11 +39,12 @@ include("funciones/obtener_mes.php");
 						$e = add_extension($regs[5],$rol);
 					
 						$string.= "<a href=".$regs[2].$e.">
-													<img src=".$regs[3]." alt='flat icon'>
-													<p>".$regs[1]."</p>
-													<img src='../images/delete.png' class='del' rel=".$regs[0]." alt='borrar notificacion' height='20' width='20'>
-													<p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
-												</a>|";
+												<div class='row uniform'>
+													<div class='2u'><img src=".$regs[3]." alt='flat icon'></div>
+													<div class='9u'><p>".$regs[1]."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+													<div class='1u img'><img src='../images/delete.png' class='del' rel=".$regs[0]." alt='borrar notificacion' height='20' width='20'></div>	
+												</div>
+											</a>|";							
 							
 						$queries[] = "insert into notificacion_vista_por values('','$usuario','$regs[0]',0,'$curso')";	
 

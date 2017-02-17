@@ -56,6 +56,7 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			<script src="../js/iniciar_upd.js"></script>
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">
@@ -94,18 +95,23 @@
 							<div class="main-content"> <!-- main content -->
 
 								<!-- You only need this form and the form-validation.css -->
+								<?php
+								$buscarSiDisparoUPD = "select count(id_evento) as evento from evento where id_actividad = 2 and id_curso = $_SESSION[curso]";
+ 								if($result = $conexion->query($buscarSiDisparoUPD)){
+ 										$reg = $result->fetch_array(MYSQLI_ASSOC);
+ 										$evento = $reg["evento"];
+ 										if($evento == 1){
+ 											echo "<form class='form-validation' enctype='multipart/form-data' method='post' action='upd-2.php'>
 
-								<form class="form-validation" enctype="multipart/form-data" method="post" action="upd-2.php">
-
-									<div class="form-title-row">
+									<div class='form-title-row'>
 										<h1>Formulario UPD</h1>
 									</div>
 
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Nombre</span>
-											<input type="text" name="name">
+											<input type='text' name='name'>
 										</label>
 
 										<!--
@@ -113,18 +119,18 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 									
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Direcci&oacute;n</span>
-											<input type="text" name="name">
+											<input type='text' name='name'>
 										</label>
 
 										<!--
@@ -132,32 +138,32 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-									<div class="form-row form-input-email-row">
+									<div class='form-row form-input-email-row'>
 
 										<label>
 											<span>Tel&eacute;fono</span>
-											<input type="email" name="email">
+											<input type='email' name='email'>
 										</label>
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Redes</span>
-											<input type="text" name="name">
+											<input type='text' name='name'>
 										</label>
 
 										<!--
@@ -165,18 +171,18 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 									
-									<div class="form-row form-input-name-row">
+									<div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Web</span>
-											<input type="text" name="name">
+											<input type='text' name='name'>
 										</label>
 
 										<!--
@@ -184,18 +190,18 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
-                                    <div class="form-row form-input-name-row">
+                                    <div class='form-row form-input-name-row'>
 
 										<label>
 											<span>Detalles</span>
-											<input type="text" name="name">
+											<input type='text' name='name'>
 										</label>
 
 										<!--
@@ -203,29 +209,29 @@
 											.form-valid-data and .form-invalid-data classes (see the JS for an example).
 										-->
 
-										<span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
 
-										<span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
-										<span class="form-invalid-data-info"></span>
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
 
 									</div>
 
 
 
-									 <div class="form-row">
-                    <div class="form-radio-buttons">
+									 <div class='form-row'>
+                    <div class='form-radio-buttons'>
 
                         <div>
                             <label>
-                                    <span>Foto 1<input type="radio" name="name">
-                           <input type="file" class="file_input" name="file" /> </span>
+                                    <span>Foto 1<input type='radio' name='name'>
+                           <input type='file' class='file_input' name='file' /> </span>
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                <span>Foto 2<input type="radio" name="name">
-                                <input type="file" class="file_input" name="file" /></span>
+                                <span>Foto 2<input type='radio' name='name'>
+                                <input type='file' class='file_input'name='file' /></span>
                             </label>
                         </div>
 
@@ -233,14 +239,32 @@
                 </div>
 								  
 
-									<div class="form-row">
+									<div class='form-row buttons'>
 
-										<button type="submit">Submit Form</button>
+										<button type='submit'>Enviar</button>
+										<input type='reset' value='borrar'>
 
 									</div>
 
-								</form>
+								</form>";
+ 										}else{
+ 												$rol = $_SESSION["id_rol"];
+												if($rol == 3){
+													echo "<h2>El evento UPD aun no esta listo, debes esperar que el administador del curso lo inicie.</h2>";
+												}else{
+													echo "<h3>El evento UPD aun no inicio</h3>
+	
+														<button id='iniciar_upd' rel='2'>Iniciar Evento</button>
 
+														<h3 class='respond'></h3>";
+												}	
+ 										}
+ 								}else{
+ 									echo "<h2>Lo Sentimos hubo un errores inesperados, por favor intenta mas tarde.</h2>";
+ 								}
+ 								
+								?>
+									
 
 							</div> <!-- /main content -->
 

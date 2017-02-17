@@ -134,6 +134,9 @@ height:5%;
 			width: 1200px;
 		}
 		
+		#page-wrapper{
+			width: 100%;
+		}
 	}
 
 	@media screen and (min-width: 737px) and (max-width: 1200px) {
@@ -160,6 +163,9 @@ height:5%;
 			width: 1000px;
 		}
 
+		#page-wrapper{
+			width: 100%;
+		}
 	}
 
 	@media screen and (max-width: 736px){
@@ -188,7 +194,12 @@ height:5%;
 		.container {
 			width: 100% !important;
 		}
-
+		
+		#main-wrapper{
+			position: relative;
+    	background: #333;
+    	padding: 2em;
+		}
 		#main{	
 			background-color: #fff;
 		}
@@ -365,6 +376,46 @@ height:5%;
 		#votacion #tablaBandera table td input{
 			margin: 0 auto;
 		}
+
+		/*Estilos de las notificaciones*/
+		#contenerNotificaciones{
+			padding: 1em;
+			margin-top: 7em;
+		}
+		#contenerNotificaciones a{
+		margin: 0 auto;
+		padding: 1em;
+		padding-right: 0;
+    background: #2e2e2e;
+   	display: table;
+    text-decoration: none;
+    border: 1px solid;
+    border-color: #333;
+    color: #fff;
+    width: 100%;
+}
+
+#contenerNotificaciones a .img{
+	padding-left: 0px;
+}
+#contenerNotificaciones a p{
+	vertical-align: text-top;
+  margin: 0;
+  font-size: 12px;
+  /*margin-left: 6em;*/
+}
+#contenerNotificaciones a .fecha{
+    margin-top: 0px;
+    font-size: 15px;
+}
+
+#contenerNotificaciones h2{
+	font-size: 160%;
+	color: #fff;
+	padding: 2em;
+}
+
+
 
 
 
@@ -2787,15 +2838,17 @@ background: #393939;
 #banner-wrapper #contenerNotificaciones{
 	margin:0 auto;
 	margin-top: 5em;
-	padding: 2em;
+	padding: 3%;
 	width: 60%;
 }
 
 #contenerNotificaciones a{
 		margin: 0 auto;
 		padding: 1em;
+		padding-right: 0;
+		padding-bottom: 0;
     background: #2e2e2e;
-   	display: table;
+   	display: inline-flex;
     text-decoration: none;
     border: 1px solid;
     border-color: #333;
@@ -2803,16 +2856,18 @@ background: #393939;
     width: 100%;
 }
 
-#contenerNotificaciones a img{
+/*#contenerNotificaciones a img{
 	float: left;
-}
+}*/
 #contenerNotificaciones a p{
 	vertical-align: text-top;
   margin: 0;
-  margin-left: 6em;
+  margin-left: -2em;
+  margin-bottom: 1em;
+  line-height: 1.2em;
 }
 #contenerNotificaciones a .fecha{
-    margin-top: 1.7em;
+   
 }
 
 #contenerNotificaciones h2{
@@ -2822,12 +2877,10 @@ background: #393939;
   padding-bottom: 2em;
 }
 
-#contenerNotificaciones a .del{
- 	margin-left: 639px;
-  margin-top: -24px;
-  z-index: 10000;
-   
- }
+#contenerNotificaciones a .img{
+	padding-left: 1em;
+}
+
 /*Estilo alterta notificaciones*/
 #cant_notificaciones{
 
@@ -4352,4 +4405,81 @@ li.circle a img{
 	z-index: 1;
 	position: relative;
 	top: -1.36em;
+}
+
+/*Estilos fiesta*/
+#main-wrapper-ad .container .main-content h2{
+padding: 6em;
+font-size: 2em;
+}
+#main-wrapper-ad .container .main-content{
+	text-align: center;
+}
+#main-wrapper-ad .container .main-content h3{
+	padding: 4em;
+font-size: 2em;
+}
+#main-wrapper-ad .container .main-content .respond{
+	padding: 2em;
+font-size: 2em;
+}
+#main-wrapper-ad .container .main-content button{
+		padding: 1.7em;
+    border-radius: 5px;
+    border: none;
+    
+		font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background: #79B000;
+    font-size: 1.2em;
+}
+
+#main-wrapper-ad .container .main-content button[type="submit"]{
+		-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+
+		padding: 1.3em;
+    border-radius: 5px;
+    padding-left: 5.9em;
+    padding-right: 5.9em;
+    border: none;
+    
+		font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background: #79B000;
+    font-size: 1.2em;
+    margin-left: 4em;
+    margin-bottom: 1em;
+}
+
+#main-wrapper-ad .container .main-content button[type="submit"]:hover{
+			
+background: #78FF1E;
+}
+#main-wrapper-ad .container .main-content input[type="reset"]{
+-moz-transition: background-color 0.25s ease-in-out;
+		-webkit-transition: background-color 0.25s ease-in-out;
+		-ms-transition: background-color 0.25s ease-in-out;
+		transition: background-color 0.25s ease-in-out;
+		padding: 1.2em;
+    border-radius: 5px;
+    border: none;
+    
+		font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background: #79B000;
+    font-size: 1.2em;
+    margin-left: 4em;
+}
+#main-wrapper-ad .container .main-content input[type="reset"]:hover{
+			
+background: #78FF1E;
+}
+#main-wrapper-ad .container .main-content .buttons{
+		
 }

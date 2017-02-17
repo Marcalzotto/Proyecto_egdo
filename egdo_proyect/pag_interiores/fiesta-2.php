@@ -1,11 +1,67 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php include('conexion.php');?>
+<?php include("conexion.php");?>
 <?php 
-	include('funciones/generar_notificacion.php');
+	include("funciones/generar_notificacion.php");
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
-<?php include('funciones/cantidad_notificaciones.php');?>
+<?php include("funciones/cantidad_notificaciones.php");?>
 
+<?php
+//validacion del form
+include("funciones/validar_form_fiesta.php");
+//tomo los valores por post, si alguno es vacio lo detectara la funcion al validar
+$nombre = $_POST["name"];
+$direccion = $_POST["dir"];
+$celular = $_POST["cell_phone"];
+$redes = $_POST["redes"];
+$web = $_POST["web_page"];
+$detalles = $_POST["detalles"];
+$foto_perfil =$_FILES["file_perfil"];
+$foto_lugar = $_FILES["file_lugar"];
+$nombre_arch_foto_perfil = $_POST["name_foto_perfil"];
+$nombre_arch_foto_lugar = $_POST["name_foto_lugar"];
+
+/*if(!isset($_POST["name"])){
+$nombre = "";
+}
+echo $nombre;
+if(!isset($_POST["dir"])){
+	$direccion = "";
+}
+if(!isset($_POST["cell_phone"])){
+	$celular = "";
+}
+if(!isset($_POST["redes"])){
+	$redes = "";
+}
+if(!isset($_POST["web_page"])){
+	$web = "";
+}
+if(!isset($_POST["detalles"])){
+	$detalles = "";
+}
+if(!isset($_FILES["file_perfil"])){
+	$foto_perfil ="";
+}
+if(!isset($_FILES["file_lugar"])){
+	$foto_lugar = "";
+}
+if(!isset($_POST["name_foto_perfil"])){
+	$nombre_arch_foto_perfil = "";
+}
+if(!isset($_POST["name_foto_lugar"])){
+	$nombre_arch_foto_lugar = "";
+}*/
+
+$val_full = validar_form_fiesta_upd($nombre,$direccion,$celular,$redes,$web,$detalles,$foto_perfil,$foto_lugar,$nombre_arch_foto_perfil,$nombre_arch_foto_lugar);
+if($val_full > 0){
+	//echo $val_full;
+	header('location:fiesta.php');
+}else{
+	//realizar insercion del lugar que envio desde el form, para luego imprimir abajo
+}
+
+?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -84,7 +140,7 @@
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-					<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
+					<!--<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
 														<div class='form-row form-input-name-row'>
 														
 																<input type='text' name='nombre' id='nombre' placeholder='nombre'>
@@ -109,7 +165,7 @@
 													<button type='submit'>Subir imagen</button>
 
 											
-															</form>
+															</form>-->
 
 
 					<!-- Wide Content -->
@@ -179,7 +235,7 @@
 								</section>
 							</div>
 						</div>
-						<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
+						<!--<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
 
 									<div class="form-title-row">
 										<h1>Deja tu comentario</h1>
@@ -191,7 +247,7 @@
 
 									</div>	
 
-								</form>
+								</form>-->
 
 
 

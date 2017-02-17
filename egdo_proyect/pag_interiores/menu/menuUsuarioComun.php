@@ -133,7 +133,7 @@
 				</li>
 				<!-- Notificaciones -->
 				<li>
-					<a href="../pag_interiores/notificaciones.php">Notificaciones
+					<a class="notificacion" href="../pag_interiores/notificaciones.php">Notificaciones
 						<?php										
 							if($cant > 0){
 								echo "<div class='num_notificaciones'>".$cant."</div>";

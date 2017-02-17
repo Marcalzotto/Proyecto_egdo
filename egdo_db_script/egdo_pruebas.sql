@@ -193,7 +193,7 @@ insert into notificacion_vista_por values("",6,4,0,2);
 insert into notificacion_vista_por values("",6,5,0,2);
 insert into notificacion_vista_por values("",6,8,0,2);
 select * from notificacion_vista_por;
-select count(id_notificacion) from notificaciones where curso_notificacion = 2 and id_notificacion not in(
+select * from notificaciones where curso_notificacion = 2 and id_notificacion not in(
 	select id_notificacion from notificacion_vista_por where usuario = 6 and curso_notificacion = 2);
 
 
@@ -216,3 +216,5 @@ select id_notificacion,resumen, link, icono, fecha_hora, tipo_notificacion from
 notificaciones where curso_notificacion = 2 and id_notificacion not in(
 select id_notificacion from notificacion_vista_por where usuario = 6 
 						and curso_notificacion = 2);
+
+select id_actividad from actividad where id_actividad between 2 and 3;

@@ -20,7 +20,7 @@ $(document).ready(function(){
 					var vec = respond.split("|");
 					//var vec = str.split("-");
 					var max = vec.length; 
-					if($("#contenerNotificaciones").has("h2").length > 0){
+					if($("#contenerNotificaciones").has("h2").length > 0 && respond != 0){
 							$("#contenerNotificaciones h2").remove();
 							
 							for (var i = 0; i < max-1; i++) {
@@ -31,7 +31,7 @@ $(document).ready(function(){
 							
 							}
 
-					}else{
+					}else if(respond != 0){
 							for (var i = 0; i < max-1; i++) {
 						
 							$("#contenerNotificaciones").append(vec[i]);

@@ -19,11 +19,12 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
-		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
+		<!--<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">-->
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
     <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
+    <!--<link rel="stylesheet" type="text/css" href="../css/main.css">-->
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -45,7 +46,7 @@
 			<!-- modal  -->
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
+			<!--<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
 			<!--<script type="text/javascript" src="../assets/js/jquery_min.js"></script>-->
 			<!--<script type="text/javascript" src="../assets/js/slimbox2.js"></script>-->
 			<!--Librarys for lightBox -->
@@ -154,8 +155,13 @@
 											$minutos = $separar_hora[1];
 
 											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
-											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='flat icon'>
-											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+											echo "<a href=".$notificacion['link'].$e.">
+															<div class='row uniform'>
+																<div class='2u'><img src=".$notificacion['icono']." alt='flat icon'></div>
+																<div class='9u'><p>".$notificacion['resumen']."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+																<div class='1u img'><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'></div>	
+															</div>
+													 </a>";	
 										}
 
 
@@ -168,6 +174,7 @@
 								
 							?>
 							
+					
 						</div>
 				</div>
 					

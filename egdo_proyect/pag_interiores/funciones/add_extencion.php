@@ -48,6 +48,18 @@
 					$extension = "Admin.php";
 				}
 			break;
+			case 8:
+			$extension = ".php";
+			break;
+			case 9:
+			$extension = ".php";
+			break;
+			case 12:
+			$extension = ".php";
+			break;
+			case 13:
+			$extension = ".php";
+			break;
 			default:
 				# code...
 				break;
