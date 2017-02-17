@@ -180,6 +180,9 @@
 										<div class="-1u 2u"><span>Email</span></div>
 										<div class="-1u 5u$"><span><input type='text' name='user_email' class="form-class" placeholder='user@email.com'/></span></div>
 										<!-- Break -->
+										<div class="-1u 2u"><span>Password</span></div>
+										<div class="-1u 5u$"><span><input type='password' name='password' class="form-class" placeholder='**********'/></span></div>
+										<!-- Break -->
 										<div class="-1u 2u"><span>Rol</span></div>
 										<div class="-1u 5u$">
 										<div class="select-wrapper">

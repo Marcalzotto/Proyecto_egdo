@@ -94,7 +94,7 @@ if(empty($nombre_empresaPOST)) {
 }else if(strlen($cuitPOST) > $maxCaracteresDatos) {
 	echo "CUIT no puede superar los 45 caracteres"; // wrong details 
 	die();
-}else if( !isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] > 0) {
+}else if(!isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] > 0) {
 	die( "ha ocurrido un error" );
 	//Si los inputs están seteados y el archivo no tiene errores, se procede
 } else if($_FILES['imagen']['error'] === 0) 
@@ -143,8 +143,10 @@ if(empty($nombre_empresaPOST)) {
 				//$partidoPOST = mb_strtoupper($partidoPOST);
 				//$provinciaPOST = mb_strtoupper($provinciaPOST);
 	
-				$consulta = ("INSERT INTO empresa (nombre_empresa, telefono, calle, email, pagina_web, facebook, twitter, instagram, fecha_alta, cuit,logo) VALUES ('$nombrePOST', '$telefonoPOST','$callePOST',
-				'$emailPOST','$pagina_webPOST','$facebookPOST','$twitterPOST','$instagramPOST','$fechaPOST','$cuitPOST','$imagenBinaria')");
+				$consulta = ("INSERT INTO empresa (nombre_empresa,telefono,calle,email,pagina_web,facebook,twitter,
+				instagram,fecha_alta,cuit,logo) VALUES ('$nombrePOST','$telefonoPOST','$callePOST','$emailPOST',
+				'$pagina_webPOST','$facebookPOST','$twitterPOST','$instagramPOST','$fechaPOST','$cuitPOST','$imagenBinaria')");
+
 	
 	
 				//Si los datos se introducen correctamente, mostramos los datos

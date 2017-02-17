@@ -7,6 +7,7 @@ jQuery(function($){
 				user_name: { required:true, minlength: 4, maxlength: 45},
 				user_apellido: { required:true, minlength: 4, maxlength: 45},
 				user_email: { required: true, email: true },
+				password: { required:true, minlength: 3, maxlength: 45},
 				user_rol: { required: true },
 				user_curso: { required: true },
 			
@@ -17,6 +18,8 @@ jQuery(function($){
 				user_apellido:{required: "Campo obligatorio",minlength: "El nombre es muy corto",
 				maxlength:"El nombre es muy largo"},
 				user_email:{required: "Campo obligatorio",email:"Formato no valido"},
+				password: {required: "Campo obligatorio",minlength: "Debe poseer minimo 3 caracteres",
+				maxlength:"Debe poseer maximo 45 caracteres"},
 				user_rol: { required: "Campo obligatorio" },
 				user_curso: { required: "Campo obligatorio" },
 			}, /* fin messages */
