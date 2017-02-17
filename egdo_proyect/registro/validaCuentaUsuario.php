@@ -152,10 +152,17 @@
 									
 									<div class="12u 12u$(medium)"> <!-- Sec Datos Alumno -->
 									
-									    <div class="-4u 6u"><h4> <i class="fa fa-info-circle" aria-hidden="true"></i> Tu cuenta ya esta activa,<span> solo falta completar tus datos</span> </h4></div>
+									    <div class="-4u 6u"> 
+											<header>
+												<h4><i class="fa fa-info-circle" aria-hidden="true"></i> Tu cuenta ya esta activa,<span> solo falta completar tus datos</span></h4>
+											</header>
+										</div>
 									
 										<div class="row uniform 50%">	
 											
+										<!-- Break -->
+										<div class="-4u 6u">
+										
 										<?php
 // Arrays para guardar errores:
     $aErrores = array();
@@ -328,7 +335,8 @@
 		echo "<p><a href='registroPaso1.php'>volver</a></p>";
     }
 ?>
-										</div>
+										</div> <!-- /break -->
+										</div> <!-- /Row uniform -->
 									
 									
 										
