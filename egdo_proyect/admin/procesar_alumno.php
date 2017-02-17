@@ -9,6 +9,7 @@ require('config_bd.php');
 $user_namePOST = $_POST["user_name"];
 $user_apellidoPOST = $_POST["user_apellido"];
 $user_emailPOST = $_POST["user_email"];
+$passwordPOST = $_POST["password"];
 //$passPOST = $_POST["user_pass"];
 $fechaPOST=date("y-m-d");
 $user_rolPOST = $_POST["user_rol"]; 
@@ -18,6 +19,7 @@ $user_cursoPOST = $_POST["user_curso"];
 $user_namePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_namePOST));
 $user_apellidoPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_apellidoPOST));
 $user_emailPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_emailPOST));
+$passwordPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $passwordPOST));
 $user_rolPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_rolPOST));
 $user_cursoPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_cursoPOST));
 
@@ -25,7 +27,7 @@ $user_cursoPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $user_cu
 //Esta comprobación se tiene en cuenta por si se llegase a modificar el "maxlength" del formulario
 //Los valores deben coincidir con el tamaño máximo de la fila de la base de datos
 
-// nombre - apellido - email
+// nombre - apellido - email-password
 $maxCaracteresDatos = "45";
 //rol
 $maxCaracteresRol = "11";
@@ -60,6 +62,12 @@ if(empty($user_namePOST)) {
 } else if(strlen($user_emailPOST) > $maxCaracteresDatos) {
 	echo "Email no puede superar los 45 caracteres.";// wrong details 
 	die();
+}else if(empty($passwordPOST)) {
+	echo "Contraseña es requerido."; // wrong details 
+	die();
+}else if(strlen($passwordPOST) > $maxCaracteresDatos){
+	echo "Contraseña no debe tener mas de 45 caracteres."; // wrong details 
+	die();
 }else if (filter_var($user_rolPOST, FILTER_VALIDATE_INT) === false) { 
 	echo "Rol valor incorrecto."; // wrong details 
 	die();
@@ -75,11 +83,12 @@ if(empty($user_namePOST)) {
 	$user_apellidoPOST = strtoupper($user_apellidoPOST);
 	$user_rolPOST = strtoupper($user_rolPOST);
 	$user_cursoPOST = strtoupper($user_cursoPOST);
+	$hash = password_hash($passwordPOST, PASSWORD_BCRYPT);
 	
 	//Armamos la consulta para introducir los datos
 		$consulta = ("INSERT INTO usuario(nombre,apellido,email,contrasenia,fechaAltaUsuario,id_rol,
 					id_curso,id_confirmacion,estadoActivacion)
-					VALUES('$user_namePOST','$user_apellidoPOST','$user_emailPOST','','$fechaPOST','$user_rolPOST',
+					VALUES('$user_namePOST','$user_apellidoPOST','$user_emailPOST','$hash','$fechaPOST','$user_rolPOST',
 					$user_cursoPOST,0,1)");
 
 	//Si los datos se introducen correctamente, mostramos los datos

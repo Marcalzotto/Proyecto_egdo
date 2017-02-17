@@ -86,16 +86,6 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 	
 	<div id="bandejaEntrada">
 
-	    <?php
-
-    $conexion = mysql_connect("localhost", "root", "")
-      or die("Problemas en la conexion");
-    
-    mysql_select_db("egdo_db", $conexion) 
-      or die("Problemas en la seleccion de la base de datos");
-    ?>
-
-
 
 <?php 
 
@@ -104,8 +94,8 @@ $id = $_POST['id_mensaje'];
 //$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
 $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
 
-$res = mysql_query($sql, $conexion) or die(mysql_error());
-$row = mysql_fetch_assoc($res);
+$res = $conexion->query($sql) or die($conexion->error);
+$row = $res->fetch_array(MYSQLI_ASSOC);
 ?>
 
 

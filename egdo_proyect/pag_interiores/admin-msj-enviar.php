@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="../css/admin-demo.css">
 	<link rel="stylesheet" href="../css/admin-form-basic.css">
 	
+	<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
+	
 	
 	</head>
 	<body class="no-sidebar">

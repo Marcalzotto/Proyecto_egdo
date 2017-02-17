@@ -106,7 +106,7 @@ if(filter_var($id_empresa, FILTER_VALIDATE_INT) === false){
 				//$partidoPOST = mb_strtoupper($partidoPOST);
 				//$provinciaPOST = mb_strtoupper($provinciaPOST);
 				
-				$consulta = "UPDATE empresa SET nombre_empresa='$nombrePOST', telefono='$telefonoPOST', calle='$callePOST',email='$emailPOST',pagina_web='$pagina_webPOST',facebook='$facebookPOST', twitter='$twitterPOST', 
+				$consulta = "UPDATE empresa SET nombre_empresa='$nombrePOST',telefono='$telefonoPOST',calle='$callePOST',email='$emailPOST',pagina_web='$pagina_webPOST',facebook='$facebookPOST',twitter='$twitterPOST',
 				instagram='$instagramPOST', cuit='$cuitPOST' WHERE id_empresa='$id_empresa'";
 				  
 				

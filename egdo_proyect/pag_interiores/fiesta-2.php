@@ -69,8 +69,6 @@ if($val_full > 0){
 	License: pixelarity.com/license
 -->
 
-
-
 <html lang="en" class="no-js">
 	<head>
 		<title>EGDO</title>
@@ -140,34 +138,7 @@ if($val_full > 0){
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-					<!--<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
-														<div class='form-row form-input-name-row'>
-														
-																<input type='text' name='nombre' id='nombre' placeholder='nombre'>
-														
-														</div>
- 														
- 														<div class='form-row form-input-name-row'>
-
-																<input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
-
-														</div>
-
-														 <div class='form-row'>
-
-			                          				  <label>Subir foto
-			   
-			                           						<input type='file' class='file_input' name="fiesta_imagen" id='fiesta_imagen' />
-			                           				 </label>
-			                        				</div>
-			                   						 
-												
-													<button type='submit'>Subir imagen</button>
-
-											
-															</form>-->
-
-
+					
 					<!-- Wide Content -->
 						<div id="intro" class="container">
 							<div class="row">
@@ -248,9 +219,6 @@ if($val_full > 0){
 									</div>	
 
 								</form>-->
-
-
-
 				</div>
 				
 				<!-- Footer Wrapper -->
@@ -281,10 +249,8 @@ if($val_full > 0){
 				</div>
 
 		</div>
-
-		
-		
-		<!-- Scripts -->
+			
+			<!-- Scripts -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="../js/jquery.dropotron.min.js"></script>
 			<script src="../js/skel.min.js"></script>
@@ -292,7 +258,6 @@ if($val_full > 0){
 			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../js/main.js"></script>
-			
-			
-	</body>
+		
+		</body>
 </html>

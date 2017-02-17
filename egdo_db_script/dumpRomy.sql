@@ -57,11 +57,3 @@ ALTER TABLE `upd` ADD FOREIGN KEY (`id_usuario_propuesta`) REFERENCES `egdo_db`.
 
 ALTER TABLE `votacion` ADD INDEX(`id_usuario`);
 ALTER TABLE `votacion` ADD FOREIGN KEY (`id_usuario`) REFERENCES `egdo_db`.`usuario`(`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- DATE TIMESTAMP
-
-ALTER TABLE `fiesta` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
-
-ALTER TABLE `disenio` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ; 
-
-ALTER TABLE `upd` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
