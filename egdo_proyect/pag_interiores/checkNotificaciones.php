@@ -1,7 +1,8 @@
 <?php
 include("../bloqueSeguridad.php");
 include("conexion.php");
-include("funciones/cantidad_notificaciones.php");	
+include("funciones/cantidad_notificaciones.php");
+include('funciones/cantidad_notificaciones_mensajes.php');	
 include("funciones/generar_notificacion.php");
 $fechaHoy = new DateTime();
 $curso = $_SESSION["curso"];

@@ -5,7 +5,7 @@ include('../pag_interiores/funciones/generar_notificacion.php');
 generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('../pag_interiores/funciones/cantidad_notificaciones.php');?>
-
+<?php include('../pag_interiores/funciones/cantidad_notificaciones_mensajes.php');?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity

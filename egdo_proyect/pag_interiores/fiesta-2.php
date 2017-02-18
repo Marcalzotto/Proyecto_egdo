@@ -5,6 +5,7 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include("funciones/cantidad_notificaciones.php");?>
+<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 
 <?php
 //validacion del form

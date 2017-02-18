@@ -20,6 +20,7 @@ exit;
 <?php require_once("../conexion.php");?>
 <?php 
 	include('../funciones/generar_notificacion.php');
+	include('../funciones/cantidad_notificaciones_mensajes.php');
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include("../funciones/cantidad_notificaciones.php");?>
