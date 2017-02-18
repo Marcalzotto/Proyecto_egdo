@@ -1,7 +1,4 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php include('conexion.php');?>
-<?php include('funciones/cantidad_notificaciones.php');?>
-<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 
 <!DOCTYPE HTML>
 <!--
@@ -14,17 +11,14 @@
     <title>EGDO</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- mejora tooltips-->
-		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
-
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     
-    <link rel="stylesheet" href="../css/index_gral.css" />
+    <link rel="stylesheet" href="../assets/css/index_gral.css" />
 
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
-                <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" /> 
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+                <link rel="stylesheet" type="text/css" href="../assets/css/estilos-slider.css" /> 
 
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -50,7 +44,7 @@
       <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
       <link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
       <script src="../js/modernizr.js"></script> <!-- Modernizr -->
-      <script src="../js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
   
@@ -79,23 +73,54 @@
 </header>
       <!-- Main Wrapper -->
         <div id="main-wrapper">
+              <?php 
+              $adminEgdo = $_SESSION['id_rol'];
+              //require_once("conexion.php");
+              $host_db = "localhost";
+              $user_db = "root";
+              $pass_db = "";
+              $db_name = "egdo_db";
+              
 
+              $conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
+
+              if ($conexion->connect_error) {
+              die("La conexion falló: " . $conexion->connect_error);
+              }
+              
+              
+              
+              $verificarAdmin = "select * from usuario where id_rol = '$adminEgdo'";
+              $verificar = $conexion->query($verificarAdmin) or die($conexion->error);
+              if($verificar){
+                echo "<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
+                  <div class='form-row'>
+                    <label>Subir foto 
+                    <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
+                              </div>
+                              <div class='form-row form-input-name-row'>
+                    <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
+                  </div>
+                            <button type='submit'>Subir imagen</button>
+                  </form> ";
+                }
+              ?>
           <!-- Wide Content -->
             <section id="content" class="container">
                <!-- SLIDESHOW -->
                <div id="sliders">
-                  <ul class="bjqs">
-                    <li>
-                      <img src="../images/balneario_camboriu.jpg" alt="" title="El Balneario de Camboriú posee exuberantes y hermosas playas, las cuáles se destacan por ser un agradable atractivo para el turismo tanto nacional como internacional. Si bien vale la pena visitarlas a todas, la Playa Central logra imponerse por sobre las demás, por sus aguas mansas y cristalinas y su completa infraestructura turística completa." />
-                    </li>
-                    <li>
-                      <img src="../images/cristo_luz_camboriu.jpg" alt="" title="Cristo Luz: dos de sus mayores privilegios son las increíbles vistas que permite obtener de toda la ciudad y el espectáculo de luces de 86 tonos que se inicia todos los días a las 20hs. Este show, que puede divisarse desde hasta 15 kilómetros de distancia, es una de las atracciones más típicas que tiene la ciudad." />
-                    </li>
-                    <li>
-                      <img src="../images/waterplay_camboriu.jpg" alt="" title="Water Play: el complejo dispone de 7 piscinas, 5 cinco toboganes de agua todo incluido y la parte de actividades de barro, trecking hasta un mirador sobre el morro, circuito de supervivencia, tirolesa, metegol humano, football mixto, mareados, ring humano, gomones, etc. Acompañados por un equipo de personas especializadas en este tipo de actividades recreativas y con un cierre que hará que esta excursión sea la preferida de los estudiantes.." />
-                    </li>
-                  </ul>
-                </div>
+                      <ul class="bjqs">
+                        <li>
+                    <img src="../images/Canon_del_atuel.jpg" alt="" title="El cañón del Atuel es un estrecho cañón a través del cual fluye el río Atuel. Se encuentra en el Valle Grande, perteneciente al departamento San Rafael, en la provincia de Mendoza." />
+                </li>
+                <li>
+                    <img src="../images/Bodega_la_abeja.jpg" alt="" title="Finca y bodega La Abeja, se trata de la primera bodega de San Rafael, construida en 1883 por Rodolfo Iselin." />
+                </li>
+                <li>
+                    <img src="../images/Embalse_valle_grande.jpg" alt="" title="El Embalse Valle Grande es un cuerpo de agua en el centro de la provincia de Mendoza, en Argentina. Situado a unos 30 km al sur de San Rafael, constituye uno de los destinos turísticos más importantes del departamento homónimo y de la provincia." />
+                </li>
+            </ul>
+        </div>
      
     <!-- FIN SLIDESHOW -->
                       </section>
@@ -132,19 +157,19 @@
     </div>
 
     <!-- Scripts -->
-     <script src="../js/jquery.min.js"></script>
-      <script src="../js/jquery.dropotron.min.js"></script>
-      <script src="../js/skel.min.js"></script>
-      <script src="../js/skel-viewport.min.js"></script>
-      <script src="../js/util.js"></script>
+     <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.dropotron.min.js"></script>
+      <script src="../assets/js/skel.min.js"></script>
+      <script src="../assets/js/skel-viewport.min.js"></script>
+      <script src="../assets/js/util.js"></script>
       <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-      <script src="../js/main.js"></script>
+      <script src="../assets/js/main.js"></script>
       <!-- Incluimos la libreria jQuery -->
-        <script src="../js/jquery-latest.min.js"></script>
+        <script src="../assets/js/jquery-latest.min.js"></script>
  
         <!-- Incluimos el plugin -->
-        <script src="../js/bjqs.min.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="../assets/js/bjqs.min.js"></script>
+        <script src="../assets/js/script.js"></script>
 
   </body>
 </html>

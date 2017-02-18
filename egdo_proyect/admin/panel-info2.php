@@ -1,3 +1,8 @@
+<?php include ("../bloqueSeguridad.php");
+
+?>
+
+
 <?php
 //Archivo de conexión a la base de datos
 
@@ -15,33 +20,28 @@ if ($conexion->connect_error) {
 }
 
 //Creamos las variables necesarias
-$titulo = $_POST['nombre'];
+$usu_id = $_SESSION['id_usuario'];
 $descripcion = $_POST['descripcion'];
 
 //Filtro anti-XSS
 $caracteres_malos = array("<", ">", "\"", "'", "/", "<", ">", "'", "/");
 $caracteres_buenos = array("&lt;", "&gt;", "&quot;", "&#x27;", "&#x2F;", "&#060;", "&#062;", "&#039;", "&#047;");
 
-$titulo = str_replace($caracteres_malos, $caracteres_buenos, $titulo);
 $descripcion = str_replace($caracteres_malos, $caracteres_buenos, $descripcion);
 
 //Cambiamos los ENTER por <br>
 $descripcion = nl2br($descripcion);
 
 //Comprobamos que los inputs no estén vacíos, y si lo están, mandamos el mensaje correspondiente
-if(empty($titulo)) {
-	die( 'Es necesario establecer un título' );
-} else if(empty($descripcion)) {
+if(empty($descripcion)) {
 	die( 'Es necesario establecer una descripción' );
 	//"Error 4" en los array de $_FILES significa que ningún archivo fue subido o incluido en el input
 	//Más info en http://php.net/manual/es/features.file-upload.errors.php
 } else if($_FILES['info_imagen']['error'] === 4) {
 	die( 'Es necesario establecer una imagen' );
 	//Si los inputs están seteados y el archivo no tiene errores, se procede
-} else if(isset($descripcion) AND isset($titulo) AND $_FILES['info_imagen']['error'] === 0 ) {
-	//Convertimos la información de la imagen en binario para insertarla en la BBDD
-	$imagenBinaria = addslashes(file_get_contents($_FILES['info_imagen']['tmp_name']));
-//Nombre del archivo
+} else if(isset($descripcion) AND $_FILES['info_imagen']['error'] === 0 ) {
+
 	$nombreArchivo = $_FILES['info_imagen']['name'];
      
 
@@ -73,6 +73,8 @@ if(empty($titulo)) {
 			die( "El archivo ".$nombreArchivo." es demasiado grande. El tamaño máximo del archivo es de ".$tamañoMaximoKB."Kb." ); }
 		
         else {
+        	$directorio = $_SERVER['DOCUMENT_ROOT'].'/Proyecto_egdo/egdo_proyect/img/';
+        	move_uploaded_file($_FILES['info_imagen']['tmp_name'], $directorio.$nombreArchivo);
             $traerIdActividad="select id_actividad from actividad where nombre_actividad='infoViaje'";
             $verificarId = $conexion->query($traerIdActividad) or die($conexion->error);
                if($verificarId){
@@ -82,8 +84,8 @@ if(empty($titulo)) {
 
               
 			//Si el tamaño es correcto, subimos los datos
-			$consulta = "insert into info_viaje (nombre_lugar, imagen, descripcion, id_actividad) 
-			VALUES ('$titulo','$imagenBinaria','$descripcion','$numIdAct')";
+			$consulta = "insert into info_viaje (nombre_lugar, descripcion, id_actividad, id_usuario) 
+			VALUES ('$nombreArchivo','$descripcion','$numIdAct', '$usu_id')";
 			//ejecuto consulta
              $guardarRdo= $conexion->query($consulta) or die($conexion->error);
 			//Hacemos la inserción, y si es correcta, se procede

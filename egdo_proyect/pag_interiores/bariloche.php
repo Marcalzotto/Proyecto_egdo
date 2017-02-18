@@ -1,8 +1,21 @@
-<?php session_start();?>
+<?php include ("../bloqueSeguridad.php");
 
-<?php include('funciones/cantidad_notificaciones.php');?>
-<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
-<?php require('conexion.php'); ?>
+?>
+<?php 
+
+$host_db = "localhost";
+$user_db = "root";
+$pass_db = "";
+$db_name = "egdo_db";
+//$tbl_name = "usuario";
+
+$conexion = new mysqli($host_db, $user_db, $pass_db,$db_name );
+
+if ($conexion->connect_error) {
+ die("La conexion falló: " . $conexion->connect_error);
+}
+
+?>
 
 <!DOCTYPE HTML>
 <!--
@@ -15,18 +28,14 @@
     <title>EGDO</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	
-	<!-- mejora tooltips-->
-		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
-
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     
     <link rel="stylesheet" href="../css/index_gral.css" />
 
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
-                <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" /> 
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+                <link rel="stylesheet" type="text/css" href="../assets/css/estilos-slider.css" /> 
 
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -65,7 +74,7 @@ $("#enviarimagenes").on("submit", function(evento){
   var formData = new FormData(document.getElementById("enviarimagenes"));
 
   $.ajax({
-    url: "subirImg.php",
+    url: "panel-info2.php",
     type: "POST",
     dataType: "HTML",
     data: formData,
@@ -91,51 +100,11 @@ $("#enviarimagenes").on("submit", function(evento){
             
             <div id="header" class="container">
               
-              <h1 class="logo">
-                  <a href="../index.html"><img src="../favicon/favicon-96x96.png" alt=""></a>
-              </h1>
               
               
-              
-              <!-- Nav -->
-                <nav id="nav">
-                  
-                  <ul class="myfont">
-                
-                  <li class="circle"><a href="left-sidebar.html"><img src="../images/upd.png" alt="UPD"></a></li>
-                    
-                    <li class="circle">
-                      <a href="no-sidebar.html">
-                        <img src="../images/shirt.png" alt="Dise&ntilde;ar">
-                      </a>
-                        <ul>
-                          <li><a href="../simulacion_funcionalidades/Tee-Designer-Master/index.php">Dise&ntilde;a tu ropa <img src="../images/dropotron_icons/disenio_ropa.png" alt="" style="float:right"></a></li>
-                          <li><a href="../simulacion_funcionalidades/votacion.php">Votaci&oacute;n<img src="../images/dropotron_icons/votacion.png" alt="" style="float:right"></a></li>
-                          <li><a href="#">Empresas<img src="../images/dropotron_icons/empresas.png" alt="" style="float:right"></a></li>
-                          <li><a href="../simulacion_funcionalidades/subir_arch.php">Subi tus dise&ntilde;os <img src="../images/dropotron_icons/upload.png" alt="subir archivos" style="float:right"></a></li>
-                        </ul>
-                      </li>
-                    <li class="circle"><a href="no-sidebar.html"><img src="../images/party.png" alt="Dise&ntilde;ar"></a></li>
-                    <li class="circle"><a href="no-sidebar.html"><img src="../images/foto-evento.png" alt="foto-evento"></a></li>
-                    <li class="circle"><a href="infoviaje.php"><img src="../images/bus.png" alt="info-viajes"></a></li>
-                    <li class="circle"><a href="no-sidebar.html">
-                                        <img src="../images/settings.png" alt="configuracion">
-                                      </a>
-                                      <ul>
-                                        <li><a href="#">Manda tu invitacion <img src="../images/dropotron_icons/send_mail.png" alt="agenda" style="float:right"></a></li>
-                                        <li><a href="#">Bandeja de entrada<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
-                                        <li><a href="#">Notificaciones<img src="../images/dropotron_icons/alarm.png" alt="agenda" style="float:right"></a></li>
-                                        <li><a href="#">Agenda<img src="../images/dropotron_icons/calendar.png" alt="agenda" style="float:right"></a></li>
-                                        <li><a href="#">Perfil <img src="../images/dropotron_icons/avatar.png" alt="perfil" style="float:right"></a></li>
-                                        <li><a href="#">Logout <img src="../images/dropotron_icons/logout.png" alt="perfil" style="float:right"></a></li>
-                                      </ul>
-
-
-                    </li>
-
-                    
-                  </ul>
-                </nav>
+              <?php
+              include '../pag_interiores/menu/masterMenu.php';
+              ?>
                 
     
 
@@ -147,50 +116,40 @@ $("#enviarimagenes").on("submit", function(evento){
         <div id="main-wrapper">
 
           <!-- Wide Content -->
-             <?php 
-  $admin_curso = 1;
-    require_once("conexion.php");
-            $verificarAdmin = "select * from usuario where id_rol = '$admin_curso'";
-            
-            $verificar = $conexion->query($verificarAdmin) or die($conexion->error);
-
-                         if($verificar){
-                            echo "
+       <?php 
+              $adminEgdo = $_SESSION['id_rol'];
+              //require_once("conexion.php");
+              $host_db = "localhost";
+              $user_db = "root";
+              $pass_db = "";
+              $db_name = "egdo_db";
               
-                              <form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
-                            <div class='form-row form-input-name-row'>
-                            
-                                <input type='text' name='nombre' id='nombre' placeholder='nombre'>
-                            
-                            </div>
-                            
-                            <div class='form-row form-input-name-row'>
 
-                                <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
+              $conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
 
-                            </div>
+              if ($conexion->connect_error) {
+              die("La conexion falló: " . $conexion->connect_error);
+              }
+              
+              
+              
+              $verificarAdmin = "select * from usuario where id_rol = '$adminEgdo'";
+              $verificar = $conexion->query($verificarAdmin) or die($conexion->error);
+              if($verificar){
+                echo "<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
+                  <div class='form-row'>
+                    <label>Subir foto 
+                    <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
+                              </div>
+                              <div class='form-row form-input-name-row'>
+                    <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
+                  </div>
+                            <button type='submit'>Subir imagen</button>
+                  </form> ";
+                }
+              ?>
 
-                             <div class='form-row'>
-
-                                          <label>Subir foto
-         
-                                            <input type='file' class='file_input' name='info_imagen' id='info_imagen' />
-                                         </label>
-                                      </div>
-                                     
-                        
-                          <button type='submit'>Subir imagen</button>
-
-                      
-                              </form>
-                                                      ";
-            }
-
-
-
-
-    ?>
-         <div id="sliders">
+     <div id="sliders">
                       <ul class="bjqs">
                         <li>
                     <img src="../images/cerro_catedral.jpg" alt="" title="Cerros: el cerro catedral es el centro de esquí más grande del hemisferio sur y ofrece una amplia infraestructura de servicios para la práctica de deportes invernales. Está abierto todo el año y cuenta con 40 medios de elevación (entre aerosillas y teleféricos), facilitando el ascenso de 35 mil personas por hora." />
@@ -237,19 +196,19 @@ $("#enviarimagenes").on("submit", function(evento){
     </div>
 
     <!-- Scripts -->
-      <script src="../js/jquery.min.js"></script>
-      <script src="../js/jquery.dropotron.min.js"></script>
-      <script src="../js/skel.min.js"></script>
-      <script src="../js/skel-viewport.min.js"></script>
-      <script src="../js/util.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.dropotron.min.js"></script>
+      <script src="../assets/js/skel.min.js"></script>
+      <script src="../assets/js/skel-viewport.min.js"></script>
+      <script src="../assets/js/util.js"></script>
       <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-      <script src="../js/main.js"></script>
+      <script src="../assets/js/main.js"></script>
       <!-- Incluimos la libreria jQuery -->
-        <script src="../js/jquery-latest.min.js"></script>
+        <script src="../assets/js/jquery-latest.min.js"></script>
  
         <!-- Incluimos el plugin -->
-        <script src="../js/bjqs.min.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="../assets/js/bjqs.min.js"></script>
+        <script src="../assets/js/script.js"></script>
 
   </body>
 </html>

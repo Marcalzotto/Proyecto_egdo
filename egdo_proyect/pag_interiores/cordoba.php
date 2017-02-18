@@ -1,7 +1,4 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php include('conexion.php');?>
-<?php include('funciones/cantidad_notificaciones.php');?>
-<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 
 <!DOCTYPE HTML>
 <!--
@@ -14,19 +11,14 @@
     <title>EGDO</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	
-	<!-- mejora tooltips-->
-		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
-
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     
-    <link rel="stylesheet" href="../css/index_gral.css" />
+    <link rel="stylesheet" href="../assets/css/index_gral.css" />
 
-	
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
-                <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" /> 
+    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+                <link rel="stylesheet" type="text/css" href="../assets/css/estilos-slider.css" /> 
 
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -52,7 +44,7 @@
       <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
       <link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
       <script src="../js/modernizr.js"></script> <!-- Modernizr -->
-      <script src="../js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
   
@@ -81,6 +73,38 @@
 </header>
       <!-- Main Wrapper -->
         <div id="main-wrapper">
+           <?php 
+              $adminEgdo = $_SESSION['id_rol'];
+              //require_once("conexion.php");
+              $host_db = "localhost";
+              $user_db = "root";
+              $pass_db = "";
+              $db_name = "egdo_db";
+              
+
+              $conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
+
+              if ($conexion->connect_error) {
+              die("La conexion falló: " . $conexion->connect_error);
+              }
+              
+              
+              
+              $verificarAdmin = "select * from usuario where id_rol = '$adminEgdo'";
+              $verificar = $conexion->query($verificarAdmin) or die($conexion->error);
+              if($verificar){
+                echo "<form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
+                  <div class='form-row'>
+                    <label>Subir foto 
+                    <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
+                              </div>
+                              <div class='form-row form-input-name-row'>
+                    <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
+                  </div>
+                            <button type='submit'>Subir imagen</button>
+                  </form> ";
+                }
+              ?>
 
           <!-- Wide Content -->
             <section id="content" class="container">
@@ -134,19 +158,19 @@
     </div>
 
  <!-- Scripts -->
-      <script src="../js/jquery.min.js"></script>
-      <script src="../js/jquery.dropotron.min.js"></script>
-      <script src="../js/skel.min.js"></script>
-      <script src="../js/skel-viewport.min.js"></script>
-      <script src="../js/util.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/jquery.dropotron.min.js"></script>
+      <script src="../assets/js/skel.min.js"></script>
+      <script src="../assets/js/skel-viewport.min.js"></script>
+      <script src="../assets/js/util.js"></script>
       <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-      <script src="../js/main.js"></script>
+      <script src="../assets/js/main.js"></script>
       <!-- Incluimos la libreria jQuery -->
-        <script src="../js/jquery-latest.min.js"></script>
+        <script src="../assets/js/jquery-latest.min.js"></script>
  
         <!-- Incluimos el plugin -->
-        <script src="../js/bjqs.min.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="../assets/js/bjqs.min.js"></script>
+        <script src="../assets/js/script.js"></script>
 
   </body>
 </html>
