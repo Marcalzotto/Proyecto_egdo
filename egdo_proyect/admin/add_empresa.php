@@ -26,6 +26,10 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+		
+		<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
+
 	
 	</head>
 	<body class="no-sidebar">
@@ -40,97 +44,9 @@
 							<!-- Logo -->
 								<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="assets/images/EGDO.png" alt=""/></a></h1>
 
-							<!-- Nav -->
-								<nav id="nav">
-									<ul>
-										<!-- Item home -->
-										<li> 
-											<a href="admin-index.php" title="Home">
-												<span class="fa-stack fa-3x">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-home fa-stack-1x fa-inverse"></i>
-												</span> 
-											</a>
-										</li>
-										<!-- Item search -->
-										<li>
-											<a href="#" title="Buscar">
-												<span class="fa-stack fa-3x">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-search fa-stack-1x fa-inverse"></i>
-												</span>
-											</a>
-											<ul>
-												<li><a class="list-group-item" href="empresa.php"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp; Empresas</a></li>
-												<li><a class="list-group-item" href="curso.php"><i class="fa fa-university" aria-hidden="true"></i>&nbsp; Cursos</a></li>
-												<li><a class="list-group-item" href="alumno.php"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Usuarios</a></li>
-												<li><a class="list-group-item" href="panel-info.php"><i class="fa fa-map-signs" aria-hidden="true"></i>&nbsp; Info Viaje</a></li>
-											</ul>
-										</li>
-										<!-- Item filter -->
-										<li class="break" >
-											<a href="#" title="Filtrar">
-												<span class="fa-stack fa-3x">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-filter fa-stack-1x fa-inverse"></i>
-												</span>
-											</a>
-											<ul>
-												<li><a class="list-group-item" href="moderar-comentario.php"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Comentarios Actividades</a></li>
-												<li><a class="list-group-item" href="moderar-comentarioEmpresas.php"><i class="fa fa-comments-o" aria-hidden="true"></i></i>&nbsp; Comentarios Empresas</a></li>
-												<li><a class="list-group-item" href="moderar-disenio.php">
-													<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño</a>
-												</li>
-												<li>
-													<span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; UPD</a></span>
-													<ul> <!-- Sub items -->
-														<li>
-															<a class="list-group-item" href="moderar-UPD.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-UPD1.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
-																Galeria 2
-															</a>
-														</li>
-													</ul> <!-- /Sub items -->	
-												</li>	
-												<li>
-													<span><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Fiesta</a></span>
-													<ul> <!-- Sub items -->
-														<li>
-															<a class="list-group-item" href="moderar-fiesta.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; Galeria 1
-															</a>
-														</li>
-														<li>
-															<a class="list-group-item" href="moderar-fiesta1.php">
-																<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp; 
-																Galeria 2
-															</a>
-														</li>
-													</ul> <!-- /Sub items -->	
-												</li>
-											</ul>
-										</li>
-										<!-- Item setting -->
-										<li>
-											<a href="" title="Herramientas">
-												<span class="fa-stack fa-3x">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-												</span>
-											</a>
-											<ul>
-												<li><a class="list-group-item" href="edit-perfil.php"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Editar Perfil</a></li>
-												<li><a class="list-group-item" href="listarMsj.php"><i class="fa fa-inbox" aria-hidden="true"></i>&nbsp; Mensaje</a></li>
-												<li><a class="list-group-item" href="../login/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Cerrar Sesion</a></li>
-											</ul>
-										</li>
-									</ul>
-								</nav> <!-- /Nav -->
+							<?php
+							include '../admin/menuAdminEgdo.php';
+							?>
 
 						</div>
 
