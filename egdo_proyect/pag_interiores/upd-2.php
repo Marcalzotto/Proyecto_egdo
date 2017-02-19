@@ -5,6 +5,26 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+
+<?php
+$verificarFecha = "select fecha_hora from evento where id_actividad = 3 and id_curso = $_SESSION[curso]"; 
+if($result = $conexion->query($verificarFecha)){
+	if($result->num_rows > 0){
+		$reg = $result->fetch_array(MYSQLI_ASSOC);
+		$fecha = $reg["fecha_hora"];
+		$fechahoy = new DateTime();
+		$fechaEvento = new DateTime($fecha);
+
+		$intervalo = $fechahoy->diff($fechaEvento);
+		$intervalA = $intervalo->y;
+		$intervalM = $intervalo->m;
+		$intervalD = $intervalo->d;
+	
+	}
+}else{
+	die("Error al buscar la fecha");
+}
+?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -91,61 +111,132 @@
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-                         <form class='form-validation' enctype='multipart/form-data' method='post' id='enviarimagenes'>
-														<div class='form-row form-input-name-row'>
-														
-																<input type='text' name='nombre' id='nombre' placeholder='nombre'>
-														
-														</div>
- 														
- 														<div class='form-row form-input-name-row'>
-
-																<input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
-
-														</div>
-
-														 <div class='form-row'>
-
-			                          				  <label>Subir foto
-			   
-			                           						<input type='file' class='file_input' name='upd_imagen' id='upd_imagen' />
-			                           				 </label>
-			                        				</div>
-			                   						 
-												
-													<button type='submit'>Subir imagen</button>
-
-											
-															</form>
+                         
 
 					<!-- Wide Content -->
 						<div id="intro" class="container">
-							<div class="row">
+							<?php
+								$x=0;
+								$y=0;
+								$traerLugares = "select * from upd where id_curso = '$_SESSION[curso]'";
+								if($result = $conexion->query($traerLugares)){
+									if($result->num_rows > 0){
+										$rows = $result->num_rows;
+									
+										$total_rows = $rows/3;
+										$resto = $rows % 3;
+										$entera = $rows - $resto;
+										$total_rows = ceil($total_rows);
+										if($rows < 3){
+											$sections = $resto;
+										}else{
+											$sections = 3;
+										}
+									
+										while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+												$lugares[] = $reg; 
+										}
+										//echo "Necesito ".ceil($total_rows)." div rows";
+										
+										for ($i=0; $i < $total_rows; $i++){ 
+										echo "<div class='row'>";	
+											if($rows == $entera){
+												
+												while($y < $sections) { 
+													echo"<section class='4u 12u(mobile)'>
+														<div id='cordoba'>
+															<a href=upd-3.php?upd=".$lugares[$x]['id_upd']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre_lugar"]."</span></a>
+														</div>
+													
+														<p class='detalles'>Calificacion:</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia'></div></div>
+														<p class='detalles'>3.2</p>
+														<p class='detalles'>Votar</p>
+
+														<form>
+  													<p class='clasificacion'>
+    												<input id='radio5' type='radio' name='estrellas' value='5'>
+    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
+   													<input id='radio4' type='radio' name='estrellas' value='4'>
+    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
+    												<input id='radio3' type='radio' name='estrellas' value='3'>
+    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
+    												<input id='radio2' type='radio' name='estrellas' value='2'>
+   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
+    												<input id='radio1' type='radio' name='estrellas' value='1'>
+    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
+    												<input type='hidden' value='1' id='hidden'>
+  													</p>
+														</form>
+
+													</section>";
+													$y++;
+													$x++;
+												}
+												$y = 0;
+											}else{
+													
+													while($y < $sections){ 
+													echo"<section class='4u 12u(mobile)'>
+														<div id='cordoba'>
+															<a href=upd-3.php?upd=".$lugares[$x]['id_upd']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre_lugar"]."</span></a>
+														</div>
+														<p class='detalles'>Calificacion:</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia'></div></div>
+														<p class='detalles'>3.2</p>
+														<p class='detalles'>Votar</p>
+
+														<form>
+  													<p class='clasificacion'>
+    												<input id='radio5' type='radio' name='estrellas' value='5'>
+    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
+   													<input id='radio4' type='radio' name='estrellas' value='4'>
+    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
+    												<input id='radio3' type='radio' name='estrellas' value='3'>
+    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
+    												<input id='radio2' type='radio' name='estrellas' value='2'>
+   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
+    												<input id='radio1' type='radio' name='estrellas' value='1'>
+    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
+    												<input type='hidden' value='1' id='hidden'>
+  													</p>
+														</form>
+                 					</section>";
+													$y++;
+													$x++;
+													}
+													$y = 0;
+													if($x == $entera){
+														$sections = $resto;
+													}
+											}
+
+										echo "</div>";	
+										
+										}//termina for 
+									}else{
+										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
+									}
+								}
+
+
+							?>
+							<!--<div class="row">
 								
 								<section class="4u 12u(mobile)">
-									<div id="plaza-san-justo"><a href="upd-3.php"><span class="number">Plaza San Justo</span></a></div>
-                                    <div class="estrellas">
+								<div id="plaza-san-justo">
+										<a href="upd-3.php"><span class="number">Plaza San Justo</span></a>
+								</div>
+                 <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
 									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
 									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
 									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
 									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
 								</div>
-								
-
-									 <!-- Agregue el div con el id bariloche para ponerle de fondo la imagen -->
-									 <div id="mendoza"><a href="mendoza.html"><span class="number"></span></a></div>
-								       <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
 								</section>
 								<section class="4u 12u(mobile)">
-									<div id="cordoba"><a href="cordoba.html"><span class="number"></span></a></div>
+									<div id="cordoba"><a href="upd-3.php"><span class="number"></span></a></div>
 								    <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
 									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
@@ -153,41 +244,23 @@
 									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
 									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
 								</div>
-
-								    <div id="mardelplata"><a href="mardelplata.html"><span class="number"></span></a></div>
-								     <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
 								</section>
 								<section class="4u 12u(mobile)">
-									<div id="brasil"><a href="brasil.html"><span class="number"></span></a></div>
+									<div id="brasil"><a href="upd-3.php"><span class="number"></span></a></div>
 									 <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
 									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
 									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
 									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
 									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
-
-									<div id="mexico"><a href="mexico.html"><span class="number"></span></a></div>
-								 <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
+									</div>
 								</section>
-							</div>
+
+							</div>-->
+
+
 						</div>
-					<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
+					<!--<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
 
 									<div class="form-title-row">
 										<h1>Deja tu comentario</h1>
@@ -199,7 +272,7 @@
 
 									</div>	
 
-								</form>
+					</form>-->
 
 				</div>
 				

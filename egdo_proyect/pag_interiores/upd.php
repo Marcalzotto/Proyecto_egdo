@@ -5,6 +5,32 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+
+<?php
+$verificarFecha = "select fecha_hora from evento where id_actividad = 2 and id_curso = $_SESSION[curso]"; 
+if($result = $conexion->query($verificarFecha)){
+	if($result->num_rows > 0){
+		$reg = $result->fetch_array(MYSQLI_ASSOC);
+		$fecha = $reg["fecha_hora"];
+		$fechahoy = new DateTime();
+		$fechaEvento = new DateTime($fecha);
+
+		$intervalo = $fechahoy->diff($fechaEvento);
+		$intervalA = $intervalo->y;
+		$intervalM = $intervalo->m;
+		$intervalD = $intervalo->d;
+		if($intervalA > 0){
+			header('location:upd-2.php');
+		}else if($intervalM > 0){
+			header('location:upd-2.php');
+		}else if($intervalD >= 15){
+			header('location:upd-2.php');
+		}
+	}
+}else{
+	die("Error al buscar la fecha");
+}
+?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -57,6 +83,7 @@
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/iniciar_upd.js"></script>
+			<script src="../js/validar_form_upd.js"></script>
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">
@@ -101,7 +128,7 @@
  										$reg = $result->fetch_array(MYSQLI_ASSOC);
  										$evento = $reg["evento"];
  										if($evento == 1){
- 											echo "<form class='form-validation' enctype='multipart/form-data' method='post' action='upd-2.php'>
+ 							echo "<form id='form_upd' class='form-validation' enctype='multipart/form-data' method='post'> <!--debe ir a upd-2.php-->
 
 									<div class='form-title-row'>
 										<h1>Formulario UPD</h1>
@@ -110,8 +137,9 @@
 									<div class='form-row form-input-name-row'>
 
 										<label>
-											<span>Nombre</span>
-											<input type='text' name='name'>
+											<span>Nombre(Requerido)</span>
+											<input type='text' name='name' id='name'>
+										
 										</label>
 
 										<!--
@@ -129,8 +157,26 @@
 									<div class='form-row form-input-name-row'>
 
 										<label>
-											<span>Direcci&oacute;n</span>
-											<input type='text' name='name'>
+											<span>Calle(Requerido)</span>
+											<input type='text' name='calle' id='calle'>
+										</label>
+
+										<!--
+											Add these three elements to every form row. They will be shown by the
+											.form-valid-data and .form-invalid-data classes (see the JS for an example).
+										-->
+
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
+
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
+
+									</div>
+									<div class='form-row form-input-name-row'>
+
+										<label>
+											<span>Altura(Requerido)</span>
+											<input type='number' name='altura' id='altura'>
 										</label>
 
 										<!--
@@ -148,8 +194,8 @@
 									<div class='form-row form-input-email-row'>
 
 										<label>
-											<span>Tel&eacute;fono</span>
-											<input type='email' name='email'>
+											<span>Tel&eacute;fono(Requerido)</span>
+											<input type='number' name='cell_phone' id='cell_phone'>
 										</label>
 
 										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
@@ -162,8 +208,8 @@
 									<div class='form-row form-input-name-row'>
 
 										<label>
-											<span>Redes</span>
-											<input type='text' name='name'>
+											<span>Facebook(No Requerido)</span>
+											<input type='text' name='face' id='face'>
 										</label>
 
 										<!--
@@ -177,12 +223,47 @@
 										<span class='form-invalid-data-info'></span>
 
 									</div>
-									
 									<div class='form-row form-input-name-row'>
 
 										<label>
-											<span>Web</span>
-											<input type='text' name='name'>
+											<span>Twitter(No Requerido)</span>
+											<input type='text' name='twitter' id='twitter'>
+										</label>
+
+										<!--
+											Add these three elements to every form row. They will be shown by the
+											.form-valid-data and .form-invalid-data classes (see the JS for an example).
+										-->
+
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
+
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
+
+									</div>
+									<div class='form-row form-input-name-row'>
+
+										<label>
+											<span>Instagram(No Requerido)</span>
+											<input type='text' name='insta' id='insta'>
+										</label>
+
+										<!--
+											Add these three elements to every form row. They will be shown by the
+											.form-valid-data and .form-invalid-data classes (see the JS for an example).
+										-->
+
+										<span class='form-valid-data-sign'><i class='fa fa-check'></i></span>
+
+										<span class='form-invalid-data-sign'><i class='fa fa-close'></i></span>
+										<span class='form-invalid-data-info'></span>
+
+									</div>
+									<div class='form-row form-input-name-row'>
+
+										<label>
+											<span>Web(No Requerido)</span>
+											<input type='text' name='web_page' id='web_page'>
 										</label>
 
 										<!--
@@ -200,8 +281,9 @@
                                     <div class='form-row form-input-name-row'>
 
 										<label>
-											<span>Detalles</span>
-											<input type='text' name='name'>
+											<span>Detalles(Requerido)</span>
+											<textarea name='detalles' id='detalles' cols='10' rows='5'></textarea>
+											<!--<input type='text' name='detalles' id='detalles'>-->
 										</label>
 
 										<!--
@@ -223,15 +305,19 @@
 
                         <div>
                             <label>
-                                    <span>Foto 1<input type='radio' name='name'>
-                           <input type='file' class='file_input' name='file' /> </span>
+                                    <span>Foto Perfil Lugar(Requerido)<input type='radio' name='name'>
+                           <input type='file' class='file_input' name='file_perfil' id='file_perfil'/> 
+													 <input type='hidden' name='name_foto_perfil' id='name_foto_perfil'/>
+                           </span>
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                <span>Foto 2<input type='radio' name='name'>
-                                <input type='file' class='file_input'name='file' /></span>
+                                <span>Foto Lugar(Requerido)<input type='radio' name='name'>
+                                <input type='file' class='file_input' name='file_lugar' id='file_lugar'/>
+                                <input type='hidden' name='name_foto_lugar' id='name_foto_lugar'>
+                                </span>
                             </label>
                         </div>
 
@@ -243,10 +329,13 @@
 
 										<button type='submit'>Enviar</button>
 										<input type='reset' value='borrar'>
-
+										
 									</div>
-
+									<div class='form-row'>
+									<a href='upd-2.php'>Ver los lugares propuestos</a> 
+									</div>
 								</form>";
+							
  										}else{
  												$rol = $_SESSION["id_rol"];
 												if($rol == 3){

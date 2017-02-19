@@ -25,7 +25,7 @@ select * from usuario;
 /*PASAR A LA VOTACION*/
 
 SELECT @fecha_tomar:= fecha_apertura FROM actividad_disenio WHERE curso_pertenece_votacion = 2;
-SELECT @fecha:= date_add(@fecha_tomar, INTERVAL -1 DAY);/*INTERVAL = -7*/
+SELECT @fecha:= date_add(@fecha_tomar, INTERVAL -7 DAY);/*INTERVAL = -7*/
 
 UPDATE actividad_disenio SET fecha_apertura = @fecha WHERE curso_pertenece_votacion = 2;
 

@@ -1,21 +1,79 @@
 .estrellas {
 	font-size: 0;
 	display: inline-block;
+
 }
+/*imagen de fondo de las estrellas de valoracion, que corresponden a la imagen de fondo*/
+#estrellas-gris{
+	list-style:none;
+	margin: auto;
+	padding:0px !important;
+	height: 30px;
+	width: 150px;
+	position: relative;
+	background: url(../images/star_rating_img/rating_bar_egdo.png) top left repeat-x;
+	
+}
+
+
 .estrellas a {
 	text-decoration: none;
 	display: inline-block;
 	/* Volver a dar tamaño al texto */
 	font-size: 32px;
-	font-size: 2rem;
-	
+	font-size: 39px;
+	text-indent: -3px;
 	color: #888;
 }
 
 .estrellas:hover a {
-	color: rgb(39, 130, 228);
+	color: #79b800;
 }
 
 .estrellas > a:hover ~ a {
 	color: #888;
+}
+
+
+.detalles{
+	font-size: 30px;
+  color: #fff;
+  font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: bold;
+}
+
+/*estilos del form*/
+
+	.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    display: inline-flex;
+    text-indent: -3px;
+   
+}
+
+	input[type="radio"] {
+    display: none;
+    font-size: 2.5em;
+	}
+
+	form .labelEstrellas {
+    display: block;
+    font-size: 2.5em;
+	}
+
+	.labelEstrellas {
+    color: grey;
+    font-size: 2.5em;
+
+	}
+
+.labelEstrellas:hover,
+.labelEstrellas:hover ~ .labelEstrellas {
+  color: #79B800;
+  font-size: 2.5em;
+}
+
+input[type="radio"]:checked ~ .labelEstrellas {
+  color: #79B800;
 }

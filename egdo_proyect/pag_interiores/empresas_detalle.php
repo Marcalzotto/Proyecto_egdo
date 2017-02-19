@@ -139,8 +139,8 @@
 									<li><p><img src="../images/empresas_logos/logotipo.jpg" width="200" height="200" alt=""></p></li>
 									<li><p>Nombre: </p> <p><?php echo $empresa["nombre_empresa"]; ?></p></li>
 									<li><p>Calle: </p><p><?php echo $empresa["calle"]; ?></p></li>
-									<li><p>Altura: </p><p><?php echo $empresa["altura"]; ?></p></li>
-									<li><p>Localidad: </p><p><?php echo $empresa["localidad"]; ?></p></li>
+									<!--<li><p>Altura: </p><p><?php //echo $empresa["altura"]; ?></p></li>-->
+									<!--<li><p>Localidad: </p><p><?php //echo $empresa["localidad"]; ?></p></li>-->
 									<li><p>Telefono: </p> <p><?php echo $empresa["telefono"]; ?></p></li>
 									<li><p>E-mail: </p> <p><?php echo $empresa["email"]; ?></p></li>
 									<li><p>Sedes: </p><p> Algun lugar</p></li>

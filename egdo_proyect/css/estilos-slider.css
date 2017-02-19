@@ -45,6 +45,7 @@ transition:background .5s ease;
 -webkit-transition:background .5s ease;
 -moz-transition:background .5s ease;
 -o-transition:background .5s ease;
+border-radius: 15px;
 }
 li.active-marker a, ol.bjqs-markers li a:hover{
 background:gray!important;

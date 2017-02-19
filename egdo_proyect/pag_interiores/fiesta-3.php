@@ -5,6 +5,18 @@
   generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+<?php
+$curso = $_SESSION["curso"];
+if($_GET["fiesta"]){
+  $id_fiesta = $_GET["fiesta"];
+
+  $exp_reg='/[^0-9]/';
+  if(preg_match($exp_reg, $id_fiesta)){
+    header('location:fiesta-2.php');
+  }
+
+}
+?>
 
 <!DOCTYPE HTML>
 <!--
@@ -84,16 +96,32 @@
           <!-- Wide Content -->
             <section id="content" class="container">
                <!-- SLIDESHOW -->
-               <!--<div id="sliders">
-                      <ul class="bjqs">
-                        <li>
-                    <img src="../images/mia-quinta.jpg" alt="" title="MiaQuinta, es un salón del oeste de gran capacidad, que tiene cercania inmediata con Capital Federal y es de muy fácil acceso." />
-                </li>
-                <li>
-                    <img src="../images/mia-quinta-2.jpg" alt="" title="Servicios que ofrecen, entre otros: Catering, opción gourmet y parrilla;Salón con capacidad desde 100 a 250 personas;Sonido e iluminación; Máquina de humo y espuma; pantalla y proyector de video y dvd, estacionamiento interno etc." />
-                </li>
-            </ul>
-        </div>-->
+               <div id="sliders">
+                  <ul class="bjqs">
+                  <?php
+                    $traerImagenes = "select * from fiesta where id_fiesta = '$id_fiesta' and id_curso='$curso'";
+                    if($result = $conexion->query($traerImagenes)){
+                      if($result->num_rows > 0){
+                        $reg = $result->fetch_array(MYSQLI_ASSOC);
+                        echo "<li>
+                                <img src=../images/".$reg['foto_perfil']." alt='Imagenes de fiesta' title='".$reg['detalles_adicionales']."' />
+                              </li>
+                              <li>
+                                <img src=../images/".$reg['foto_lugar']." alt='Imagenes de fiesta' title='".$reg['detalles_adicionales']."' />
+                              </li>";
+                      }
+                    }
+                  ?>
+
+
+                    <!--<li>
+                      <img src="../images/mia-quinta.jpg" alt="" title="MiaQuinta, es un salón del oeste de gran capacidad, que tiene cercania inmediata con Capital Federal y es de muy fácil acceso." />
+                    </li>
+                    <li>
+                      <img src="../images/mia-quinta-2.jpg" alt="" title="Servicios que ofrecen, entre otros: Catering, opción gourmet y parrilla;Salón con capacidad desde 100 a 250 personas;Sonido e iluminación; Máquina de humo y espuma; pantalla y proyector de video y dvd, estacionamiento interno etc." />
+                    </li>-->
+                  </ul>
+              </div>
      
                       </section>
 

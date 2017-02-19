@@ -5,7 +5,20 @@
   generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+<?php
+$curso = $_SESSION["curso"];
+if($_GET["upd"]){
+  $id_upd = $_GET["upd"];
 
+  $exp_reg='/[^0-9]/';
+  if(preg_match($exp_reg, $id_upd)){
+    header('location:upd-2.php');
+  }
+
+}
+
+
+?>
 <!DOCTYPE HTML>
 <!--
   Wide Angle by Pixelarity
@@ -85,18 +98,33 @@
           <!-- Wide Content -->
             <section id="content" class="container">
                <!-- SLIDESHOW -->
-               <div id="sliders">
-                      <ul class="bjqs">
+          <div id="sliders">
+          <ul class="bjqs">
+            <?php
+              $traerImagenes = "select * from upd where id_upd = '$id_upd' and id_curso='$curso'";
+              if($result = $conexion->query($traerImagenes)){
+                if($result->num_rows > 0){
+                  $reg = $result->fetch_array(MYSQLI_ASSOC);
+                        
+                  echo "<li>
+                          <img src=../images/".$reg['foto_perfil']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
+                        </li>
                         <li>
+                          <img src=../images/".$reg['foto_lugar']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
+                        </li>";
+                }
+              }
+            ?>
+
+                  <!--<li>
                     <img src="../images/plaza-San-Justo.jpg" alt="" title="Es una de las mejores plazas de la zona, y tiene mucho espacio para poder realizar diferentes actividades." />
-                </li>
-                <li>
+                  </li>
+                  <li>
                     <img src="../images/plaza-2.jpg" alt="" title="Para aquellos que no conocen, la plaza queda entre las siguientes calles: Arieta, Villegas, Perón y Perú." />
-                </li>
-            </ul>
-        </div>
-     
-                      </section>
+                  </li>-->
+                </ul>
+               </div>
+            </section>
 
         </div> 
 

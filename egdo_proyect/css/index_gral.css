@@ -4452,7 +4452,8 @@ font-size: 2em;
     color: #fff;
     background: #79B000;
     font-size: 1.2em;
-    margin-left: 4em;
+    margin:0;
+    
     margin-bottom: 1em;
 }
 
@@ -4474,7 +4475,7 @@ background: #78FF1E;
     color: #fff;
     background: #79B000;
     font-size: 1.2em;
-    margin-left: 4em;
+    
 }
 #main-wrapper-ad .container .main-content input[type="reset"]:hover{
 			
@@ -4482,4 +4483,15 @@ background: #78FF1E;
 }
 #main-wrapper-ad .container .main-content .buttons{
 		
+}
+#main-wrapper-ad .container .main-content textarea{
+border: 1px solid #ccc;
+    background: #fff;
+}
+
+#main-wrapper-ad .container .main-content a{
+	    background: #333;
+    padding: 4px;
+    border-radius: 4px;
+    color: #fff;
 }

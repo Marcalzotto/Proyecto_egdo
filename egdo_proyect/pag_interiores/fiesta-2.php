@@ -5,62 +5,24 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include("funciones/cantidad_notificaciones.php");?>
-
 <?php
-//validacion del form
-include("funciones/validar_form_fiesta.php");
-//tomo los valores por post, si alguno es vacio lo detectara la funcion al validar
-$nombre = $_POST["name"];
-$direccion = $_POST["dir"];
-$celular = $_POST["cell_phone"];
-$redes = $_POST["redes"];
-$web = $_POST["web_page"];
-$detalles = $_POST["detalles"];
-$foto_perfil =$_FILES["file_perfil"];
-$foto_lugar = $_FILES["file_lugar"];
-$nombre_arch_foto_perfil = $_POST["name_foto_perfil"];
-$nombre_arch_foto_lugar = $_POST["name_foto_lugar"];
+$verificarFecha = "select fecha_hora from evento where id_actividad = 2 and id_curso = $_SESSION[curso]"; 
+if($result = $conexion->query($verificarFecha)){
+	if($result->num_rows > 0){
+		$reg = $result->fetch_array(MYSQLI_ASSOC);
+		$fecha = $reg["fecha_hora"];
+		$fechahoy = new DateTime();
+		$fechaEvento = new DateTime($fecha);
 
-/*if(!isset($_POST["name"])){
-$nombre = "";
-}
-echo $nombre;
-if(!isset($_POST["dir"])){
-	$direccion = "";
-}
-if(!isset($_POST["cell_phone"])){
-	$celular = "";
-}
-if(!isset($_POST["redes"])){
-	$redes = "";
-}
-if(!isset($_POST["web_page"])){
-	$web = "";
-}
-if(!isset($_POST["detalles"])){
-	$detalles = "";
-}
-if(!isset($_FILES["file_perfil"])){
-	$foto_perfil ="";
-}
-if(!isset($_FILES["file_lugar"])){
-	$foto_lugar = "";
-}
-if(!isset($_POST["name_foto_perfil"])){
-	$nombre_arch_foto_perfil = "";
-}
-if(!isset($_POST["name_foto_lugar"])){
-	$nombre_arch_foto_lugar = "";
-}*/
-
-$val_full = validar_form_fiesta_upd($nombre,$direccion,$celular,$redes,$web,$detalles,$foto_perfil,$foto_lugar,$nombre_arch_foto_perfil,$nombre_arch_foto_lugar);
-if($val_full > 0){
-	//echo $val_full;
-	header('location:fiesta.php');
+		$intervalo = $fechahoy->diff($fechaEvento);
+		$intervalA = $intervalo->y;
+		$intervalM = $intervalo->m;
+		$intervalD = $intervalo->d;
+		
+	}
 }else{
-	//realizar insercion del lugar que envio desde el form, para luego imprimir abajo
+	die("Error al buscar la fecha");
 }
-
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -141,7 +103,116 @@ if($val_full > 0){
 					
 					<!-- Wide Content -->
 						<div id="intro" class="container">
-							<div class="row">
+							
+							<?php
+								$x=0;
+								$y=0;
+								$traerLugares = "select * from fiesta where id_curso = '$_SESSION[curso]'";
+								if($result = $conexion->query($traerLugares)){
+									if($result->num_rows > 0){
+										$rows = $result->num_rows;
+										
+										$total_rows = $rows/3;
+										$resto = $rows % 3;
+										$entera = $rows - $resto;
+										$total_rows = ceil($total_rows);
+										if($rows < 3){
+											$sections = $resto;
+										}else{
+											$sections = 3;
+										}
+
+
+										while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+												$lugares[] = $reg; 
+										}
+										//echo "Necesito ".ceil($total_rows)." div rows";
+										$total_rows = ceil($total_rows);
+										for ($i=0; $i < $total_rows; $i++) { 
+										echo "<div class='row'>";	
+											if($rows == $entera){
+												
+												while($y < $sections) { 
+													echo"<section class='4u 12u(mobile)'>
+														<div id='cordoba'>
+															<a href=fiesta-3.php?fiesta=".$lugares[$x]['id_fiesta']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre"]."</span></a>
+														</div>
+                 						<p class='detalles'>Calificacion:</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:95px'></div></div>
+														<p class='detalles'>3.2</p>
+														<p class='detalles'>Votar</p>
+
+														<form>
+  													<p class='clasificacion'>
+    												<input id='radio5' type='radio' name='estrellas' value='5'>
+    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
+   													<input id='radio4' type='radio' name='estrellas' value='4'>
+    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
+    												<input id='radio3' type='radio' name='estrellas' value='3'>
+    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
+    												<input id='radio2' type='radio' name='estrellas' value='2'>
+   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
+    												<input id='radio1' type='radio' name='estrellas' value='1'>
+    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
+    												<input type='hidden' value='1' id='hidden'>
+  													</p>
+														</form>
+													</section>";
+													$y++;
+													$x++;
+												}
+												$y = 0;
+
+											}else{
+												while($y < $sections){ 
+													echo"<section class='4u 12u(mobile)'>
+														<div id='cordoba'>
+															<a href=fiesta-3.php?fiesta=".$lugares[$x]['id_fiesta']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre"]."</span></a>
+														</div>
+                 					 	<p class='detalles'>Calificacion:</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:100px'></div></div>
+														<p class='detalles'>3.2</p>
+														<p class='detalles'>Votar</p>
+
+														<form>
+  													<p class='clasificacion'>
+    												<input id='radio5' type='radio' name='estrellas' value='5'>
+    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
+   													<input id='radio4' type='radio' name='estrellas' value='4'>
+    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
+    												<input id='radio3' type='radio' name='estrellas' value='3'>
+    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
+    												<input id='radio2' type='radio' name='estrellas' value='2'>
+   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
+    												<input id='radio1' type='radio' name='estrellas' value='1'>
+    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
+    												<input type='hidden' value='1' id='hidden'>
+  													</p>
+														</form>
+													</section>";
+													$y++;
+													$x++;
+													}
+													$y = 0;
+													if($x == $entera){
+														$sections = $resto;
+													}
+											}
+
+										echo "</div>";
+										}//termina for
+									}else{
+										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
+									}
+								}
+
+
+							?>
+
+
+
+
+							<!--<div class="row">
                                
 								<section class="4u 12u(mobile)">
 									<div id="mia-quinta"><a href="fiesta-3.php"><span class="number">MiaQuinta</span></a></div>
@@ -154,7 +225,7 @@ if($val_full > 0){
 								</div>
 
 
-									 <!-- Agregue el div con el id bariloche para ponerle de fondo la imagen -->
+									  Agregue el div con el id bariloche para ponerle de fondo la imagen 
 									 <div id="mendoza"><a href="mendoza.html"><span class="number"></span></a></div>
 								       <div class="estrellas">
 									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
@@ -204,7 +275,7 @@ if($val_full > 0){
 								</div>
 								
 								</section>
-							</div>
+							</div>-->
 						</div>
 						<!--<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
 
