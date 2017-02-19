@@ -118,7 +118,7 @@ $row = $res->fetch_array(MYSQLI_ASSOC);
 	</div>
 
 	<form method="post" action="../mensajes/responderAdminCurso.php" >
-	
+	</br>
 	<?php echo '<input type="hidden" name="id_mensaje" value="'.$_GET["id_mensaje"].'">';?>
 	<input class="enviar" type="submit" name="enviar" value="Responder" />
 	
