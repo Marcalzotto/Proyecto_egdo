@@ -1,4 +1,11 @@
 <?php include ("../bloqueSeguridad.php");?>
+<?php require('conexion.php'); ?>
+ <?php 
+ 	include('funciones/generar_notificacion.php');
+ 	generar_notificacion($conexion,$_SESSION["curso"]);
+ ?>
+ <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
+ <?php include('funciones/cantidad_notificaciones.php');?>
 
 <!DOCTYPE HTML>
 <!--
