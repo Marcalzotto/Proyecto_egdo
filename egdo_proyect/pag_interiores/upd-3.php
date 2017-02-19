@@ -38,6 +38,8 @@ if($_GET["upd"]){
 	<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 	
+		<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
