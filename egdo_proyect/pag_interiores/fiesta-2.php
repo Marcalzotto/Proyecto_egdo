@@ -5,6 +5,9 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include("funciones/cantidad_notificaciones.php");?>
+<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
+
+
 <?php
 $verificarFecha = "select fecha_hora from evento where id_actividad = 2 and id_curso = $_SESSION[curso]"; 
 if($result = $conexion->query($verificarFecha)){

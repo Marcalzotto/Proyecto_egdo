@@ -4,7 +4,9 @@
   include('funciones/generar_notificacion.php');
   generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
+<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+
 <?php
 $curso = $_SESSION["curso"];
 if($_GET["upd"]){
@@ -16,9 +18,8 @@ if($_GET["upd"]){
   }
 
 }
-
-
 ?>
+
 <!DOCTYPE HTML>
 <!--
   Wide Angle by Pixelarity

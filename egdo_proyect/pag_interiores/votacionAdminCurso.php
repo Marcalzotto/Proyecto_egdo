@@ -5,6 +5,7 @@
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+<?php include('../pag_interiores/funciones/cantidad_notificaciones_mensajes.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;

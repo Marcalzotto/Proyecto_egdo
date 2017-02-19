@@ -154,7 +154,7 @@
 									
 									<div class="row uniform 50%">	
 										<!-- Break -->
-										<div class="-2u 2u">
+										<div class="-4u 6u">
 										
 										<?php
     // Arrays para guardar errores:

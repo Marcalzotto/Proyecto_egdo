@@ -128,7 +128,16 @@
 				<!-- Bandeja de entrada -->
 				<li>
 					<a href="../mensajes/listarMsjUsuario.php">Bandeja de entrada
-						<img src="../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right">
+						<?php							
+							if($cant_mensajes > 0){
+								echo "<div class='num_notificaciones'>".$cant_mensajes."</div>";
+							}else if($cant_mensajes == 0){
+								//echo "<div class='num_notificaciones'>10</div>";
+								echo "<img src='../images/dropotron_icons/mail_box.png' alt='agenda' style='float:right'>";
+							}else{
+							echo "<div class='num_notificaciones'>".$cant_mensajes."</div>";
+							}
+						?>
 					</a>
 				</li>
 				<!-- Notificaciones -->

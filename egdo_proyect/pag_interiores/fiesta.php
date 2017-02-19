@@ -4,6 +4,7 @@
 	include('funciones/generar_notificacion.php');
 	generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
+<?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php
 $verificarFecha = "select fecha_hora from evento where id_actividad = 3 and id_curso = $_SESSION[curso]"; 
@@ -30,6 +31,10 @@ if($result = $conexion->query($verificarFecha)){
 	die("Error al buscar la fecha");
 }
 ?>
+
+
+
+
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
