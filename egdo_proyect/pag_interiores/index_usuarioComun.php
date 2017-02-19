@@ -24,6 +24,7 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
+		<link rel="stylesheet" href="../css/indexUser.css" />
 		
 		<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
@@ -61,57 +62,267 @@
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 	
 	</head>
-	<body class="homepage">
+	<body class="no-sidebar">
 		<div id="page-wrapper">
-		<header role="banner">
+
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
 
 					<!-- Header -->
-						
 						<div id="header" class="container">
 
-							
-		<?php
-			include '../pag_interiores/menu/masterMenu.php';
-		?>
-								
-		
+							<?php
+								include '../pag_interiores/menu/masterMenu.php';
+							?>
 
 						</div>
-				
-				</div>
-</header>
-			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
 
-					<!--
-
-						The slider's images (as well as its behavior) can be configured
-						at the top of "assets/js/main.js".
-
-					-->
-
-				
-					
-						
-					<div id="slider">
-						
-					</div>
 				</div>
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
 
-					<!-- Main -->
-						<div id="intro" class="container">
+					<!-- Wide Content -->
+						<section id="intro" class="container">
 							
-						</div>
+							<div class="row">
+							
+								<section class="12u 12$">
+									<header>
+									<h2> Te mostramos todo lo que podes hacer con EGDO!!! </h2>
+									</header>
+								</section>
+						    
+									<section class="6u 12u(mobile)">
+								
+										<div class="row">
+										
+											<div class="12u$">
+										
+												<img src="../images/shirt.png" alt="">
+												
+												<div class="12u$">
+													<a href="#" class="button special small">
+													Arma tu Diseño</a>
+												</div>
+												
+												<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold"><i class="fa fa-pencil" aria-hidden="true"></i>
+														&nbsp;DISEÑA!&nbsp;&nbsp;</span>
+														<span class="bold"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+														&nbsp;PROPONE!&nbsp;</span>
+														
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star-half-o" aria-hidden="true"></i>
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+														&nbsp;&nbsp;
+														</span>
+														<span class="bold">
+														<i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;&nbsp;GANADOR&nbsp;
+														</span>
+													</li>
+												</ul>
+												</div>
+												
+											
+											</div>
+										
+											<div class="12u$">
+										
+											
+												<img src="../images/foto-evento.png" alt="">
+												
+												<div class="12u$">
+													<a href="#" class="button special small">
+													Foto De Evento</a>
+												</div>
+												
+												<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+														&nbsp;COMPARTI!&nbsp;</span>
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-picture-o" aria-hidden="true"></i>
+														&nbsp;FOTOS DE TUS EVENTOS&nbsp;</span>
+													</li>
+												
+												</ul> 
+												</div>
+											
+											</div>
+											
+											<div class="12u$">
+									
+										
+												<img src="../images/settings_53x53.png" alt="">
+										
+												<div class="12u$">
+													<a href="#" class="button special small">
+													&nbsp;Herramientas&nbsp;</a>
+												</div>
+												
+												<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold">
+															<i class="fa fa-calendar" aria-hidden="true"></i>
+															&nbsp;CALENDARIO&nbsp;</span>
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-bell-o" aria-hidden="true"></i>
+														&nbsp;NOTIFICACIONES&nbsp;
+														</span>
+														
+													</li>
+												</ul>
+												</div>
+											
+											</div>
+										
+										</div>
+								
+									</section>
+								
+									<section class="6u 12u(mobile)">
+								
+									<div class="row">
+										
+										<div class="12u$">
+									
+											<img src="../images/upd.png" alt="">
+										
+											<div class="12u$">
+												<a href="#" class="button special small">
+												ORGANIZA UPD
+												</a>
+											</div>
+											
+											<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold">
+															<i class="fa fa-map-marker" aria-hidden="true"></i>
+															&nbsp;PROPONE TU LUGAR!&nbsp;&nbsp;
+														</span>
+														<span class="bold">
+														<i class="fa fa-comment-o" aria-hidden="true"></i>
+														&nbsp;COMENTALO!
+														</span>
+														
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star-half-o" aria-hidden="true"></i>
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+														&nbsp;&nbsp;
+														</span>
+														<span class="bold">
+														<i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;&nbsp;GANADOR&nbsp;
+														</span>
+														
+													</li>
+												</ul>
+											</div>
+											
+										</div>
+										
+										<div class="12u$">
+									
+										
+											<img src="../images/party.png" alt="">
+											
+											<div class="12u$">
+												<a href="#" class="button special small">
+												ORGANIZA FIESTA</a>
+											</div>
+											
+											<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold">
+															<i class="fa fa-map-marker" aria-hidden="true"></i>
+															&nbsp;PROPONE TU LUGAR!&nbsp;&nbsp;
+														</span>
+														<span class="bold">
+														<i class="fa fa-comment-o" aria-hidden="true"></i>
+														&nbsp;COMENTALO!
+														</span>
+														
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star" aria-hidden="true"></i>
+														<i class="fa fa-star-half-o" aria-hidden="true"></i>
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+														&nbsp;&nbsp;
+														</span>
+														<span class="bold">
+														<i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;&nbsp;GANADOR&nbsp;
+														</span>
+														
+													</li>
+												</ul>
+											</div>
+											
+										</div>
+										
+										
+										
+										<div class="12u$">
+									
+										
+											<img src="../images/bus.png" alt="">
+										
+											<div class="12u$">
+												<a href="#" class="button special small">
+												&nbsp;&nbsp;Info Viaje&nbsp;&nbsp;</a>
+											</div>
+											<div class="12u$">
+												<ul class="indexUser">
+													<li>
+														<span class="bold">
+														<i class="fa fa-info-circle" aria-hidden="true"></i>
+														&nbsp;INFO&nbsp;</span>
+													</li>
+													<li>
+														<span class="bold">
+														<i class="fa fa-map-signs" aria-hidden="true"></i>
+														&nbsp;POSIBLE DESTINOS&nbsp;</span>
+													</li>
+												
+												</ul> 
+											</div>
+											
+										</div>
+									
+									</div>
+									
+									</section>
+								
+								
+								</div>
 						
-						
+						</section>
+
 				</div>
-				
-				<!-- Footer Wrapper -->
+
+			<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
 					<!-- Footer -->
@@ -119,18 +330,14 @@
 							<header>
 								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
 							</header>
-							
-						<p>Email: egdoweb@gmail.com</p>
-						
-						<ul class="contact">
+							<p>Email: egdoweb@gmail.com</p>
+							<ul class="contact">
 								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
 								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
 								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<!--<li><a href="#" class="icon fa-linkedin"><span>LinkedIn</span></a></li> -->
 							</ul>
-							
 						</div>
-							
+
 					<!-- Copyright -->
 						<div id="copyright" class="container">
 							&copy; EGDO 2016.
@@ -140,17 +347,14 @@
 
 		</div>
 
-		
-		
 		<!-- Scripts -->
-			<script src="../js/jquery.min.js"></script>
-			<script src="../js/jquery.dropotron.min.js"></script>
-			<script src="../js/skel.min.js"></script>
-			<script src="../js/skel-viewport.min.js"></script>
-			<script src="../js/util.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../js/main.js"></script>
-			
-			
+			<script src="assets/js/main.js"></script>
+
 	</body>
 </html>
