@@ -108,9 +108,43 @@
                   </form> ";
                 }
               ?>
+                     <div id="mensaje"> </div>
+              
+              <?php
+                $con = "select * from info_viaje where imagen='Mendoza'";
+                if($resultado = $conexion->query($con)){
+                if ($resultado ->num_rows > 0) {
+                while ($datos = $resultado->fetch_array(MYSQLI_ASSOC)){
+        
+                  $imgBar[]= $datos;
+                 }
+                  
+              echo "<section id='content' class='container'>";    
+            echo  "<div id='sliders'>";
+              echo "<ul class='bjqs'> ";
+            
+                  foreach($imgBar as $imgB) {
+                   echo
+                   "<li>
+                  <img src=../img/".$imgB['nombre_lugar']." alt='Imagenes Mendoza' title='".$imgB['descripcion']."'/>
+                  </li>
+
+                   ";
+                       }
+echo "</ul>";
+                        echo"</div>";
+     
+                     /* <!-- FIN SLIDESHOW -->*/
+                      echo "</section>";
+
+                     }
+                   }
+
+                 
+                 ?>
           <!-- Wide Content -->
-            <section id="content" class="container">
-               <!-- SLIDESHOW -->
+        <!--    <section id="content" class="container">
+             
                <div id="sliders">
                       <ul class="bjqs">
                         <li>
@@ -125,8 +159,8 @@
             </ul>
         </div>
      
-    <!-- FIN SLIDESHOW -->
-                      </section>
+    
+                      </section> -->
 
         </div> 
 
