@@ -1,7 +1,6 @@
 <?php
-
-require('../../config_bd.php');
-
+require('config_bd.php');
+include ("../bloqueSeguridad.php");
 $id_usuario=$_SESSION["id_usuario"];
 
 //Obtenemos los datos del formulario de registro
