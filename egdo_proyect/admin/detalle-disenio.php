@@ -34,13 +34,6 @@
 		<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
-		<style>
-		.mod-img-det {
-		max-width: 200px;
-		height: auto;	
-			
-		}
-		</style>
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
@@ -100,8 +93,8 @@
 											
 											//if($_GET['idempresa']>0){
 											$consulta = 
-											("SELECT  d.id_disenio,d.codigo_tipo,d.disenio_frontal,d.nombre_imagen,
-											d.disenio_impresion,d.nombre_impresion,d.id_usuario_subio,u.nombre,u.apellido
+											("SELECT  d.id_disenio,d.codigo_tipo,d.path_frontal,d.path_espalda,d.path_img_doble,
+											d.id_usuario_subio,u.nombre,u.apellido
 											FROM disenio AS d INNER JOIN usuario AS u ON d.id_usuario_subio = u.id_usuario
 											WHERE id_disenio='$id_disenio'");
 											
@@ -150,19 +143,10 @@
 									    
 										<div class="row uniform 25%">
 											<!-- Break -->
-											<div class="-2u 4u"><span>Nombre Imagen: </span></div>
+											<div class="-2u 4u"><span>Codigo Tipo: </span></div>
 												
 											<div class="-1u 3u$">
-												<span><?php echo $row['nombre_imagen']; ?></span>
-											</div>
-											
-											<!-- Break -->
-											<div class="-2u 4u">
-												<span>Nombre Impresión: </span>
-											</div>
-											
-											<div class="-1u 3u$">
-												<span><?php echo $row['nombre_impresion']; ?></span>
+												<span><?php echo $row['codigo_tipo']; ?></span>
 											</div>
 											
 										</div>
@@ -182,23 +166,30 @@
 									
 									<section class="6u 12u(mobile)"> <!-- section uss-->
 									
-											
-										<div class="-2u 8u$">
-										<img class="mod-img-det" src="data:image/jpeg;base64,<?php echo base64_encode($row['disenio_frontal']); ?>" />
+									<div class="row">	
+										<div class="4u">
+										<img class="mod-img-api" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_frontal']; ?>"/>
 										</div>
 										
+										<div class="4u">
+										<img class="mod-img-api" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_espalda']; ?>"/>
+										</div>
 										
+										<div class="4u$">
+										<img class="mod-img-api" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_img_doble']; ?>"/>
+										</div>
+									</div>	
 									
 									</section> <!-- /section uss-->
 									
 									<section class="6u 12u$(mobile)"> <!-- section image -->
 										
 										<header>	
-											<h2>Seleccione Imagen </h2>
+											<h2>Diseños </h2>
 										</header>
 										
 										<header>
-											<h3> <i class="fa fa-picture-o" aria-hidden="true"></i> Diseño Frontal</h3>
+											<h3> <i class="fa fa-picture-o" aria-hidden="true"></i>Moderar los Diseños</h3>
 										</header>
 										
 										<!-- form start -->
@@ -207,16 +198,13 @@
 									
 										<div class="row uniform 50%">	
 										<!-- Break -->
-										<input type='hidden' name='disenioUno' value='<?php echo $id_protegido=base64_encode($row['id_disenio']); ?>'/>
+										<input type='hidden' name='disenio' value='<?php echo $id_protegido=base64_encode($row['id_disenio']); ?>'/>
 										
-										<!-- Break -->
-										<div class="-1u 2u"><span>Imagen</span></div>
-										<div class="-1u 5u$"><input type="file" name='imagen' id='imagen' class="form-class"/></div>
 										
 										<!-- Break -->
 										<div class="-2u 8u$">
 											<button type="submit" class="button" name="btn-save" id="btn-save">
-											<i class="fa fa-upload" aria-hidden="true"></i> Subir
+											<i class="fa fa-upload" aria-hidden="true"></i> Moderar
 											</button>
 										</div>
 								    

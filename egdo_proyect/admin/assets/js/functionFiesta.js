@@ -40,7 +40,7 @@ jQuery(function($){
 							setTimeout(' window.location.href = "home.php"; ',4000);*/
 							$("#error").fadeOut();
 							$("#error").fadeIn('slow', function(){
-								$("#error").html('<div class="box success"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Modificacion correcta</div>');
+								$("#error").html('<div class="box success"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Imagen moderada correctamente</div>');
 								$("#form-fiesta")[0].reset();
 									window.location.href="moderar-fiesta.php";
 								});	
