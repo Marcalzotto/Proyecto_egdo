@@ -4616,3 +4616,13 @@ section p.detalles{
     font-family: 'Open Sans Condensed',sans-serif;
     font-weight: bold;
 }
+
+.aloja_comentarios{
+	margin: auto;
+}
+
+section h4{
+	    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+}

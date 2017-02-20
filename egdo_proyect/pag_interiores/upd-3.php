@@ -6,6 +6,7 @@
 ?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+<?php include("funciones/obtener_mes.php");?>  
 
 <?php
 $curso = $_SESSION["curso"];
@@ -89,6 +90,7 @@ if(isset($_GET["upd"])){
       <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
       <script src="../js/tomarDatos.js"></script>
       <script src="../js/calificar_upd.js"></script>
+      <script src="../js/subir_comentario_upd.js"></script>
   </head>
   <body class="homepage">
     <div id="page-wrapper">
@@ -176,19 +178,60 @@ if(isset($_GET["upd"])){
             </section>
             <section class="4u 12u(mobile) section_comentario">
               <p class="upd_votes">Dejanos tu comentiaro.</p>
-              <form>
+              <form id="form_upd">
                   <textarea class="charcounter-control" name="comentario_upd" id="id_comentario_upd" maxlength='1000'  warnlength='800' cols="30" rows="10"></textarea>
                   <button id="enviar_comentario_upd">Comentar</button>
                   <input type="reset" value="Borrar"/>
               </form>
               
             </section>
-            
-             <div class="comentario">
+            <section class="4u 12u(mobile) aloja_comentarios">
+            <?php
+              $buscar_comentario = "select * from comentario c join usuario u on c.id_usuario = u.id_usuario where c.id_curso = '$curso' and c.id_actividad = 2 and c.id_lugar = '$id_upd' and estado_moderar = 0"; 
+              if($result = $conexion->query($buscar_comentario)){
+                if($result->num_rows > 0){
+                   while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+                      $vec_comentario[] = $reg;
+                   } 
+
+                   foreach ($vec_comentario as $unComentario) {
+                          $fecha_separar = split("-", $unComentario["fecha_hora"]);
+                          $aaaa = $fecha_separar[0];
+                          $mm = $fecha_separar[1];
+                          $dd = $fecha_separar[2];
+
+                          $mes_nombre = get_mes($mm);
+
+                          $tiempo = split(" ", $dd);
+                          $dia = $tiempo[0];
+                          $hora = $tiempo[1];
+
+                          $separar_hora = split(":", $hora);
+                          $horas = $separar_hora[0];
+                          $minutos = $separar_hora[1];
+                          $segundos = $separar_hora[2];
+
+                       echo "<div class='comentario'>
+                        <p class='nombre'>".$unComentario["nombre"]."</p>
+                        <p class='contenido'>".$unComentario["comentario"]."</p>
+                        <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
+                        </div>";     
+                   }
+                 
+                }else{
+                  echo "<h4>Aun se han subido comentarios sobre este lugar.</h4>";
+                }
+              }else{
+                echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>".$conexion->error;
+              }
+            ?>
+
+             <!--<div class="comentario">
+               <p class="nombre">Nombre User</p>
                <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
                <p class="fecha">Aca va ir la fecha.</p>
-             </div>
-
+             </div>-->
+            </section>
 
         </div> 
 

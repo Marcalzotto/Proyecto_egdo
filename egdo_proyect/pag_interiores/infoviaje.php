@@ -56,7 +56,7 @@
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/viajes.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
-			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 	
@@ -86,35 +86,30 @@
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-                    <?php 
-							
-							//require_once("conexion.php");
-							$host_db = "localhost";
-							$user_db = "root";
-							$pass_db = "";
-							$db_name = "egdo_db";
-							
+                
 
-							$conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
-
-							if ($conexion->connect_error) {
-							die("La conexion falló: " . $conexion->connect_error);
-							}
-							?>
-
-     <div id="intro" class="container"> 
+     			<div id="intro" class="container"> 
 						<div class="row">
 							<div id="mensaje"> </div>
 							<?php
 								$con = "select * from info_viaje";
 								$resultado = $conexion->query($con);
-								while ($datos = $resultado->fetch_assoc()) {
-									$ruta_img = $datos['nombre_lugar'];
+								if($resultado->num_rows > 0){
+									while ($datos = $resultado->fetch_assoc()) {
+										$ruta_img = $datos;
+									}
+									$flag = 1;
+								}else{
+									$flag = 0;
+								}
 							?>
 						<section class="4u 12u(mobile)">
          	
 
 						<?php 
+						if($flag == 0){
+							echo "<h2>No hay destinos cargados</h2>";
+						}else{
 							if($ruta_img =='Bariloche.jpg'){
 								echo"<a href='bariloche.php'><h2>Bariloche</h2></a>";
 							}  
@@ -135,17 +130,19 @@
 								echo "<a href='mexico.php'><h2>Cancun</h2></a>";
 							}  
 							else{
-								echo "<a href='destinos.php'><h2>$datos[nombre_lugar]</h2></a>";
-							} 
+								echo "<a href='destinos.php'><h2>".$ruta_img['nombre_lugar']."</h2></a>";
+							}
+
+							echo  "<p><b>Descripcion:</b><br>".$ruta_img["descripcion"]."</p>
+							<img class='number' src=../images/".$ruta_img["imagen"]." />";
+						}
 						?>
 
-							<p><b>Descripcion:</b><br><?php echo $datos['descripcion']; ?></p>
-							<img class="number" src="/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img; ?>"/> 
+							<!--<p><b>Descripcion:</b><br><?php //echo $datos['descripcion']; ?></p>
+							<img class="number" src="/Proyecto_egdo/egdo_proyect/img/<?php //echo $ruta_img; ?>"/>--> 
 						</section>
 
-						<?php
-					};
-						?>
+						
 
 								</div>
 						</div>
@@ -156,7 +153,7 @@
 							<div class="row">
 
 								<section class="4u 12u(mobile)">
-									<div id="bariloche"><a href="bariloche.html"><span class="number">Bariloche</span></a></div> <!-- Agregue el div con el id bariloche para ponerle de fondo la imagen -->
+									<div id="bariloche"><a href="bariloche.html"><span class="number">Bariloche</span></a></div>  Agregue el div con el id bariloche para ponerle de fondo la imagen -->
 								<!--	 <div id="mendoza"><a href="mendoza.html"><span class="number">Mendoza</span></a></div>
 								</section>
 								<section class="4u 12u(mobile)">
@@ -204,13 +201,13 @@
 		
 		
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/skel-viewport.min.js"></script>
-			<script src="../assets/js/util.js"></script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/jquery.dropotron.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/skel-viewport.min.js"></script>
+			<script src="../js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
+			<script src="../js/main.js"></script>
 			
 			
 	</body>
