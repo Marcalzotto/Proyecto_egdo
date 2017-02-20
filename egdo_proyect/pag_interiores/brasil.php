@@ -102,6 +102,9 @@
                     <label>Subir foto 
                     <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
                               </div>
+                            <div class='form-row form-input-name-row'>
+                    <input type='text' name='nombre' id='nombre' placeholder='nombre'>
+                  </div>
                               <div class='form-row form-input-name-row'>
                     <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
                   </div>
