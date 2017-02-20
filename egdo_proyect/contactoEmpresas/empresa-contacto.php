@@ -1,19 +1,6 @@
 <?php
 //Conectamos a la base de datos
-//require('../../conexion.php');
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "egdo_db";
-
-//$id_usuario=$_SESSION["id_usuario"];
-// Create connection
-$conexion = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conexion) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include('../pag_interiores/conexion.php');
 
 //Obtenemos los datos del formulario de registro
 $namePOST = $_POST["name"]; 
@@ -94,7 +81,7 @@ else {
 		$mail->Password = 'Prinick2016';                // Contraseña SMTP
 		$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
 		$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
-		$mail->From = 'tucorreo@gmail.com';
+		$mail->From = 'egdo.egresados@gmail.com';
 		$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
 		$mail->isHTML(true); //Decimos que lo que enviamos es HTML
 		$mail->CharSet = 'UTF-8';  // Configuramos el charset 
@@ -102,7 +89,7 @@ else {
 		$mensaje = 'La empresa <b>'.$namePOST.'</b> dejo un mensaje: <h2>"'.$messagePOST.'"</h2><br>Correo electronico: '.$emailPOST;
 		
 		//Agregamos a todos los destinatarios
-		$mail->addAddress('noenmorel@gmail.com',$namePOST);
+		$mail->addAddress('egdo.egresados@gmail.com',$namePOST);
 		
 		//Añadimos el asunto del mail
 		$mail->Subject = 'Consulta enviada por una empresa mediante Web';
@@ -112,7 +99,7 @@ else {
 		
 		if(!$mail->send()) {
 		
-			echo 'error al enviar email';
+			echo 'Error al enviar email, verifica tu conexion de internet.';
 			
 		} 
 		else {											
