@@ -96,31 +96,48 @@
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
+			
+		
+					<!-- Main Wrapper -->
+				<div id="main-wrapper">
 
-					
-					<div id="votacion">
-						<div id="alert">
+						<!-- Main -->
+						<div id="intro" class="container">
+						
+							<div class="row"> <!-- Row Principal -->	
 							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>ENVIA INVITACIONES</h2>
+									</header>
+									
+									<hr class="major"/>
+									</br>									
+										<h6>Confirma emails</h6>
+									</br>
+									<hr class="major"/>
+									</br>
+								
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
 						</div>
-							<h2>Envia invitaciones</h2>
+						
+						<!-- Wide Content -->
+						<section id="content" class="container">
 							
-							<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate">
+						<div class="row"> <!-- Row Principal -->
+				
+						<section class="12u 12u">
+							
+							<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+							
+							
+							<!-- Contact Form -->
+							<form action="../invitaciones/invitacionesEnvio.php" method="post" role="form">
 								
-							
-				<form action="../invitaciones/invitacionesEnvio.php" method="post" role="form">
-
-						<div class="form-wizard">
-							
-							<div class="rows">
-
-								<div class="col-md-8 col-sm-7">
-								
+								<div class="row 50%">
+									
 										<?php
 											
 												//email
@@ -164,13 +181,16 @@
 											}
 											
 											if($bandera==0){
-											
+												echo '<div class="12u 12u"><span>';
 												echo 'Se enviaran invitaciones a los siguientes emails:</br>';
+												echo '</span></div>';
+												echo '<div class="12u 12u"><span>';
 												foreach($emailsOk as $invitacion){
 												
 													echo '- '.$invitacion.'</br>';
 												
 												}
+												echo '</span></div>';
 												
 												//manera de mandar array por POST o GET
 												$emailsOk = serialize($emailsOk);
@@ -179,6 +199,11 @@
 												
 												echo '<input type="hidden" name="emailsOk" value="'.$emailsOk.'">';
 												echo '<input type="hidden" name="id_curso" value="'.$_POST["id_curso"].'">';
+												
+												echo '<div class="-5u 12u$">
+												<input type="submit" class="button special fit small" name="acceso"  value="Enviar">
+												</div>';
+												
 											}
 											else{
 											
@@ -187,42 +212,30 @@
 											}
 											
 											?>
-											
-											
+										
 									
-
+								
 								</div>
-
-							</div><!--/ .row-->
+								
+							</form>
 							
-						</div><!--/ .form-wizard-->
+							</div> <!-- /Sec Datos Empresa -->
+							
+						</section>
+							
+						</div> <!-- /Row Principal -->	
 
-						<div class="prev">
-							<!--/<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
-							<div class="button-divider"></div>-->
-						</div>
+
+					
+						</section>
+
+				</div>	
+	
 						
-						<div class="next">
-							<button class="button button-control" type="submit"><span>Paso Siguiente <b>Confirmar Invitacion</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-
-					</form><!--/ .form-wizard-->
-					
-					</div><!--/ .container-->
-				
-					</div><!--/ .form-container-->
-
-					</div><!--/ #content-->
-							
-					</div>
-					
 					
 				<?php
 					include '../pag_interiores/menu/masterFooter.php';
 				?>
-
-		</div>
 
 		
 		

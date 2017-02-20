@@ -33,7 +33,8 @@
 		
 		<!-- FACEBOOK modificar solo lo que se encuentra entre [] -->								
 		<li>
-			<a href="http://www.facebook.com/sharer.php?s=100&p[url]=http://egdo.com.ar?m2w&s=100&p[title]=Conoce+a+EGDO&p[images][0]=http://www.egdo.com.ar/image.png&p[summary]=Primera+app+para+egre" class="icon fa-facebook" target="_blank"><span>Facebook</span>
+			<a href="http://www.facebook.com/sharer.php?s=100&p[url]=http://egdo.com.ar?m2w&s=100&p[title]=Conoce+a+EGDO&p[images][0]=http://www.egdo.com.ar/image.png&p[summary]=Primera+app+para+egre" class="icon fa-facebook" target="_blank">
+				<img src="botonfacebook.png" alt=""">
 			</a>
 		</li>							
 		<!-- compartir facebook -->

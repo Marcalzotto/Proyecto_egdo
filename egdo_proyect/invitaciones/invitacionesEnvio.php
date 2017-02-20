@@ -77,7 +77,6 @@
 	
 	</head>
 	<body class="homepage">
-		<div id="page-wrapper">
 		<header role="banner">
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
@@ -95,31 +94,43 @@
 						</div>
 				
 				</div>
-</header>
-			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
+	</header>
 
-					
-					<div id="votacion">
-						<div id="alert">
+							<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+						<!-- Main -->
+						<div id="intro" class="container">
+						
+							<div class="row"> <!-- Row Principal -->	
 							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>ENVIA INVITACIONES</h2>
+									</header>
+									
+									
+								
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
 						</div>
-							<h2>Envia invitaciones</h2>
+						
+						<!-- Wide Content -->
+						<section id="content" class="container">
 							
-							<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate">
-								
-						<div class="form-wizard">
+						<div class="row"> <!-- Row Principal -->
+				
+						<section class="12u 12u">
 							
-							<div class="rows">
-
-								<div class="col-md-8 col-sm-7">
-								<h3>Se han enviado todas las invitaciones!</h3>
-											
+							<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+							
+							
+							<!-- Contact Form -->
+							<form action="../invitaciones/invitacionesEnvio.php" method="post" role="form">
 								
+								<div class="row 50%">
+									
 										<?php
 											
 												$host_db = "localhost";
@@ -216,52 +227,83 @@
 													//Mensaje del email
 													$mail->Body = '<div align="center"><img src="http://i66.tinypic.com/10nua77.png"></div><br><br>'.$mensaje;
 													
-													if(!$mail->send()) {
 													
-														echo 'error al enviar email';
+													$bandera=0;
+													if(!$mail->send()) {
 														
-													} else {											
+														$bandera=1;
 														
-														//echo '<p>Datos correctos!! email a:'.$emailsOk[$i].' </br>Por favor revisa tu bandeja de entrada y valida tu cuenta para continuar con el paso 2 </p>';
-																		//mysqli_close($conexion);
-														//header('Location:registroPaso2.php');
-														//echo ("<script>location.href='registroPaso2.php'</script>");// atado con alambreeeeee!!!!!!!
-														// da error, preguntar RUSTY!!!! O buscar en 
-														//http://librosweb.es/foro/pregunta/128/como-solucionar-el-problema-headers-already-sent-de-php/
+														
+													} else {
+													
+														$bandera=0;
+														
 														$mail->ClearAddresses();
 														$mail->ClearAttachments();								
 													}
+													
+													
+													
 											
 												}
 											}
- 
+											
+											if($bandera==1) {
+														
+														echo'<hr class="major"/>
+														<div class="12u 12u"><span>
+														</br>									
+															<h6>Error al enviar invitaciones, verifica tu conexion de internet!</h6>
+														</br>
+														</span></div>
+														<hr class="major"/>
+														</br>';
+														
+														
+													} else {											
+														
+													echo'<hr class="major"/>
+														<div class="12u 12u"><span>
+														</br>									
+															<h6>Se han enviado las invitaciones correctamente!</h6>
+														</br>
+														</span></div>
+														<hr class="major"/>
+														</br>';
+														
+														$mail->ClearAddresses();
+														$mail->ClearAttachments();								
+													}
 										
 											
 											?>
-											
+										
 									
-
+								
 								</div>
-
-							</div><!--/ .row-->
+								
+							</form>
 							
-						</div><!--/ .form-wizard-->
-
-					
-					</div><!--/ .container-->
-				
-					</div><!--/ .form-container-->
-
-					</div><!--/ #content-->
+							</div> <!-- /Sec Datos Empresa -->
 							
-					</div>
+						</section>
+							
+						</div> <!-- /Row Principal -->	
+
+
 					
-					
+						</section>
+
+				</div>
+
+
+
+								
 				<?php
 					include '../pag_interiores/menu/masterFooter.php';
 				?>
 
-		</div>
+		
 
 		
 		
