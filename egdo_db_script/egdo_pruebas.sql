@@ -218,3 +218,9 @@ select id_notificacion from notificacion_vista_por where usuario = 6
 						and curso_notificacion = 2);
 
 select id_actividad from actividad where id_actividad between 2 and 3;
+
+update upd set calificacion = 0.0 where id_upd = 2;
+
+select * from upd where id_curso = 2 and calificacion = (
+select max(calificacion) from upd
+);

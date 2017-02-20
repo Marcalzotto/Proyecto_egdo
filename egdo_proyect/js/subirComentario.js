@@ -46,7 +46,7 @@ $(document).ready(function(){
 							
 							var mes_numero = parseInt(newText[3]);
 							var anio = parseInt(newText[2]);
-						
+							var mes="";
 							
 							var hora = newText[5]; 
 							switch(mes_numero){

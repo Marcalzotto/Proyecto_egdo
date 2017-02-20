@@ -21,6 +21,7 @@ if($result = $conexion->query($verificarFecha)){
 		$intervalA = $intervalo->y;
 		$intervalM = $intervalo->m;
 		$intervalD = $intervalo->d;
+		
 		if($intervalA > 0){
 			header('location:upd-2.php');
 		}else if($intervalM > 0){

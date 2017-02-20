@@ -39,7 +39,7 @@
 			-moz-opacity: 0.8;
 			-webkit-opacity: 0.8;
 			filter: alpha(opacity=40);
-
+			font-size: 1.2em;/*Esta linea fue agregada por marcos, porque los nombre son demasiado grandes y se salen del circulo*/
 		}
 
         #intro .number a {

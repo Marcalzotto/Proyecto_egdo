@@ -8,6 +8,7 @@
 			include('funciones/obtener_mes.php');
 			include('funciones/generar_notificacion.php');
 			generar_notificacion($conexion,$_SESSION["curso"]);
+			include('funciones/cantidad_notificaciones_mensajes.php');
 			include('funciones/cantidad_notificaciones.php');
 ?>
 <!DOCTYPE HTML>
@@ -233,7 +234,7 @@
 								</div>
 									
 									<?php
-									$buscarComentarioEmpresa = "select u.nombre, ce.comentario, ce.fecha from usuario u join comentario_empresas ce on u.id_usuario = ce.id_usuario where id_empresa = '$id'";
+									$buscarComentarioEmpresa = "select u.nombre, ce.comentario, ce.fecha from usuario u join comentario_empresas ce on u.id_usuario = ce.id_usuario where ce.id_empresa = '$id' and ce.estado_moderar = 0";
 									$resultSet = $conexion->query($buscarComentarioEmpresa);
 									if($resultSet){
 										

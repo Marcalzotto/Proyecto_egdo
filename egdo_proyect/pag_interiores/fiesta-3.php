@@ -9,14 +9,28 @@
 
 <?php
 $curso = $_SESSION["curso"];
-if($_GET["fiesta"]){
+if(isset($_GET["fiesta"])){
   $id_fiesta = $_GET["fiesta"];
 
   $exp_reg='/[^0-9]/';
-  if(preg_match($exp_reg, $id_fiesta)){
+  if(!preg_match($exp_reg, $id_fiesta)){
+      $traerTodo = "select * from fiesta where id_fiesta = '$id_fiesta' and id_curso='$curso'";
+      if($result = $conexion->query($traerTodo)){
+        if($result->num_rows > 0){
+          $reg = $result->fetch_array(MYSQLI_ASSOC);
+        }else{
+          header('location:fiesta-2.php');
+        }
+      }else{
+        die("No se ha podido encontra el lugar");
+      }               
+    //header('location:upd-2.php');
+  }else{
     header('location:fiesta-2.php');
   }
 
+}else{
+  header('location:fiesta-2.php');
 }
 ?>
 
@@ -68,6 +82,7 @@ if($_GET["fiesta"]){
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
       <script src="../js/tomarDatos.js"></script>
+      <script src="../js/calificar_fiesta.js"></script>
   </head>
   <body class="homepage">
     <div id="page-wrapper">
@@ -94,6 +109,19 @@ if($_GET["fiesta"]){
 </header>
       <!-- Main Wrapper -->
         <div id="main-wrapper">
+           <section class="4u 12u(mobile) info_lugar">
+            <h2>Detalles del lugar</h2>
+            <p class="detalles">Nombre Lugar: <?php echo $reg["nombre"]; ?></p>
+            <p class="detalles">Telefono: <?php echo $reg["telefono"]; ?></p>
+            <p class="detalles">Calle: <?php echo $reg["calle"]; ?></p>
+            <p class="detalles">Altura: <?php echo $reg["altura"]; ?></p>
+            <p class="detalles">Fue propuesto: <?php echo $reg["fecha_creacion"]; ?> hs.</p>
+            <p class="detalles">Facebook: <?php if($reg["facebook"] != ""){echo $reg["facebook"];}else{echo "N/D";}?></p>
+            <p class="detalles">Twitter: <?php if($reg["twitter"] != ""){echo $reg["twitter"];}else{echo "N/D";} ?></p>
+            <p class="detalles">Instagram: <?php if($reg["instagram"] != ""){echo $reg["instagram"];}else{echo "N/D";} ?></p>
+            <p class="detalles">Pagina web: <?php if($reg["pagina_web"] != ""){echo $reg["pagina_web"];}else{echo "N/D";} ?></p>
+          </section>
+          
 
           <!-- Wide Content -->
             <section id="content" class="container">
@@ -101,31 +129,53 @@ if($_GET["fiesta"]){
                <div id="sliders">
                   <ul class="bjqs">
                   <?php
-                    $traerImagenes = "select * from fiesta where id_fiesta = '$id_fiesta' and id_curso='$curso'";
-                    if($result = $conexion->query($traerImagenes)){
-                      if($result->num_rows > 0){
-                        $reg = $result->fetch_array(MYSQLI_ASSOC);
+                   
                         echo "<li>
                                 <img src=../images/".$reg['foto_perfil']." alt='Imagenes de fiesta' title='".$reg['detalles_adicionales']."' />
                               </li>
                               <li>
                                 <img src=../images/".$reg['foto_lugar']." alt='Imagenes de fiesta' title='".$reg['detalles_adicionales']."' />
                               </li>";
-                      }
-                    }
+                      
+                    
                   ?>
-
-
-                    <!--<li>
-                      <img src="../images/mia-quinta.jpg" alt="" title="MiaQuinta, es un salón del oeste de gran capacidad, que tiene cercania inmediata con Capital Federal y es de muy fácil acceso." />
-                    </li>
-                    <li>
-                      <img src="../images/mia-quinta-2.jpg" alt="" title="Servicios que ofrecen, entre otros: Catering, opción gourmet y parrilla;Salón con capacidad desde 100 a 250 personas;Sonido e iluminación; Máquina de humo y espuma; pantalla y proyector de video y dvd, estacionamiento interno etc." />
-                    </li>-->
-                  </ul>
+                   </ul>
               </div>
-     
-                      </section>
+            </section>
+            <section class="4u 12u(mobile) section_votos">
+              <p class="fiesta_votes">Votar este lugar</p>
+              <form>
+                  <p class='clasificacion'>
+                  <input id='radio5' type='radio' name='estrellas' value='5'>
+                  <label class='labelEstrellas' id='label5' for='radio5'>★</label>
+                  <input id='radio4' type='radio' name='estrellas' value='4'>
+                  <label class='labelEstrellas' id='label4' for='radio4'>★</label>
+                  <input id='radio3' type='radio' name='estrellas' value='3'>
+                  <label class='labelEstrellas' id='label3' for='radio3'>★</label>
+                  <input id='radio2' type='radio' name='estrellas' value='2'>
+                  <label class='labelEstrellas' id='label2' for='radio2'>★</label>
+                  <input id='radio1' type='radio' name='estrellas' value='1'>
+                  <label class='labelEstrellas' id='label1' for='radio1'>★</label>
+                  <input type='hidden' value='<?php echo $id_fiesta; ?>' class='hidden'>
+                  </p>
+              </form>
+              <p class="valoration"></p>
+            </section>
+            <section class="4u 12u(mobile) section_comentario">
+              <p class="fiesta_votes">Dejanos tu comentiaro.</p>
+              <form>
+                  <textarea name="comentario_fiesta" id="id_comentario_fiesta" cols="30" rows="10"></textarea>
+                  <button id="enviar_comentario_fiesta">Comentar</button>
+                  <input type="reset" value="Borrar"/>
+              </form>
+              
+            </section>
+            
+             <div class="comentario">
+               <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
+               <p class="fecha">Aca va ir la fecha.</p>
+             </div>
+
 
         </div> 
 

@@ -6,8 +6,11 @@
 ?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
 <?php include('funciones/cantidad_notificaciones.php');?>
+<?php include('funciones/calcular_calificacion_upd_fiesta.php');?>
+<?php include('funciones/calcular_nuevo_ancho.php');?>
+<?php include('funciones/maximos_desempate_upd.php');?>
 <?php
-$verificarFecha = "select fecha_hora from evento where id_actividad = 3 and id_curso = $_SESSION[curso]"; 
+$verificarFecha = "select fecha_hora from evento where id_actividad = 2 and id_curso = $_SESSION[curso]"; 
 if($result = $conexion->query($verificarFecha)){
 	if($result->num_rows > 0){
 		$reg = $result->fetch_array(MYSQLI_ASSOC);
@@ -19,6 +22,70 @@ if($result = $conexion->query($verificarFecha)){
 		$intervalA = $intervalo->y;
 		$intervalM = $intervalo->m;
 		$intervalD = $intervalo->d;
+		$vota = 0;
+		//echo $intervalD;
+		//cuando descomente esta linea se producira un error con la libreria skel
+		if($intervalA > 0){
+				$buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from upd)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+		}else if($intervalM > 0){
+				$buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from upd)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+		}else if($intervalD >= 22){
+				$buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from upd)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+		}else if($intervalD >= 15 && $intervalD < 22){
+			//es hora de votar por los lugares propuestos
+			$vota = 1; 
+		}else if($intervalD < 15){
+			//solo se ven los lugares propuestos 
+			$vota = 0;
+		}
 	
 	}
 }else{
@@ -88,6 +155,7 @@ if($result = $conexion->query($verificarFecha)){
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">
@@ -118,7 +186,18 @@ if($result = $conexion->query($verificarFecha)){
 
 					<!-- Wide Content -->
 						<div id="intro" class="container">
+
+								<h2>Lugares propuestos para el UPD :<?php echo $intervalD; ?></h2>
+					
 							<?php
+
+							if($intervalA > 0){
+								maximos_desempate_upd($maximos, $vecMax, $conexion);
+							}else if($intervalM > 0){
+								maximos_desempate_upd($maximos, $vecMax, $conexion);
+							}else if($intervalD >= 22){
+								maximos_desempate_upd($maximos, $vecMax, $conexion);
+							}else{	
 								$x=0;
 								$y=0;
 								$traerLugares = "select * from upd where id_curso = '$_SESSION[curso]'";
@@ -145,34 +224,21 @@ if($result = $conexion->query($verificarFecha)){
 										echo "<div class='row'>";	
 											if($rows == $entera){
 												
-												while($y < $sections) { 
+												while($y < $sections) {
+												$calificacion = calcular($conexion,$lugares[$x]['id_upd'],'upd');
+												$ancho = calcular_ancho($calificacion);  
 													echo"<section class='4u 12u(mobile)'>
 														<div id='cordoba'>
 															<a href=upd-3.php?upd=".$lugares[$x]['id_upd']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre_lugar"]."</span></a>
-														</div>
-													
-														<p class='detalles'>Calificacion:</p>
-														<div id='estrellas-gris'><div id='estrellas-cambia'></div></div>
-														<p class='detalles'>3.2</p>
-														<p class='detalles'>Votar</p>
+														</div>";
+														
+														if($vota > 0){
+														echo"<p class='detalles'>Calificacion:</p>
+														<p id='cal' class='detalles'>".$lugares[$x]['calificacion']."</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:".$ancho."px'></div></div>";
+														}
 
-														<form>
-  													<p class='clasificacion'>
-    												<input id='radio5' type='radio' name='estrellas' value='5'>
-    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
-   													<input id='radio4' type='radio' name='estrellas' value='4'>
-    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
-    												<input id='radio3' type='radio' name='estrellas' value='3'>
-    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
-    												<input id='radio2' type='radio' name='estrellas' value='2'>
-   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
-    												<input id='radio1' type='radio' name='estrellas' value='1'>
-    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
-    												<input type='hidden' value='1' id='hidden'>
-  													</p>
-														</form>
-
-													</section>";
+													echo"</section>";
 													$y++;
 													$x++;
 												}
@@ -180,31 +246,18 @@ if($result = $conexion->query($verificarFecha)){
 											}else{
 													
 													while($y < $sections){ 
+													$calificacion = calcular($conexion,$lugares[$x]['id_upd'],'upd');
+													$ancho = calcular_ancho($calificacion);  
 													echo"<section class='4u 12u(mobile)'>
 														<div id='cordoba'>
 															<a href=upd-3.php?upd=".$lugares[$x]['id_upd']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre_lugar"]."</span></a>
-														</div>
-														<p class='detalles'>Calificacion:</p>
-														<div id='estrellas-gris'><div id='estrellas-cambia'></div></div>
-														<p class='detalles'>3.2</p>
-														<p class='detalles'>Votar</p>
-
-														<form>
-  													<p class='clasificacion'>
-    												<input id='radio5' type='radio' name='estrellas' value='5'>
-    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
-   													<input id='radio4' type='radio' name='estrellas' value='4'>
-    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
-    												<input id='radio3' type='radio' name='estrellas' value='3'>
-    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
-    												<input id='radio2' type='radio' name='estrellas' value='2'>
-   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
-    												<input id='radio1' type='radio' name='estrellas' value='1'>
-    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
-    												<input type='hidden' value='1' id='hidden'>
-  													</p>
-														</form>
-                 					</section>";
+														</div>";
+														if($vota > 0){
+														echo"	<p class='detalles'>Calificacion:</p>
+														<p id='cal' class='detalles'>".$lugares[$x]['calificacion']."</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:".$ancho."px'></div></div>";
+														}
+                 					echo"</section>";
 													$y++;
 													$x++;
 													}
@@ -221,7 +274,7 @@ if($result = $conexion->query($verificarFecha)){
 										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
 									}
 								}
-
+							}
 
 							?>
 							<!--<div class="row">

@@ -6,10 +6,11 @@
 ?>
 <?php include("funciones/cantidad_notificaciones.php");?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
-
-
+<?php include('funciones/calcular_calificacion_upd_fiesta.php');?>
+<?php include('funciones/calcular_nuevo_ancho.php');?>
+<?php include('funciones/maximos_desempate_fiesta.php');?>
 <?php
-$verificarFecha = "select fecha_hora from evento where id_actividad = 2 and id_curso = $_SESSION[curso]"; 
+$verificarFecha = "select fecha_hora from evento where id_actividad = 3 and id_curso = $_SESSION[curso]"; 
 if($result = $conexion->query($verificarFecha)){
 	if($result->num_rows > 0){
 		$reg = $result->fetch_array(MYSQLI_ASSOC);
@@ -21,6 +22,71 @@ if($result = $conexion->query($verificarFecha)){
 		$intervalA = $intervalo->y;
 		$intervalM = $intervalo->m;
 		$intervalD = $intervalo->d;
+		//echo $intervalD;
+		//cuando descomente esta linea se producira un error con la libreria skel
+		$vota = 0;
+		if($intervalA > 0){
+			$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from fiesta)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+		}else if($intervalM > 0){
+				$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from fiesta)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+		}else if($intervalD >= 22){
+				$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
+												 select max(calificacion) from fiesta)";
+			if($result = $conexion->query($buscar_maximos)){
+				//$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$maximos = $result->num_rows;
+				if($maximos > 1){
+					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
+						$vecMax[] = $reg;
+					}
+				}else{
+					$reg = $result->fetch_array(MYSQLI_ASSOC);
+					$vecMax[] = $reg;
+				}
+	
+			}else{
+				die("Hubo un error al buscar los maximos");
+			}
+			
+		}else if($intervalD >= 15 && $intervalD < 22){
+			//es hora de votar por los lugares propuestos
+			$vota = 1; 
+		}else if($intervalD < 15){
+			$vota = 0;
+			//solo se ven los lugares propuestos
+		}
 		
 	}
 }else{
@@ -106,8 +172,18 @@ if($result = $conexion->query($verificarFecha)){
 					
 					<!-- Wide Content -->
 						<div id="intro" class="container">
-							
+									
+								<h2>Lugares propuestos para la fiesta de egredos: <?php echo $intervalD; ?></h2>
+				
 							<?php
+							if($intervalA > 0){
+								maximos_desempate_fiesta($maximos, $vecMax, $conexion);
+							}else if($intervalM > 0){
+								maximos_desempate_fiesta($maximos, $vecMax, $conexion);
+							}else if($intervalD >= 22){
+								maximos_desempate_fiesta($maximos, $vecMax, $conexion);
+							}else{	
+
 								$x=0;
 								$y=0;
 								$traerLugares = "select * from fiesta where id_curso = '$_SESSION[curso]'";
@@ -135,32 +211,19 @@ if($result = $conexion->query($verificarFecha)){
 										echo "<div class='row'>";	
 											if($rows == $entera){
 												
-												while($y < $sections) { 
+												while($y < $sections){
+													$calificacion = calcular($conexion,$lugares[$x]['id_fiesta'],'fiesta');
+													$ancho = calcular_ancho($calificacion); 
 													echo"<section class='4u 12u(mobile)'>
 														<div id='cordoba'>
 															<a href=fiesta-3.php?fiesta=".$lugares[$x]['id_fiesta']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre"]."</span></a>
-														</div>
-                 						<p class='detalles'>Calificacion:</p>
-														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:95px'></div></div>
-														<p class='detalles'>3.2</p>
-														<p class='detalles'>Votar</p>
-
-														<form>
-  													<p class='clasificacion'>
-    												<input id='radio5' type='radio' name='estrellas' value='5'>
-    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
-   													<input id='radio4' type='radio' name='estrellas' value='4'>
-    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
-    												<input id='radio3' type='radio' name='estrellas' value='3'>
-    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
-    												<input id='radio2' type='radio' name='estrellas' value='2'>
-   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
-    												<input id='radio1' type='radio' name='estrellas' value='1'>
-    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
-    												<input type='hidden' value='1' id='hidden'>
-  													</p>
-														</form>
-													</section>";
+														</div>";
+                 						if($vota > 0){
+                 						echo"<p class='detalles'>Calificacion:</p>
+														<p class='detalles'>".$lugares[$x]['calificacion']."</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:".$ancho."px'></div></div>";
+														}
+													echo"</section>";
 													$y++;
 													$x++;
 												}
@@ -168,31 +231,19 @@ if($result = $conexion->query($verificarFecha)){
 
 											}else{
 												while($y < $sections){ 
-													echo"<section class='4u 12u(mobile)'>
+
+													$calificacion = calcular($conexion,$lugares[$x]['id_fiesta'],'fiesta');
+													$ancho = calcular_ancho($calificacion); 
+														echo"<section class='4u 12u(mobile)'>
 														<div id='cordoba'>
 															<a href=fiesta-3.php?fiesta=".$lugares[$x]['id_fiesta']."><span class='number' style='background-image:url(../images/".$lugares[$x]['foto_perfil'].")'>".$lugares[$x]["nombre"]."</span></a>
-														</div>
-                 					 	<p class='detalles'>Calificacion:</p>
-														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:100px'></div></div>
-														<p class='detalles'>3.2</p>
-														<p class='detalles'>Votar</p>
-
-														<form>
-  													<p class='clasificacion'>
-    												<input id='radio5' type='radio' name='estrellas' value='5'>
-    												<label class='labelEstrellas' id='label5' for='radio5'>★</label>
-   													<input id='radio4' type='radio' name='estrellas' value='4'>
-    												<label class='labelEstrellas' id='label4' for='radio4'>★</label>
-    												<input id='radio3' type='radio' name='estrellas' value='3'>
-    												<label class='labelEstrellas' id='label3' for='radio3'>★</label>
-    												<input id='radio2' type='radio' name='estrellas' value='2'>
-   													<label class='labelEstrellas' id='label2' for='radio2'>★</label>
-    												<input id='radio1' type='radio' name='estrellas' value='1'>
-    												<label class='labelEstrellas' id='label1' for='radio1'>★</label>
-    												<input type='hidden' value='1' id='hidden'>
-  													</p>
-														</form>
-													</section>";
+														</div>";
+                 					 if($vota > 0){
+                 			 			echo"<p class='detalles'>Calificacion:</p>
+														<p class='detalles'>".$lugares[$x]['calificacion']."</p>
+														<div id='estrellas-gris'><div id='estrellas-cambia' style='width:".$ancho."px'></div></div>";
+														}
+													echo"</section>";
 													$y++;
 													$x++;
 													}
@@ -208,91 +259,9 @@ if($result = $conexion->query($verificarFecha)){
 										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
 									}
 								}
-
-
+							}
 							?>
-
-
-
-
-							<!--<div class="row">
-                               
-								<section class="4u 12u(mobile)">
-									<div id="mia-quinta"><a href="fiesta-3.php"><span class="number">MiaQuinta</span></a></div>
-                                    <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-
-
-									  Agregue el div con el id bariloche para ponerle de fondo la imagen 
-									 <div id="mendoza"><a href="mendoza.html"><span class="number"></span></a></div>
-								       <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="cordoba"><a href="cordoba.html"><span class="number"></span></a></div>
-								    <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-
-								    <div id="mardelplata"><a href="mardelplata.html"><span class="number"></span></a></div>
-								     <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="brasil"><a href="brasil.html"><span class="number"></span></a></div>
-									 <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-
-									<div id="mexico"><a href="mexico.html"><span class="number"></span></a></div>
-								 <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								
-								</section>
-							</div>-->
 						</div>
-						<!--<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
-
-									<div class="form-title-row">
-										<h1>Deja tu comentario</h1>
-									</div>
-
-									<div class="form-row form-input-name-row">
-		
-		                               <textarea name="Comentario" placeholder="Comentario"></textarea>
-
-									</div>	
-
-								</form>-->
 				</div>
 				
 				<!-- Footer Wrapper -->

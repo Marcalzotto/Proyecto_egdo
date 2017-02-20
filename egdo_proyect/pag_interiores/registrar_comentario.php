@@ -47,7 +47,7 @@
 
 		if($vec[0]["datos"] == 1 && $vec[1]["datos"] == 1){
 			
-			$insertarComentario = "insert into comentario_empresas values('','$comentario','$id_empresa','$id_usuario','$fecha_insertar')";
+			$insertarComentario = "insert into comentario_empresas(comentario,id_empresa,id_usuario,fecha) values('$comentario','$id_empresa','$id_usuario','$fecha_insertar')";
 
 			$resultSet = $conexion->query($insertarComentario);
 			if($resultSet){
@@ -56,7 +56,7 @@
 				echo $datos;
 			
 			}else{
-				echo -2;
+				echo $conexion->error;
 			}
 			//$resultSet->close();
 		}else{
