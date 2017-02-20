@@ -34,7 +34,6 @@
 		<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
-	
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
@@ -74,58 +73,46 @@
 											<tr>
 												<th>ID</th>
 												<th>Nombre</th>
+												<th>Telefono</th>
+												<th>Foto_Lugar</th>
+												<th>Usuario Propuesta</th>
 												<th>Calle</th>
 												<th>Altura</th>
-												<th>Telefono</th>
-												<th>Imagen_1</th>
-												<th>Imagen_2</th>
-												<th>Usuario Propuesta</th>
-												<th>Estado</th>
-												<th>Moderar1</th>
-												<th>Moderar2</th>
-												
+												<th>Estado_Moderado</th>
+												<th>Detalles</th>
 											</tr>
 										</thead>
 										<tbody>
 		<?php
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_fiesta,nombre,calle,altura,telefono,imagen1,imagen2,id_usuario_propuesta,estado_moderar
-					FROM fiesta");
-		$result = $conexion ->query($consulta);
-		if ($result->num_rows >0) {
-		while($row = $result->fetch_assoc()){
+		$consulta = ("SELECT id_fiesta,nombre,telefono,foto_lugar,id_usuario_propuesta,calle,altura,estado_moderar1
+					FROM fiesta ORDER BY id_fiesta DESC");
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
 													
 		?>
 			<tr>
 			<td><?php echo $row['id_fiesta']; ?></td>
 			<td><?php echo $row['nombre']; ?></td>
+			<td><?php echo $row['telefono']; ?></td>
+			<td><img class="mod-img-table" src="../images/lugares_fiesta/<?php echo $row['foto_lugar']; ?>" /></td>
+			<td><?php echo $row['id_usuario_propuesta']; ?></td>
 			<td><?php echo $row['calle']; ?></td>
 			<td><?php echo $row['altura']; ?></td>
-			<td><?php echo $row['telefono']; ?></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen1']); ?>" /></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen2']); ?>" /></td>
-			<td><?php echo $row['id_usuario_propuesta']; ?></td>
-			<td><?php echo $row['estado_moderar']; ?></td>
-			<td>
-				<a href="detalle-fiesta.php?mod=<?php echo $id_protegido=base64_encode($row['id_fiesta']);?>" class="edit-link" href="#" title="Detalles">
-				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
-				</a>
-			</td>
+			<td><?php echo $row['estado_moderar1']; ?></td>
 			<td>
 				<a href="detalle-fiesta2.php?mod=<?php echo $id_protegido=base64_encode($row['id_fiesta']);?>" class="edit-link" href="#" title="Detalles">
 				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
 				</a>
 			</td>
-			
 			</tr>
 		<?php
-		
 		}
 		}
-		//}
-		$conexion->close();	
-											
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
+		mysqli_close($conexion);
 		?>
 										</tbody>
 									</table>

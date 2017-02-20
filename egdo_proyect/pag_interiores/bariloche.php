@@ -29,6 +29,9 @@ if ($conexion->connect_error) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	
+	<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
     
     <link rel="stylesheet" href="../css/index_gral.css" />
 
@@ -142,6 +145,9 @@ $("#enviarimagenes").on("submit", function(evento){
                     <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
                               </div>
                               <div class='form-row form-input-name-row'>
+                    <input type='text' name='nombre' id='nombre' placeholder='nombre'>
+                  </div>
+                              <div class='form-row form-input-name-row'>
                     <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
                   </div>
                             <button type='submit'>Subir imagen</button>
@@ -149,7 +155,41 @@ $("#enviarimagenes").on("submit", function(evento){
                 }
               ?>
 
-     <div id="sliders">
+       <div id="mensaje"> </div>
+              
+              <?php
+                $con = "select * from info_viaje where imagen='Bariloche'";
+                if($resultado = $conexion->query($con)){
+                if ($resultado ->num_rows > 0) {
+                while ($datos = $resultado->fetch_array(MYSQLI_ASSOC)){
+        
+                  $imgBar[]= $datos;
+                 }
+                  
+              echo "<section id='content' class='container'>";    
+            echo  "<div id='sliders'>";
+              echo "<ul class='bjqs'> ";
+            
+                  foreach($imgBar as $imgB) {
+                   echo
+                   "<li>
+                  <img src=../img/".$imgB['nombre_lugar']." alt='Imagenes Bariloche' title='".$imgB['descripcion']."'/>
+                  </li>
+
+                   ";
+                       }
+echo "</ul>";
+                        echo"</div>";
+     
+                     /* <!-- FIN SLIDESHOW -->*/
+                      echo "</section>";
+
+                     }
+                   }
+
+                 
+                 ?>
+    <!-- <div id="sliders">
                       <ul class="bjqs">
                         <li>
                     <img src="../images/cerro_catedral.jpg" alt="" title="Cerros: el cerro catedral es el centro de esquí más grande del hemisferio sur y ofrece una amplia infraestructura de servicios para la práctica de deportes invernales. Está abierto todo el año y cuenta con 40 medios de elevación (entre aerosillas y teleféricos), facilitando el ascenso de 35 mil personas por hora." />
@@ -161,7 +201,7 @@ $("#enviarimagenes").on("submit", function(evento){
                     <img src="../images/cerebro_bariloche.jpg" alt="" title="Discos: Cerebro fue inaugurada en el año 1980 siendo la más tradicional e innovadora de las discotecas de Bariloche, con su decoración de vanguardia y sus 1500 m2 alberga a 1600 personas, cuenta con salón vip, equipamiento tecnológico de vanguardia y show láser que aseguran una noche de inolvidable diversión." />
                 </li>
             </ul>
-        </div>
+        </div>-->
 
 
         </div> 

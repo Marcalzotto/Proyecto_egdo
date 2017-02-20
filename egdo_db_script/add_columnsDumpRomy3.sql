@@ -1,0 +1,5 @@
+ALTER TABLE `fiesta` ADD `estado_moderar` BOOLEAN NOT NULL DEFAULT FALSE ;
+
+ALTER TABLE `fiesta` ADD `estado_moderar1` BOOLEAN NOT NULL DEFAULT FALSE ;
+
+ALTER TABLE `upd` ADD `estado_moderar1` BOOLEAN NOT NULL DEFAULT FALSE ;

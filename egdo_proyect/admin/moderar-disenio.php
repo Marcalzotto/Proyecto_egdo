@@ -74,22 +74,19 @@
 											<tr>
 												<th>ID</th>
 												<th>Codigo</th>
-												<th>Diseño_Frontal</th>
-												<th>Nombre_Imagen</th>
-												<th>Diseño_impresion</th>
-												<th>Nombre_Impresion</th>
+												<th>Path_Frontal</th>
+												<th>Path_Espalda</th>
+												<th>Path_Imagen_Doble</th>
 												<th>Usuario_Subio</th>
 												<th>Estado</th>
-												<th>Moderar1</th>
-												<th>Moderar2</th>
+												<th>Moderar</th>
 											</tr>
 										</thead>
 										<tbody>
 		<?php
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_disenio,codigo_tipo,disenio_frontal,nombre_imagen,disenio_impresion,
-		nombre_impresion,id_usuario_subio,estado_moderar FROM disenio ORDER BY id_disenio DESC");
+		$consulta = ("SELECT id_disenio,codigo_tipo,path_frontal,path_espalda,path_img_doble,id_usuario_subio,estado_moderar FROM disenio ORDER BY id_disenio DESC");
 		$result = mysqli_query($conexion, $consulta);
 		if (mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_assoc($result)){
@@ -100,10 +97,15 @@
 			<tr>
 			<td><?php echo $row['id_disenio']; ?></td>
 			<td><?php echo $row['codigo_tipo']; ?></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['disenio_frontal']); ?>"/></td>
-			<td><?php echo $row['nombre_imagen']; ?></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['disenio_impresion']); ?>"/></td>
-			<td><?php echo $row['nombre_impresion']; ?></td>
+			<td>
+			<img class="mod-img-table" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_frontal']; ?>"/>
+			</td>
+			<td>
+			<img class="mod-img-table" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_espalda']; ?>"/>
+			</td>
+			<td>
+			<img class="mod-img-table" src="../pag_interiores/Tee-Designer-master/tdesignAPI/<?php echo $row['path_img_doble']; ?>"/>
+			</td>
 			<td><?php echo $row['id_usuario_subio']; ?></td>
 			<td><?php echo $row['estado_moderar']; ?></td>
 			<td>
@@ -111,12 +113,6 @@
 				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
 				</a>
 			</td>
-			<td>
-				<a href="detalle-disenio2.php?dis=<?php echo $id_protegido=base64_encode($row['id_disenio']);?>" class="edit-link" href="#" title="Detalles">
-				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
-				</a>
-			</td>
-			
 			</tr>
 		<?php
 		}

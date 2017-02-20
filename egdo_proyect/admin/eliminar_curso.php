@@ -77,28 +77,7 @@
 										if(filter_var($id_curso, FILTER_VALIDATE_INT) === false){  
 											echo 'Valor incorrecto';  
 										}else{  
-											$consulta = ("DELETE c, ad, pdf, ev, img, mb, notif, nvp, tc, tcal, u 
-														FROM curso AS c 
-														INNER JOIN actividad_disenio AS ad INNER JOIN curso_pdf AS pdf 
-														INNER JOIN evento AS ev 
-														INNER JOIN imagen AS img 
-														INNER JOIN medidas_bandera AS mb 
-														INNER JOIN notificaciones AS notif 
-														INNER JOIN notificacion_vista_por AS nvp  
-														INNER JOIN talles_curso AS tc  
-														INNER JOIN tcalendario AS tcal
-														INNER JOIN usuario AS u 
-														WHERE c.id_curso = ad.curso_pertenece_votacion
-														AND ad.curso_pertenece_votacion = pdf.curso 
-														AND pdf.curso = ev.id_curso
-														AND ev.id_curso = img.id_curso
-														AND img.id_curso = mb.curso
-														AND mb.curso = notif.curso_notificacion
-														AND notif.curso_notificacion = nvp.curso_notificacion
-														AND nvp.curso_notificacion = tc.curso
-														AND tc.curso = tcal.curso_eventos
-														AND tcal.curso_eventos = u.id_curso
-														AND c.id_curso = '$id_curso'");
+											$consulta = ("DELETE FROM curso WHERE id_curso='$id_curso'");
 											if($conexion ->query($consulta)=== TRUE){
 												echo "<div class='box success'> <i class='fa fa-info-circle' aria-hidden='true'></i> &nbsp; Registro eliminado correctamente</div>";
 											}else {

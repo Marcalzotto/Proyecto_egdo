@@ -88,8 +88,14 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 
 <?php 
 
-# Obtenemos el mensaje privado
+# Obtenemos el id del mensaje
 $id = $_GET['id_mensaje'];
+
+# Se coloca como leido
+$sql = "UPDATE mensajes_privado SET leido=1 WHERE id_mensaje='".$id."'";
+$conexion->query($sql) or die($conexion->error);
+
+# Se busca mensaje
 //$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
 $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
 
@@ -109,7 +115,7 @@ $row = $res->fetch_array(MYSQLI_ASSOC);
 <div class="campoMensaje"><?=$row['mensaje']?></div>
 
 <form method="post" action="../mensajes/responderMsjUsuario.php" >
-	
+	</br>
 	<?php echo '<input type="hidden" name="id_mensaje" value="'.$_GET["id_mensaje"].'">';?>
 	<input class="enviar" type="submit" name="enviar" value="Responder" />
 	

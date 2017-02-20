@@ -286,22 +286,12 @@
 							//Validado los campos se inserta los datos a la base y envia email
 					
 							
-							 $host_db = "localhost";
-							 $user_db = "root";
-							 $pass_db = "";
-							 $db_name = "egdo_db";
-							 $tbl_name = "usuario";
-
-							 $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-							 if ($conexion->connect_error) {
-							 die("La conexion falló: " . $conexion->connect_error);
-							}
+							include('../pag_interiores/conexion.php');
 						
 							 $passhash = password_hash($pass, PASSWORD_BCRYPT); 
 
 
-							 $buscarUsuario = "SELECT * FROM $tbl_name
+							 $buscarUsuario = "SELECT * FROM usuario
 							 WHERE email = '$email' ";
 
 							 $result = $conexion->query($buscarUsuario);
@@ -349,7 +339,7 @@
 											$mail->Password = 'Prinick2016';                // Contraseña SMTP
 											$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
 											$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
-											$mail->From = 'tucorreo@gmail.com';
+											$mail->From = 'egdo.egresados@gmail.com';
 											$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
 											$mail->isHTML(true); //Decimos que lo que enviamos es HTML
 											$mail->CharSet = 'UTF-8';  // Configuramos el charset 
@@ -369,7 +359,7 @@
 											
 											if(!$mail->send()) {
 											
-												echo 'error al enviar email';
+												echo 'Error al enviar email, verifica tu conexion de internet.';
 												
 											} else {											
 												

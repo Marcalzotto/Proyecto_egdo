@@ -2779,3 +2779,19 @@ li.verticalNav a:hover {
 		table.segMsj tfoot {
 			border-top: solid 2px rgba(144, 144, 144, 0.25);
 		}
+/*estilo paginas moderar imagenes*/
+.mod-img-fiesta {
+		max-width:200px;
+		height: auto;	
+			
+		}
+.mod-img-det {
+		max-width: 200px;
+		height: auto;	
+			
+		}
+.mod-img-api {
+		max-width:150px;
+		height: auto;	
+			
+		}

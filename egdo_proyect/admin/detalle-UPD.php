@@ -90,15 +90,13 @@
 										if(filter_var($id_upd, FILTER_VALIDATE_INT) === false){  
 											echo 'Valor incorrecto';  
 										}else{  
+											
 											$conexion;
 											
-											//if($_GET['idempresa']>0){
 											$consulta = 
-											("SELECT upd.id_upd,upd.nombre_lugar,upd.calle,upd.altura,upd.telefono,
-											upd.localidad,upd.partido,upd.provincia,upd.imagen1,upd.imagen2,
-											upd.id_usuario_propuesta,u.nombre,u.apellido
-											FROM upd INNER JOIN usuario AS u ON upd.id_usuario_propuesta = u.id_usuario
-											WHERE id_upd='$id_upd");
+("SELECT up.id_upd,up.nombre_lugar,up.calle,up.altura,up.foto_perfil,up.id_usuario_propuesta,
+u.nombre,u.apellido FROM upd AS up INNER JOIN usuario AS u ON up.id_usuario_propuesta = u.id_usuario 
+WHERE id_upd='$id_upd'");
 											
 											$result=mysqli_query($conexion,$consulta);
 											if (!$result) {
@@ -179,7 +177,7 @@
 									
 											
 										<div class="-2u 8u$">
-										<img class="mod-img-det" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen1']); ?>" />
+										<img class="mod-img-fiesta" src="../images/lugares_upd/<?php echo $row['foto_perfil']; ?>" />
 										</div>
 										
 										
@@ -204,14 +202,11 @@
 										<!-- Break -->
 										<input type='hidden' name='upd' value='<?php echo $id_protegido=base64_encode($row['id_upd']); ?>'/>
 										
-										<!-- Break -->
-										<div class="-1u 2u"><span>Imagen</span></div>
-										<div class="-1u 5u$"><input type="file" name='imagen' id='imagen' class="form-class"/></div>
 										
 										<!-- Break -->
 										<div class="-2u 8u$">
 											<button type="submit" class="button" name="btn-save" id="btn-save">
-											<i class="fa fa-upload" aria-hidden="true"></i> Subir
+											<i class="fa fa-upload" aria-hidden="true"></i> Moderar
 											</button>
 										</div>
 								    

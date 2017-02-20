@@ -96,10 +96,9 @@
 											//if($_GET['idempresa']>0){
 											$consulta = 
 											("SELECT f.id_fiesta,f.nombre AS lugar,f.calle,f.altura,f.telefono,
-											f.imagen1,f.imagen2,f.id_usuario_propuesta,u.nombre,u.apellido
+											f.foto_lugar,f.id_usuario_propuesta,u.nombre,u.apellido
 											FROM fiesta AS f INNER JOIN usuario AS u ON f.id_usuario_propuesta = u.id_usuario
 											WHERE id_fiesta='$id_fiesta'");
-											
 											$result=mysqli_query($conexion,$consulta);
 											if (!$result) {
 											printf("Error: %s\n", mysqli_error($conexion));
@@ -179,7 +178,7 @@
 										
 									
 										<div class="-2u 8u$">
-										<img class="mod-img-fiesta" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen2']); ?>" />
+										<img class="mod-img-fiesta" src="../images/lugares_fiesta/<?php echo $row['foto_lugar']; ?>" />
 										</div>
 										
 									</section> <!-- /section uss-->
@@ -200,16 +199,12 @@
 									
 										<div class="row uniform 50%">	
 										<!-- Break -->
-										<input type='hidden' name='form-fiesta' value='<?php echo $id_protegido=base64_encode($row['id_fiesta']); ?>'/>
-										
-										<!-- Break -->
-										<div class="-1u 2u"><span>Imagen</span></div>
-										<div class="-1u 5u$"><input type="file" name='imagen' id='imagen' class="form-class"/></div>
+										<input type='hidden' name='id_fiesta' value='<?php echo $id_protegido=base64_encode($row['id_fiesta']); ?>'/>
 										
 										<!-- Break -->
 										<div class="-2u 8u$">
 											<button type="submit" class="button" name="btn-save" id="btn-save">
-											<i class="fa fa-upload" aria-hidden="true"></i> Subir
+											<i class="fa fa-upload" aria-hidden="true"></i> Moderar
 											</button>
 										</div>
 								    

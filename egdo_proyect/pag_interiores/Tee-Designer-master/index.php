@@ -71,6 +71,10 @@ exit;
 		
 	<link href="css/normalize.css" rel="stylesheet">
 	
+	<!-- mejora tooltips-->
+	<link rel="stylesheet" href="../../css/hint.css-2.4.1/hint.min.css" />
+
+	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilosTeeDesigner.css">
@@ -104,9 +108,9 @@ exit;
 		<nav id="main-nav">
 			<ul>
 				<li class="logo"><a href=""><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
-				<li class="circle"><a href="../upd.php"><img src="tdesignAPI/images/upd.png" alt=""></a></li>
-				<li class="circle"><a href="">
-					<img src="tdesignAPI/images/shirt.png" alt=""></a>
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="UPD"><a href="../upd.php"><img src="tdesignAPI/images/upd.png" alt=""></a></span></li>
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="DISE&Ntilde;AR"><a href="">
+					<img src="tdesignAPI/images/shirt.png" alt=""></a></span>
 						<ul>
 							<li>
 								<a href="../../pag_interiores/index_usuarioComun.php">Pagina Principal 
@@ -115,11 +119,11 @@ exit;
 							</li>
 						</ul>		
 				</li>
-				<li class="circle"><a href="../fiesta.php"><img src="tdesignAPI/images/party.png" alt=""></a></li>
-				<li class="circle">
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="FIESTA"><a href="../fiesta.php"><img src="tdesignAPI/images/party.png" alt=""></a></span></li>
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="FOTO-EVENTO">
 					<a href="">
 						<img src="tdesignAPI/images/foto-evento.png" alt="">
-					</a>
+					</a></span>
 					<ul>
 						<li><p>Foto Evento</p></li>
 						<li><a href="../fotoUpd.php">UPD<img src="../../images/dropotron_icons/upd.png" alt="" style="float:right"></a></li>
@@ -128,10 +132,22 @@ exit;
 						<li><a href="../formSubirFotos.php">Subi tus fotos<img src="../../images/dropotron_icons/upload.png" alt="subir fotos" style="float:right"></a></li>
 					</ul>
 				</li>
-				<li class="circle"><a href="../infoviaje.php"><img src="tdesignAPI/images/bus.png" alt=""></a></li>
-				<li class="circle"><a href=""><img src="tdesignAPI/images/settings.png" alt=""></a>
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="INFO-VIAJE"><a href="../infoviaje.php"><img src="tdesignAPI/images/bus.png" alt=""></a></span></li>
+				<li class="circle"><span class="hint--bottom hint--always" data-hint="CONFIGURACION"><a href=""><img src="tdesignAPI/images/settings.png" alt=""></a></span>
 																			<ul>
-																				<li><a href="../../mensajes/listarAdminCurso.php">Bandeja de entrada<img src="../../images/dropotron_icons/mail_box.png" alt="agenda" style="float:right"></a></li>
+																				<li><a href="../../mensajes/listarAdminCurso.php">Bandeja de entrada
+																				<?php					
+																						$cant_mensajes = cantidad_notificaciones_mensajes($conexion,$_SESSION['id_usuario']);
+																						if($cant_mensajes > 0){
+																							echo "<div class='num_notificaciones'>".$cant_mensajes."</div>";
+																						}else if($cant_mensajes == 0){
+																							//echo "<div class='num_notificaciones'>10</div>";
+																							echo "<img src='../../images/dropotron_icons/mail_box.png' alt='agenda' style='float:right'>";
+																						}else{
+																						echo "<div class='num_notificaciones'>".$cant_mensajes."</div>";
+																						}
+																				?>
+																				</a></li>
 																				<li><a class="notificacion" href="../notificaciones.php">Notificaciones
 																						<?php 
 																						$cant = cantidad_notificaciones($conexion,$_SESSION['id_usuario'],$_SESSION['curso']);

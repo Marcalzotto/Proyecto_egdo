@@ -115,6 +115,7 @@ $row = $res->fetch_array(MYSQLI_ASSOC);
 	<?php echo '<input type="hidden" name="id_receptor" value="'.$row["id_emisor"].'">';?>
 	<?php echo '<input type="hidden" name="asunto" value="'.$row["asunto"].'">';?>
 	
+	<div class="descripcion"><strong>Respuesta</strong></div>
 	<textarea class="campoMensaje" name="mensaje"></textarea></br>
 	
 	<input class="enviar" type="submit" name="enviar" value="Enviar" />

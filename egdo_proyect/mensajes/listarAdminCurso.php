@@ -105,11 +105,34 @@ $res = $conexion->query($sql) or die($conexion->error);
 	
 	
 	$i = 0; 
-	while($row = $res->fetch_array(MYSQLI_ASSOC)){ ?>
+	while($row = $res->fetch_array(MYSQLI_ASSOC)){ 
+		$id_mensaje = $row['id_mensaje'];
+		$asunto = $row['asunto'];
+	
+	?>
     <tr class="fila">
 	  <td class="columna"><?=$i+1?></td>
-      <td class="columna"><a class="linkLeer" href="../mensajes/leerAdminCurso.php?id_mensaje=<?=$row['id_mensaje']?>"><?=$row['asunto']?></a></td>
-      <td class="columna"><?=$row['nombre']?> <?=$row['apellido']?></td>
+	  
+	  
+      		<?php 
+			if($row['leido']==0){
+			
+				echo	'<td class="columna">';
+				echo	"<a class='linkLeer' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	'</a>';
+				echo	'</td>';
+			}
+			else {
+			
+				echo	'<td class="columna">';
+				echo	"<a class='' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	'</a>';
+				echo	'</td>';
+			
+			}
+		?>
+	  
+	  <td class="columna"><?=$row['nombre']?> <?=$row['apellido']?></td>
 	  <td class="columna"><?=$row['fecha_hora']?></td>
 	  <td class="columna"><a href="../mensajes/eliminarAdminCurso.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="../mensajes/images/delete.png" width="15" height="15"></a></td>
     </tr>

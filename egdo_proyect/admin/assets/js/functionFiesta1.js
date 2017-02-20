@@ -42,7 +42,7 @@ jQuery(function($){
 							$("#error").fadeIn('slow', function(){
 								$("#error").html('<div class="box success"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Modificacion correcta</div>');
 								$("#form-fiesta")[0].reset();
-									window.location.href="moderar-fiesta.php";
+									window.location.href="moderar-fiesta1.php";
 								});	
 							}
 							else{

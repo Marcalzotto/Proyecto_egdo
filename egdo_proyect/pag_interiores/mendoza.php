@@ -15,6 +15,9 @@
     
     <link rel="stylesheet" href="../assets/css/index_gral.css" />
 
+	<!-- mejora tooltips-->
+		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
+		
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
@@ -99,15 +102,52 @@
                     <input type='file' class='file_input' name='info_imagen' id='info_imagen' /></label>
                               </div>
                               <div class='form-row form-input-name-row'>
+                    <input type='text' name='nombre' id='nombre' placeholder='nombre'>
+                  </div>
+                              <div class='form-row form-input-name-row'>
                     <input type='text' name='descripcion' id='descripcion' placeholder='descripcion'>
                   </div>
                             <button type='submit'>Subir imagen</button>
                   </form> ";
                 }
               ?>
+                     <div id="mensaje"> </div>
+              
+              <?php
+                $con = "select * from info_viaje where imagen='Mendoza'";
+                if($resultado = $conexion->query($con)){
+                if ($resultado ->num_rows > 0) {
+                while ($datos = $resultado->fetch_array(MYSQLI_ASSOC)){
+        
+                  $imgBar[]= $datos;
+                 }
+                  
+              echo "<section id='content' class='container'>";    
+            echo  "<div id='sliders'>";
+              echo "<ul class='bjqs'> ";
+            
+                  foreach($imgBar as $imgB) {
+                   echo
+                   "<li>
+                  <img src=../img/".$imgB['nombre_lugar']." alt='Imagenes Mendoza' title='".$imgB['descripcion']."'/>
+                  </li>
+
+                   ";
+                       }
+echo "</ul>";
+                        echo"</div>";
+     
+                     /* <!-- FIN SLIDESHOW -->*/
+                      echo "</section>";
+
+                     }
+                   }
+
+                 
+                 ?>
           <!-- Wide Content -->
-            <section id="content" class="container">
-               <!-- SLIDESHOW -->
+        <!--    <section id="content" class="container">
+             
                <div id="sliders">
                       <ul class="bjqs">
                         <li>
@@ -122,8 +162,8 @@
             </ul>
         </div>
      
-    <!-- FIN SLIDESHOW -->
-                      </section>
+    
+                      </section> -->
 
         </div> 
 

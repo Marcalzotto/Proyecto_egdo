@@ -95,67 +95,79 @@
 						</div>
 				
 				</div>
-</header>
-			<!-- Banner Wrapper -->
-				<div id="banner-wrapper">
+	</header>
+		<!-- Main Wrapper -->
+				<div id="main-wrapper">
 
-					
-					<div id="votacion">
-						<div id="alert">
+						<!-- Main -->
+						<div id="intro" class="container">
+						
+							<div class="row"> <!-- Row Principal -->	
 							
-						</div>
-							<h2>Envia invitaciones</h2>
-							
-							<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate">
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>ENVIA INVITACIONES</h2>
+									</header>
+									
+									<hr class="major"/>
+									</br>
+										<h6>Ingresa la cantidad de invitaciones que vas a enviar</h6>
+									</br>
+									<hr class="major"/>
+									</br>
 								
+								</section> <!-- Pasos -->
 							
-			<form action="../invitaciones/invitacionesEmail.php" method="POST" role="form">
-
-						<div class="form-wizard">
-						
-							<div class="col-md-9 col-sm-7">
-							
-							</br>
-									<div class="rows">
-										
-										<div class="col-md-12 col-sm-12">
-											<fieldset class="input-block">
-												<label for="first-name">Ingrese cantidad de alumnos a invitar</br></label>
-												</br>
-												</br>
-												<input type="text" id="first-name" placeholder="Cantidad de alumnos" name="cant_alumnos"required />													
-											</fieldset><!--/ .input-first-name-->
-										</div>
-									</div><!--/ .row-->
-							</div>
-							
-						</div><!--/ .form-wizard-->
-						
-						<div class="next">
-							<button class="button button-control" type="submit"><span>Paso <b>Siguiente</b></span></button>
-							<div class="button-divider"></div>
+							</div> <!-- Row Principal -->
 						</div>
-
-					</form><!--/ form-->
-					
-					</div><!--/ .container-->
-				
-					</div><!--/ .form-container-->
-
-					</div><!--/ #content-->
+						
+						<!-- Wide Content -->
+						<section id="content" class="container">
 							
-					</div>
+						<div class="row"> <!-- Row Principal -->
+				
+						<section class="12u 12u">
+							
+							<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+							
+							
+							<!-- Contact Form -->
+							<form action="../invitaciones/invitacionesEmail.php" method="POST" id="acceso">
+								
+								<div class="row 50%">
+									
+									<!-- Break -->
+									<div class="-2u 2u"><span>CANTIDAD</span></div>
+									<div class="-1u 5u$">
+									<input class="text" type="text" name="cant_alumnos" id="name" placeholder="Cantidad" required />
+									</div>
+									
+									<div class="-5u 5u$">
+										<input type="submit" class="button special fit small" name="acceso"  value="Paso siguiente">
+									</div>
+									
+								
+								</div>
+								
+							</form>
+							
+							</div> <!-- /Sec Datos Empresa -->
+							
+						</section>
+							
+						</div> <!-- /Row Principal -->	
+
+
+					
+						</section>
+
+				</div>
 					
 					
 				<?php
 					include '../pag_interiores/menu/masterFooter.php';
 				?>
 
-		</div>
 
 		
 		

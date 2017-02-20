@@ -74,63 +74,47 @@
 											<tr>
 												<th>ID</th>
 												<th>Nombre_Lugar</th>
+												<th>Telefono</th>
+												<th>Foto_Perfil</th>
+												<th>Usuario_Subio</th>
 												<th>Calle</th>
 												<th>Altura</th>
-												<th>Telefono</th>
-												<th>Localidad</th>
-												<th>Partido</th>
-												<th>Provincia</th>
-												<th>Imagen1</th>
-												<th>Imagen2</th>
-												<th>Usuario_Subio</th>
-												<th>Estado</th>
-												<th>Moderar1</th>
-												<th>Moderar2</th>
+												<th>Estado_Moderado</th>
+												<th>Detalles</th>
 											</tr>
 										</thead>
 										<tbody>
 		<?php
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_upd,nombre_lugar,calle,altura,telefono,
-		localidad,partido,provincia,imagen1,imagen2,id_usuario_propuesta,estado_moderar
+		$consulta = ("SELECT id_upd,nombre_lugar,telefono,foto_perfil,id_usuario_propuesta,calle,altura,estado_moderar
 		FROM upd ORDER BY id_upd DESC");
-		$result = $conexion ->query($consulta);
-		if ($result->num_rows >0) {
-		while($row = $result->fetch_assoc()){
-													
+		$result = mysqli_query($conexion, $consulta);
+		if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)){
 		?>
 		
 			<tr>
 			<td><?php echo $row['id_upd']; ?></td>
 			<td><?php echo $row['nombre_lugar']; ?></td>
+			<td><?php echo $row['telefono']; ?></td>
+			<td><img class="mod-img-table" src="../images/lugares_upd/<?php echo $row['foto_perfil']; ?>"/></td>
+			<td><?php echo $row['id_usuario_propuesta']; ?></td>
 			<td><?php echo $row['calle']; ?></td>
 			<td><?php echo $row['altura']; ?></td>
-			<td><?php echo $row['telefono']; ?></td>
-			<td><?php echo $row['localidad']; ?></td>
-			<td><?php echo $row['partido']; ?></td>
-			<td><?php echo $row['provincia']; ?></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen1']); ?>"/></td>
-			<td><img class="mod-img-table" src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen2']); ?>"/></td>
-			<td><?php echo $row['id_usuario_propuesta']; ?></td>
 			<td><?php echo $row['estado_moderar']; ?></td>
 			<td>
 				<a href="detalle-UPD.php?upd=<?php echo $id_protegido=base64_encode($row['id_upd']);?>" class="edit-link" href="#" title="Detalles">
 				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
 				</a>
 			</td>
-			<td>
-				<a href="detalle-UPD2.php?upd=<?php echo $id_protegido=base64_encode($row['id_upd']);?>" class="edit-link" href="#" title="Detalles">
-				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
-				</a>
-			</td>
-			
 			</tr>
 			<?php
 			}
 			}
+			else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
 			//}
-			$conexion->close();
+			mysqli_close($conexion);	
 			?>
 										</tbody>
 									</table>
