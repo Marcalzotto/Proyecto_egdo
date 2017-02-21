@@ -71,7 +71,7 @@ session_start();
 											<a href="../contactoEmpresas/empresa.php">EMPRESAS</a>
 										</li>
 										<li class="break circle">
-											<a href="registroPaso1.php">REGISTRO</a>
+											<a href="../registro/registroPaso1.php">REGISTRO</a>
 										</li>
 										<li class="circle">
 											<a href="#contacto">CONTACTO</a>
@@ -304,10 +304,30 @@ session_start();
 
 			</div> <!-- /Main Wrapper -->
 	
-			<?php
-					include '../pag_interiores/menu/masterFooter.php';
-			?>
-
+			<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
+					
+					<div id="contacto"> <!-- Ancla -->
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram" target="_blank"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook" target="_blank"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter" target="_blank"><span>Twitter</span></a></li>
+							</ul>
+						</div> <!-- /Footer -->
+					</div>
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; Egdo 2016.
+						</div>
+				
+				</div> <!-- /Footer Wrapper -->
+		
 		</div>
 
 		<!-- Scripts -->
