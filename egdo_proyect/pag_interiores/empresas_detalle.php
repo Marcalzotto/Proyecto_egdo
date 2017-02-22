@@ -184,11 +184,11 @@
 											?>
 											<ul class="l2">
 													
-													<li><span>5</span><span>&#9733;</span><div style="width: <?php echo $ancho5; ?>px; height: 20px; background:#9EBF59;"></div><span class="num"><?php echo $cal5; ?></span></li>
-													<li><span>4</span><span>&#9733;</span><div style="width: <?php echo $ancho4; ?>px; height: 20px; background:#ACD532;"></div><span class="num"><?php echo $cal4; ?></span></li>
-													<li><span>3</span><span>&#9733;</span><div style="width: <?php echo $ancho3; ?>px; height: 20px; background:#FED733;"></div><span class="num"><?php echo $cal3; ?></span></li>
-													<li><span>2</span><span>&#9733;</span><div style="width: <?php echo $ancho2; ?>px; height: 20px; background:#FEB133;"></div><span class="num"><?php echo $cal2; ?></span></li>
-													<li><span>1</span><span>&#9733;</span><div style="width: <?php echo $ancho1; ?>px; height: 20px; background:#FE8A59;"></div><span class="num"><?php echo $cal1; ?></span></li>
+													<li><span class="num2">5</span><span>&#9733;</span><div style="width: <?php echo $ancho5; ?>px; height: 20px; background:#9EBF59;"></div><span class="num"><?php echo $cal5; ?></span></li>
+													<li><span class="num2">4</span><span>&#9733;</span><div style="width: <?php echo $ancho4; ?>px; height: 20px; background:#ACD532;"></div><span class="num"><?php echo $cal4; ?></span></li>
+													<li><span class="num2">3</span><span>&#9733;</span><div style="width: <?php echo $ancho3; ?>px; height: 20px; background:#FED733;"></div><span class="num"><?php echo $cal3; ?></span></li>
+													<li><span class="num2">2</span><span>&#9733;</span><div style="width: <?php echo $ancho2; ?>px; height: 20px; background:#FEB133;"></div><span class="num"><?php echo $cal2; ?></span></li>
+													<li><span class="num2">1</span><span>&#9733;</span><div style="width: <?php echo $ancho1; ?>px; height: 20px; background:#FE8A59;"></div><span class="num"><?php echo $cal1; ?></span></li>
 											</ul>
 								</div>
 								

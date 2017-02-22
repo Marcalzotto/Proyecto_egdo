@@ -1323,7 +1323,141 @@ height:5%;
 			margin-left: 8.33333%;
 		}
 
-	}
+
+	/*Estilos para el form de talles parte mobile*/
+		
+		/*Estilos form eliminar Talles*/
+		#formTallesBotones button, #todosLosTalles button, #tablaBandera button,#formEliminarButtons button{
+    -moz-transition: background-color 0.25s ease-in-out;
+    -webkit-transition: background-color 0.25s ease-in-out;
+    -ms-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+    margin-top: 1.2em;
+    background: #60b822;
+    border-radius: 5px;
+    padding: 1.05em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-color: #79B800;
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border-style: none;
+   	margin-left: 3em;
+    margin-right: 3em;
+		}
+		/*Estilos de las tablas*/
+		#votacion #formTalles table input, #votacion #tablaBandera table input, #votacion #formEliminar table input{
+			display: block;
+			text-align: center;
+			margin: auto;
+		}
+		
+		#votacion #formTalles table, #votacion #todosLosTalles table, #votacion #tablaBandera table, #votacion #formEliminar table{
+    font-family: 'Open Sans Condensed', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+		}
+
+		#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td, #votacion #formEliminar table td{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    font-size: 1.5em;
+		font-weight: bold;
+		text-align: center;
+		color: #fff;
+		}
+	
+		/*#votacion #formTalles table td, #votacion #todosLosTalles table td, #votacion #tablaBandera table td{
+			font-size: 1.5em;
+			font-weight: bold;
+			text-align: center;
+			color: #fff;
+		}*/
+		#votacion #formTalles table th, #votacion #todosLosTalles table th, #votacion #tablaBandera table th, #votacion #formEliminar table th{
+			border: 1px solid #dddddd;
+    	text-align: center;
+    	padding: 8px;
+    	font-size: 1.5em;
+    	font-weight: bold;
+    	color: #fff;
+    	/*background: #BB2459; color alternativo de cabecera de tablas*/ 
+		}
+		#votacion #formTalles table tr, #votacion #todosLosTalles table tr, #votacion #tablaBandera table tr,#votacion #formEliminar table tr{
+			text-align: center;
+			/*background-color: #191919; color alternativo para las celdas impares*/
+		}
+		
+		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even), #votacion #formEliminar table tr:nth-child(even){
+    background-color: #60b822;
+    /*background-color: #333333; color alternativo para las celdas pares*/
+
+		}
+	
+		#votacion #todosLosTalles{
+			margin-top: 2em;
+		}
+
+		#votacion #tablaBandera table td input{
+			margin: 0 auto;
+		}
+	
+		/*Estilos de enlaces y botones*/
+		#formTallesBotones a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1.05em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #60b822;
+    	padding: 1em;
+    	padding-right: 1.5em;
+    	padding-left: 1.5em;
+    	border-radius: 5px;
+    	margin-left: 3em;
+    	margin-right: 3em;
+
+		}
+		#formTallesBotones{
+			padding-top: 30px;
+		}
+
+		#formTallesBotones,#formEliminarButtons{
+		text-align: center;
+		}
+
+		/*Enlaces pasar a empresas, generar pdf*/
+		#votacion #botonesMas{
+			margin-bottom: 4em;
+			margin-top: 6em;
+			text-align: center;
+		}
+
+		#votacion #botonesMas a{
+			font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 1em;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #60b822;
+    	padding: 1.4em;
+    	border-radius: 5px;
+    	margin-left: auto;
+    	margin-right: auto;
+		}
+
+		/*Estilo de enlace forms upd y fiesta mobile*/
+		#main-wrapper-ad .container .main-content a{
+    background: #333;
+    padding: 4px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 80%;
+   
+		}
+
+	}/* fin media max width 736px*/
 
 /* Basic */
 
@@ -2316,7 +2450,7 @@ height:5%;
 	position: relative;
 	margin: 0 auto;
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	padding:30px;
 	width: 250px;
 	background-color: #79B800;
@@ -2340,36 +2474,14 @@ height:5%;
 	text-align: center;
 	color:#fff;
 }
-/*boton subir vista de impresion*/
-.form #impresion{
-	position: relative;
-	margin: 0 auto;
-	margin-bottom: 50px;
-	padding:30px;
-	width: 250px;
-	background-color: #515151;
-	-webkit-border-radius:5px;
 
-
+#si_file{
+	color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    padding-bottom: 20px;
 }
-
-.form #d_impresion{
-	position: absolute;
-	top:0px;
-	right:0px;
-	bottom: 0px;
-	left:0px;
-	width: 100%;
-	height:100%;
-	opacity: 0;
-	margin: 0;
-	padding: 0;
-}
-#subir_impresion{
-	text-align: center;
-	color:#fff;
-}
-
 /*Estilos de los form para subir fotos de eventos*/
 
 /*boton enviar similar estilo files*/
@@ -3097,7 +3209,7 @@ background: #393939;
       font-size: 1.4em;
     	font-weight: bold;
     	color: #fff;
-    	background: #79B800;
+    	background: #60b822;
     	padding: 1.4em;
     	border-radius: 5px;
     	margin-left: 3em;
@@ -3251,7 +3363,7 @@ background: #393939;
       font-size: 1.4em;
     	font-weight: bold;
     	color: #fff;
-    	background: #79B800;
+    	background: #60B822;
     	padding: 1.4em;
     	border-radius: 5px;
     	margin-left: 3em;
@@ -3813,11 +3925,11 @@ background: #393939;
 			}
 
 			#si_file{
-				position: absolute;
-    		top: 30.5em;
-    		left: 38em;
-    		color: #fff;
-    		font-family: 'Open Sans Condensed',sans-serif;
+			color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    padding-bottom: 20px;
 			}
 /*boton subir vista de impresion*/
 			.form #impresion{
@@ -3952,6 +4064,21 @@ background: #393939;
 #empresas div{
 	background-color: none;
 }
+#empresas #botonesMas{
+	padding-bottom: 20px;
+}
+#empresas #botonesMas a{
+		font-family: 'Open Sans Condensed',sans-serif;
+      font-size: 85%;
+    	font-weight: bold;
+    	color: #fff;
+    	background: #60b822;
+    	padding: 1em;
+    	border-radius: 5px;
+    	margin-left: auto;
+    	margin-right: auto;
+}
+
 
 #empresas div ul li a img{
 	height: 130px;
@@ -3977,10 +4104,10 @@ font-size: 200%;
 		color: #fff;
     font-weight: bold;
     font-family: 'Open Sans Condensed',sans-serif;
-    font-size: 3em;
+    font-size: 200%;
     margin-top: 0em;
     margin-bottom: 0em;
-    line-height: 20px;
+    /*line-height: 20px;*/
 }
 
 /*Estilos para detalle de empresas*/
@@ -4040,9 +4167,10 @@ color: #fff;
 		color: #fff;
     font-weight: bold;
     font-family: 'Open Sans Condensed',sans-serif;
-    font-size: 3em;
+    font-size: 200%;
     margin-top: 0em;
     margin-bottom: 0em;
+    line-height: 1em;
 }
 #empresaDetalles #calificacion p{
 	color: #fff;
@@ -4076,7 +4204,7 @@ display: inline-block;
 }
 
 #empresaDetalles  #calificacion .l1 li span{
-color:grey;
+color:#fff;
 font-size: 150%;
 }
 #empresaDetalles  #calificacion ul li .marcado{
@@ -4094,6 +4222,11 @@ width: 300px;
 #empresaDetalles #calificacion .l2 li{
 
 
+}
+
+#empresaDetalles #calificacion .l2 li .num,#empresaDetalles #calificacion .l2 li .num2{
+
+color: #fff;
 }
 
 #calificacion .l2 li div{
@@ -4188,8 +4321,16 @@ input[type="radio"]:checked ~ .labelEstrellas {
   
 }
 #empresaDetalles .unComentario p{
-	
-font-size: 0.91em;
+	font-size: 0.91em;
+	white-space: normal;
+	overflow-wrap: break-word;
+	text-align: justify;
+	margin-bottom: 0.5em;
+	line-height: 20px;
+}
+
+#empresaDetalles .unComentario a{
+	color: inherit;
 }
 
 #empresaDetalles .unComentario .tiempo{
@@ -4419,6 +4560,7 @@ font-size: 2em;
 }
 #main-wrapper-ad .container .main-content{
 	text-align: center;
+	margin-top: 80px;
 }
 #main-wrapper-ad .container .main-content h3{
 	padding: 4em;
@@ -4445,21 +4587,20 @@ font-size: 2em;
 		-webkit-transition: background-color 0.25s ease-in-out;
 		-ms-transition: background-color 0.25s ease-in-out;
 		transition: background-color 0.25s ease-in-out;
-
-		padding: 1.3em;
+		/*padding: 1.3em;*/
     border-radius: 5px;
-    padding-left: 5.9em;
-    padding-right: 5.9em;
+    /*padding-left: 5.9em;
+    padding-right: 5.9em;*/
     border: none;
     
 		font-family: 'Open Sans Condensed',sans-serif;
     font-weight: bold;
     color: #fff;
-    background: #79B000;
+    background: #60B822; 
     font-size: 1.2em;
     margin:0;
-    
     margin-bottom: 1em;
+		width: 100%;
 }
 
 #main-wrapper-ad .container .main-content button[type="submit"]:hover{
@@ -4478,8 +4619,9 @@ background: #78FF1E;
 		font-family: 'Open Sans Condensed',sans-serif;
     font-weight: bold;
     color: #fff;
-    background: #79B000;
-    font-size: 1.2em;
+    background: #60B822; 
+    font-size: 1.3em;
+    width:100%;
     
 }
 #main-wrapper-ad .container .main-content input[type="reset"]:hover{
@@ -4499,6 +4641,11 @@ border: 1px solid #ccc;
     padding: 4px;
     border-radius: 4px;
     color: #fff;
+}
+
+.enlace{
+	padding-top: 30px;
+  text-align: center;
 }
 
 /*estilos de la votacion upd dentro de la galeria*/
@@ -4627,3 +4774,4 @@ section h4{
     text-align: center;
     color: #fff;
 }
+

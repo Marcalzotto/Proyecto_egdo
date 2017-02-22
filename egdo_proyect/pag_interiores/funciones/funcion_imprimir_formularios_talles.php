@@ -30,7 +30,7 @@ function imprimir_forms_talles($conexion,$maxB, $maxR, $maxBand, $user, $curso, 
 											<tr>
 												<th>Prenda</th>
 												<th>Talle</th>
-												<th>Talle elegído anteriormente</th>
+												<th>Talle anterior.</th>
 											</tr>
 											<tr>
 												<td>Buzo</td>
@@ -89,7 +89,7 @@ function imprimir_forms_talles($conexion,$maxB, $maxR, $maxBand, $user, $curso, 
 					$rol = get_rol($curso, $user);	
 					
 					if($rol == 2){			
-							echo "<div id='tablaBandera'>
+							echo "<div id='tablaBandera' >
 									<h2>Elegi la medida de la bandera</h2>
 																		
 																		
@@ -111,9 +111,10 @@ function imprimir_forms_talles($conexion,$maxB, $maxR, $maxBand, $user, $curso, 
 
 										<button id='btn-bandera'>Enviar</button><button id='cancelar'>Limpiar</button>
 								</div>";
-						echo"<div id='botonesMas'><a href='armapedido.php?curso=".base64_encode($curso)."' target='_blank'>Armar Pedido</a><a href='empresasAdmin.php'>Paso Siguiente</a></div>";
+						//echo"<div id='botonesMas' class='row uniform'><div class='3u'></div><div class='12u 3u'><a href='armapedido.php?curso=".base64_encode($curso)."' target='_blank'>Armar Pedido</a></div><div class='12u 3u'><a href='empresasAdmin.php'>Paso Siguiente</a></div><div class='3u'></div></div>";
+								echo"<div id='botonesMas' class='row uniform'><div class='12u'><a href='armapedido.php?curso=".base64_encode($curso)."' target='_blank'>Armar Pedido</a><a href='empresasAdmin.php'>Paso Siguiente</a></div></div>";
 				}else if($rol == 3){
-					echo"<div id='botonesMas'><a href='empresas.php'>Paso Siguiente</a></div>";
+					echo"<div id='botonesMas' class='row uniform'><div class='12u'><a href='empresas.php'>Paso Siguiente</a></div></div>";
 				}
 			}
 	

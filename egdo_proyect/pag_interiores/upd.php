@@ -339,7 +339,7 @@ if($result = $conexion->query($verificarFecha)){
 										<input type='reset' value='borrar'>
 										
 									</div>
-									<div class='form-row'>
+									<div class='form-row enlace'>
 									<a href='upd-2.php'>Ver los lugares propuestos</a> 
 									</div>
 								</form>";

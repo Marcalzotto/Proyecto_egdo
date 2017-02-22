@@ -106,10 +106,7 @@
 														<p id="subir_frontal">Subir Foto</p>
 														<input type="file" name="foto_evento" id="d_frontal">
 													</div>
-												<div id="si_file" style="position: absolute; top: 24em; left: 28em; color: #fff;
-    																						font-family: 'Open Sans Condensed',sans-serif; font-size:1.3em;
-    																						">Ningun archivo seleccionado 
-    										</div>
+												<div id="si_file">Ningun archivo seleccionado </div>
 											
 													<div id="btn-enviar">
 														<p id="p_enviar">Subir</p>
