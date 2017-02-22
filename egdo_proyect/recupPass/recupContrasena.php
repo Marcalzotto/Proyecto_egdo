@@ -7,35 +7,17 @@
 <html class="not-ie no-js" lang="en">
 	<head>
 		
-		<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,500,700%7cCourgette%7cRaleway:400,700,500%7cCourgette%7cLato:700' rel='stylesheet' type='text/css'>
-		
-		<!-- Basic Page Needs
-		================================================== -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		
-		
 		<title>EGDO</title>
-		<!-- Google Web Fonts
-		================================================== -->
-		
 		
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../css/main.css" />  
+		<link rel="stylesheet" href="../css/mainRegistro.css" />  
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
-		<!-- Mobile Specific Metas
-		================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<!-- CSS
-		================================================== -->
-		<link rel="stylesheet" href="../css/tmm_form_wizard_style_demo.css" />
-		<link rel="stylesheet" href="../css/grid.css" />
-		<link rel="stylesheet" href="../css/tmm_form_wizard_layout.css" />
-		<link rel="stylesheet" href="../css/fontello.css" />
-		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -54,9 +36,6 @@
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 	
-	
-		
-		
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
@@ -70,121 +49,149 @@
 							<!-- Logo -->
 								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../images/imagesAdmin/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Eliminado -->
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="circle">
+											<a href="../index.php">COMENZA</a>
+										</li>
+										<li class="circle">
+											<a href="../contactoEmpresas/empresa.php">EMPRESAS</a>
+										</li>
+										<li class="break circle">
+											<a href="../registro/registroPaso1.php">REGISTRO</a>
+										</li>
+										<li class="circle">
+											<a href="#contacto">CONTACTO</a>
+										</li>
+									</ul>
+								</nav>
 
+						
 						</div>
-
 				</div>
 
-			<!-- Main Wrapper -->
-				
-					<!-- Wide Content -->
-						
-
-			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-
-		<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate"> <!--container substrate-->
-
-					<div class="rows">
-						<div class="col-xs-12">
-							<h2 class="form-login-heading">Reestablece tu contrase&ntilde;a</h2>
-						</div>
-
-					</div><!--/ .row-->
-
-					<div class="rows stage-container">
-
-						
-
-					</div><!--/ .row-->
-
-					<div class="rows">
-
-						<div class="col-xs-12">
-
-							<div class="form-header">
-								<div class="form-title form-icon title-icon-lock">
-									<b><i class="fa fa-lock" aria-hidden="true"></i> Completa los campos </b> 
-								</div>
-								<div class="steps">
-									
-								</div>
-							</div><!--/ .form-header-->
-
-						</div>
-
-					</div><!--/ .row-->
-
-					<form action="../recupPass/enviaEmail.php" method="post" role="form">
-
-						<div class="form-wizard">
-							
-							<div class="rows">
-
-								<div class="col-md-8 col-sm-7">
-										
-										
-										</br>
-										<fieldset class="input-block">
-										<label for="email">Email</label>		
-										<input type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-icon form-icon-mail" name="email" placeholder="Email" required />
-										</fieldset><!--/ .input-email-->
-										
-										</br>
-										<img src="captcha.php" alt=""> </br>
-										<fieldset class="input-block">
-										<label for="codigo">Por razones de seguridad, ingresa el c&oacute;digo que aparece en el cuadro.</label>
-										<input id="codigo" name="introducido" type="text" class="form-icon form-icon-mail" placeholder="C&oacute;digo">
-										</fieldset><!--/ .input-email-->
-									
-
-								</div>
-
-							</div><!--/ .row-->
-							
-						</div><!--/ .form-wizard-->
-
-						<div class="prev">
-							<!--/<button class="button button-control" type="button" onclick="window.location.href='registroPaso2.php'"><span>Paso Anterior <b>Datos curso</b></span></button>
-							<div class="button-divider"></div>-->
-						</div>
-						
-						<div class="next">
-							<button name="Enviar" class="button button-control" type="submit"><span>Enviar <b>email</b></span></button>
-							<div class="button-divider"></div>
-						</div>
-
-					</form><!--/ .form-wizard-->
-
-				</div><!--/ .container-->
-				
-			</div><!--/ .form-container-->
-
-		</div><!--/ #content-->
-	
-
-		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
-
-
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-		<!--[if lt IE 9]>
-				<script src="js/respond.min.js"></script>
-		<![endif]-->
-		
-		<!--<script src="js/tmm_form_wizard_custom.js"></script>-->
-						
-						
 			
-
-			<?php
-					include '../pag_interiores/menu/masterFooter.php';
-			?>
-
+			<!-- Main Wrapper -->
+		<div id="main-wrapper">
+				
+				<!-- Main -->
+						<div id="intro" class="container">
+							
+							<div class="row"> <!-- Row Principal -->	
+							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>REESTABLECE TU CONTRASEÑA</h2>
+									</header> 
+									
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
+						</div>
+			
+						
+						<!-- Wide Content -->
+						<section id="content" class="container">
+						<div class="row"> <!-- Row Principal -->
+								<section class="12u 12u">
+									
+									<hr class="major"/>
+									
+									<div class="row uniform">
+										
+										<div class="-2u 3u">
+											<h5 class="subheader-step">
+												<i class="fa fa-lock" aria-hidden="true"></i>
+												&nbsp;COMPLETA LOS CAMPOS</h5>
+										</div>
+										
+									</div>
+									
+									<hr class="major"/>	
+									
+									<div class="12u 12u$(medium)"> <!-- Sec Datos Alumno -->
+									
+									<!-- form start -->
+									<form action="../recupPass/enviaEmail.php" method="post" role="form">
+									
+									
+									<div class="row uniform 50%">	
+										
+										<!-- Break -->
+										<div class="-2u 2u"><span>Email</span></div>
+										
+										<div class="-1u 5u$">
+										<span>
+											<input type="text" id="email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-class" name="email" placeholder="Email" required />
+										</span>
+										</div>
+										
+										<!-- Break -->
+										<div class="-2u 2u"><span>Captcha</span></div>
+										
+										<div class="-1u 5u$">
+											<img src="captcha.php" alt="">
+										</div>
+										
+										<!-- Break -->
+										<div class="-2u 2u">
+										<span>
+										Ingresa el c&oacute;digo
+										</span>
+										</div>
+										
+										<div class="-1u 5u$">
+										<span>
+											<input id="codigo" name="introducido" type="text" class="form-class"placeholder="C&oacute;digo">
+										
+										</span>
+										</div>
+										
+										<!-- Break -->
+										<div class="-5u 5u$">
+											<button type="submit" class="button special fit small" name="btn-save" id="btn-save"> Enviar 
+											</button>
+										</div>
+								    </div>
+									
+									</form>
+										
+								</div> <!-- /Sec Datos Alumno -->
+								
+								</section>
+								
+							</div> <!-- /Row Principal -->
+							
+							
+						</section>
+				
+			</div><!-- /Main Wrapper -->
+				
+				<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
+					
+					<div id="contacto"> <!-- Ancla -->
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram" target="_blank"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook" target="_blank"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter" target="_blank"><span>Twitter</span></a></li>
+							</ul>
+						</div> <!-- /Footer -->
+					</div>
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; Egdo 2016.
+						</div>
+				
+				</div> <!-- /Footer Wrapper -->
+					
 		</div>
 
 		<!-- Scripts -->

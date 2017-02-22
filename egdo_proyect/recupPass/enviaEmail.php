@@ -11,34 +11,21 @@ session_start();
 <html class="not-ie no-js" lang="en">
 	<head>
 		
-		<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,500,700%7cCourgette%7cRaleway:400,700,500%7cCourgette%7cLato:700' rel='stylesheet' type='text/css'>
-		
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		
-		
 		<title>EGDO</title>
-		<!-- Google Web Fonts
-		================================================== -->
-		
 		
 		<!--<meta charset="utf-8" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../css/main.css" />  
+		<link rel="stylesheet" href="../css/mainRegistro.css" />   
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 		<!-- Mobile Specific Metas
 		================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<!-- CSS
-		================================================== -->
-		<link rel="stylesheet" href="../css/tmm_form_wizard_style_demo.css" />
-		<link rel="stylesheet" href="../css/grid.css" />
-		<link rel="stylesheet" href="../css/tmm_form_wizard_layout.css" />
-		<link rel="stylesheet" href="../css/fontello.css" />
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -74,64 +61,73 @@ session_start();
 							<!-- Logo -->
 								<h1 id="logo"><a href="../index.php"><img class="egdo-logo-register" src="../images/imagesAdmin/EGDO.png" alt=""></a></h1>
 
-							<!-- Nav Eliminado -->
-
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="circle">
+											<a href="../index.php">COMENZA</a>
+										</li>
+										<li class="circle">
+											<a href="../contactoEmpresas/empresa.php">EMPRESAS</a>
+										</li>
+										<li class="break circle">
+											<a href="../registro/registroPaso1.php">REGISTRO</a>
+										</li>
+										<li class="circle">
+											<a href="#contacto">CONTACTO</a>
+										</li>
+									</ul>
+								</nav>
 						</div>
-
 				</div>
 
-			<!-- Main Wrapper -->
-				
-					<!-- Wide Content -->
-						
+		<!-- Main Wrapper -->
+		<div id="main-wrapper">
 
-			<!-- - - - - - - - - - - - - Content - - - - - - - - - - - - -  -->
-
-		<div id="contents">
-
-			<div class="form-container">
-
-				<div id="tmm-form-wizard" class="containers substrate"> <!--container substrate-->
-
-					<div class="rows">
-						<div class="col-xs-12">
-							<h2 class="form-login-heading">Reestablece tu contrase&ntilde;a</h2>
-						</div>
-
-					</div><!--/ .row-->
-
-					<div class="rows stage-container">
-
-						
-
-					</div><!--/ .row-->
-
-					<div class="rows">
-
-						<div class="col-xs-12">
-
-							<div class="form-header">
-								<div class="form-title form-icon title-icon-payment">
-									<b><i class="fa fa-check" aria-hidden="true"></i> Verificar!!</b>
-								</div>
-							</div><!--/ .form-header-->
-
-						</div>
-
-					</div><!--/ .row-->
-
-					<form role="form">
-
-						<div class="form-wizard">
+					<!-- Main -->
+						<div id="intro" class="container">
 							
-							<div class="rows">
+							<div class="row"> <!-- Row Principal -->	
+							
+								<section class="12u 12u(mobile)"> <!-- Pasos -->
+									<header>
+										<h2>REESTABLECE TU CONTRASE&Ntilde;A</h2>
+									</header> 
+									
+								</section> <!-- Pasos -->
+							
+							</div> <!-- Row Principal -->
+						</div>
 
-								<div class="col-md-8 col-sm-7">
-
-									<div class="data-container">
-											
-											
-											
+						<!-- Wide Content -->
+						<section id="content" class="container">
+						<div class="row"> <!-- Row Principal -->
+								<section class="12u 12u">
+									
+									<hr class="major"/>
+									
+									<div class="row uniform">
+										
+										<div class="-2u 3u">
+											<h5 class="subheader-step">
+												<i class="fa fa-check" aria-hidden="true"></i>
+												&nbsp;VERIFICAR</h5>
+										</div>
+										
+									</div>
+									
+									<hr class="major"/>	
+									
+								<div class="12u 12u$(medium)"> <!--Mensajes-->
+									
+								<!-- form start -->
+								<form role="form">
+									
+									
+								<div class="row uniform 50%"> <!--Row Uniform-->
+										
+									<div class="-4u 8u$">	
+										
 										<?php
 											
 										if (isset($_POST['Enviar'])) {
@@ -290,50 +286,48 @@ session_start();
 												echo "ERROR";
 											}
 											
-											?>
-									
-									
-									</div><!--/ .data-container-->
-
-								</div>
-
-							</div><!--/ .row-->
-							
-						</div><!--/ .form-wizard-->
-
-						<div class="prev">
-						</div>
-						
-						<div class="next">
-						</div>
-
-					</form><!--/ form-->
-
-				</div><!--/ .container-->
-				
-			</div><!--/ .form-container-->
-
-		</div><!--/ #content-->
-	
-
-		<!-- - - - - - - - - - - - end Content - - - - - - - - - - - - - -->
-
-
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-		<!--[if lt IE 9]>
-				<script src="js/respond.min.js"></script>
-		<![endif]-->
-		
-		<!--<script src="js/tmm_form_wizard_custom.js"></script>-->
-						
-						
+								?>
 			
+							</div>			
+						
+						</div> <!--/Row Uniform-->
+									
+						</form>
+										
+					</div> <!-- /Mensajes-->
+								
+					</section>
+								
+					</div> <!-- /Row Principal -->
+							
 
-			<?php
-					include '../pag_interiores/menu/masterFooter.php';
-			?>
 
+			</div> <!-- /Main Wrapper -->
+	
+			<!-- Footer Wrapper -->
+				<div id="footer-wrapper">
+					
+					<div id="contacto"> <!-- Ancla -->
+					<!-- Footer -->
+						<div id="footer" class="container">
+							<header>
+								<h2>Seguinos en nuestras redes sociales</h2>
+							</header>
+							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp; egdoweb@gmail.com</p>
+							<ul class="contact">
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram" target="_blank"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook" target="_blank"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter" target="_blank"><span>Twitter</span></a></li>
+							</ul>
+						</div> <!-- /Footer -->
+					</div>
+					<!-- Copyright -->
+						<div id="copyright" class="container">
+							&copy; Egdo 2016.
+						</div>
+				
+				</div> <!-- /Footer Wrapper -->
+		
 		</div>
 
 		<!-- Scripts -->
