@@ -1,7 +1,7 @@
 /*PRECARGA DE DISEÑOS PARA ALGUNOS USUARIOS EN LA ETAPA 1*/
 /*ID_USUARIO = 6 NOELIA ADMINISTADOR CURSO 2*/
 
-INSERT INTO disenio VALUES('',2,6,0,0,'images/userDesigns/frontalRemera511691.jpg','images/userDesigns/espaldaRemera511691.jpg','images/userDesigns/total511691.jpg');
+INSERT INTO disenio(codigo_tipo,id_usuario_subio,cantidad_votos,votos_segunda_instancia,path_frontal,path_espalda,path_img_doble) VALUES('',2,6,0,0,'images/userDesigns/frontalRemera511691.jpg','images/userDesigns/espaldaRemera511691.jpg','images/userDesigns/total511691.jpg');
 INSERT INTO disenio VALUES('',3,6,0,0,'images/userDesigns/frontalBandera17857.jpg','images/userDesigns/espaldaBandera17857.jpg','images/userDesigns/total17857.jpg');
 /*USUARIO 6 */
 INSERT INTO disenio VALUES('',1,7,0,0,'images/userDesigns/frontalBuzo305484.jpg','images/userDesigns/espaldaBuzo305484.jpg','images/userDesigns/total305484.jpg');
@@ -25,14 +25,14 @@ select * from usuario;
 /*PASAR A LA VOTACION*/
 
 SELECT @fecha_tomar:= fecha_apertura FROM actividad_disenio WHERE curso_pertenece_votacion = 2;
-SELECT @fecha:= date_add(@fecha_tomar, INTERVAL -7 DAY);/*INTERVAL = -7*/
+SELECT @fecha:= date_add(@fecha_tomar, INTERVAL -11 DAY);/*INTERVAL = -7*/
 
 UPDATE actividad_disenio SET fecha_apertura = @fecha WHERE curso_pertenece_votacion = 2;
 
 /*VOLVER A LA ETAPA ANTERIOR*/
 
 SELECT @fecha_tomar:= fecha_apertura FROM actividad_disenio WHERE curso_pertenece_votacion = 2;
-SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +7 DAY); /*ITERVAL = +7*/
+SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +11 DAY); /*ITERVAL = +7*/
 
 UPDATE actividad_disenio SET fecha_apertura = @fecha WHERE curso_pertenece_votacion = 2;
 

@@ -5,6 +5,7 @@
 			include("funciones/calcular_nuevo_ancho.php");
 			include('funciones/generar_notificacion.php');
 				generar_notificacion($conexion,$_SESSION["curso"]);
+			include('funciones/cantidad_notificaciones_mensajes.php');
 			include('funciones/cantidad_notificaciones.php');
 ?>
 

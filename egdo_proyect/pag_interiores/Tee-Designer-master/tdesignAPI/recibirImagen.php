@@ -100,7 +100,7 @@ $curso_sesion = $_SESSION['curso'];
 									$respuesta = 2;
 									echo $respuesta;
 								}else{
-										$query = "insert into disenio values('','$tipo','$usuario_sube',0,0,'$arch1','$arch2','$arch3')";
+										$query = "insert into disenio(codigo_tipo,id_usuario_subio,cantidad_votos,votos_segunda_instancia,path_frontal,path_espalda,path_img_doble) values('$tipo','$usuario_sube',0,0,'$arch1','$arch2','$arch3')";
 										if($conexion->query($query)){
 							
 											$respuesta = $num;

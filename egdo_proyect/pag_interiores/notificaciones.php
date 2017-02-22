@@ -182,8 +182,16 @@
 											$minutos = $separar_hora[1];
 											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
 
-											echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
-											<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+											//echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
+											//<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
+										
+												echo "<a href=".$notificacion['link'].$e.">
+															<div class='row uniform'>
+																<div class='2u'><img src=".$notificacion['icono']." alt='flat icon'></div>
+																<div class='9u'><p>".$notificacion['resumen']."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+																<div class='1u img'><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'></div>	
+															</div>
+													 </a>";	
 										}
 
 									}else{

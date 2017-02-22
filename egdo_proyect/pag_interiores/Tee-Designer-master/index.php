@@ -107,7 +107,7 @@ exit;
 	<header>
 		<nav id="main-nav">
 			<ul>
-				<li class="logo"><a href=""><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
+				<li class="logo"><a href="../index_usuarioComun.php"><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
 				<li class="circle"><span class="hint--bottom hint--always" data-hint="UPD"><a href="../upd.php"><img src="tdesignAPI/images/upd.png" alt=""></a></span></li>
 				<li class="circle"><span class="hint--bottom hint--always" data-hint="DISE&Ntilde;AR"><a href="">
 					<img src="tdesignAPI/images/shirt.png" alt=""></a></span>

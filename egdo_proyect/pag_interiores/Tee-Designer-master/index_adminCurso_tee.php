@@ -96,7 +96,7 @@ exit;
 			});
 		</script>
    
-		<script src="js/jquery-1.10.2.js"></script>
+		<!--<script src="js/jquery-1.10.2.js"></script>-->
 		<script src="js/bootstrap.js"></script>
 		
 </head>
@@ -106,7 +106,7 @@ exit;
 	<header>
 		<nav id="main-nav">
 			<ul>
-				<li class="logo"><a href=""><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
+				<li class="logo"><a href="../indexUsuarioAdminCurso.php"><img src="../../favicon/favicon-96x96.png" alt=""></a></li>
 				<li class="circle"><span class="hint--bottom hint--always" data-hint="UPD"><a href="../upd.php"><img src="tdesignAPI/images/upd.png" alt=""></a></span></li>
 				<li class="circle"><span class="hint--bottom hint--always" data-hint="DISE&Ntilde;AR"><a href="#">
 					<img src="tdesignAPI/images/shirt.png" alt=""></a></span>
@@ -209,7 +209,7 @@ exit;
 
 	</div>
 	
-			<script src="../../js/jquery.min.js"></script>
+			
 			<script src="../../js/jquery.dropotron.min.js"></script>
 </body>
 		

@@ -366,7 +366,8 @@ height:5%;
 		}
 		
 		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even){
-    background-color: #79B800;
+    /*background-color: #79B800;*/
+    background-color: #60B822; 
 		}
 	
 		#votacion #todosLosTalles{
@@ -2976,7 +2977,7 @@ background: #393939;
     -ms-transition: background-color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
     margin-top: 1.2em;
-    background: #79B800;
+    background: #60b822;
     border-radius: 5px;
     padding: 1em;
     padding-left: 2em;
@@ -2996,7 +2997,7 @@ background: #393939;
       font-size: 1.5em;
     	font-weight: bold;
     	color: #fff;
-    	background: #79B800;
+    	background: #60b822;
     	padding: 1em;
     	padding-right: 2em;
     	padding-left: 2em;
@@ -3074,7 +3075,7 @@ background: #393939;
 		}
 		
 		#votacion #formTalles table tr:nth-child(even), #votacion #todosLosTalles table tr:nth-child(even), #votacion #tablaBandera table tr:nth-child(even), #votacion #formEliminar table tr:nth-child(even){
-    background-color: #79B800;
+    background-color: #60b822;
     /*background-color: #333333; color alternativo para las celdas pares*/
 
 		}
@@ -4527,7 +4528,7 @@ text-align: center;
 
 background: #191919;
 margin: auto;
-margin-top: 20px;
+margin-top: 10px;
 width: 455px;
 padding: 5px;
 padding-left: 10px;
