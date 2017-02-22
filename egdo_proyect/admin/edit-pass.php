@@ -61,12 +61,12 @@ include ("../bloqueSeguridad.php");
 					
 					//$id_usuario=1;
 					
-					$consulta= "SELECT contrasenia FROM usuario WHERE id_usuario='$id_usuario'";
+					$consulta= "SELECT * FROM usuario WHERE id_usuario='$id_usuario'";
 					
 					$query = $conexion->query($consulta);
 					while ($row=$query->fetch_array()) {
 						$contrasenia= $row['contrasenia'];
-						
+						$id_usuario= $row['id_usuario'];
 					}
  
 					mysqli_close($conexion); 
@@ -112,7 +112,7 @@ include ("../bloqueSeguridad.php");
 											<div class="row uniform 50%">	
 												
 												<!-- Break -->
-												<input type='hidden' name='user' value='<?php echo $id_protegido=base64_encode($row['id_usuario']); ?>'/>
+												<input type='hidden' name='user' value='<?php echo $id_protegido=base64_encode($id_usuario); ?>'/>
 												
 												<!-- Break -->
 												<div class="3u"><span>Nueva Contraseña: </span></div>

@@ -1,7 +1,7 @@
 <?php
 
 include ("../bloqueSeguridad.php");
-
+include('../pag_interiores/conexion.php');
 
 @$id_mensaje = $_GET['id_mensaje'];
 		$sql = "DELETE FROM mensajes_privado WHERE id_mensaje= $id_mensaje;";
