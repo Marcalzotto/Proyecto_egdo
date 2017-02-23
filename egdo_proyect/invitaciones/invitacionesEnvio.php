@@ -152,10 +152,10 @@
 												
 												$mail = new PHPMailer;
 												$mail->isSMTP();                                      // Activamos SMTP para mailer
-												$mail->Host = 'p3plcpnl0173.prod.phx3.secureserver.net';                       // Especificamos el host del servidor SMTP
+												$mail->Host = 'smtp.gmail.com';                       // Especificamos el host del servidor SMTP
 												$mail->SMTPAuth = true;                               // Activamos la autenticacion
-												$mail->Username = 'public@ocrend.com';       // Correo SMTP
-												$mail->Password = 'Prinick2016';                // Contraseña SMTP
+												$mail->Username = 'egdo.egresados@gmail.com';       // Correo SMTP
+												$mail->Password = 'egdo2016';                // Contraseña SMTP
 												$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
 												$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
 												$mail->From = 'tucorreo@gmail.com';
