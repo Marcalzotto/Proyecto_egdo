@@ -150,7 +150,7 @@
 										
 										<!-- Break -->
 										<div class="-5u 5u$">
-											<button type="submit" class="button special fit small" name="btn-save" id="btn-save"> Enviar 
+											<button type="submit" class="button special fit small" name="Enviar" id="btn-save"> Enviar 
 											</button>
 										</div>
 								    </div>
