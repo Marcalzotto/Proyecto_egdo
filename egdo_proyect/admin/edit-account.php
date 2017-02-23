@@ -63,14 +63,11 @@ include ("../bloqueSeguridad.php");
 					
 					$consulta= "SELECT * FROM usuario WHERE id_usuario='$id_usuario'";
 					
-					$query = $conexion->query($consulta);
-					while ($row=$query->fetch_array()) {
-						$email= $row['email'];
-						$id_usuario = $row['id_usuario'];
-						
-					}
+					$result = mysqli_query($conexion, $consulta);
+					if (mysqli_num_rows($result) > 0) {
+					while($row = mysqli_fetch_assoc($result)){
  
-					mysqli_close($conexion); 
+					
 				?>
 			
 			<!-- Main Wrapper -->
@@ -113,7 +110,7 @@ include ("../bloqueSeguridad.php");
 											<div class="row uniform 50%">	
 												
 												<!-- Break -->
-												<input type='hidden' name='user' value='<?php echo $id_protegido=base64_encode($id_usuario); ?>'/>
+												<input type='hidden' name='user' value='<?php echo $id_protegido=base64_encode($row['id_usuario']);?>'/>
 												
 												<!-- Break -->
 												<div class="3u"><span>Email: </span></div>
@@ -142,7 +139,13 @@ include ("../bloqueSeguridad.php");
 							</div>	<!-- /Row Principal -->
 							
 						</div>
-
+				<?php
+				}
+				}
+				
+				//}
+				mysqli_close($conexion);
+				?>
 				</div> <!-- /Main Wrapper -->
 
 			<!-- Footer Wrapper -->
