@@ -27,7 +27,7 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
-		<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">
+		<!--<link rel="stylesheet" href="../css/slimbox2.css" type="text/css" media="screen">-->
 		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -57,13 +57,13 @@
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<link rel="stylesheet" href="../css/styleTabs.css"><!--Tabs Style -->
-			<script type="text/javascript" src="../js/jquery_min.js"></script>
-			<script type="text/javascript" src="../js/slimbox2.js"></script>
+			<!--<link rel="stylesheet" href="../css/styleTabs.css">--><!--Tabs Style -->
+			<!--<script type="text/javascript" src="../js/jquery_min.js"></script>-->
+			<!--<script type="text/javascript" src="../js/slimbox2.js">--><!--</script>-->
 			<!--Librarys for lightBox -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
-			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
+			<!--<script type="text/javascript" src="../js/administrarVotacion.js"></script>-->
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/borrar_notificacion.js"></script>
@@ -152,8 +152,17 @@
 						at the top of "assets/js/main.js".
 
 					-->
-
 					<div id="contenerNotificaciones">
+							
+							<!--
+							Notificacion modelo responsive!!!!
+							<div class="row uniform">
+									<a href="">
+									<div class='1u icon'><img src="../images/bus.png" alt='flat icon'></div>
+									<div class='10u'><p class="resumen">Notificacion larga muy larga muy larga muy larrrrrgaaaaaaaaaaaaaaaaaaa. asasasasasasasa</p><p class='fecha'>23 de febrero a las 16:26 hs.</p></div>
+									<div class='1u img'><img src='../images/delete.png' class='del' rel="n" alt='borrar notificacion' height='20' width='20'></div>	
+									</a>
+							</div>-->
 						
 							<?php
 								$resultSet = $conexion->query("select * from notificaciones n join notificacion_vista_por nvp on n.id_notificacion = nvp.id_notificacion where n.curso_notificacion = '$_SESSION[curso]' and nvp.usuario = '$_SESSION[id_usuario]' and nvp.borrada = 0 order by n.tipo_notificacion;");
@@ -182,16 +191,14 @@
 											$minutos = $separar_hora[1];
 											$e = add_extension($notificacion["tipo_notificacion"],$_SESSION["id_rol"]);
 
-											//echo "<a href=".$notificacion['link'].$e."><img src=".$notificacion['icono']." alt='Remera disenios'>
-											//<p>".$notificacion['resumen']."</p><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></a>";
-										
-												echo "<a href=".$notificacion['link'].$e.">
-															<div class='row uniform'>
-																<div class='2u'><img src=".$notificacion['icono']." alt='flat icon'></div>
-																<div class='9u'><p>".$notificacion['resumen']."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+											echo "<div class='row uniform'>
+															<a href=".$notificacion['link'].$e.">
+																<div class='1u icon'><img src=".$notificacion['icono']." alt='flat icon'></div>
+																<div class='10u'><p class='resumen'>".$notificacion['resumen']."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
 																<div class='1u img'><img src='../images/delete.png' class='del' rel=".$notificacion['id_notificacion']." alt='borrar notificacion' height='20' width='20'></div>	
-															</div>
-													 </a>";	
+															</a>
+														</div>";
+													 	
 										}
 
 									}else{
@@ -200,9 +207,10 @@
 								}else{
 									echo "Hubo un problema con el servidor, intente nuevamente mas tarde";
 								}
+							
 								
 							?>
-						
+						 
 	
 					</div>
 				</div>

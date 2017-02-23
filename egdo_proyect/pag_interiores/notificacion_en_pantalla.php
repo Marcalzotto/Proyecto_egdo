@@ -38,13 +38,13 @@ generar_notificacion($conexion,$curso);
 
 						$e = add_extension($regs[5],$rol);
 					
-						$string.= "<a href=".$regs[2].$e.">
-												<div class='row uniform'>
-													<div class='2u'><img src=".$regs[3]." alt='flat icon'></div>
-													<div class='9u'><p>".$regs[1]."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+						$string.= "<div class='row uniform'>
+													<a href=".$regs[2].$e.">
+													<div class='1u icon'><img src=".$regs[3]." alt='flat icon'></div>
+													<div class='10u'><p class='resumen'>".$regs[1]."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
 													<div class='1u img'><img src='../images/delete.png' class='del' rel=".$regs[0]." alt='borrar notificacion' height='20' width='20'></div>	
-												</div>
-											</a>|";							
+													</a>
+												</div>|";							
 							
 						$queries[] = "insert into notificacion_vista_por values('','$usuario','$regs[0]',0,'$curso')";	
 

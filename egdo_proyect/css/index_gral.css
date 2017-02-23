@@ -385,19 +385,22 @@ height:5%;
 		}
 		#contenerNotificaciones a{
 		margin: 0 auto;
-		padding: 1em;
-		padding-right: 0;
+		padding: 11px;
+		/*padding-right: 0;*/
     background: #2e2e2e;
-   	display: table;
+   	display: inline-flex;
     text-decoration: none;
     border: 1px solid;
     border-color: #333;
     color: #fff;
     width: 100%;
 }
-
+#contenerNotificaciones a .icon{
+	display: none;
+}
 #contenerNotificaciones a .img{
-	padding-left: 0px;
+	text-align: right;
+	margin-left: 20px;
 }
 #contenerNotificaciones a p{
 	vertical-align: text-top;
@@ -405,11 +408,16 @@ height:5%;
   font-size: 12px;
   /*margin-left: 6em;*/
 }
-#contenerNotificaciones a .fecha{
-    margin-top: 0px;
-    font-size: 15px;
+
+#contenerNotificaciones a .resumen{
+   font-size: 75%;
+   word-break: break-all;
 }
 
+#contenerNotificaciones a .fecha{
+	 margin-top: 0px;
+   font-size: 90%;
+}
 #contenerNotificaciones h2{
 	font-size: 160%;
 	color: #fff;
@@ -2953,15 +2961,15 @@ background: #393939;
 
 #banner-wrapper #contenerNotificaciones{
 	margin:0 auto;
-	margin-top: 5em;
+	margin-top: 10em;
 	padding: 3%;
 	width: 60%;
 }
 
 #contenerNotificaciones a{
 		margin: 0 auto;
-		padding: 1em;
-		padding-right: 0;
+		padding: 11px;
+		/*padding-right: 0;*/
 		padding-bottom: 0;
     background: #2e2e2e;
    	display: inline-flex;
@@ -2972,18 +2980,20 @@ background: #393939;
     width: 100%;
 }
 
-/*#contenerNotificaciones a img{
-	float: left;
-}*/
 #contenerNotificaciones a p{
-	vertical-align: text-top;
+	/*vertical-align: text-top;
   margin: 0;
-  margin-left: -2em;
+  margin-left: -2em;*/
   margin-bottom: 1em;
   line-height: 1.2em;
 }
+#contenerNotificaciones a .resumen{
+   font-size: 100%;
+   word-break: break-all;
+}
+
 #contenerNotificaciones a .fecha{
-   
+   font-size: 90%;
 }
 
 #contenerNotificaciones h2{
@@ -2994,7 +3004,7 @@ background: #393939;
 }
 
 #contenerNotificaciones a .img{
-	padding-left: 1em;
+	text-align: right;
 }
 
 /*Estilo alterta notificaciones*/

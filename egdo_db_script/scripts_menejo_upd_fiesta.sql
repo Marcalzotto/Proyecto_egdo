@@ -10,7 +10,7 @@ UPDATE evento SET fecha_hora = @fecha WHERE id_curso = 2 and id_actividad = 3;
 /*retrasar etapas de la fiesta*/
 
 SELECT @fecha_tomar:= fecha_hora FROM evento WHERE id_curso = 2 and id_actividad = 3;
-SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +7 DAY);/*INTERVAL = +X*/
+SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +15 DAY);/*INTERVAL = +X*/
 
 UPDATE evento SET fecha_hora = @fecha WHERE id_curso = 2 and id_actividad = 3; 
 
