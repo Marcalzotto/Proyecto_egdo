@@ -45,7 +45,7 @@ if($_POST){
 														if($result = $conexion->query($actualizar_calificacion)){
 															echo 6;//voto registrado
 														}else{
-															echo 3;//
+															echo 3;//error de servidor
 														}
 													}else{
 														echo 3;//error de servidor
@@ -58,7 +58,7 @@ if($_POST){
 											echo 8;//ya existe un ganador no es necesario votar
 										}
 								}else{//if maximos 
-									echo 3;
+									echo 3;//error se servidor
 								}	
 							}else{
 

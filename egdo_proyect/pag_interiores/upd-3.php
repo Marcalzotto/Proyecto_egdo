@@ -187,7 +187,7 @@ if(isset($_GET["upd"])){
             </section>
             <section class="4u 12u(mobile) aloja_comentarios">
             <?php
-              $buscar_comentario = "select * from comentario c join usuario u on c.id_usuario = u.id_usuario where c.id_curso = '$curso' and c.id_actividad = 2 and c.id_lugar = '$id_upd' and estado_moderar = 0"; 
+              $buscar_comentario = "select * from comentario_upd cu join usuario u on cu.id_usuario = u.id_usuario where cu.id_curso = '$curso' and cu.id_lugar = '$id_upd' and cu.estado_moderar = 0"; 
               if($result = $conexion->query($buscar_comentario)){
                 if($result->num_rows > 0){
                    while($reg = $result->fetch_array(MYSQLI_ASSOC)){

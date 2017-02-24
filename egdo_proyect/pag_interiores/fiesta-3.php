@@ -176,7 +176,7 @@ if(isset($_GET["fiesta"])){
             </section>
              <section class="4u 12u(mobile) aloja_comentarios">
             <?php
-              $buscar_comentario = "select * from comentario c join usuario u on c.id_usuario = u.id_usuario where c.id_curso = '$curso' and c.id_actividad = 3 and c.id_lugar = '$id_fiesta' and estado_moderar = 0"; 
+              $buscar_comentario = "select * from comentario_fiesta cf join usuario u on cf.id_usuario = u.id_usuario where cf.id_curso = '$curso' and cf.id_lugar = '$id_fiesta' and cf.estado_moderar = 0"; 
               if($result = $conexion->query($buscar_comentario)){
                 if($result->num_rows > 0){
                    while($reg = $result->fetch_array(MYSQLI_ASSOC)){

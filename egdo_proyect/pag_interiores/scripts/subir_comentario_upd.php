@@ -31,8 +31,9 @@ if($_POST){
 				$horas = $separar_hora[0];
 				$minutos = $separar_hora[1];
 				$segundos = $separar_hora[2];
-				$insertarComentario = "insert into comentario(comentario,fecha_hora,id_usuario,id_actividad,id_lugar,id_curso) 
-												values('$comentario','$fecha_formateada','$usuario',2,'$id_lugar','$curso')";
+
+				$insertarComentario = "insert into comentario_upd(comentario,fecha_hora,id_usuario,id_lugar,id_curso) 
+												values('$comentario','$fecha_formateada','$usuario','$id_lugar','$curso')";
 
 				if($result = $conexion->query($insertarComentario)){
 					$buscar_usuario = "select nombre from usuario where id_usuario = '$usuario'";
