@@ -268,17 +268,8 @@
 							//Validado los campos se inserta los datos a la base y se redirecciona al paso 3
 					
 							
-							 $host_db = "localhost";
-							 $user_db = "root";
-							 $pass_db = "";
-							 $db_name = "egdo_db";
-							 $tbl_name = "usuario";
-
-							 $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-							 if ($conexion->connect_error) {
-							 die("La conexion falló: " . $conexion->connect_error);
-							}
+							 //Conectamos a la base de datos
+							include('../pag_interiores/conexion.php');
 						
 								//cargamos datos del nuevo curso
 								 $query = "INSERT INTO curso (nombre_escuela,localidad,curso_anio,curso_letra,cant_alumnos,fecha_creacion)

@@ -133,17 +133,8 @@
 									
 										<?php
 											
-												$host_db = "localhost";
-												$user_db = "root";
-												$pass_db = "";
-												$db_name = "egdo_db";
-												$tbl_name = "usuario";
-					
-												$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-					
-												if ($conexion->connect_error) {
-												die("La conexion falló: " . $conexion->connect_error);
-												}
+												//Conectamos a la base de datos
+												include('../pag_interiores/conexion.php');
 											
 												date_default_timezone_set('America/Argentina/Buenos_Aires');
 												$fechaAltaUsuario = date("Y-n-d-H-i-s");
@@ -156,9 +147,9 @@
 												$mail->SMTPAuth = true;                               // Activamos la autenticacion
 												$mail->Username = 'egdo.egresados@gmail.com';       // Correo SMTP
 												$mail->Password = 'egdo2016';                // Contraseña SMTP
-												$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
-												$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
-												$mail->From = 'tucorreo@gmail.com';
+												$mail->SMTPSecure = 'tls';                            // Activamos la encriptacion ssl
+												$mail->Port = 587;                                    // Seleccionamos el puerto del SMTP
+												$mail->From = 'egdo.egresados@gmail.com';
 												$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
 												$mail->isHTML(true); //Decimos que lo que enviamos es HTML
 												$mail->CharSet = 'UTF-8';  // Configuramos el charset 

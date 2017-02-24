@@ -332,17 +332,17 @@
 											$url_activacion = 'http://localhost/egdo_proyect/registro/activaCuenta.php';
 
 											$mail = new PHPMailer;
-											$mail->isSMTP();                                      // Activamos SMTP para mailer
-											$mail->Host = 'p3plcpnl0173.prod.phx3.secureserver.net';                       // Especificamos el host del servidor SMTP
-											$mail->SMTPAuth = true;                               // Activamos la autenticacion
-											$mail->Username = 'public@ocrend.com';       // Correo SMTP
-											$mail->Password = 'Prinick2016';                // Contraseña SMTP
-											$mail->SMTPSecure = 'ssl';                            // Activamos la encriptacion ssl
-											$mail->Port = 465;                                    // Seleccionamos el puerto del SMTP
-											$mail->From = 'egdo.egresados@gmail.com';
-											$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
-											$mail->isHTML(true); //Decimos que lo que enviamos es HTML
-											$mail->CharSet = 'UTF-8';  // Configuramos el charset 
+												$mail->isSMTP();                                      // Activamos SMTP para mailer
+												$mail->Host = 'smtp.gmail.com';                       // Especificamos el host del servidor SMTP
+												$mail->SMTPAuth = true;                               // Activamos la autenticacion
+												$mail->Username = 'egdo.egresados@gmail.com';       // Correo SMTP
+												$mail->Password = 'egdo2016';                // Contraseña SMTP
+												$mail->SMTPSecure = 'tls';                            // Activamos la encriptacion ssl
+												$mail->Port = 587;                                    // Seleccionamos el puerto del SMTP
+												$mail->From = 'egdo.egresados@gmail.com';
+												$mail->FromName = 'EGDO';                       // Nombre del que envia el correo
+												$mail->isHTML(true); //Decimos que lo que enviamos es HTML
+												$mail->CharSet = 'UTF-8';  // Configuramos el charset 
 											
 											$mensaje = '<h2>Hola '.$nombre.'!!! para poder activar tu cuenta y continuar con la registracion por favor segui el siguiente link.
 													Si no podes hacer click, copia y pega en la barra de direcciones de tu navegador.</h2><br><br>'

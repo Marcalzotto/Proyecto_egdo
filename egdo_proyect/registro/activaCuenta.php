@@ -2,17 +2,8 @@
 
 $datos = $_GET;
 
-$host_db = "localhost";
-$user_db = "root";
-$pass_db = "";
-$db_name = "egdo_db";
-$tbl_name = "usuario";
-
-$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-if ($conexion->connect_error) {
-die("La conexion falló: " . $conexion->connect_error);
-}											
+//Conectamos a la base de datos
+include('../pag_interiores/conexion.php');										
 
 //consulta si el email y id_confirmacion se encuentran asociados
 $buscarUsuario = 'SELECT * FROM usuario
