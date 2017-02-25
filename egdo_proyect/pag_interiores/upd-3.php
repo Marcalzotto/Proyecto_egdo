@@ -9,6 +9,7 @@
 <?php include("funciones/obtener_mes.php");?>  
 
 <?php
+$fechaHoy = new DateTime();
 $curso = $_SESSION["curso"];
 if(isset($_GET["upd"])){
   $id_upd = $_GET["upd"];
@@ -91,6 +92,7 @@ if(isset($_GET["upd"])){
       <script src="../js/tomarDatos.js"></script>
       <script src="../js/calificar_upd.js"></script>
       <script src="../js/subir_comentario_upd.js"></script>
+      <script src="../js/moderar_comentario_upd.js"></script>  
   </head>
   <body class="homepage">
     <div id="page-wrapper">
@@ -130,62 +132,107 @@ if(isset($_GET["upd"])){
             <p class="detalles">Pagina web: <?php if($reg["pagina_web"] != ""){echo $reg["pagina_web"];}else{echo "N/D";} ?></p>
           </section>
           
-
           <!-- Wide Content -->
           <section id="content" class="container">
                <!-- SLIDESHOW -->
-          <div id="sliders">
-          <ul class="bjqs">
+            <div id="sliders">
+              <ul class="bjqs">
+              <?php
+                echo "<li>
+                        <img src=../images/".$reg['foto_perfil']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
+                      </li>
+                      <li>
+                        <img src=../images/".$reg['foto_lugar']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
+                      </li>";
+              ?>
+              </ul>
+            </div>
+          </section>
             <?php
-            
-                  echo "<li>
-                          <img src=../images/".$reg['foto_perfil']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
-                        </li>
-                        <li>
-                          <img src=../images/".$reg['foto_lugar']." alt='Imagenes de upd' title='".$reg['detalles_adicionales']."' />
-                        </li>";
-                
-              
-            ?>
+            $buscar_etapa_votacion = "select fecha_hora from evento where id_actividad = 2 and id_curso = '$curso'";
+            if($result = $conexion->query($buscar_etapa_votacion)){
+                if($result->num_rows > 0){
+                  $reg = $result->fetch_array(MYSQLI_ASSOC);
+                  $fecha_hora = new DateTime($reg["fecha_hora"]);
+                  $interval = $fechaHoy->diff($fecha_hora);
+                  $a = $interval->y;
+                  $m = $interval->m;
+                  $d = $interval->d;
 
-                  <!--<li>
-                    <img src="../images/plaza-San-Justo.jpg" alt="" title="Es una de las mejores plazas de la zona, y tiene mucho espacio para poder realizar diferentes actividades." />
-                  </li>
-                  <li>
-                    <img src="../images/plaza-2.jpg" alt="" title="Para aquellos que no conocen, la plaza queda entre las siguientes calles: Arieta, Villegas, Perón y Perú." />
-                  </li>-->
-                </ul>
-               </div>
-            </section>
-            <section class="4u 12u(mobile) section_votos">
-              <p class="upd_votes">Votar este lugar</p>
-              <form>
-                  <p class='clasificacion'>
-                  <input id='radio5' type='radio' name='estrellas' value='5'>
-                  <label class='labelEstrellas' id='label5' for='radio5'>★</label>
-                  <input id='radio4' type='radio' name='estrellas' value='4'>
-                  <label class='labelEstrellas' id='label4' for='radio4'>★</label>
-                  <input id='radio3' type='radio' name='estrellas' value='3'>
-                  <label class='labelEstrellas' id='label3' for='radio3'>★</label>
-                  <input id='radio2' type='radio' name='estrellas' value='2'>
-                  <label class='labelEstrellas' id='label2' for='radio2'>★</label>
-                  <input id='radio1' type='radio' name='estrellas' value='1'>
-                  <label class='labelEstrellas' id='label1' for='radio1'>★</label>
-                  <input type='hidden' value='<?php echo $id_upd; ?>' class='hidden'>
-                  </p>
-              </form>
-              <p class="valoration"></p>
-            </section>
+                  $buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
+                  select max(calificacion) from upd)";
+                  if($result = $conexion->query($buscar_maximos)){
+                      $maximos = $result->num_rows;
+                      if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($d > 22 && $maximos > 1 && $_SESSION["id_rol"] < 3)){
+                      echo  "<section class='4u 12u(mobile) section_votos'>
+                            <p class='upd_votes'>Votar este lugar</p>
+                             <form>
+                              <p class='clasificacion'>
+                              <input id='radio5' type='radio' name='estrellas' value='5'>
+                              <label class='labelEstrellas' id='label5' for='radio5'>★</label>
+                              <input id='radio4' type='radio' name='estrellas' value='4'>
+                              <label class='labelEstrellas' id='label4' for='radio4'>★</label>
+                              <input id='radio3' type='radio' name='estrellas' value='3'>
+                              <label class='labelEstrellas' id='label3' for='radio3'>★</label>
+                              <input id='radio2' type='radio' name='estrellas' value='2'>
+                              <label class='labelEstrellas' id='label2' for='radio2'>★</label>
+                              <input id='radio1' type='radio' name='estrellas' value='1'>
+                              <label class='labelEstrellas' id='label1' for='radio1'>★</label>
+                              <input type='hidden' value='$id_upd' class='hidden'>
+                              </p>
+                            </form>
+                            <p class='valoration'></p>
+                          </section>";
+                      }else if($d > 15 && $d <= 22){
+                          echo  "<section class='4u 12u(mobile) section_votos'>
+                            <p class='upd_votes'>Votar este lugar</p>
+                             <form>
+                              <p class='clasificacion'>
+                              <input id='radio5' type='radio' name='estrellas' value='5'>
+                              <label class='labelEstrellas' id='label5' for='radio5'>★</label>
+                              <input id='radio4' type='radio' name='estrellas' value='4'>
+                              <label class='labelEstrellas' id='label4' for='radio4'>★</label>
+                              <input id='radio3' type='radio' name='estrellas' value='3'>
+                              <label class='labelEstrellas' id='label3' for='radio3'>★</label>
+                              <input id='radio2' type='radio' name='estrellas' value='2'>
+                              <label class='labelEstrellas' id='label2' for='radio2'>★</label>
+                              <input id='radio1' type='radio' name='estrellas' value='1'>
+                              <label class='labelEstrellas' id='label1' for='radio1'>★</label>
+                              <input type='hidden' value='$id_upd' class='hidden'>
+                              </p>
+                            </form>
+                            <p class='valoration'></p>
+                          </section>";
+                        }else{
+                          echo "<section class='4u 12u(mobile)' style='margin-top:80px;'>
+                                
+                                </section>";
+                        }
+                      
+                  }else{
+                     echo "<section class='4u 12u(mobile)'>
+                            <p>Hubo un error interno.</p>
+                           </section>";
+                  }
+
+                }
+            }else{
+              echo "<section class='4u 12u(mobile)'>
+                      <p>Hubo un error interno.</p>
+                    </section>";
+            }
+            ?>
+            
             <section class="4u 12u(mobile) section_comentario">
-              <p class="upd_votes">Dejanos tu comentiaro.</p>
+              <p class="upd_votes">Dejanos tu comentario.</p>
               <form id="form_upd">
                   <textarea class="charcounter-control" name="comentario_upd" id="id_comentario_upd" maxlength='1000'  warnlength='800' cols="30" rows="10"></textarea>
-                  <button id="enviar_comentario_upd">Comentar</button>
+                  <button id="enviar_comentario_upd" data-lugar="<?php echo $id_upd; ?>">Comentar</button>
                   <input type="reset" value="Borrar"/>
               </form>
               
             </section>
-            <section class="4u 12u(mobile) aloja_comentarios">
+            <div class="aloja_comentario">
             <?php
               $buscar_comentario = "select * from comentario_upd cu join usuario u on cu.id_usuario = u.id_usuario where cu.id_curso = '$curso' and cu.id_lugar = '$id_upd' and cu.estado_moderar = 0"; 
               if($result = $conexion->query($buscar_comentario)){
@@ -211,27 +258,67 @@ if(isset($_GET["upd"])){
                           $minutos = $separar_hora[1];
                           $segundos = $separar_hora[2];
 
-                       echo "<div class='comentario'>
-                        <p class='nombre'>".$unComentario["nombre"]."</p>
-                        <p class='contenido'>".$unComentario["comentario"]."</p>
-                        <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
-                        </div>";     
+                          if($_SESSION["id_rol"] < 3){
+                              echo "<div class='row 0%'>
+                                     <div class='11u parrafo'>
+                                      <p class='nombre'>".$unComentario["nombre"]."</p>
+                                      <p class='contenido'>".$unComentario["comentario"]."</p>
+                                      <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
+                                     </div>
+                                     <div class='1u img'><img src='../images/delete.png' class='del' rel=".$unComentario["id_comentario"]." alt='borrar notificacion' height='20' width='20'></div>
+                                    </div>";
+                            }else{
+                               echo "<div class='row 0%'>
+                                     <div class='12u parrafo'>
+                                      <p class='nombre'>".$unComentario["nombre"]."</p>
+                                      <p class='contenido'>".$unComentario["comentario"]."</p>
+                                      <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
+                                     </div>
+                                     </div>";
+                            }
+                             
                    }
                  
                 }else{
-                  echo "<h4>Aun se han subido comentarios sobre este lugar.</h4>";
+                  echo "<h4>Aun no se han subido comentarios sobre este lugar.</h4>";
                 }
               }else{
                 echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>".$conexion->error;
               }
             ?>
 
-             <!--<div class="comentario">
-               <p class="nombre">Nombre User</p>
-               <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
-               <p class="fecha">Aca va ir la fecha.</p>
-             </div>-->
-            </section>
+          
+            </div>
+          <!-- <div class="aloja_comentario">
+            <div class="row 0%">
+              <div class="1u"></div>
+                <div class="11u parrafo">
+                  <p class="nombre">Nombre User</p>
+                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
+                  <p class="fecha">Aca va ir la fecha.</p>
+                </div>
+              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
+            </div>
+             <div class="row 0%">
+              <div class="1u"></div>
+                <div class="11u parrafo">
+                  <p class="nombre">Nombre User</p>
+                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
+                  <p class="fecha">Aca va ir la fecha.</p>
+                </div>
+              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
+            </div>
+             <div class="row 0%">
+              <div class="1u"></div>
+                <div class="11u parrafo">
+                  <p class="nombre">Nombre User</p>
+                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
+                  <p class="fecha">Aca va ir la fecha.</p>
+                </div>
+              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
+            </div>
+            </div>-->
+
 
         </div> 
 

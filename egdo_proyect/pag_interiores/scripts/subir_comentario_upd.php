@@ -16,18 +16,18 @@ if($_POST){
 
 			if(strlen($comentario) < 1000){
 				$comentario = ereg_replace($patter_coment, '', $_POST["comentario"]);
-				$fecha_separar = split("-", $fecha_formateada);
+				$fecha_separar = explode("-", $fecha_formateada);
 				$aaaa = $fecha_separar[0];
 				$mm = $fecha_separar[1];
 				$dd = $fecha_separar[2];
 
 				$mes_nombre = get_mes($mm);
 
-				$tiempo = split(" ", $dd);
+				$tiempo = explode(" ",$dd);
 				$dia = $tiempo[0];
 				$hora = $tiempo[1];
 
-				$separar_hora = split(":", $hora);
+				$separar_hora = explode(":",$hora);
 				$horas = $separar_hora[0];
 				$minutos = $separar_hora[1];
 				$segundos = $separar_hora[2];
@@ -37,11 +37,28 @@ if($_POST){
 
 				if($result = $conexion->query($insertarComentario)){
 					$buscar_usuario = "select nombre from usuario where id_usuario = '$usuario'";
+					//$buscar_usuario = "select cu.id_comentario,u.nombre from comentario_upd cu join usuario u on cu.id_usuario = u.id_usuario where id_usuario = '$usuario'";
+
 					if($result = $conexion->query($buscar_usuario)){
 						$reg = $result->fetch_array(MYSQLI_ASSOC);
 
-						$return_comentario = "<div class='comentario'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$hora.":".$minutos." hs.</p></div>";
-						echo $return_comentario;		
+						$return_comentario = "<div class='comentario'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>";
+						
+						if($_SESSION["id_rol"] < 3){
+             echo "<div class='row 0%'>
+             					<div class='11u parrafo'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+                      <div class='1u img'><img src='../images/delete.png' class='del' rel=".$unComentario["id_comentario"]." alt='borrar notificacion' height='20' width='20'></div>
+                   </div>";
+           }else{
+                               echo "<div class='row 0%'>
+                                     <div class='12u parrafo'>
+                                      <p class='nombre'>".$unComentario["nombre"]."</p>
+                                      <p class='contenido'>".$unComentario["comentario"]."</p>
+                                      <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
+                                     </div>
+                                     </div>";
+                            }
+
 					}else{
 						echo -5;
 					}
@@ -60,9 +77,6 @@ if($_POST){
 		echo -3;
 	}
 	
-
-
-
 }
 
 ?>

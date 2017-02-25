@@ -61,6 +61,7 @@ margin-right: 3.7em;}
 .window label[for=arch]{color: #000;margin-bottom: 1em;}
 .window label[for=evento_hora]{color: #000;margin-bottom: 1em;margin-top: 1em;}
 .window p img{vertical-align:middle;float:right;border:0;width:16px;height:16px;margin-right: 10px;}
+.window p .derecha{float:none;}
 #field1{display: none; color:red;}
 #field2{display: none; color:red;}
 #field3{display: none; color:red;}
@@ -89,7 +90,7 @@ text-indent:-999em}
 
 .window .formeventos #lista{
 	position: absolute;
-	width: 600px;
+	width: 97%;
 	background: #fff;
 	border: 0;
 }
@@ -98,10 +99,10 @@ text-indent:-999em}
 	background: #fff;
     height: 40px;
     position: relative;
-    margin-top: 6.65em;
+    margin-top: 3.65em;
     padding-top: 0.82em;
     padding-left: 0.3em;
-    color: #000;
+    /*color: #000;*/
 }
 
 .window .formeventos #lista li img{

@@ -20,7 +20,6 @@ var expReg = /[^0-9]/;
 			alert("hubo un error con los datos, no pueden nulos o negativos");
 			return false;
 		}else{
-			alert("pasa por aca");
 			
 			$.ajax({
 				type:'POST',
@@ -60,6 +59,8 @@ var expReg = /[^0-9]/;
 						alert("Ya existe un ganador, no es necesario votar");
 					}else if(data == 9){
 						alert("Solo el administrador puede desempatar");
+					}else if(data == 10){
+						alert("La votacion de lugares no esta habilitada");
 					}else{
 						alert(data);
 					}

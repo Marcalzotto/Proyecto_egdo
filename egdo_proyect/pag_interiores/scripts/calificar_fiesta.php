@@ -60,24 +60,24 @@ if($_POST){
 								}else{//if maximos 
 									echo 3;//error se servidor
 								}	
-							}else{
+							}else if($intervalD >= 15){
 
 								$buscarSiVotoTresLugares = "select count(id_lugar) as cant from calificacion_fiesta where id_usuario = '$usuario'";
 								if($result = $conexion->query($buscarSiVotoTresLugares)){
 									$reg = $result->fetch_array(MYSQLI_ASSOC);
 									$cantidad = $reg["cant"];
 									if($cantidad < 3){
-										$verSiVotoEseLugar = "select count(id_lugar) as cant from calificacion_fista where id_lugar = '$lugar' and id_usuario = '$usuario'";
+										$verSiVotoEseLugar = "select count(id_lugar) as cant from calificacion_fiesta where id_lugar = '$lugar' and id_usuario = '$usuario'";
 										if($result = $conexion->query($verSiVotoEseLugar)){
 											$reg = $result->fetch_array(MYSQLI_ASSOC);
 											$cantidad = $reg["cant"];
 												if($cantidad > 0){
 													echo 5;// error ya voto este lugar
 												}else{
-													$insertarCalificacion = "insert into calificacion_fista(id_usuario,valor,id_lugar) values('$usuario','$valor','$lugar');";
+													$insertarCalificacion = "insert into calificacion_fiesta(id_usuario,valor,id_lugar) values('$usuario','$valor','$lugar');";
 													if($result = $conexion->query($insertarCalificacion)){
-														$calificacion = calcular($conexion,$lugar,"fista");
-														$actualizar_calificacion = "update fista set calificacion = '$calificacion' where id_fista = '$lugar'";
+														$calificacion = calcular($conexion,$lugar,"fiesta");
+														$actualizar_calificacion = "update fiesta set calificacion = '$calificacion' where id_fiesta = '$lugar'";
 														if($result = $conexion->query($actualizar_calificacion)){
 															echo 6;//voto registrado
 														}else{
@@ -96,6 +96,8 @@ if($_POST){
 								}else{
 									echo 3;//error de servidor
 								}
+							}else{
+								echo 10;//la votacion no esta habilitada
 							}//fin else votacion normal de una semana	
 							
 					}else{

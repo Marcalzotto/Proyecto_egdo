@@ -43,8 +43,7 @@ switch ($_POST["accion"])
 		$query=$conexion->query("select * from tcalendario where id ='".$_POST["id"]."' and fecha='".$_POST["fecha"]."' ");
 		if($fila = $query->fetch_array()){
 			echo "<p class='datos'>Nombre: ".$fila["evento"]."</p>
-			<p class='datos'>Color: ".$fila["color"]."</p>
-			<p class='datos'>Icono: <img src=".$fila["icono"]." alt=".$fila["tipo_evento"]."/> ".$fila["tipo_evento"]."</p>
+			<p class='datos'>Icono: <img src=".$fila["icono"]." class='derecha' alt=".$fila["tipo_evento"]."/> (".$fila["tipo_evento"].")</p>
 			<p class='datos'>Hora: ".$fila["hora"]." Hs</p>
 			<p class='datos'>Barrio: ".$fila["barrio"]."</p>
 			<p class='datos'>Calle: ".$fila["calle"]."</p>
@@ -59,7 +58,7 @@ switch ($_POST["accion"])
 			$curso = base64_decode($_POST["curso_evento"]);
 			$arch = "";
 		//$query=$conexion->query("insert into tcalendario (fecha,evento,color,icono,hora,barrio,calle,altura,curso_eventos) values ('".$_GET["fecha"]."','".strip_tags($_GET["evento"])."','".$_GET["color"]."','".$arch."','".$_GET["tiempo"]."','".$_GET["barrio"]."','".$_GET["calle"]."','".$_GET["altura"]."','".$_GET["curso"]."')");
-		$query=$conexion->query("insert into tcalendario (fecha,evento,color,icono,hora,barrio,calle,altura,curso_eventos,tipo_evento) values ('".$_POST["evento_fecha"]."','".strip_tags($_POST["evento_titulo"])."','".$_POST["color"]."','".$_POST["icono"]."','".$_POST["evento_hora"]."','".$_POST["evento_lugar"]."','".$_POST["calle"]."','".$_POST["altura"]."','".$curso."','".$_POST["evento_tipo"]."')");
+		$query=$conexion->query("insert into tcalendario(fecha,evento,icono,hora,barrio,calle,altura,curso_eventos,tipo_evento) values ('".$_POST["evento_fecha"]."','".strip_tags($_POST["evento_titulo"])."','".$_POST["icono"]."','".$_POST["evento_hora"]."','".$_POST["evento_lugar"]."','".$_POST["calle"]."','".$_POST["altura"]."','".$curso."','".$_POST["evento_tipo"]."')");
 		if ($query) echo "<p class='ok'>Evento guardado correctamente.</p>";
 		else echo "<p class='error'>Se ha producido un error guardando el evento.</p>";
 		break;
@@ -69,7 +68,6 @@ switch ($_POST["accion"])
 		$query=$conexion->query("select * from tcalendario where id ='".$_POST["id"]."' and fecha='".$_POST["fecha"]."' ");
 		if($fila = $query->fetch_array()){
 			echo "<input type='text' name='evento_titulo' id='evento_titulo' class='required' placeholder='Escribe el nombre del evento' value='".$fila["evento"]."'/><p id='field1'></p>
-						<select name='color' id='color' class='required'><option value='0'>Elegir Color</option><option value='1' selected='selected'>Cyan</option></select><p id='field2'></p>
 						<div id='div_visible'><img src='".$fila["icono"]."' alt='".$fila["tipo_evento"]."'/>".$fila["tipo_evento"]."</div><div id='lista' class='none'><li class='item'>Seleccionar icono</li><li class='item'><img src='../images/evento_icons/transport.png' alt='Transporte' />Viaje de Egresados</li><li class='item'><img src='../images/evento_icons/party.png' alt='Fiesta de egresados' />Fiesta de Egresados</li><li class='item'><img src=../images/evento_icons/upd.png alt='upd' />UPD</li><li class='item'><img src=../images/evento_icons/money.png alt='pagos' />Pagos</li><li class='item'><img src=../images/evento_icons/calendar.png alt='otros' />Otros</li></div><p id='field3'></p>	
 						<label for='evento_hora'>Elegir la hora del evento</label><input type='time' name='evento_hora' id='evento_hora' class='required' value='".$fila["hora"]."' placeholder='Escribe la hora del evento'><p id='field4'></p>
 						<input type='text' name='evento_lugar' id='evento_lugar' class='required' value='".$fila["barrio"]."' placeholder='Barrio'><p id='field5'></p>
@@ -90,7 +88,7 @@ switch ($_POST["accion"])
 	case "modificar_evento":
 	{
 
-		$query=$conexion->query("update tcalendario set evento ='".$_POST["evento_titulo"]."', color ='".$_POST["color"]."', icono = '".$_POST["icono"]."', hora ='".$_POST["evento_hora"]."', barrio ='".$_POST["evento_lugar"]."', calle ='".$_POST["calle"]."', altura ='".$_POST["altura"]."' where id ='".$_POST["evento_id"]."' and fecha ='".$_POST["evento_fecha"]."' ");
+		$query=$conexion->query("update tcalendario set evento ='".$_POST["evento_titulo"]."', icono = '".$_POST["icono"]."', hora ='".$_POST["evento_hora"]."', barrio ='".$_POST["evento_lugar"]."', calle ='".$_POST["calle"]."', altura ='".$_POST["altura"]."' where id ='".$_POST["evento_id"]."' and fecha ='".$_POST["evento_fecha"]."' ");
 		//$query=$conexion->query("update tcalendario set evento ='".$_POST["evento"]."', color ='".$_POST["color"]."', hora ='".$_POST["tiempo"]."' where id ='".$_POST["id"]."' and fecha ='".$_POST["fecha"]."' ");	
 		//Esta quedaria en caso que no haya que pasar archivos
 		if($query) echo "<p class='ok'>Evento modificado correctamente.</p>";

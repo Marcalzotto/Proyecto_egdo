@@ -203,21 +203,6 @@
 			vec[0] = 1;
 		}
 
-		 if(color == 0){
-			$("#color").css({'border':'1px solid red'});
-			$("#field2").text("Por favor seleccione un color");
-			$("#field2").css({'display':'block'});
-			$("#div_visible").css({'margin-top':'0.65em'});
-		 	vec[1] = 0;
-		 }else{
-		 	$("#color").css({'border':'0'});
-			$("#field2").css({'display':'none'});
-			$("#div_visible").css({'margin-top':'6.65em'});
-		 	vec[1] = 1;
-		 }
-
-
-
 		 if(icono.localeCompare("Seleccionar icono") == 0){
 		 	$("#div_visible").css({'border':'1px solid red'});
 			$("#field3").text("Por favor seleccione un icono");
@@ -299,7 +284,7 @@
 		 	vec[6] = 1;
 		 }
 
-		 if(vec[0] == 1 && vec[1] == 1 && vec[2] == 1 && vec[3] == 1 && vec[4] == 1 && vec[5] == 1 && vec[6] == 1)
+		 if(vec[0] == 1 && vec[2] == 1 && vec[3] == 1 && vec[4] == 1 && vec[5] == 1 && vec[6] == 1)
 		 return true;
 		 else
 		 return false;	
@@ -310,12 +295,6 @@
 		$("#evento_titulo").val("");
 		$("#evento_titulo").css({'border':'0'});
 		$("#field1").css({'display':'none'});
-		
-		//campo color se limpia
-		$("#color").prop('selectedIndex',0);
-		$("#color").css({'border':'0'});
-		$("#field2").css({'display':'none'});
-		$("#div_visible").css({'margin-top':'6.65em'});
 		
 		//se limpia el select de iconos
 		var seleccionado = "Seleccionar icono";
@@ -357,7 +336,7 @@
 				var id = $(this).data('evento');
 				var fecha = $(this).attr('rel');
 				
-		$('#mask').fadeIn(1000).html("<div id='nuevo_evento' class='window' rel='"+fecha+"'><h2>Agregar un evento el "+formatDate(fecha)+"</h2><a href='#' class='close' rel='"+fecha+"'>&nbsp;</a><div id='respuesta_form'></div><form class='formeventos' id='form_inserta_eventos'><input type='text' name='evento_titulo' id='evento_titulo' class='required' placeholder='Escribe el nombre del evento'><p id='field1'></p><select name='color' id='color' class='required'><option value='0'>Elegir Color</option><option value='1'>Cyan</option></select><p id='field2'></p><div id='div_visible'>Seleccionar icono</div><div id='lista' class='none'><li class='item'>Seleccionar icono</li><li class='item'><img src='../images/evento_icons/transport.png' alt='Transporte' />Viaje de Egresados</li><li class='item'><img src='../images/evento_icons/party.png' alt='Fiesta de egresados' />Fiesta de Egresados</li><li class='item'><img src=../images/evento_icons/upd.png alt='upd' />UPD</li><li class='item'><img src=../images/evento_icons/money.png alt='pagos' />Pagos</li><li class='item'><img src=../images/evento_icons/calendar.png alt='otros' />Otros</li></div><p id='field3'></p><label for='evento_hora'>Elegir la hora del evento</label><input type='time' name='evento_hora' id='evento_hora' class='required' placeholder='Escribe la hora del evento'><p id='field4'></p><input type='text' name='evento_lugar' id='evento_lugar' class='required' placeholder='Barrio'><p id='field5'></p><input type='text' name='calle' id='calle' placeholder='Calle' /><input type='number' name='altura' id='altura' placeholder='altura' min='0' max='100000'/><div class='fields67'><p id='field6'></p><p id='field7'></p></div><input type='button' name='Enviar' value='Guardar' class='enviar'><input type='button' value='limpiar' id='limpiar_form' /><input type='hidden' name='evento_fecha' id='evento_fecha' value='"+fecha+"'><input type='hidden' id='curso_evento' name='curso_evento' value='<?php echo base64_encode($_SESSION['curso']); ?>' /><input type='hidden' name='accion' id='accion' value='guardar_evento' /><input type='hidden' name='icono' id='icono'/><input type='hidden' id='evento_tipo' name='evento_tipo'/></form></div>");
+		$('#mask').fadeIn(1000).html("<div id='nuevo_evento' class='window' rel='"+fecha+"'><h2>Agregar un evento el "+formatDate(fecha)+"</h2><a href='#' class='close' rel='"+fecha+"'>&nbsp;</a><div id='respuesta_form'></div><form class='formeventos' id='form_inserta_eventos'><input type='text' name='evento_titulo' id='evento_titulo' class='required' placeholder='Escribe el nombre del evento'><p id='field1'></p><div id='div_visible'>Seleccionar icono</div><div id='lista' class='none'><li class='item'>Seleccionar icono</li><li class='item'><img src='../images/evento_icons/transport.png' alt='Transporte' />Viaje de Egresados</li><li class='item'><img src='../images/evento_icons/party.png' alt='Fiesta de egresados' />Fiesta de Egresados</li><li class='item'><img src=../images/evento_icons/upd.png alt='upd' />UPD</li><li class='item'><img src=../images/evento_icons/money.png alt='pagos' />Pagos</li><li class='item'><img src=../images/evento_icons/calendar.png alt='otros' />Otros</li></div><p id='field3'></p><label for='evento_hora'>Elegir la hora del evento</label><input type='time' name='evento_hora' id='evento_hora' class='required' placeholder='Escribe la hora del evento'><p id='field4'></p><input type='text' name='evento_lugar' id='evento_lugar' class='required' placeholder='Barrio'><p id='field5'></p><input type='text' name='calle' id='calle' placeholder='Calle' /><input type='number' name='altura' id='altura' placeholder='altura' min='0' max='100000'/><div class='fields67'><p id='field6'></p><p id='field7'></p></div><input type='button' name='Enviar' value='Guardar' class='enviar'><input type='button' value='limpiar' id='limpiar_form' /><input type='hidden' name='evento_fecha' id='evento_fecha' value='"+fecha+"'><input type='hidden' id='curso_evento' name='curso_evento' value='<?php echo base64_encode($_SESSION['curso']); ?>' /><input type='hidden' name='accion' id='accion' value='guardar_evento' /><input type='hidden' name='icono' id='icono'/><input type='hidden' id='evento_tipo' name='evento_tipo'/></form></div>");
 			});
 			
 			//Funcionalidad de la lista desplegable
@@ -493,6 +472,7 @@
 
 			//guardar evento
 			$(document).on("click",'.enviar',function (e) {
+			
 				e.preventDefault();
 				var validation;
 				validation = validate_form();	

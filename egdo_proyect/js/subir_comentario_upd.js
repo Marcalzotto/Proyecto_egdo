@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("#enviar_comentario_upd").click(function(){
 
 		var comentario = $("#id_comentario_upd").val();
-		var lugar = $(".hidden").val();
+		var lugar = $(this).data("lugar");
 		if(comentario == ""){
 			alert("El comentario no puede ser vacio");
 			return false;
@@ -35,9 +35,10 @@ $(document).ready(function(){
 					}else{
 						//tratar de traer el comentario en una sola variable y hacer append
 							alert("comentario guardado con exito");
-							$(".aloja_comentarios").append(data);
-							$(".aloja_comentarios .comentario:last").css({"border-color":"#cccccc"});
-							$(".aloja_comentarios .comentario:last").animate({"border-color":"#333"},1500);
+							$(".aloja_comentario h4").remove();
+							$(".aloja_comentario").append(data);
+							$(".aloja_comentario div:last").css({"border-color":"#cccccc"});
+							$(".aloja_comentario div:last").animate({"border-color":"#333"},1500);
 							return false;
 					}
 				}

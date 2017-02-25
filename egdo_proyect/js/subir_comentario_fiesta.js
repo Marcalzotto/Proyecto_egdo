@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("#enviar_comentario_fiesta").click(function(){
 
 		var comentario = $("#id_comentario_fiesta").val();
-		var lugar = $(".hidden").val();
+		var lugar = $(this).data("lugar");
 		if(comentario == ""){
 			alert("El comentario no puede ser vacio");
 			return false;
@@ -35,6 +35,7 @@ $(document).ready(function(){
 					}else{
 						//tratar de traer el comentario en una sola variable y hacer append
 							alert("comentario guardado con exito");
+							$(".aloja_comentarios h4").remove();
 							$(".aloja_comentarios").append(data);
 							$(".aloja_comentarios .comentario:last").css({"border-color":"#cccccc"});
 							$(".aloja_comentarios .comentario:last").animate({"border-color":"#333"},1500);

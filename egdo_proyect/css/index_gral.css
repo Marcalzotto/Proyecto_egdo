@@ -137,6 +137,24 @@ height:5%;
 		#page-wrapper{
 			width: 100%;
 		}
+
+		.aloja_comentario{
+			margin: 0 auto;
+			width: 35%;
+			background: #191919;
+		
+  		font-family: 'Open Sans Condensed',sans-serif;
+  		color: #fff;
+  		font-size: 130%;
+  		margin-top: 10px;
+  		border-radius: 5px;
+		}
+
+		.aloja_comentario div{
+			/*border: 1px solid;*/
+    	padding: 5px;
+    	border-color: #333;
+		}
 	}
 
 	@media screen and (min-width: 737px) and (max-width: 1200px) {
@@ -425,8 +443,24 @@ height:5%;
 }
 
 
-
-
+/*estilos comentarios upd y fiesta*/
+.aloja_comentario{
+		margin: 0 auto;
+    width: 100%;
+    background: #191919;
+    /*padding: 10px;*/
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 130%;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+	
+	.aloja_comentario div{
+			/*border: 1px solid;*/
+    	padding: 5px;
+    	border-color: #333;
+		}
 
 }/*termina @media screen and (max-width: 736px)*/
 
@@ -1464,7 +1498,24 @@ height:5%;
     font-size: 80%;
    
 		}
+	.aloja_comentario{
+		margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    background: #191919;
+   
+    font-family: 'Open Sans Condensed',sans-serif;
+    color: #fff;
+    font-size: 130%;
+    margin-top: 10px;
+    border-radius: 5px;
+		}
 
+		.aloja_comentario div{
+			/*border: 1px solid;*/
+    	padding: 5px;
+    	border-color: #333;
+		}
 	}/* fin media max width 736px*/
 
 /* Basic */
@@ -4684,9 +4735,9 @@ text-align: center;
 .comentario{
 
 background: #191919;
-margin: auto;
+/*margin: auto;*/
 margin-top: 10px;
-width: 455px;
+/*width: 455px;*/
 padding: 5px;
 padding-left: 10px;
 color: #fff;
@@ -4695,6 +4746,10 @@ font-size: 130%;
 border-radius: 5px;
 }
 
+/* .aloja_comentarios div .img{
+	text-align: right;
+	width: 100%;
+}*/
 .contenido{
 	line-height: 25px;
 	white-space:normal;
@@ -4775,10 +4830,14 @@ section p.detalles{
     font-weight: bold;
 }
 
-.aloja_comentarios{
-	margin: auto;
-}
 
+
+.parrafo{
+	word-break: break-all;
+}
+.img{
+	text-align: right;
+}
 section h4{
 	    margin-top: 20px;
     text-align: center;
