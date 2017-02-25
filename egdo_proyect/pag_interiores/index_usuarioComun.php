@@ -6,6 +6,7 @@
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
+<?php include ("../consultasTablas/consultaUsuario.php");?>	
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -60,11 +61,9 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-	
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
-
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
 
@@ -88,6 +87,9 @@
 							<div class="row">
 							
 								<section class="12u 12$">
+									<div class="row">
+									 <div class="hello 12u$"> Hola <?php echo $row['nombre']; ?>!! </div>
+									</div>
 									<header>
 									<h2> Te mostramos todo lo que podes hacer con EGDO!!! </h2>
 									</header>

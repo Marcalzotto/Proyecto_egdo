@@ -18,6 +18,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 	
+	<!-- FACEBOOK colocar siempre en el body, solo modificar "content"-->
+			<meta property="og:url" content="http://www.egdo.com.ar/pag_interiores/fotoUpdAdmin.php" />
+			<meta property="og:title" content="Primera aplicacion para egresados" />
+			<meta property="og:description" content="Entra a ver las fotos del UPD!!" />
+			<meta property="og:image" content="http://www.egdo.com.ar/images/upd.png" />
+	<!-- FACEBOOK -->
+	
 	<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
@@ -61,6 +68,22 @@
       <script src="../js/tomarDatos.js"></script>
   </head>
   <body class="homepage">
+  
+	<!-- FACEBOOK colocar siempre en el body, no se debe modificar nada -->
+		<script type="text/javascritp">//<![CDATA[
+		  (
+				function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.3";
+					  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk')
+			);//]]>
+		</script>
+	<!-- FACEBOOK -->
+		
+		
     <div id="page-wrapper">
     <header role="banner">
       <!-- Header Wrapper -->
@@ -107,7 +130,7 @@
                       echo "<section id='content' class='container'>";
                         /*<!-- SLIDESHOW -->*/
                         echo "<div id='sliders'>";
-                     
+							
                             echo "<ul class='bjqs'>";
 
                             foreach ($cantidadImg as $unImg) {
@@ -116,10 +139,20 @@
                                     </li>";
                            } 
                             echo "</ul>";
+						
                         echo"</div>";
+							
+							echo '<!-- FACEBOOK modificar solo lo que se encuentra entre [] -->								
+						
+						<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/fotoUpdAdmin.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2FfotoUpdAdmin.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>
+						
+						
+												
+						<!-- compartir facebook -->';	
      
                      /* <!-- FIN SLIDESHOW -->*/
                       echo "</section>";
+					  
                   }else{
                     echo "<h2>Aun no se han subido fotos para este curso</h2>";
                   }
@@ -127,7 +160,6 @@
                 echo "<h2>Hubo problemas con el servidor</h2>";
               }
             ?>
-           
         </div> 
 
       <!-- Footer Wrapper -->

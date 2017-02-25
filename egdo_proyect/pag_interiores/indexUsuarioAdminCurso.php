@@ -5,6 +5,7 @@
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
+<?php include ("../consultasTablas/consultaUsuario.php");?>
 <!DOCTYPE HTML>
 <!--
 	Wide Angle by Pixelarity
@@ -88,6 +89,11 @@
 							<div class="row">
 							
 								<section class="12u 12$">
+									
+									<div class="row">
+									 <div class="hello 12u$"> Hola <?php echo $row['nombre']; ?>!! </div>
+									</div>
+									
 									<header>
 									<h2> Te mostramos todo lo que podes hacer con EGDO!!! </h2>
 									</header>
