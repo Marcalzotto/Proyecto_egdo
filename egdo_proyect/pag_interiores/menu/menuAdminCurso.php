@@ -200,10 +200,3 @@
 	</ul>
 
 <?php include ("../consultasTablas/consultaUsuario.php");?>	
-	
-	
-
-<!-- NOMBRE DE USUARIO -->	
-<div class="bienvenida">Hola </br><?php echo $row['nombre']; ?>!!</div>
-		
-</nav>
