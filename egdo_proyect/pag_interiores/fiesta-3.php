@@ -277,7 +277,7 @@ if(isset($_GET["fiesta"])){
                     }
                  
                 }else{
-                  echo "<h4>Aun se han subido comentarios sobre este lugar.</h4>";
+                  echo "<h4>Aun no se han subido comentarios sobre este lugar.</h4>";
                 }
               }else{
                 echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>".$conexion->error;

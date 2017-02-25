@@ -5,13 +5,13 @@ var expReg = /[^0-9]/;
 		var et = e.target;
 	
 		var com_num = $(this).attr("rel");
-		alert(com_num);
+
 		if(expReg.test(com_num)){
 			alert("Algunos datos no son correctos");
 		}else if(com_num == 0){
 			alert("Algunos datos no son correctos");
 		}else{
-//$(this).closest("div.row").fadeOut(600);
+
 			$.ajax({
 				type:'POST',
 				url:'../pag_interiores/scripts/moderar_comentario_upd.php',
@@ -26,8 +26,6 @@ var expReg = /[^0-9]/;
 					}else if(data == 1){
 						alert("hola");
 						$(et).closest("div.row").fadeOut(600);
-					}else{
-						alert(data);
 					}
 				}
 
