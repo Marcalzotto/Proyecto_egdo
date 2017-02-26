@@ -115,6 +115,10 @@
                            } 
                             echo "</ul>";
                         echo"</div>";
+						echo '
+							<!-- FACEBOOK -->								
+								<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/galeriaFiestaAdmin.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2FgaleriaFiestaAdmin.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>						
+							<!-- compartir facebook -->';
      
                      /* <!-- FIN SLIDESHOW -->*/
                       echo "</section>";

@@ -210,6 +210,10 @@
 					}else if($fechaHoy > $fecha_fin_segunda_instancia){
 							if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
 							print "<h2>Votacion finalizada</h2>";
+							echo '
+								<!-- FACEBOOK -->								
+									<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/votacion.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2Fvotacion.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>						
+								<!-- compartir facebook -->';
 							}else{
 							print "<h2>Votacion empatada, esperando desempate.</h2>";		
 							}

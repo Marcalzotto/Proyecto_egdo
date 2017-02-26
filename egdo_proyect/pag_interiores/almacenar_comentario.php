@@ -39,7 +39,10 @@ if($_POST){
 
        if($guardarRdo) {
 				//Reiniciamos los inputs
-		echo	$datos;
+		
+
+		   echo   $datos; 
+
 			
 		
                     }

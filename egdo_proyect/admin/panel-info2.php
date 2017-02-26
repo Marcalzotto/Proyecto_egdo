@@ -131,7 +131,7 @@ if(empty($nombreCiudad)) {
 			die( "El archivo ".$nombreArchivo4." es demasiado grande. El tamaño máximo del archivo es de ".$tamañoMaximoKB3."Kb." ); }
 		
         else {
-        	$directorio = $_SERVER['DOCUMENT_ROOT'].'/Proyecto_egdo/egdo_proyect/img/';
+        	$directorio = $_SERVER['DOCUMENT_ROOT'].'../img/';
         	move_uploaded_file($_FILES['info_imagen_1']['tmp_name'], $directorio.$nombreArchivo);
         	move_uploaded_file($_FILES['info_imagen_2']['tmp_name'], $directorio.$nombreArchivo2);
         	move_uploaded_file($_FILES['info_imagen_3']['tmp_name'], $directorio.$nombreArchivo3);

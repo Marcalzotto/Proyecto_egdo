@@ -176,7 +176,7 @@ if($result = $conexion->query($verificarFecha)){
 					<!-- Wide Content -->
 						<div id="intro" class="container">
 									
-								<h2>Lugares propuestos para la fiesta de egredos: <?php echo $intervalD; ?></h2>
+								<h2>Lugares propuestos para la fiesta de egresados: <?php echo $intervalD; ?></h2>
 				
 							<?php
 							if($intervalA > 0){
