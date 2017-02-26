@@ -136,6 +136,10 @@
 									<div class="-5u 5u$">
 										<input type="submit" class="button special fit small" name="acceso"  value="enviar">
 									</div>
+	
+									<div class="-5u 5u" id="precarga">
+											<img src="../images/cargando2.gif">
+									</div>
 									
 									<div class="-5u 5u">
 									 <div id="mensaje" class="msjEmpresa"></div>
@@ -156,12 +160,18 @@
 <script>
 //Guardamos el controlador del div con ID mensaje en una variable
 var mensaje = $("#mensaje");
+var precarga = $("#precarga");
 //Ocultamos el contenedor
 mensaje.hide();
+
+		precarga.hide();
+
 //Cuando el formulario con ID acceso se envíe...
 $("#acceso").on("submit", function(e){
+	
 	//Evitamos que se envíe por defecto
 	e.preventDefault();
+	precarga.show();
 	//Creamos un FormData con los datos del mismo formulario
 	var formData = new FormData(document.getElementById("acceso"));
 	//Llamamos a la función AJAX de jQuery
@@ -185,6 +195,7 @@ $("#acceso").on("submit", function(e){
 		//comprobamos si la respuesta no es vacía
 		if (echo !== "") {
 			//Si hay respuesta (error), mostramos el mensaje
+			precarga.hide();
 			mensaje.html(echo);
 			mensaje.slideDown(500);
 		} else {
