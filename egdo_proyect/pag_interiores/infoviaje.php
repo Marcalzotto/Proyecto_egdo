@@ -74,7 +74,7 @@
 							
 							
 							<?php
-							include '../pag_interiores/menu/masterMenu.php';
+							include '/menu/masterMenu.php';
 							?>
 								
 		
@@ -89,85 +89,43 @@
                 
 
      			<div id="intro" class="container"> 
+						<div class="mensaje"> </div>
 						<div class="row">
-							<div id="mensaje"> </div>
+							
+							
 							<?php
 								$con = "select * from info_viaje";
 								$resultado = $conexion->query($con);
-								if($resultado->num_rows > 0){
-									while ($datos = $resultado->fetch_assoc()) {
-										$ruta_img = $datos;
-									}
-									$flag = 1;
-								}else{
-									$flag = 0;
-								}
-							?>
-						<section class="4u 12u(mobile)">
-         	
-
-						<?php 
-						if($flag == 0){
-							echo "<h2>No hay destinos cargados</h2>";
-						}else{
-							if($ruta_img =='Bariloche.jpg'){
-								echo"<a href='bariloche.php'><h2>Bariloche</h2></a>";
-							}  
-							else if ($ruta_img =='Dique San Roque.jpg'){
-								echo "<a href='cordoba.php'><h2>Dique San Roque</h2></a>";
-							}  
-							else if ($ruta_img =='Camboriu.jpg'){
-								echo "<a href='brasil.php'><h2>Camboriu</h2></a>";
-							}  
-							else if ($ruta_img =='Mendoza.jpg'){
-								echo "<a href='mendoza.php'><h2>San Rafael</h2></a>";
-							}  
-							else if ($ruta_img =='Mar del plata.jpg'){
-								echo "<a href='mardelplata.php'><h2>Mar del plata</h2></a>";
-							}  
-
-							else if ($ruta_img =='Cancun.jpg'){
-								echo "<a href='mexico.php'><h2>Cancun</h2></a>";
-							}  
-							else{
-								echo "<a href='destinos.php'><h2>".$ruta_img['nombre_lugar']."</h2></a>";
-							}
-
-							echo  "<p><b>Descripcion:</b><br>".$ruta_img["descripcion"]."</p>
-							<img class='number' src=../images/".$ruta_img["imagen"]." />";
-						}
-						?>
-
-							<!--<p><b>Descripcion:</b><br><?php //echo $datos['descripcion']; ?></p>
-							<img class="number" src="/Proyecto_egdo/egdo_proyect/img/<?php //echo $ruta_img; ?>"/>--> 
-						</section>
-
+								while ($datos = $resultado->fetch_assoc()) {
+									$nombre = $datos['nombre_lugar'];
+									$traerIdlugar = $datos['id_info_viaje'];
+									$ruta_img = $datos['imagen'];
+									$descripcion = $datos['descripcion'];
+                                  
 						
 
+							echo	"<section class='4u 12u(mobile)'>
+									<header>
+										<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
+									</header>
+									<img class='number' src='/Proyecto_egdo/egdo_proyect/img/".$ruta_img."'/>
+								
+									<p>".$descripcion."</p>
+								</section>";
+
+						  	}
+
+						   ?>
+                  
+            
+				
 								</div>
+
+							
 						</div>
 
 				</div>
-					<!-- Wide Content -->
-						<!--<div id="intro" class="container">
-							<div class="row">
-
-								<section class="4u 12u(mobile)">
-									<div id="bariloche"><a href="bariloche.html"><span class="number">Bariloche</span></a></div>  Agregue el div con el id bariloche para ponerle de fondo la imagen -->
-								<!--	 <div id="mendoza"><a href="mendoza.html"><span class="number">Mendoza</span></a></div>
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="cordoba"><a href="cordoba.html"><span class="number">Córdoba</span></a></div>
-								    <div id="mardelplata"><a href="mardelplata.html"><span class="number">Mar del plata</span></a></div>
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="brasil"><a href="brasil.html"><span class="number">Brasil</span></a></div>
-									<div id="mexico"><a href="mexico.html"><span class="number">Mexico</span></a></div>
-								</section>
-							</div>
-						</div>
-
-				</div> -->
+					
 				
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
