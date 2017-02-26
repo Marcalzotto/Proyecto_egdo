@@ -36,28 +36,29 @@ if($_POST){
 												values('$comentario','$fecha_formateada','$usuario','$id_lugar','$curso')";
 
 				if($result = $conexion->query($insertarComentario)){
+					$id_comentario = $conexion->insert_id;	
 					$buscar_usuario = "select nombre from usuario where id_usuario = '$usuario'";
-					//$buscar_usuario = "select cu.id_comentario,u.nombre from comentario_upd cu join usuario u on cu.id_usuario = u.id_usuario where id_usuario = '$usuario'";
-
 					if($result = $conexion->query($buscar_usuario)){
 						$reg = $result->fetch_array(MYSQLI_ASSOC);
 
-						$return_comentario = "<div class='comentario'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>";
+						$return_comentario = "";
 						
 						if($_SESSION["id_rol"] < 3){
-             echo "<div class='row 0%'>
+             $return_comentario = "<div class='row 0%'>
              					<div class='11u parrafo'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
-                      <div class='1u img'><img src='../images/delete.png' class='del' rel=".$unComentario["id_comentario"]." alt='borrar notificacion' height='20' width='20'></div>
+                      <div class='1u img'><img src='../images/delete.png' class='del' rel=".$id_comentario." alt='borrar notificacion' height='20' width='20'></div>
                    </div>";
+             echo $return_comentario;
            }else{
-                               echo "<div class='row 0%'>
+              $return_comentario =  "<div class='row 0%'>
                                      <div class='12u parrafo'>
-                                      <p class='nombre'>".$unComentario["nombre"]."</p>
-                                      <p class='contenido'>".$unComentario["comentario"]."</p>
+                                      <p class='nombre'>".$reg["nombre"]."</p>
+                                      <p class='contenido'>".$reg["comentario"]."</p>
                                       <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
                                      </div>
-                                     </div>";
-                            }
+                                     </div>";   
+             echo $return_comentario;
+            }
 
 					}else{
 						echo -5;

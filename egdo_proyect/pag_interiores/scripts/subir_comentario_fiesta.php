@@ -35,12 +35,31 @@ if($_POST){
 												values('$comentario','$fecha_formateada','$usuario','$id_lugar','$curso')";
 
 				if($result = $conexion->query($insertarComentario)){
+					$id_comentario = $conexion->insert_id;
 					$buscar_usuario = "select nombre from usuario where id_usuario = '$usuario'";
 					if($result = $conexion->query($buscar_usuario)){
 						$reg = $result->fetch_array(MYSQLI_ASSOC);
 
-						$return_comentario = "<div class='comentario'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>";
-						echo $return_comentario;		
+						$return_comentario = "";
+						
+						if($_SESSION["id_rol"] < 3){
+             $return_comentario = "<div class='row 0%'>
+             					<div class='11u parrafo'><p class='nombre'>".$reg["nombre"]."</p><p class='contenido'>".$comentario."</p><p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p></div>
+                      <div class='1u img'><img src='../images/delete.png' class='del' rel=".$id_comentario." alt='borrar notificacion' height='20' width='20'></div>
+                   </div>";
+             echo $return_comentario;
+           }else{
+              $return_comentario =  "<div class='row 0%'>
+                                     <div class='12u parrafo'>
+                                      <p class='nombre'>".$reg["nombre"]."</p>
+                                      <p class='contenido'>".$comentario."</p>
+                                      <p class='fecha'>".$dia." de ".$mes_nombre." a las ".$horas.":".$minutos." hs.</p>
+                                     </div>
+                                     </div>";   
+             echo $return_comentario;
+            }	
+
+						
 					}else{
 						echo -5;
 					}
@@ -58,10 +77,6 @@ if($_POST){
 	}else{
 		echo -3;
 	}
-	
-
-
-
 }
 
 ?>
