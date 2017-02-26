@@ -37,11 +37,12 @@ $host_db = "localhost";
 		<link rel="stylesheet" href="../css/index_gral.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	
-		<link rel="stylesheet" type="text/css" href="../assets/css/viajes.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="../assets/css/form-viaje.css" />
+		<link rel="stylesheet" type="text/css" href="../css/viajes.css" />
+		<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="../css/form-viaje.css" />
         <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" />  
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" /> 
+        <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
+          <link rel="stylesheet" type="text/css" href="../css/estilosComentInfo.css" /> 
       <!--  <link rel="stylesheet" href="../admin/assets/css/mainAdmin.css" />	-->
         <link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />	
 		<script src="../js/modernizr.js"></script> <!-- Modernizr -->
@@ -80,6 +81,7 @@ $(document).ready(function() {
 
               
             }
+
         });
         return false;
     	}
@@ -148,7 +150,7 @@ $obtNombre = $_SESSION['nombre'];
                                  ?>   
 
  <section id='content' class='container'>   
-            <div class="row"> <!-- Row Principal -->
+         <div class="row"> <!-- Row Principal -->
              <section class="12u 12u">
               <div id='sliders'>
               <ul class='bjqs'> 
@@ -176,19 +178,19 @@ $obtNombre = $_SESSION['nombre'];
   						 <div class='-2u 1u'><span>Comentarios</span></div>
                          <div class='-1u 5u$'><span><textarea id='comentario' class='form-class' name='comment' placeholder='Deja tu comentario' title='No ha escrito un cometario' required></textarea></span></div> 
                          
-                         <input type='hidden' id='usu' value='$obtUsuario'>
-	                     <input type='hidden' id='destino_info' value='$id'>
+                         <input type='hidden' id='usu' value='<?php echo $obtUsuario ?>'>
+	                     <input type='hidden' id='destino_info' value='<?php echo $id?>'>
                          
-                         <div class='-4u 6u$'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='enviar' id='enviar-btn' /></div>
-                         <div class='row uniform 50%'>
+                         <div class='-4u 6u$'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='enviar' id='enviar-btn'/></div>
+                        </div><!--/row -->
                      </form>
 
        </section> <!-- /formulario subida-->
-			</div><!--/row -->	
+				
 
 <?php
 
-$buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario, comentario_infoviaje.fecha from usuario join comentario_infoviaje on usuario.id_usuario = comentario_infoviaje.id_usuario where comentario_infoviaje.id_info_viaje = '$id'";
+$buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario, comentario_infoviaje.fecha from usuario join comentario_infoviaje on usuario.id_usuario = comentario_infoviaje.id_usuario where comentario_infoviaje.id_info_viaje = '$id' order by comentario_infoviaje.fecha DESC";
 									$resultComent = $conexion->query($buscarComentarioInfo);
 									if($resultComent){
 										
@@ -198,11 +200,13 @@ $buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario,
 											}
 											foreach ($comentarios as $tario){
 													
-									echo   "<div class='unComent'>
+									echo   "
 
-															<p class='nombre'><a href='#'>".$tario['nombre']."</a></p>
-															<p>".$tario['comentario']."</p>
-														<p class='tiempo'>".$tario['fecha']."</p>
+			             				<div class='unComent'>
+                                                    
+															<p class='nombre'><a href='#'>".$tario['nombre']."</a></p> 
+											           <p>".$tario['comentario']."</p>  
+											            <p class='tiempo'>".$tario['fecha']."</p>
 														
 												 </div> ";
 										}
@@ -211,9 +215,10 @@ $buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario,
 
 								}										
 							?>	
-				
+			</div>	
+		</div>	
 	</section>
-   </div>
+   
 
  
 
@@ -257,7 +262,7 @@ $buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario,
       <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
       <script src="../js/main.js"></script>
       <!-- Incluimos la libreria jQuery -->
-        <script src="../js/jquery-latest.min.js"></script>
+        
  
         <!-- Incluimos el plugin -->
         <script src="../js/bjqs.min.js"></script>
