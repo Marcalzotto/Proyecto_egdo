@@ -133,7 +133,7 @@
 					<div id="contenerNotificaciones">
 							
 							<?php
-								$resultSet = $conexion->query("select * from notificaciones n join notificacion_vista_por nvp on n.id_notificacion = nvp.id_notificacion where n.curso_notificacion = '$_SESSION[curso]' and nvp.usuario = '$_SESSION[id_usuario]' and nvp.borrada = 0 order by n.tipo_notificacion");
+								$resultSet = $conexion->query("select * from notificaciones n join notificacion_vista_por nvp on n.id_notificacion = nvp.id_notificacion where n.curso_notificacion = '$_SESSION[curso]' and nvp.usuario = '$_SESSION[id_usuario]' and nvp.borrada = 0 order by n.fecha_hora");
 								if($resultSet){	
 									if($resultSet->num_rows > 0){
 										

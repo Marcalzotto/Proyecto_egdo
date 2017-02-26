@@ -283,43 +283,10 @@ if(isset($_GET["upd"])){
                   echo "<h4>Aun no se han subido comentarios sobre este lugar.</h4>";
                 }
               }else{
-                echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>".$conexion->error;
+                echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>";
               }
             ?>
-
-          
             </div>
-          <!-- <div class="aloja_comentario">
-            <div class="row 0%">
-              <div class="1u"></div>
-                <div class="11u parrafo">
-                  <p class="nombre">Nombre User</p>
-                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
-                  <p class="fecha">Aca va ir la fecha.</p>
-                </div>
-              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
-            </div>
-             <div class="row 0%">
-              <div class="1u"></div>
-                <div class="11u parrafo">
-                  <p class="nombre">Nombre User</p>
-                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
-                  <p class="fecha">Aca va ir la fecha.</p>
-                </div>
-              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
-            </div>
-             <div class="row 0%">
-              <div class="1u"></div>
-                <div class="11u parrafo">
-                  <p class="nombre">Nombre User</p>
-                  <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
-                  <p class="fecha">Aca va ir la fecha.</p>
-                </div>
-              <div class="1u img"><img src="../images/delete.png" class="del" rel="x" alt="borrar notificacion" height="20" width="20"></div>
-            </div>
-            </div>-->
-
-
         </div> 
 
       <!-- Footer Wrapper -->

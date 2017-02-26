@@ -61,7 +61,7 @@ if($result = $conexion->query($verificarFecha)){
 			}else{
 				die("Hubo un error al buscar los maximos");
 			}
-		}else if($intervalD > 22){
+		}else if($intervalD >= 23){
 				$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
 												 select max(calificacion) from fiesta)";
 			if($result = $conexion->query($buscar_maximos)){
@@ -80,7 +80,7 @@ if($result = $conexion->query($verificarFecha)){
 				die("Hubo un error al buscar los maximos");
 			}
 			
-		}else if($intervalD > 15 && $intervalD <= 22){
+		}else if($intervalD >= 16 && $intervalD <= 22){
 			//es hora de votar por los lugares propuestos
 			$vota = 1; 
 		}else if($intervalD <= 15){

@@ -280,15 +280,9 @@ if(isset($_GET["fiesta"])){
                   echo "<h4>Aun no se han subido comentarios sobre este lugar.</h4>";
                 }
               }else{
-                echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>".$conexion->error;
+                echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>";
               }
             ?>
-
-             <!--<div class="row uniform">
-               <p class="nombre">Nombre User</p>
-               <p class="contenido">Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.Este es el comentario.</p>
-               <p class="fecha">Aca va ir la fecha.</p>
-             </div>-->
             </div>
 
         </div> 

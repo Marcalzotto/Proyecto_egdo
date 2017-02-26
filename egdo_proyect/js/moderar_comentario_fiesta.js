@@ -26,9 +26,6 @@ var expReg = /[^0-9]/;
 					}else if(data == 1){
 						
 						$(et).closest("div.row").fadeOut(600);
-						if($(".aloja_comentario").has("div.row").length == 0){
-							$(".aloja_comentario").append("<h4>Aun no se han subido comentario para este lugar.</h4>");
-						}
 					}
 				}
 

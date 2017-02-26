@@ -35,10 +35,10 @@ $(document).ready(function(){
 					}else{
 						//tratar de traer el comentario en una sola variable y hacer append
 							alert("comentario guardado con exito");
-							$(".aloja_comentarios h4").remove();
-							$(".aloja_comentarios").append(data);
-							$(".aloja_comentarios .comentario:last").css({"border-color":"#cccccc"});
-							$(".aloja_comentarios .comentario:last").animate({"border-color":"#333"},1500);
+							$(".aloja_comentario h4").remove();
+							$(".aloja_comentario").append(data);
+							$(".aloja_comentario .comentario:last").css({"border-color":"#cccccc"});
+							$(".aloja_comentario .comentario:last").animate({"border-color":"#333"},1500);
 							return false;
 					}
 				}

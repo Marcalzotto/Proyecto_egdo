@@ -284,6 +284,113 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		die("Error al buscar el evento upd: ".$conexion->error);
 	}
 
+	//notificacion de comienzo de calificacion para lugares de upd
+	//notificacion de lugar ganador upd
+	if($result = $conexion->query($buscar_upd_lanzado)){
+		$reg = $result->fetch_array(MYSQLI_ASSOC);
+		$fecha_upd = new DateTime($reg["fecha_hora"]);
+
+		$intervalo = $fechaHoy->diff($fecha_upd);
+		if($intervalo->d >= 15 && $intervalo->d < 22){
+			$buscar_sinotificacion = "select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 10 and curso_notificacion = '$curso'";
+			if($result = $conexion->query($buscar_sinotificacion)){
+				$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$cant = $reg["cant"];
+				if($cant == 0){
+					$insertarNotificacion = "insert into notificaciones(resumen,link,icono,curso_notificacion,fecha_hora,tipo_notificacion) 
+																	 values('Ya puedes comenzar a calificar los lugares para el UPD','upd.php','../images/calificacion.png','$curso','$fecha_ins',10)";
+					if(!$result = $conexion->query($insertarNotificacion)){
+						die("Error al crear notificacion");
+					}
+
+				}
+			}else{
+				die("error al buscar la notificacion de calificacion upd");
+			}
+		}else if($intervalo->y > 0 || $intervalo->m > 0 || $intervalo->d >= 22){
+				$buscarMaximosUpd = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
+												 		 select max(calificacion) from upd)";
+				
+				if($result = $conexion->query($buscarMaximosUpd)){
+					if($result->num_rows == 1){
+						$buscar_sinotificacion = "select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 11 and curso_notificacion = '$curso'";
+						if($result = $conexion->query($buscar_sinotificacion)){
+							$reg = $result->fetch_array(MYSQLI_ASSOC);
+							$cant = $reg["cant"];
+							if($cant == 0){
+								$insertarNotificacion = "insert into notificaciones(resumen,link,icono,curso_notificacion,fecha_hora,tipo_notificacion) 
+																	 values('Termino la calificacion de lugares UPD, mira el lugar ganador.','upd.php','../images/winner.png','$curso','$fecha_ins',11)";
+								if(!$result = $conexion->query($insertarNotificacion)){
+									die("Error al crear la noticacion lugar ganador upd");
+								}
+							}
+						}else{
+							die("Fallo al buscar la notificacion");
+						}
+					}
+				}else{
+					die("error al buscar los maximos upd");
+				}
+		}
+
+	}else{
+		die("Error al buscar la fecha");
+	}
+
+	//notificacion de comienzo de calificacion para lugares de fiesta egdo
+	//notificacion de lugar ganador fiesta egdo
+	if($result = $conexion->query($buscar_fiesta_lanzado)){
+		$reg = $result->fetch_array(MYSQLI_ASSOC);
+		$fecha_fiesta = new DateTime($reg["fecha_hora"]);
+
+		$intervalo = $fechaHoy->diff($fecha_fiesta);
+		if($intervalo->d >= 15 && $intervalo->d < 22){
+			$buscar_sinotificacion = "select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 14 and curso_notificacion = '$curso'";
+			if($result = $conexion->query($buscar_sinotificacion)){
+				$reg = $result->fetch_array(MYSQLI_ASSOC);
+				$cant = $reg["cant"];
+				if($cant == 0){
+					$insertarNotificacion = "insert into notificaciones(resumen,link,icono,curso_notificacion,fecha_hora,tipo_notificacion) 
+																	 values('Ya puedes comenzar a calificar los lugares para la fiesta de egresados','fiesta.php','../images/calificacion.png','$curso','$fecha_ins',14)";
+					if(!$result = $conexion->query($insertarNotificacion)){
+						die("Error al crear notificacion");
+					}
+
+				}
+			}else{
+				die("error al buscar la notificacion de calificacion fiesta");
+			}
+		}else if($intervalo->y > 0 || $intervalo->m > 0 || $intervalo->d >= 22){
+				$buscarMaximosFiesta = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
+												 		 select max(calificacion) from fiesta)";
+				
+				if($result = $conexion->query($buscarMaximosFiesta)){
+					if($result->num_rows == 1){
+						$buscar_sinotificacion = "select count(id_notificacion) as cant from notificaciones where tipo_notificacion = 15 and curso_notificacion = '$curso'";
+						if($result = $conexion->query($buscar_sinotificacion)){
+							$reg = $result->fetch_array(MYSQLI_ASSOC);
+							$cant = $reg["cant"];
+							if($cant == 0){
+								$insertarNotificacion = "insert into notificaciones(resumen,link,icono,curso_notificacion,fecha_hora,tipo_notificacion) 
+																	 values('Termino la calificacion de lugares para la fiesta EGDO, mira el lugar ganador.','fiesta.php','../images/winner.png','$curso','$fecha_ins',15)";
+								if(!$result = $conexion->query($insertarNotificacion)){
+									die("Error al crear la noticacion lugar ganador fiesta");
+								}
+							}
+						}else{
+							die("Fallo al buscar la notificacion");
+						}
+					}
+				}else{
+					die("error al buscar los maximos fiesta");
+				}
+		}
+
+	}else{
+		die("Error al buscar la fecha");
+	}
+
+
 
 }//aca termina la funcion		
 
