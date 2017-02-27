@@ -1,17 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php
-$host_db = "localhost";
-							$user_db = "root";
-							$pass_db = "";
-							$db_name = "egdo_db";
-							
+<?php include('../pag_interiores/conexion.php');?>
 
-							$conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
-
-							if ($conexion->connect_error) {
-							die("La conexion falló: " . $conexion->connect_error);
-							}
-							?>
 
 <?php 
  	include('funciones/generar_notificacion.php');
