@@ -156,13 +156,13 @@ $obtNombre = $_SESSION['nombre'];
               <ul class='bjqs'> 
                      
                    <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
+                  <img src='../images/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
                   </li>
                   <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
+                  <img src='../images/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
                   </li>
                   <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
+                  <img src='../images/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
                   </li>
 
              

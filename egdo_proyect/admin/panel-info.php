@@ -181,7 +181,7 @@ $("#enviarimagenes").on("submit", function(evento){
 							
 							
 							<?php
-								$con = "select * from info_viaje";
+								$con = "select * from info_viaje order by id_info_viaje DESC";
 								$resultado = $conexion->query($con);
 								while ($datos = $resultado->fetch_assoc()) {
 									$nombre = $datos['nombre_lugar'];
@@ -195,7 +195,7 @@ $("#enviarimagenes").on("submit", function(evento){
 									<header>
 										<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
 									</header>
-									<img class='number' src='../img/".$ruta_img."'/>
+									<img class='number' src='../images/".$ruta_img."'/>
 								
 									<p>".$descripcion."</p>
 								</section>";
