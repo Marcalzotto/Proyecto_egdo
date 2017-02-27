@@ -16,6 +16,12 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<script type="text/javascript"  src="assets/js/jquery-1.12.3.js"></script>
 		<script type="text/javascript"  src="assets/js/jquery-1.12.3.min.js"></script>
+
+		<!-- DataTables-->
+		<script type="text/javascript"  src="assets/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"  src="assets/js/configDatatables.js"></script>
+		<link href="assets/css/datatables.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
@@ -24,12 +30,6 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-
-		<!-- DataTables-->
-		<script type="text/javascript"  src="assets/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"  src="assets/js/configDatatables.js"></script>
-		<link href="assets/css/datatables.min.css" rel="stylesheet" type="text/css">
-		<link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 		
 		<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
@@ -62,7 +62,7 @@
 					<!-- Wide Content -->
 						<section id="content" class="container">
 							
-							<h3>Control Imagenes de UPD</h3>
+							<h3>Moderar Comentarios Fiesta</h3>
 							
 							<hr class="major"/>
 							
@@ -73,50 +73,47 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Nombre_Lugar</th>
-												<th>Telefono</th>
-												<th>Foto_Perfil</th>
-												<th>Usuario_Subio</th>
-												<th>Calle</th>
-												<th>Altura</th>
-												<th>Estado_Moderado</th>
-												<th>Detalles</th>
-											</tr>
+												<th>Comentario</th>
+												<th>Fecha_Hora</th>
+												<th>Id_Usuario</th>
+												<th>Id_Lugar</th>
+												<th>Id_Curso</th>
+												<th>Moderado</th>
+												<th>Editar</th>
+												</tr>
 										</thead>
 										<tbody>
 		<?php
+        
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_upd,nombre_lugar,telefono,foto_lugar,id_usuario_propuesta,calle,altura,estado_moderar1
-		FROM upd ORDER BY id_upd DESC");
+		$consulta = ("SELECT id_comentario,comentario,fecha_hora,id_usuario,id_lugar,id_curso,estado_moderar FROM comentario_fiesta ORDER BY id_comentario DESC");
 		$result = mysqli_query($conexion, $consulta);
 		if (mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_assoc($result)){
-													
-		?>
 		
+		?>
 			<tr>
-			<td><?php echo $row['id_upd']; ?></td>
-			<td><?php echo $row['nombre_lugar']; ?></td>
-			<td><?php echo $row['telefono']; ?></td>
-			<td><img class="mod-img-table" src="../images/<?php echo $row['foto_lugar']; ?>"/></td>
-			<td><?php echo $row['id_usuario_propuesta']; ?></td>
-			<td><?php echo $row['calle']; ?></td>
-			<td><?php echo $row['altura']; ?></td>
-			<td><?php echo $row['estado_moderar1']; ?></td>
+			<td><?php echo $row['id_comentario']; ?></td>
+			<td><?php echo $row['comentario']; ?></td>
+			<td><?php echo $row['fecha_hora']; ?></td>
+			<td><?php echo $row['id_usuario']; ?></td>
+			<td><?php echo $row['id_lugar']; ?></td>
+			<td><?php echo $row['id_curso']; ?></td>
+			<td><?php echo $row['estado_moderar']; ?></td>
 			<td>
-				<a href="detalle-UPD2.php?upd=<?php echo $id_protegido=base64_encode($row['id_upd']);?>" class="edit-link" href="#" title="Detalles">
-				<i class="fa fa-filter fa-lg" aria-hidden="true"></i>
+				<a href="edit_comFiesta.php?comm=<?php echo $id_protegido=base64_encode($row['id_comentario']);?>" class="edit-link" href="#" title="Editar">
+				<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
 				</a>
 			</td>
 			</tr>
-			<?php
-			}
-			}
-			else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
-			//}
-			mysqli_close($conexion);
-			?>
+		<?php
+		}
+		}
+		else{echo"<tfoot><tr><td>0 results </td></tr></tfoot>";}
+		//}
+		mysqli_close($conexion);
+		?>
 										</tbody>
 									</table>
 								</div>
@@ -124,7 +121,6 @@
 							
 						</section>
 
-				
 				</div>
 
 			<!-- Footer Wrapper -->

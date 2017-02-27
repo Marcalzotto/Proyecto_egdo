@@ -49,7 +49,7 @@ else{
 	$commentMayusPOST = strtoupper($commentPOST);
 	
 	//Armamos la consulta para introducir los datos
-	$consulta = ("UPDATE comentario SET comentario ='$commentMayusPOST', estado_moderar ='$estadoPOST' WHERE id_comentario = '$id_comentario'");
+	$consulta = ("UPDATE comentario_upd SET comentario ='$commentMayusPOST', estado_moderar ='$estadoPOST' WHERE id_comentario = '$id_comentario'");
 	
 	//Si los datos se introducen correctamente, mostramos los datos
 	//Sino, mostramos un mensaje de error

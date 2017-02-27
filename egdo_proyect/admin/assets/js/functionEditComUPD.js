@@ -25,7 +25,7 @@
     
 				$.ajax({
 						type : 'POST',
-						url  : "editar_comFiesta.php",
+						url  : "editar_comUPD.php",
 						data : data,
 						
 						success :  function(response)
@@ -37,7 +37,7 @@
 								$("#error").fadeIn('slow', function(){
 									$("#error").html('<div class="box success"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Comentario actulizado correctamente</div>');
 									$("#edit-comment")[0].reset();
-									window.location.href="moderar-comentarioFiesta.php";
+									window.location.href="moderar-comentarioUPD.php";
 									/*$("#edit-comment").fadeOut('slow', function()
 									{
 										$("#edit-comment").fadeOut('slow');

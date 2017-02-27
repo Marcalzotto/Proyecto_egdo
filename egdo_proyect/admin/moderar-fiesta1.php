@@ -97,7 +97,7 @@
 			<td><?php echo $row['id_fiesta']; ?></td>
 			<td><?php echo $row['nombre']; ?></td>
 			<td><?php echo $row['telefono']; ?></td>
-			<td><img class="mod-img-table" src="../images/lugares_fiesta/<?php echo $row['foto_lugar']; ?>" /></td>
+			<td><img class="mod-img-table" src="../images/<?php echo $row['foto_lugar']; ?>" /></td>
 			<td><?php echo $row['id_usuario_propuesta']; ?></td>
 			<td><?php echo $row['calle']; ?></td>
 			<td><?php echo $row['altura']; ?></td>

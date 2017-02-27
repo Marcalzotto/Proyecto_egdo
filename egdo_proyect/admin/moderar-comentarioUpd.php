@@ -62,7 +62,7 @@
 					<!-- Wide Content -->
 						<section id="content" class="container">
 							
-							<h3>Moderar Comentarios Actividades</h3>
+							<h3>Moderar Comentarios UPD</h3>
 							
 							<hr class="major"/>
 							
@@ -76,7 +76,8 @@
 												<th>Comentario</th>
 												<th>Fecha_Hora</th>
 												<th>Id_Usuario</th>
-												<th>Id_Actividad</th>
+												<th>ID_Lugar</th>
+												<th>ID_Curso</th>
 												<th>Moderado</th>
 												<th>Editar</th>
 												</tr>
@@ -86,7 +87,7 @@
         
 		require('config_bd.php');								
 	
-		$consulta = ("SELECT id_comentario,comentario,fecha_hora,id_usuario,id_actividad,estado_moderar FROM comentario ORDER BY id_comentario DESC");
+		$consulta = ("SELECT id_comentario,comentario,fecha_hora,id_usuario,id_lugar,id_curso,estado_moderar FROM comentario_upd ORDER BY id_comentario DESC");
 		$result = mysqli_query($conexion, $consulta);
 		if (mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_assoc($result)){
@@ -97,10 +98,11 @@
 			<td><?php echo $row['comentario']; ?></td>
 			<td><?php echo $row['fecha_hora']; ?></td>
 			<td><?php echo $row['id_usuario']; ?></td>
-			<td><?php echo $row['id_actividad']; ?></td>
+			<td><?php echo $row['id_lugar']; ?></td>
+			<td><?php echo $row['id_curso']; ?></td>
 			<td><?php echo $row['estado_moderar']; ?></td>
 			<td>
-				<a href="edit_comentario.php?comm=<?php echo $id_protegido=base64_encode($row['id_comentario']);?>" class="edit-link" href="#" title="Editar">
+				<a href="edit_comUPD.php?comm=<?php echo $id_protegido=base64_encode($row['id_comentario']);?>" class="edit-link" href="#" title="Editar">
 				<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
 				</a>
 			</td>
