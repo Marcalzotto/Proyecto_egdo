@@ -163,7 +163,7 @@ if(isset($_GET["upd"])){
                   select max(calificacion) from upd)";
                   if($result = $conexion->query($buscar_maximos)){
                       $maximos = $result->num_rows;
-                      if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($d > 22 && $maximos > 1 && $_SESSION["id_rol"] < 3)){
+                      if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($d >= 22 && $maximos > 1 && $_SESSION["id_rol"] < 3)){
                       echo  "<section class='4u 12u(mobile) section_votos'>
                             <p class='upd_votes'>Votar este lugar</p>
                              <form>
@@ -183,7 +183,7 @@ if(isset($_GET["upd"])){
                             </form>
                             <p class='valoration'></p>
                           </section>";
-                      }else if($d > 15 && $d <= 22){
+                      }else if($d >= 15 && $d < 22){
                           echo  "<section class='4u 12u(mobile) section_votos'>
                             <p class='upd_votes'>Votar este lugar</p>
                              <form>

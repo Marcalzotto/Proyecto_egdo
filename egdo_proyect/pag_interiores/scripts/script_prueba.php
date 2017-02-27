@@ -14,9 +14,9 @@ echo "Diferencia en Dias: ".$intervaloDias."</br>";
 
 if($intervaloDias < 15){
 	echo "todavia se puede proponer lugar"."</br>";
-}else if($intervaloDias >= 16 && $intervaloDias <= 23){
+}else if($intervaloDias >= 15 && $intervaloDias < 22){
 	echo "ya puedes votar los lugares"."</br>";
-}else if($intervaloDias > 23){
+}else if($intervaloDias >= 22){
 	echo "ya estan los lugares ganadores excepto que haya empate."."</br>";
 }
 
