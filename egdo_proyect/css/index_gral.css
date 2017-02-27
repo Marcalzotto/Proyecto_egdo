@@ -395,6 +395,25 @@ height:5%;
 		#votacion #tablaBandera table td input{
 			margin: 0 auto;
 		}
+		/*Estilos boton de emergencia reiniciar votacion*/
+		#votacion .reiniciar{
+		text-align: center;
+		padding-top: 10px;
+		}
+
+		#votacion .reiniciar .reinicio{
+		padding: 10px;
+    /* padding-bottom: 0; */
+    margin-bottom: 0;
+    border-radius: 5px;
+    /* box-shadow: none; */
+    border: 0;
+    background-color: #60B822;
+    color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+		}
 
 		/*Estilos de las notificaciones*/
 		#contenerNotificaciones{
@@ -2409,6 +2428,24 @@ height:5%;
 	text-align: center;
 }
 
+#votacion .reiniciar{
+	text-align: center;
+	padding-top: 10px;
+}
+
+#votacion .reiniciar .reinicio{
+	padding: 10px;
+    /* padding-bottom: 0; */
+    margin-bottom: 0;
+    border-radius: 5px;
+    /* box-shadow: none; */
+    border: 0;
+    background-color: #60B822;
+    color: #fff;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
 #btn-share{
 				margin: 0 auto;
 				text-align: center;

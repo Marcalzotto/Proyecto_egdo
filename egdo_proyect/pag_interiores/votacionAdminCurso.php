@@ -6,6 +6,7 @@
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php include('../pag_interiores/funciones/cantidad_notificaciones_mensajes.php');?>
+<?php include('funciones/ningun_disenio.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;
@@ -107,6 +108,7 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
 			<script src="../js/tomarDatos.js"></script>
+			<script src="../js/reiniciarVotacion.js"></script>
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
 	</head>
@@ -200,12 +202,28 @@
 							<span>No puedes votar dos veces este disenio</span>
 						</div>
 						<?php
+								
+								$d1 = ningun_disenio($conexion,$curso,1);
+								$d2 = ningun_disenio($conexion,$curso,2);
+								$d3 = ningun_disenio($conexion,$curso,3);
+								
 								if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
-								print "<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>";
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+									print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";			
+									}else{
+									print "<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>";
+									}
 								}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
-								print "<h2>Vota el mejor dise&ntilde;o, solo puedes votar 1.</h2>";
+									
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+									print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";			
+									}else{
+									print "<h2>Vota el mejor dise&ntilde;o, solo puedes votar 1.</h2>";
+									}
 								}else if($fechaHoy > $fecha_fin_segunda_instancia){
-									if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+										print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";		
+									}else if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
 								print "<h2>Votacion finalizada</h2>";
 								echo '
 								<!-- FACEBOOK -->								
@@ -251,8 +269,16 @@
     									
     							?>
   								</section>
+
     							</div>
-										
+									<?php
+											$d1 = ningun_disenio($conexion,$curso,1);
+											$d2 = ningun_disenio($conexion,$curso,2);
+											$d3 = ningun_disenio($conexion,$curso,3);
+											if($d1 == 1 && $d2 == 1 && $d3 == 1){
+												echo "<div class='row 0% reiniciar'><div class='12u'><button class='reinicio'>Reiniciar votacion</button></div></div>";
+											}
+									?>
 										<?php
 										
 										imprimir_forms_talles($conexion, $maxBuzo, $maxRemera, $maxBandera, $usuario, $curso, $fechaHoy, $fecha_fin_segunda_instancia);

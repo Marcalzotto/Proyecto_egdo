@@ -32,7 +32,7 @@ UPDATE actividad_disenio SET fecha_apertura = @fecha WHERE curso_pertenece_votac
 /*VOLVER A LA ETAPA ANTERIOR*/
 
 SELECT @fecha_tomar:= fecha_apertura FROM actividad_disenio WHERE curso_pertenece_votacion = 2;
-SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +11 DAY); /*ITERVAL = +7*/
+SELECT @fecha:= date_add(@fecha_tomar, INTERVAL +3 DAY); /*ITERVAL = +7*/
 
 UPDATE actividad_disenio SET fecha_apertura = @fecha WHERE curso_pertenece_votacion = 2;
 

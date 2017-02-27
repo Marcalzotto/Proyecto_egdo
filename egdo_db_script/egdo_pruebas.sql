@@ -313,3 +313,12 @@ tomar el sol y descansar, de no');
 
 
 insert into comentario_infoviaje(comentario,id_info_viaje,id_usuario,fecha) values('el comentario',1,7,now());
+
+
+select count(id_disenio) from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
+where u.id_curso = 2 and di.codigo_tipo = 1 and di.votos_segunda_instancia in(
+select max(d.votos_segunda_instancia) from disenio as d where d.codigo_tipo = 1);
+
+
+select id_disenio,id_usuario,id_curso,codigo_tipo from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
+where u.id_curso = 2 and d.codigo_tipo = 1;

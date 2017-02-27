@@ -6,6 +6,7 @@
 ?>
 <?php include('funciones/cantidad_notificaciones.php');?>
 <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
+<?php include('funciones/ningun_disenio.php');?>
 <?php 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$flag = 0;
@@ -203,22 +204,38 @@
 				<span>No puedes votar dos veces este disenio</span>
 			</div>
 			<?php
-					if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
-							print "<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>";
-					}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
-							print "<h2>Vota el mejor dise&ntilde;o, solo puedes votar 1.</h2>";
-					}else if($fechaHoy > $fecha_fin_segunda_instancia){
-							if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
-							print "<h2>Votacion finalizada</h2>";
-							echo '
+								
+								$d1 = ningun_disenio($conexion,$curso,1);
+								$d2 = ningun_disenio($conexion,$curso,2);
+								$d3 = ningun_disenio($conexion,$curso,3);
+								
+								if($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia){
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+									print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";			
+									}else{
+									print "<h2>Vota hasta 5 dise&ntilde;os distintos de cada Item</h2>";
+									}
+								}else if($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia){
+									
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+									print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";			
+									}else{
+									print "<h2>Vota el mejor dise&ntilde;o, solo puedes votar 1.</h2>";
+									}
+								}else if($fechaHoy > $fecha_fin_segunda_instancia){
+									if($d1 == 1 && $d2 == 1 && $d3 == 1){
+										print "<h2>No hay diseños, la votacion sera reiniciada.</h2>";		
+									}else if($maxBuzo == 1 && $maxRemera == 1 && $maxBandera == 1){
+								print "<h2>Votacion finalizada</h2>";
+								echo '
 								<!-- FACEBOOK -->								
-									<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/votacion.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2Fvotacion.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>						
+									<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/votacionAdminCurso.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2FvotacionAdminCurso.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>						
 								<!-- compartir facebook -->';
-							}else{
-							print "<h2>Votacion empatada, esperando desempate.</h2>";		
-							}
-					}
-			?>
+									}else{
+								print "<h2>Votacion empatada, esperando desempate.</h2>";		
+									}
+								}
+						?>
 								
 				<div id="main">
   
@@ -252,11 +269,12 @@
     									
     				?>
   					</section>
+  					
     		</div>
 										
 						<?php
 							imprimir_forms_talles($conexion,$maxBuzo, $maxRemera, $maxBandera, $usuario, $curso, $fechaHoy, $fecha_fin_segunda_instancia);
-							$conexion->close();
+						$conexion->close();
 						?>
 				</div>
 				
