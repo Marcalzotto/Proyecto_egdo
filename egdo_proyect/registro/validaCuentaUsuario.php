@@ -173,14 +173,15 @@
     // Comprobar si se ha enviado el formulario:
     if( !empty($_POST) )
     {
+			include('../pag_interiores/conexion.php');
 			//función trim que se encarga de eliminar los espacios en blanco 
 			//función mysql_real_escape_string para evitar las inyecciones sql 
 			//htmlentities para xss 
-			$nombre = trim(htmlentities(mysql_real_escape_string($_POST["nombre"])));
-			$apellido = trim(htmlentities(mysql_real_escape_string($_POST["apellido"])));
-			$email = trim(htmlentities(mysql_real_escape_string($_POST["email"])));
-			$pass = trim(htmlentities(mysql_real_escape_string($_POST["pass"])));
-			$repass = trim(htmlentities(mysql_real_escape_string($_POST["repass"])));
+			$nombre = trim(htmlentities($conexion->real_escape_string($_POST["nombre"])));
+			$apellido = trim(htmlentities($conexion->real_escape_string($_POST["apellido"])));
+			$email = trim(htmlentities($conexion->real_escape_string($_POST["email"])));
+			$pass = trim(htmlentities($conexion->real_escape_string($_POST["pass"])));
+			$repass = trim(htmlentities($conexion->real_escape_string($_POST["repass"])));
 
 		            //
 					//echo "FORMULARIO RECIBIDO:<br/>";
@@ -293,9 +294,6 @@
 							//Validado los campos se inserta los datos a la base y envia email
 					
 							
-							//Conectamos a la base de datos
-							include('../pag_interiores/conexion.php');
-						
 							 $passhash = password_hash($pass, PASSWORD_BCRYPT);
 					
 							 

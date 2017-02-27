@@ -167,13 +167,13 @@
 
     // Comprobar si se ha enviado el formulario:
     if( !empty($_POST) )
-    {
+    {		include('../pag_interiores/conexion.php');
 			//función trim que se encarga de eliminar los espacios en blanco 
 			//función mysql_real_escape_string para evitar las inyecciones sql 
 			//htmlentities para xss 
-			$nombre_escuela = trim(htmlentities(mysql_real_escape_string($_POST["nombre_escuela"])));
-			$localidad = trim(htmlentities(mysql_real_escape_string($_POST["localidad"])));
-			$cant_alumnos = trim(htmlentities(mysql_real_escape_string($_POST["cant_alumnos"])));
+			$nombre_escuela = trim(htmlentities($conexion->real_escape_string($_POST["nombre_escuela"])));
+			$localidad = trim(htmlentities($conexion->real_escape_string($_POST["localidad"])));
+			$cant_alumnos = trim(htmlentities($conexion->real_escape_string($_POST["cant_alumnos"])));
 			$curso_anio = $_POST["curso_anio"];
 			$curso_letra = $_POST["curso_letra"];
 			
@@ -268,8 +268,6 @@
 							//Validado los campos se inserta los datos a la base y se redirecciona al paso 3
 					
 							
-							 //Conectamos a la base de datos
-							include('../pag_interiores/conexion.php');
 						
 								//cargamos datos del nuevo curso
 								 $query = "INSERT INTO curso (nombre_escuela,localidad,curso_anio,curso_letra,cant_alumnos,fecha_creacion)

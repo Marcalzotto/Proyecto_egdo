@@ -130,58 +130,71 @@ session_start();
 										
 										<?php
 											
-										if (isset($_POST['Enviar'])) {
-										if( $_SESSION['CAPTCHA'] != $_POST['introducido'])
-											{
-												echo "Te has confundido introduciendo el c&oacute;digo";
-												echo "<p><a href='../recupPass/recupContrasena.php'>Volver e ingresar nuevamente aqu&iacute;</a></p>";
+											if (isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response']) {
+										
 											
-											}
-										else {
+												$secret="6LdiFRcUAAAAAOcIXuFZzaqEfj9L-nSA9_vLEAUU";
+												$ip=$_SERVER["REMOTE_ADDR"];
+												
+												$captcha=$_POST['g-recaptcha-response'];
+												$result= file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip");
+												
+												$array = json_decode($result,TRUE);
+												
+												if(!$array["success"]){
+												
+													echo "Te has confundido introduciendo el c&oacute;digo";
+													echo "<p><a href='../recupPass/recupContrasena.php'>Volver e ingresar nuevamente aqu&iacute;</a></p>";
+												}
 											
 											
+										
+											
+											
+											else {
 												//email
-											$bandera=0;
-											if( empty($_POST['email']) ){
-												
-												$bandera=1;
-												echo "Debe completar el campo email.";
-												
-											}
-											else
-											{	
+												$bandera=0;
+												if( empty($_POST['email']) ){
 													
-													$invitacion=$_POST['email'];
+													$bandera=1;
+													echo "Debe completar el campo email.";
 													
-													
-																						
-														// Comprobar mediante  filter_var si es valido el email:
-														if(!filter_var($invitacion,FILTER_VALIDATE_EMAIL )){
-															
-															$bandera=1;
-															echo "- El email '".$invitacion."' no es valido.</br>";
-															
-															}
-														else 
-														{												
-															// Comprobar que no supere cantidad maximo de caracteres:
-															if(strlen($invitacion) > 45){
-															
-																echo "- El email ". $invitacion ." no puede contener mas de 45 caracteres.</br>";
+												}
+												else
+												{	
+														
+														$invitacion=$_POST['email'];
+														
+														
+																							
+															// Comprobar mediante  filter_var si es valido el email:
+															if(!filter_var($invitacion,FILTER_VALIDATE_EMAIL )){
+																
 																$bandera=1;
+																echo "- El email '".$invitacion."' no es valido.</br>";
+																
+																}
+															else 
+															{												
+																// Comprobar que no supere cantidad maximo de caracteres:
+																if(strlen($invitacion) > 45){
+																
+																	echo "- El email ". $invitacion ." no puede contener mas de 45 caracteres.</br>";
+																	$bandera=1;
+																}
+																else{
+																	//todo ok, manda email
+																	
+																	
+																	//$emailsOk[]=$invitacion;
+																	
+																}
 															}
-															else{
-																//todo ok, manda email
-																
-																
-																//$emailsOk[]=$invitacion;
-																
-															}
-														}
-												
 													
-												
-											}
+														
+													
+												}
+											
 											
 											if($bandera==0){
 											
@@ -259,7 +272,7 @@ session_start();
 													}
 											
 												}
-											// }
+											 //}
  
 										
 											}
@@ -274,7 +287,8 @@ session_start();
 											}
 											else {
 
-												echo "ERROR";
+													echo "Te has confundido introduciendo el captcha";
+													echo "<p><a href='../recupPass/recupContrasena.php'>Volver e intentar nuevamente aqu&iacute;</a></p>";
 											}
 											
 								?>

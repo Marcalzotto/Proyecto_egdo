@@ -144,11 +144,11 @@
 			//función trim que se encarga de eliminar los espacios en blanco 
 			//función mysql_real_escape_string para evitar las inyecciones sql 
 			//htmlentities para xss 
-			$nombre = trim(htmlentities(mysql_real_escape_string($_POST["nombre"])));
-			$apellido = trim(htmlentities(mysql_real_escape_string($_POST["apellido"])));
-			$passActual = trim(htmlentities(mysql_real_escape_string($_POST["passActual"])));
-			$nuevaPass = trim(htmlentities(mysql_real_escape_string($_POST["nuevaPass"])));
-			$reNuevaPass = trim(htmlentities(mysql_real_escape_string($_POST["reNuevaPass"])));
+			$nombre = trim(htmlentities($conexion->real_escape_string($_POST["nombre"])));
+			$apellido = trim(htmlentities($conexion->real_escape_string($_POST["apellido"])));
+			$passActual = trim(htmlentities($conexion->real_escape_string($_POST["passActual"])));
+			$nuevaPass = trim(htmlentities($conexion->real_escape_string($_POST["nuevaPass"])));
+			$reNuevaPass = trim(htmlentities($conexion->real_escape_string($_POST["reNuevaPass"])));
 			
 
 		            //
