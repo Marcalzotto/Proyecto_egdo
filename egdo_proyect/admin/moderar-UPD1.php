@@ -99,7 +99,7 @@
 			<td><?php echo $row['id_upd']; ?></td>
 			<td><?php echo $row['nombre_lugar']; ?></td>
 			<td><?php echo $row['telefono']; ?></td>
-			<td><img class="mod-img-table" src="../images/lugares_upd/<?php echo $row['foto_lugar']; ?>"/></td>
+			<td><img class="mod-img-table" src="../images/<?php echo $row['foto_lugar']; ?>"/></td>
 			<td><?php echo $row['id_usuario_propuesta']; ?></td>
 			<td><?php echo $row['calle']; ?></td>
 			<td><?php echo $row['altura']; ?></td>
