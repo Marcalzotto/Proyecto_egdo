@@ -41,10 +41,35 @@
 											</a>
 											</span>
 											<ul>
-												<li><a class="list-group-item" href="moderar-comentario.php"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Comentarios Actividades</a></li>
-												<li><a class="list-group-item" href="moderar-comentarioEmpresas.php"><i class="fa fa-comments-o" aria-hidden="true"></i></i>&nbsp; Comentarios Empresas</a></li>
+												<li>
+													<span><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Comentarios Actividades</a></span>
+													<ul> <!-- Sub items -->
+														<li>
+															<a class="list-group-item" href="moderar-comentarioFiesta.php">
+																<i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Fiesta
+															</a>
+														</li>
+														<li>
+															<a class="list-group-item" href="moderar-comentarioInfoViaje.php">
+																<i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 
+																Info Viaje
+															</a>
+														</li>
+														<li>
+															<a class="list-group-item" href="moderar-comentarioUPD.php">
+																<i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 
+																UPD
+															</a>
+														</li>
+														<li>
+															<a class="list-group-item" href="moderar-comentarioEmpresas.php">
+															<i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Empresas
+															</a>
+														</li>
+													</ul> <!-- /Sub items -->	
+												</li>
 												<li><a class="list-group-item" href="moderar-disenio.php">
-													<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Diseño</a>
+													<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Dise&Ntilde;o</a>
 												</li>
 												<li>
 													<span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; UPD</a></span>
