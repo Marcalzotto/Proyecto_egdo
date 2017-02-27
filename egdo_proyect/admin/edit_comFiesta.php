@@ -61,13 +61,13 @@
 							<div class="row"> <!-- Row Principal -->
 								<section class="12u 12u">
 									<header>
-										<h2>Editar Comentario Actividades</h2>
+										<h2>Editar Comentario fiesta</h2>
 									</header>
 									<hr class="major"/>
 									
 									<div class="row uniform">
 										<div class="12u">
-											<a href="moderar-comentario.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios Actividades</a>
+											<a href="moderar-comentarioFiesta.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios Actividades</a>
 											<hr class="major"/>
 										</div>
 										
@@ -85,11 +85,10 @@
 										}else{  
 											
 											//if($_GET['idempresa']>0){
-											$consulta = ("SELECT id_comentario, comentario, fecha_hora ,
-															u.id_usuario, nombre, apellido,
-															a.id_actividad, nombre_actividad
-															FROM comentario c JOIN usuario u ON c.id_usuario = u.id_usuario
-															JOIN actividad a ON a.id_actividad = c.id_actividad WHERE id_comentario='$id_comentario'");
+											$consulta = ("SELECT c.id_comentario,c.comentario,c.fecha_hora,
+															u.id_usuario,u.nombre,u.apellido
+															FROM comentario_fiesta AS c JOIN usuario AS u ON c.id_usuario = u.id_usuario
+															WHERE c.id_comentario='$id_comentario'");
 											$result = $conexion ->query($consulta);
 											if ($result->num_rows >0) {
 												while($row = $result->fetch_assoc()){
@@ -118,12 +117,6 @@
 										<!-- Break -->
 										<div class="-1u 2u"><label class="edit-comment">Apellido Usuario:</label></div>
 										<div class="-1u 5u$"><span><?php echo $row['apellido']; ?></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><label class="edit-comment">Id Actividad:</label></div>
-										<div class="-1u 5u$"><span><?php echo $row['id_actividad']; ?></span></div>
-										<!-- Break -->
-										<div class="-1u 2u"><label class="edit-comment">Actividad:</label></div>
-										<div class="-1u 5u$"><span><?php echo $row['nombre_actividad']; ?></span></div>
 										<!-- Break -->
 										<div class="-1u 2u"><label class="edit-comment-fa"> <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Editar Comentario </label></div>
 										<div class="-1u 5u$">
