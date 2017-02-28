@@ -114,15 +114,17 @@ $row = $res->fetch_array(MYSQLI_ASSOC);
 <div class="descripcion"><strong>Mensaje</strong></div>
 <div class="campoMensaje"><?=$row['mensaje']?></div>
 
-	
-	</div>
 
-	<form method="post" action="../mensajes/responderAdminCurso.php" >
+<form method="post" action="../mensajes/responderAdminCurso.php" >
 	</br>
 	<?php echo '<input type="hidden" name="id_mensaje" value="'.$_GET["id_mensaje"].'">';?>
 	<input class="enviar" type="submit" name="enviar" value="Responder" />
 	
 </form>
+
+	
+</div>
+
 	
 </div>
 

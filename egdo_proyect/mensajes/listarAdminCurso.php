@@ -118,7 +118,7 @@ $res = $conexion->query($sql) or die($conexion->error);
 			if($row['leido']==0){
 			
 				echo	'<td class="columna">';
-				echo	"<a class='linkLeer' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	"<a class='linkLeer' href='../mensajes/leerAdminCurso.php?id_mensaje=".$id_mensaje."'>".$asunto."";
 				echo	'</a>';
 				echo	'</td>';
 			}
