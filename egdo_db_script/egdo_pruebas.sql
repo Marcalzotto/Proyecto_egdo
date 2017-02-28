@@ -322,3 +322,6 @@ select max(d.votos_segunda_instancia) from disenio as d where d.codigo_tipo = 1)
 
 select id_disenio,id_usuario,id_curso,codigo_tipo from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
 where u.id_curso = 2 and d.codigo_tipo = 1;
+
+
+select id_disenio from disenio where codigo_tipo = 3;

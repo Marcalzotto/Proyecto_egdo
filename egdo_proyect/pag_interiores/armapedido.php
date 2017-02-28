@@ -97,7 +97,7 @@
         					if ($conexion->more_results()) {
             				$i++;
         					}
-    						} while ($conexion->next_result());
+    						} while ($conexion->more_results() && $conexion->next_result());
 						}
 
 					echo "</ul>";
@@ -164,7 +164,7 @@ $traerTotales = "select count(talle_buzo) as cantidad from talles_curso where cu
             								$ind++;
             								
         									}
-    										}while ($conexion->next_result());
+    										}while ($conexion->more_results() && $conexion->next_result());
 										}
 
 
@@ -222,8 +222,8 @@ $traerTotales = "select count(talle_buzo) as cantidad from talles_curso where cu
 														</tr>
     											</table>";
 
-    					echo "<a href='../pdf/pdfGenerados/generarPdf.php?curso=".base64_encode($curso)."' target='_blank' id='btn-pedido'>Generar PDF</a>
-    								<a href='../pdf/pdfGenerados/pruebaPdf.php?curso=".base64_encode($curso)."' target='_blank' id='btn-modelo'>ver modelo de pedido</a>";	
+    					echo "<a href='../pdf/pdfGenerados/generarPdf.php?curso=".base64_encode($curso)."' target='_blank' id='btn-pedido'>Generar PDF</a>";
+    								
     					$conexion->close();
 				?>
 

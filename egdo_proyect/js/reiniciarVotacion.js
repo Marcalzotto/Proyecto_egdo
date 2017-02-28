@@ -18,6 +18,6 @@ $(document).ready(function(){
 					alert("hubo un error inesperado, por favor intenta mas tarde");
 				}
 			}
-		})
-	})
+		});
+	});
 });

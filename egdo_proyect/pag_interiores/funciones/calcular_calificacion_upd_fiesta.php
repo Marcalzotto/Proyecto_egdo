@@ -19,7 +19,7 @@ function calcular($conexion,$id_lugar,$tabla_sql){
         if ($conexion->more_results()) {
           
         }
-    }while ($conexion->next_result());
+    }while ($conexion->more_results() && $conexion->next_result());
 	}
 
 	if($operands[1]["cantidad"] == 0){

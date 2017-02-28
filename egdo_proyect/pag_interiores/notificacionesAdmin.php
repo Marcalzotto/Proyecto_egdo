@@ -108,7 +108,7 @@
         						if ($conexion->more_results()) {
             				//printf("-----------------\n");
         						}
-    							}while ($conexion->next_result());
+    							}while ($conexion->more_results() && $conexion->next_result());
 								}
 							//fin del algoritmo para multi consultas
 							

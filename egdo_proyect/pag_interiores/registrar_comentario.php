@@ -9,9 +9,10 @@
 		//$id_empresa = filter_var($empresa, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 		//$id_usuario = filter_var($user, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 		//$comentario = filter_var($_POST["comentario"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
-		$id_empresa = ereg_replace($patter_num, '', $empresa);
-		$id_usuario = ereg_replace($patter_num, '', $user);
-		$comentario = ereg_replace($patter_coment, '', $_POST["comentario"]);
+
+		$id_empresa = preg_replace($patter_num, '', $empresa);
+		$id_usuario = preg_replace($patter_num, '', $user);
+		$comentario = preg_replace($patter_coment, '', $_POST["comentario"]);
 		
 		$fecha_comentario = new DateTime();
 		$fecha_insertar = $fecha_comentario->format("Y-m-d H:i");
@@ -41,7 +42,7 @@
         if ($conexion->more_results()) {
             //printf("-----------------\n");
         }
-    	}while ($conexion->next_result());
+    	}while ($conexion->more_results() && $conexion->next_result());
 			
 		}
 

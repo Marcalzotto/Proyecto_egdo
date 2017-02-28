@@ -176,7 +176,7 @@ $traerTotales = "select count(talle_buzo) as cantidad from talles_curso where cu
         									if ($conexion->more_results()) {
             								$ind++;
             							}
-    									}while ($conexion->next_result());
+    									}while ($conexion->more_results() && $conexion->next_result());
 										}
 
 		$total_buzo = 0;

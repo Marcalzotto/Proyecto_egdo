@@ -19,7 +19,7 @@ $buscarCalificacion = "select count(id_empresa) as cantidad from calificacion wh
         if ($conexion->more_results()) {
           
         }
-    }while ($conexion->next_result());
+    }while ($conexion->more_results() && $conexion->next_result());
 	}
 
 	$division = $operands[1]["cantidad"]/$operands[0]["cantidad"];

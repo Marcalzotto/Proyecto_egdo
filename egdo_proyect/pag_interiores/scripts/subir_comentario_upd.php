@@ -15,7 +15,7 @@ if($_POST){
 		if(strlen($comentario) > 0){
 
 			if(strlen($comentario) < 1000){
-				$comentario = ereg_replace($patter_coment, '', $_POST["comentario"]);
+				$comentario = preg_replace($patter_coment, '', $_POST["comentario"]);
 				$fecha_separar = explode("-", $fecha_formateada);
 				$aaaa = $fecha_separar[0];
 				$mm = $fecha_separar[1];

@@ -22,17 +22,17 @@ generar_notificacion($conexion,$curso);
 				if($result->num_rows > 0){
 					while($regs = $result->fetch_row()){
 						
-						$fecha_separar = split("-", $regs[4]);
+						$fecha_separar = explode("-", $regs[4]);
 						$aaaa = $fecha_separar[0];
 						$mm = $fecha_separar[1];
 						$dd = $fecha_separar[2];
 
 						$mes_nombre = get_mes($mm);
-						$tiempo = split(" ", $dd);
+						$tiempo = explode(" ", $dd);
 						$dia = $tiempo[0];
 						$hora = $tiempo[1];
 
-						$separar_hora = split(":", $hora);
+						$separar_hora = explode(":", $hora);
 						$horas = $separar_hora[0];
 						$minutos = $separar_hora[1];
 

@@ -240,18 +240,18 @@ if(isset($_GET["fiesta"])){
                    } 
 
                    foreach ($vec_comentario as $unComentario) {
-                          $fecha_separar = split("-", $unComentario["fecha_hora"]);
+                          $fecha_separar = explode("-", $unComentario["fecha_hora"]);
                           $aaaa = $fecha_separar[0];
                           $mm = $fecha_separar[1];
                           $dd = $fecha_separar[2];
 
                           $mes_nombre = get_mes($mm);
 
-                          $tiempo = split(" ", $dd);
+                          $tiempo = explode(" ", $dd);
                           $dia = $tiempo[0];
                           $hora = $tiempo[1];
 
-                          $separar_hora = split(":", $hora);
+                          $separar_hora = explode(":", $hora);
                           $horas = $separar_hora[0];
                           $minutos = $separar_hora[1];
                           $segundos = $separar_hora[2];
