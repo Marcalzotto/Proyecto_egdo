@@ -1,17 +1,6 @@
 <?php include ("../bloqueSeguridad.php");?>
-<?php
-$host_db = "localhost";
-							$user_db = "root";
-							$pass_db = "";
-							$db_name = "egdo_db";
-							
+<?php include('../pag_interiores/conexion.php');?>
 
-							$conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
-
-							if ($conexion->connect_error) {
-							die("La conexion falló: " . $conexion->connect_error);
-							}
-							?>
 
 <?php 
  	include('funciones/generar_notificacion.php');
@@ -156,13 +145,13 @@ $obtNombre = $_SESSION['nombre'];
               <ul class='bjqs'> 
                      
                    <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
+                  <img src='../images/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
                   </li>
                   <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
+                  <img src='../images/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
                   </li>
                   <li>
-                  <img src='/Proyecto_egdo/egdo_proyect/img/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
+                  <img src='../images/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
                   </li>
 
              

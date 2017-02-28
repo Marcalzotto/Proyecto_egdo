@@ -108,7 +108,7 @@
 									<header>
 										<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
 									</header>
-									<img class='number' src='/Proyecto_egdo/egdo_proyect/img/".$ruta_img."'/>
+									<img class='number' src='../images/".$ruta_img."'/>
 								
 									<p>".$descripcion."</p>
 								</section>";

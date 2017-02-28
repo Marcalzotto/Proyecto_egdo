@@ -35,6 +35,7 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+<script src='https://www.google.com/recaptcha/api.js'></script>
 	
 	</head>
 	<body class="no-sidebar">
@@ -127,26 +128,11 @@
 										</span>
 										</div>
 										
+										<div class="-5u 5u$">
+										<div class="g-recaptcha" data-sitekey="6LdiFRcUAAAAAK14loe0K6m7I3uEVUR1p5lsbgE8"></div>
 										<!-- Break -->
-										<div class="-2u 2u"><span>Captcha</span></div>
-										
-										<div class="-1u 5u$">
-											<img src="captcha.php" alt="">
 										</div>
-										
-										<!-- Break -->
-										<div class="-2u 2u">
-										<span>
-										Ingresa el c&oacute;digo
-										</span>
-										</div>
-										
-										<div class="-1u 5u$">
-										<span>
-											<input id="codigo" name="introducido" type="text" class="form-class"placeholder="C&oacute;digo">
-										
-										</span>
-										</div>
+									
 										
 										<!-- Break -->
 										<div class="-5u 5u$">

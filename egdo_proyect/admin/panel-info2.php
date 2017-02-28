@@ -1,23 +1,8 @@
 <?php include ("../bloqueSeguridad.php");
-
 ?>
-
+<?php include('../pag_interiores/conexion.php');?>
 
 <?php
-//Archivo de conexión a la base de datos
-
-
-$host_db = "localhost";
-$user_db = "root";
-$pass_db = "";
-$db_name = "egdo_db";
-//$tbl_name = "usuario";
-
-$conexion = new mysqli($host_db, $user_db, $pass_db,$db_name);
-
-if ($conexion->connect_error) {
- die("La conexion falló: " . $conexion->connect_error);
-}
 
 //Creamos las variables necesarias
 $usu_id = $_SESSION['id_usuario'];
@@ -61,21 +46,15 @@ if(empty($nombreCiudad)) {
 	//Si los inputs están seteados y el archivo no tiene errores, se procede
 } else if(isset($descripcion) AND $_FILES['info_imagen_1']['error'] === 0  AND $_FILES['info_imagen_2']['error'] === 0 AND isset($descripcion2) AND $_FILES['info_imagen_3']['error'] === 0 AND isset($descripcion3) AND $_FILES['info_imagen_4']['error'] === 0 AND isset($descripcion4)) {
 
-	$nombreArchivo = $_FILES['info_imagen_1']['name'];
-	$nombreArchivo2 = $_FILES['info_imagen_2']['name'];
-	$nombreArchivo3 = $_FILES['info_imagen_3']['name'];
-	$nombreArchivo4 = $_FILES['info_imagen_4']['name'];
      
-
-
 	//Extensiones permitidas
 	$extensiones = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
 
 	//Obtenemos la extensión (en minúsculas) para poder comparar
-	$extension = strtolower(end(explode('.', $nombreArchivo))); 
-	$extension2 = strtolower(end(explode('.', $nombreArchivo2)));
-	$extension3 = strtolower(end(explode('.', $nombreArchivo3))); 
-	$extension4 = strtolower(end(explode('.', $nombreArchivo4)));  
+	$extension = strtolower(end(explode('.', $_FILES['info_imagen_1']['name']))); 
+	$extension2 = strtolower(end(explode('.', $_FILES['info_imagen_2']['name'])));
+	$extension3 = strtolower(end(explode('.', $_FILES['info_imagen_3']['name']))); 
+	$extension4 = strtolower(end(explode('.', $_FILES['info_imagen_4']['name'])));  
 
 	//Verificamos que sea una extensión permitida, si no lo es mostramos un mensaje de error
   	if(!in_array($extension, $extensiones)) {
@@ -131,11 +110,21 @@ if(empty($nombreCiudad)) {
 			die( "El archivo ".$nombreArchivo4." es demasiado grande. El tamaño máximo del archivo es de ".$tamañoMaximoKB3."Kb." ); }
 		
         else {
-        	$directorio = $_SERVER['DOCUMENT_ROOT'].'../img/';
-        	move_uploaded_file($_FILES['info_imagen_1']['tmp_name'], $directorio.$nombreArchivo);
-        	move_uploaded_file($_FILES['info_imagen_2']['tmp_name'], $directorio.$nombreArchivo2);
-        	move_uploaded_file($_FILES['info_imagen_3']['tmp_name'], $directorio.$nombreArchivo3);
-        	move_uploaded_file($_FILES['info_imagen_4']['tmp_name'], $directorio.$nombreArchivo4);
+
+        	$cod_img = mt_rand(0, 20);
+			$cod_img1 = mt_rand(0, 20);
+            $cod_img2 = mt_rand(0, 20);
+			$cod_img3 = mt_rand(0, 20);
+				
+				$path_foto_1 = "img_destinos/".$cod_img.$_FILES["info_imagen_1"]["name"];
+				$path_foto_2 = "img_destinos/".$cod_img1.$_FILES["info_imagen_2"]["name"];
+				$path_foto_3 = "img_destinos/".$cod_img2.$_FILES["info_imagen_3"]["name"];
+				$path_foto_4 = "img_destinos/".$cod_img3.$_FILES["info_imagen_4"]["name"];
+
+        	move_uploaded_file($_FILES['info_imagen_1']['tmp_name'], "../images/".$path_foto_1);
+        	move_uploaded_file($_FILES['info_imagen_2']['tmp_name'], "../images/".$path_foto_2);
+        	move_uploaded_file($_FILES['info_imagen_3']['tmp_name'], "../images/".$path_foto_3);
+        	move_uploaded_file($_FILES['info_imagen_4']['tmp_name'], "../images/".$path_foto_4);
             $traerIdActividad="select id_actividad from actividad where nombre_actividad='infoViaje'";
             $verificarId = $conexion->query($traerIdActividad) or die($conexion->error);
                if($verificarId){
@@ -146,24 +135,56 @@ if(empty($nombreCiudad)) {
               
 			//Si el tamaño es correcto, subimos los datos
 			$consulta = "insert into info_viaje (nombre_lugar, descripcion, id_actividad, id_usuario, imagen, imagen1, imagen2, imagen3, descripcion1, descripcion2, descripcion3) 
-			VALUES ('$nombreCiudad','$descripcion','$numIdAct', '$usu_id', '$nombreArchivo', '$nombreArchivo2', '$nombreArchivo3', '$nombreArchivo4', '$descripcion2', '$descripcion3', '$descripcion4')";
+			VALUES ('$nombreCiudad','$descripcion','$numIdAct', '$usu_id', '$path_foto_1', '$path_foto_2', '$path_foto_3', '$path_foto_4', '$descripcion2', '$descripcion3', '$descripcion4')";
 			//ejecuto consulta
              $guardarRdo= $conexion->query($consulta) or die($conexion->error);
 			//Hacemos la inserción, y si es correcta, se procede
 			if($guardarRdo) {
 				//Reiniciamos los inputs
-				echo '<script>
-						$("#enviarimagenes input,textarea").each(function(echo) {
-						$(this).val("");
+
+             $con = "select * from info_viaje where nombre_lugar = '$nombreCiudad'";
+			 $resultado = $conexion->query($con);
+			 while ($datos = $resultado->fetch_assoc()) {
+			 $nombre = $datos['nombre_lugar'];
+			 $traerIdlugar = $datos['id_info_viaje'];
+			 $ruta_img = $datos['imagen'];
+			 $descripcion = $datos['descripcion'];
+
+
+
+              echo "<div id='intro' class='container'> 
+						<div class='mensaje'> </div>
+						<div class='row'>
+							
+					<section class='4u 12u(mobile)'>
+									<header>
+									<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
+									</header>
+									<img class='number' src='../images/".$ruta_img."'/>
+								
+									<p>".$descripcion."</p>";
+
+								}
+ echo    "
+							</section>
+
+						  	
+            
+				
+								</div>
+
+							
+						</div>";
+
+
+				echo "<script>
+						$('#enviarimagenes input,textarea').each(function(echo) {
+						$(this).val('');
 						});
-					</script>';
+					</script>";
 				//Cerramos la conexión con MySQL
 				$conexion->close();
-				//Mostramos un mensaje
-				die( "El archivo con el nombre ".$nombreArchivo." fue subido. Su peso es de ".$tamañoArchivoKB." KB." );
-				die( "El archivo con el nombre ".$nombreArchivo2." fue subido. Su peso es de ".$tamañoArchivoKB1." KB." );
-				die( "El archivo con el nombre ".$nombreArchivo3." fue subido. Su peso es de ".$tamañoArchivoKB2." KB." );
-				die( "El archivo con el nombre ".$nombreArchivo4." fue subido. Su peso es de ".$tamañoArchivoKB3." KB." );
+			
 			}
 
 		}	 else {
