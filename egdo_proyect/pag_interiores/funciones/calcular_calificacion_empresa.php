@@ -21,10 +21,12 @@ $buscarCalificacion = "select count(id_empresa) as cantidad from calificacion wh
         }
     }while ($conexion->more_results() && $conexion->next_result());
 	}
-
+  if ($operands[1]["cantidad"] == 0) {
+    $calificacion = 0;
+  }else{
 	$division = $operands[1]["cantidad"]/$operands[0]["cantidad"];
 	$calificacion = round($division, 1);
- 
+  }
 return $calificacion;
 }
 
