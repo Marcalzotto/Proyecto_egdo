@@ -102,29 +102,34 @@ $("#enviarimagenes").on("submit", function(evento){
 
 
 							<?php 
-							$adminEgdo = $_SESSION['id_rol']; 
-							$usu_id = $_SESSION['id_usuario'];
-			
-							
-							$verificarAdmin = "select * from usuario where id_rol = '$adminEgdo'";
-							$verificar = $conexion->query($verificarAdmin) or die($conexion->error);
-							if($verificar){
+							$obtRol = $_SESSION['id_rol'];
+                        
+                              if($obtRol=='1'){
+
+                            
 								echo "<form role='form' autocomplete='off' enctype='multipart/form-data' method='post' id='enviarimagenes'>
 									<div class='row uniform 50%'>
-									    
+									   
+									     <div class='-1u 3u$'><span><input type='text' name='nombre' id='nombre' class='form-class' placeholder='Nombre lugar' required></span>
+									    </div>
+                                         
+
+                                        <div class='-1u 4u$'> <h2>Suba la foto de perfil del destino</h2></span></div>
+                                        
+
 									    <div class='-1u 2u'><span>Subir foto 1</span></div>
 										
 										<div class='3u'><span><input type='file' class='form-class' name='info_imagen_1' id='info_imagen_1' required /></span>
 									    </div> 
 
-										<div class='3u'><span><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion foto 1' class='form-class' required></span>
-									    </div>
-										
-										<div class='3u$'><span><input type='text' name='nombre' id='nombre' class='form-class' placeholder='Nombre lugar' required></span>
+										<div class='3u$'><span><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion foto 1' class='form-class' required></span>
 									    </div>
 										
 										
 										
+										
+                                           <div class='-1u 6u$'> <h2>Suba las fotos para la galeria</h2></span></div>
+
 
 										<div class='-1u 2u'><span>Subir foto 2</span></div>
 										

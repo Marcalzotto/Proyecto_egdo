@@ -18,19 +18,23 @@
 
 <html lang="en" class="no-js">
 	<head>
-		<title>EGDO</title>
+			<title>EGDO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		
+
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		
 		<link rel="stylesheet" href="../css/index_gral.css" />
+		<link rel="stylesheet" href="../css/indexUser.css" />
 		
 		<!-- mejora tooltips-->
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
+        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
 			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -54,35 +58,32 @@
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<link rel="stylesheet" href="../css/viajes.css"> <!-- Gem style -->
+			<link rel="stylesheet" href="../css/common.css"> 
+			<link rel="stylesheet" href="../css/style.css"> 
+			<link rel="stylesheet" href="../css/viajes.css"> 
+			<link rel="stylesheet" href="../css/styleModal.css"> 
+
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-	
 	</head>
-<body class="homepage">
+	<body class="no-sidebar">
 		<div id="page-wrapper">
-		<header role="banner">
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
 
 					<!-- Header -->
-						
 						<div id="header" class="container">
-							
-							
-							
+
 							<?php
-							include '/menu/masterMenu.php';
+								include '../pag_interiores/menu/masterMenu.php';
 							?>
-								
-		
 
 						</div>
-				
+
 				</div>
-</header>
 
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
@@ -94,7 +95,7 @@
 							
 							
 							<?php
-								$con = "select * from info_viaje";
+								$con = "select * from info_viaje order by id_info_viaje DESC";
 								$resultado = $conexion->query($con);
 								while ($datos = $resultado->fetch_assoc()) {
 									$nombre = $datos['nombre_lugar'];
