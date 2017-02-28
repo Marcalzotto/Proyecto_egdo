@@ -184,7 +184,7 @@ $("#enviarimagenes").on("submit", function(evento){
 
 							echo	"<section class='4u 12u(mobile)'>
 									<header>
-										<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
+										<h2><a href='turismoAdmin.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
 									</header>
 									<img class='number' src='../images/".$ruta_img."'/>
 								
