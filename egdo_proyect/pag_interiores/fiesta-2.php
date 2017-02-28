@@ -147,6 +147,7 @@ if($result = $conexion->query($verificarFecha)){
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			<script src="../js/reiniciar_fiesta.js"></script>
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">
@@ -259,7 +260,23 @@ if($result = $conexion->query($verificarFecha)){
 										echo "</div>";
 										}//termina for
 									}else{
-										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
+
+										if($intervalD >= 15 && $intervalD < 22){
+											//es hora de votar por los lugares propuestos
+												$hayLugares = "select id_fiesta from fiesta where id_curso = '$_SESSION[curso]'";
+												if($result = $conexion->query($hayLugares)){
+													if($result->num_rows == 0){
+														echo "<h2>No hay lugares para calificar el evento se reiniciara.</h2>";
+														if($_SESSION["id_rol"] < 3){
+														echo "<button id='btn-fiesta'>Reinciar Evento</button>";
+														}
+													}
+												}else{
+													die("Error en la consulta");
+												}
+											}else{
+												echo "<h2>Aun no se han propuesto lugares para el fiesta</h2>";
+											}
 									}
 								}
 							}

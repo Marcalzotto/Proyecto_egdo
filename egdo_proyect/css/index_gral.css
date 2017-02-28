@@ -155,6 +155,17 @@ height:5%;
     	padding: 5px;
     	border-color: #333;
 		}
+
+		#btn-upd,#btn-fiesta{
+			padding: 20px;
+    border-radius: 5px;
+    border: 0;
+    color: #fff;
+    background: #f4719f;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 20px;
+		}
 	}
 
 	@media screen and (min-width: 737px) and (max-width: 1200px) {
@@ -479,6 +490,17 @@ height:5%;
 			/*border: 1px solid;*/
     	padding: 5px;
     	border-color: #333;
+		}
+
+		#btn-upd,#btn-fiesta{
+			padding: 20px;
+    border-radius: 5px;
+    border: 0;
+    color: #fff;
+    background: #f4719f;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 20px;	
 		}
 
 }/*termina @media screen and (max-width: 736px)*/

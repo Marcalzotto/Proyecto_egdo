@@ -155,6 +155,7 @@ if($result = $conexion->query($verificarFecha)){
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			<script src="../js/reiniciar_upd.js"></script>
 			
 	</head>
 <body class="homepage">
@@ -271,65 +272,32 @@ if($result = $conexion->query($verificarFecha)){
 										
 										}//termina for 
 									}else{
-										echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
-									}
+										
+
+											if($intervalD >= 15 && $intervalD < 22){
+											//es hora de votar por los lugares propuestos
+												$hayLugares = "select id_upd from upd where id_curso = '$_SESSION[curso]'";
+												if($result = $conexion->query($hayLugares)){
+													if($result->num_rows == 0){
+														echo "<h2>No hay lugares para calificar el evento se reiniciara.</h2>";
+														if($_SESSION["id_rol"] < 3){
+														echo "<button id='btn-upd'>Reinciar Evento</button>";
+														}
+													}
+												}else{
+													die("Error en la consulta");
+												}
+											}else{
+												echo "<h2>Aun no se han propuesto lugares para el upd</h2>";
+											}
+									}//termina else titulo
 								}
 							}
 
 							?>
-							<!--<div class="row">
-								
-								<section class="4u 12u(mobile)">
-								<div id="plaza-san-justo">
-										<a href="upd-3.php"><span class="number">Plaza San Justo</span></a>
-								</div>
-                 <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="cordoba"><a href="upd-3.php"><span class="number"></span></a></div>
-								    <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-								</div>
-								</section>
-								<section class="4u 12u(mobile)">
-									<div id="brasil"><a href="upd-3.php"><span class="number"></span></a></div>
-									 <div class="estrellas">
-									<a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-									<a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-									<a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-									<a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-									<a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-									</div>
-								</section>
-
-							</div>-->
-
+							
 
 						</div>
-					<!--<form class="form-validation" enctype="multipart/form-data" method="post" action="#">
-
-									<div class="form-title-row">
-										<h1>Deja tu comentario</h1>
-									</div>
-
-									<div class="form-row form-input-name-row">
-		
-		                               <textarea name="Comentario" placeholder="Comentario"></textarea>
-
-									</div>	
-
-					</form>-->
-
 				</div>
 				
 				<!-- Footer Wrapper -->

@@ -64,7 +64,7 @@ INSERT INTO disenio(id_disenio,codigo_tipo,id_usuario_subio,cantidad_votos,votos
 INSERT INTO disenio(id_disenio,codigo_tipo,id_usuario_subio,cantidad_votos,votos_segunda_instancia,path_frontal,path_espalda,path_img_doble,fecha_creacion) VALUES(11,1,10,0,0,'images/userDesigns/frontalBuzo458316.jpg','images/userDesigns/espaldaBuzo458316.jpg','images/userDesigns/total458316.jpg',CURRENT_TIMESTAMP);
 INSERT INTO disenio(id_disenio,codigo_tipo,id_usuario_subio,cantidad_votos,votos_segunda_instancia,path_frontal,path_espalda,path_img_doble,fecha_creacion) VALUES(12,2,10,0,0,'images/userDesigns/frontalRemera926606.jpg','images/userDesigns/espaldaRemera926606.jpg','images/userDesigns/total926606.jpg',CURRENT_TIMESTAMP);
 INSERT INTO disenio(id_disenio,codigo_tipo,id_usuario_subio,cantidad_votos,votos_segunda_instancia,path_frontal,path_espalda,path_img_doble,fecha_creacion) VALUES(13,3,10,0,0,'images/userDesigns/frontalBandera127445.jpg','images/userDesigns/espaldaBandera127445.jpg','images/userDesigns/total127445.jpg',CURRENT_TIMESTAMP);
-
+/*USUARIO 10 */
 
 ALTER TABLE disenio AUTO_INCREMENT = 14;
 
@@ -108,20 +108,20 @@ BEGIN
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,9,2,1,@actividad_disenio);
 	
 	/*VOTOS DE LAS BANDERAS*/
-	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,10,3,1,@actividad_disenio);/*2->0, 4->2, 7->2, 10->5, 13->3*/
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,10,3,1,@actividad_disenio);/*2->3, 4->2, 7->2, 10->5, 13->0*/
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,7,3,1,@actividad_disenio);
 --  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,24,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,10,3,1,@actividad_disenio);
 --  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,21,3,1,@actividad_disenio);/*Borrar para hacer pruebas*/
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,4,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,7,3,1,@actividad_disenio);
-	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,13,3,1,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,2,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(8,10,3,1,@actividad_disenio);
-	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(8,13,3,1,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(8,2,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(9,10,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,4,3,1,@actividad_disenio);
 	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,10,3,1,@actividad_disenio);
-	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,13,3,1,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,2,3,1,@actividad_disenio);
 	
 END $$
 DELIMITER ;
@@ -134,24 +134,24 @@ BEGIN
 	SELECT @actividad_disenio := actividad_disenio_id from actividad_disenio where curso_pertenece_votacion = _curso;	
 	/*VOTOS SEGUNDA INSTANCIA*/
 	/*VOTOS DE LOS BUZOS*/
-	INSERT INTO VOTOS VALUES(6,3,1,2,@actividad_disenio);/*5->0, 3->2, 8->3*/
-	INSERT INTO VOTOS VALUES(7,3,1,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(8,8,1,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(9,8,1,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(10,8,1,2,@actividad_disenio);
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,3,1,2,@actividad_disenio);/*5->0, 3->0, 8->3*/
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,3,1,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num)VALUES(8,8,1,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(9,8,1,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,8,1,2,@actividad_disenio);
 
 	/*VOTOS DE LAS REMERAS*/
-	INSERT INTO VOTOS VALUES(6,1,2,2,@actividad_disenio);/*1->2, 6->2, 9->1 */
-	INSERT INTO VOTOS VALUES(7,1,2,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(8,6,2,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(9,6,2,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(10,6,2,2,@actividad_disenio);
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,1,2,2,@actividad_disenio);/*1->0, 6->2, 9->1 */
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,1,2,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(8,6,2,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(9,6,2,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,6,2,2,@actividad_disenio);
 	
 	/*VOTOS DE LAS BANDERAS*/
-	INSERT INTO VOTOS VALUES(6,7,3,2,@actividad_disenio);/*7->1, 10->2, 13->2 */
-	INSERT INTO VOTOS VALUES(7,10,3,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(8,10,3,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(9,13,3,2,@actividad_disenio);
-	INSERT INTO VOTOS VALUES(10,13,3,2,@actividad_disenio);
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(6,7,3,2,@actividad_disenio);/*7->0, 10->0, 13->3 */
+--  INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(7,10,3,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(8,13,3,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(9,13,3,2,@actividad_disenio);
+	INSERT INTO VOTOS(id_usuario_voto,disenio_votado,tipo_disenio,instancia_voto,activdad_disenio_num) VALUES(10,13,3,2,@actividad_disenio);
 END $$
 DELIMITER ;
