@@ -352,7 +352,7 @@ if($result = $conexion->query($verificarFecha)){
 								}else{//termina if evento
 										$rol = $_SESSION["id_rol"];
 										if($rol == 3){
-											echo "<h2>El evento fiesta aun no esta lista, debes esperar que el administador del curso lo inicie.</h2>";
+											echo "<h2>El evento fiesta aun no esta listo, debes esperar que el administador del curso lo inicie.</h2>";
 										}else{
 											echo "<h3>El evento fiesta aun no inicio</h3>
 	

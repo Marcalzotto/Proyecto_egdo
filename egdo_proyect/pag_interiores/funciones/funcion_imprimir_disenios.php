@@ -27,7 +27,7 @@ if($fechaHoy >= $fa && $fechaHoy <= $fpi){
 
 							foreach($varRegistros as $unVar){
 																			
-				echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unVar['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unVar['path_frontal']." 
+				echo "<li><a href=Tee-Designer-Master/tdesignAPI/".$unVar['path_img_doble']." rel='lightbox'><img src=Tee-Designer-Master/tdesignAPI/".$unVar['path_frontal']." 
 							width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por:</p><p>".$unVar['nombre']."</p><p>Calificacion: <span>".$unVar['cantidad_votos']."</span>
 							<img data-id=".$unVar['id_disenio']." data-tipo=".$unVar['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";
 							}
@@ -57,7 +57,7 @@ if($fechaHoy >= $fa && $fechaHoy <= $fpi){
 
 						foreach($arrayMasVotados1 as $unoMasVotado){
 																					
-echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_frontal']." 
+echo "<li><a href=Tee-Designer-Master/tdesignAPI/".$unoMasVotado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-Master/tdesignAPI/".$unoMasVotado['path_frontal']." 
 			width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: </p><p>".$unoMasVotado['nombre']."</p><p>Calificacion: <span>".$unoMasVotado['votos_segunda_instancia']."</span>
 			<img data-id=".$unoMasVotado['id_disenio']." data-tipo=".$unoMasVotado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 																					
@@ -92,7 +92,7 @@ echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble
 									}
 
 									foreach ($empatados as $empatado) {
-	echo "<li><a href=Tee-Designer-master/tdesignAPI/".$empatado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$empatado['path_frontal']." 
+	echo "<li><a href=Tee-Designer-Master/tdesignAPI/".$empatado['path_img_doble']." rel='lightbox'><img src=Tee-Designer-Master/tdesignAPI/".$empatado['path_frontal']." 
 	width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: </p><p>".$empatado['nombre']."</p><p>Calificacion: <span>".$empatado['votos_segunda_instancia']."</span>
 	<img id='prenda-empate' data-idempate=".$empatado['id_disenio']." data-tipoempate=".$empatado['codigo_tipo']." src='../images/dropotron_icons/like.png' alt='Like'></p></li>";	
 									}
@@ -105,7 +105,7 @@ echo "<li><a href=Tee-Designer-master/tdesignAPI/".$unoMasVotado['path_img_doble
 
 									$elGanador = $traerGanador->fetch_array(MYSQLI_ASSOC);
 
-echo "<li><a href=Tee-Designer-master/tdesignAPI/".$elGanador['path_img_doble']." rel='lightbox'><img src=Tee-Designer-master/tdesignAPI/".$elGanador['path_frontal']." 
+echo "<li><a href=Tee-Designer-Master/tdesignAPI/".$elGanador['path_img_doble']." rel='lightbox'><img src=Tee-Designer-Master/tdesignAPI/".$elGanador['path_frontal']." 
 			width='105' height='105' class='ropa' alt='buzo frente'></a><p>Subido por: <p></p>".$elGanador['nombre']."</p><p>Calificacion: 
 			<span>".$elGanador['votos_segunda_instancia']."</span></p></li>";	
 				
