@@ -242,7 +242,7 @@ session_start();
 													
 													//al estar ok se envia email al usuario link para validar cuenta e iniciar sesion
 																				
-													$mensaje = '<h2>Hola!!! tu nueva contrase&ntilde;a es: '.$nuevaContrasena.'</h2>';
+													$mensaje = '<h2>Hola!!! tu nuevo password es: '.$nuevaContrasena.'</h2>';
 													
 													
 													
@@ -250,7 +250,7 @@ session_start();
 													$mail->addAddress($invitacion,'Usuario');
 													
 													//Añadimos el asunto del mail
-													$mail->Subject = 'Reestablecer contraseña de EGDO';
+													$mail->Subject = 'Reestablecer password de EGDO';
 		
 													//Mensaje del email
 													$mail->Body = '<div align="center"><img src="http://i66.tinypic.com/10nua77.png"></div><br><br>'.$mensaje;
