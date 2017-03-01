@@ -3,8 +3,8 @@
 
 
 <?php 
- 	include('funciones/generar_notificacion.php');
- 	generar_notificacion($conexion,$_SESSION["curso"]);
+  include('funciones/generar_notificacion.php');
+  generar_notificacion($conexion,$_SESSION["curso"]);
  ?>
  <?php include('funciones/cantidad_notificaciones_mensajes.php');?>
  <?php include('funciones/cantidad_notificaciones.php');?>
@@ -13,29 +13,50 @@
 
 <!DOCTYPE HTML>
 <!--
-	Wide Angle by Pixelarity
-	pixelarity.com @pixelarity
-	License: pixelarity.com/license
+  Wide Angle by Pixelarity
+  pixelarity.com @pixelarity
+  License: pixelarity.com/license
 -->
 <html>
-	<head>
+  <head>
 
-		<title>EGDO</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<!--<link rel="stylesheet" href="../css/index_gral.css" />-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]--> 
+    <title>EGDO</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="../css/index_gral.css" />
+<link rel="stylesheet" href="../css/indexUser.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
+    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+      <link rel="manifest" href="../favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff"> 
     
-		<link rel="stylesheet" type="text/css" href="../css/viajes.css" />
-		<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="../css/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="../css/demo.css" />
         <link rel="stylesheet" type="text/css" href="../css/form-viaje.css" />
         <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" />  
         <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
           <link rel="stylesheet" type="text/css" href="../css/estilosComentInfo.css" /> 
-      <!--  <link rel="stylesheet" href="../admin/assets/css/mainAdmin.css" />	-->
-        <link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />	
-		<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+      <!--  <link rel="stylesheet" href="../admin/assets/css/mainAdmin.css" />  -->
+        <link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" /> 
+    <script src="../js/modernizr.js"></script> <!-- Modernizr -->
       <script src="../js/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
       <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
@@ -52,16 +73,16 @@ $(document).ready(function() {
         var date_show = now.getDate() + '-' + now.getMonth() + '-' + now.getFullYear() + ' ' + now.getHours() + ':' + + now.getMinutes() + ':' + + now.getSeconds();
        
        if(comentario == ""){
-       	  alert("No ha escrito un comentario");
-       	}
-       	else {
+          alert("No ha escrito un comentario");
+        }
+        else {
         $.ajax({
             type: "POST",
             url: "almacenar_comentario.php",
             data: {
-            	destino_info: info_Id,
-            	usu: usu_info,
-            	comentario: comentario
+              destino_info: info_Id,
+              usu: usu_info,
+              comentario: comentario
 
             },
 
@@ -74,124 +95,54 @@ $(document).ready(function() {
 
         });
         return false;
-    	}
-	});
+      }
+  });
 });
 
 </script>
 
-	
-	
-	</head>
-	<body class="no-sidebar">
-		<div id="page-wrapper">
+  
+  
+  </head>
+  <body class="no-sidebar">
+    <div id="page-wrapper">
 
-			<!-- Header Wrapper -->
-				<div id="header-wrapper">
+      <!-- Header Wrapper -->
+        <div id="header-wrapper">
 
-					<!-- Header -->
-						<div id="header" class="container">
+          <!-- Header -->
+            <div id="header" class="container">
 
-						
-							<?php
+            
+             
                             
-                        $obtRol = $_SESSION['id_rol'];
-                        
-                          if($obtRol=='2'){
+        <?php
+                include '../pag_interiores/menu/masterMenu.php';
+              ?>
+    
 
-                              echo "<link rel='stylesheet' href='../css/index_gral.css' />";
-                              echo "<link rel='stylesheet' href='../css/indexUser.css' />";
+            
 
-                              echo "
-                              <link rel='stylesheet' type='text/css' href='../css/common.css' />
-        <link rel='stylesheet' type='text/css' href='../css/style-assets.css' /> 
-    <link rel='apple-touch-icon' sizes='57x57' href='../favicon/apple-icon-57x57.png'>
-                              <link rel='apple-touch-icon' sizes='60x60' href='../favicon/apple-icon-60x60.png'>
-        <link rel='apple-touch-icon' sizes='72x72' href='../favicon/apple-icon-72x72.png'>
-        <link rel='apple-touch-icon' sizes='76x76' href='../favicon/apple-icon-76x76.png'>
-        <link rel='apple-touch-icon' sizes='114x114' href='../favicon/apple-icon-114x114.png'>
-        <link rel='apple-touch-icon' sizes='120x120' href='../favicon/apple-icon-120x120.png'>
-        <link rel='apple-touch-icon' sizes='144x144' href='../favicon/apple-icon-144x144.png'>
-        <link rel='apple-touch-icon' sizes='152x152' href='../favicon/apple-icon-152x152.png'>
-        <link rel='apple-touch-icon' sizes='180x180' href='../favicon/apple-icon-180x180.png'>
-        <link rel='icon' type='image/png' sizes='192x192'  href='../favicon/android-icon-192x192.png'>
-        <link rel='icon' type='image/png' sizes='32x32' href='../favicon/favicon-32x32.png'>
-        <link rel='icon' type='image/png' sizes='96x96' href='../favicon/favicon-96x96.png'>
-        <link rel='icon' type='image/png' sizes='16x16' href='../favicon/favicon-16x16.png'>
-        <link rel='manifest' href='../favicon/manifest.json'>
-        <meta name='msapplication-TileColor' content='#ffffff'>
-        <meta name='msapplication-TileImage' content='/ms-icon-144x144.png'>
-        <meta name='theme-color' content='#ffffff'>";
-      
+            </div>
 
-      
-                  						include '/menu/masterMenu.php';
-                             
-                             }
+        </div>
 
-                       else if($obtRol=='3')  {
-                               echo "<link rel='stylesheet' href='../css/index_gral.css' />";
-                              echo "<link rel='stylesheet' href='../css/indexUser.css' />";
+      <!-- Main Wrapper  -->
+      <div id="main-wrapper">
 
-                              echo "
-                              <link rel='stylesheet' type='text/css' href='../css/common.css' />
-        <link rel='stylesheet' type='text/css' href='../css/style-assets.css' /> 
-    <link rel='apple-touch-icon' sizes='57x57' href='../favicon/apple-icon-57x57.png'>
-                              <link rel='apple-touch-icon' sizes='60x60' href='../favicon/apple-icon-60x60.png'>
-        <link rel='apple-touch-icon' sizes='72x72' href='../favicon/apple-icon-72x72.png'>
-        <link rel='apple-touch-icon' sizes='76x76' href='../favicon/apple-icon-76x76.png'>
-        <link rel='apple-touch-icon' sizes='114x114' href='../favicon/apple-icon-114x114.png'>
-        <link rel='apple-touch-icon' sizes='120x120' href='../favicon/apple-icon-120x120.png'>
-        <link rel='apple-touch-icon' sizes='144x144' href='../favicon/apple-icon-144x144.png'>
-        <link rel='apple-touch-icon' sizes='152x152' href='../favicon/apple-icon-152x152.png'>
-        <link rel='apple-touch-icon' sizes='180x180' href='../favicon/apple-icon-180x180.png'>
-        <link rel='icon' type='image/png' sizes='192x192'  href='../favicon/android-icon-192x192.png'>
-        <link rel='icon' type='image/png' sizes='32x32' href='../favicon/favicon-32x32.png'>
-        <link rel='icon' type='image/png' sizes='96x96' href='../favicon/favicon-96x96.png'>
-        <link rel='icon' type='image/png' sizes='16x16' href='../favicon/favicon-16x16.png'>
-        <link rel='manifest' href='../favicon/manifest.json'>
-        <meta name='msapplication-TileColor' content='#ffffff'>
-        <meta name='msapplication-TileImage' content='/ms-icon-144x144.png'>
-        <meta name='theme-color' content='#ffffff'>";
-      
-
-      
-                              include '/menu/masterMenu.php';
-                             
-                       }    
-
-                          else   {
-                               echo "<link rel='stylesheet' href='../admin/assets/css/mainAdmin.css' />";
- 
-                          	   echo "<!-- Logo -->
-								<h1 id='logo'><a href='../admin/admin-index.php'><img class='logo-img' src='../admin/assets/images/EGDO.png' alt=''/></a></h1> ";
-                                   include '../admin/menuAdminEgdo.php';
-								
-
-                          }
-
-							?>
-
-						</div>
-
-				</div>
-
-			<!-- Main Wrapper  -->
-			<div id="main-wrapper">
-
-							   <?php 
+                 <?php 
 
 
         $obtUsuario = $_SESSION['id_usuario'];
 
-               	
+                
 
-              	   $id= $_GET['id'];
-										if(filter_var($id, FILTER_VALIDATE_INT) === false){  
-											echo 'Valor incorrecto';  
-										}else{  
-											
-							
+                   $id= $_GET['id'];
+                    if(filter_var($id, FILTER_VALIDATE_INT) === false){  
+                      echo 'Valor incorrecto';  
+                    }else{  
+                      
+              
            
               $con = "select * from info_viaje where id_info_viaje = $id";
                 if($resultado = $conexion->query($con)){
@@ -233,91 +184,92 @@ $(document).ready(function() {
                        </div>
              </section>
 
-	<section class="12u 12u"> <!-- formulario subida-->     
- 			<div id='newComment'>
-    				<form method='post' action=''>
+  <section class="12u 12u"> <!-- formulario subida-->     
+      <div id='newComment'>
+            <form method='post' action=''>
                          <div class='row uniform 50%'>
-  						 
-  						 <div class='-2u 1u'><span>Comentarios</span></div>
+               
+               <div class='-2u 1u'><span>Comentarios</span></div>
                          <div class='-1u 5u$'><span><textarea id='comentario' class='form-class' name='comment' placeholder='Deja tu comentario' title='No ha escrito un cometario' required></textarea></span></div> 
                          
                          <input type='hidden' id='usu' value='<?php echo $obtUsuario ?>'>
-	                     <input type='hidden' id='destino_info' value='<?php echo $id?>'>
+                       <input type='hidden' id='destino_info' value='<?php echo $id?>'>
                          
-                         <div class='-4u 6u$'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='enviar' id='enviar-btn'/></div>
+                         <div class='-4u 1u'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='Enviar' id='enviar-btn'/></div>
+                         <div class='-1u 2u$'> <input name='reset' class='button special icon fa fa-plus' type='reset' value='Borrar' id='enviar-btn'/></div>
                         </div><!--/row -->
                      </form>
 
        </section> <!-- /formulario subida-->
-				
+        
 
 <?php
 
 $buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario, comentario_infoviaje.fecha from usuario join comentario_infoviaje on usuario.id_usuario = comentario_infoviaje.id_usuario where comentario_infoviaje.id_info_viaje = '$id' order by comentario_infoviaje.fecha DESC";
-									$resultComent = $conexion->query($buscarComentarioInfo);
-									if($resultComent){
-										
-										if($resultComent->num_rows > 0){
-											while($com = $resultComent->fetch_array(MYSQLI_ASSOC)){
-												$comentarios[] = $com;
-											}
-											foreach ($comentarios as $tario){
-													
-									echo   "
+                  $resultComent = $conexion->query($buscarComentarioInfo);
+                  if($resultComent){
+                    
+                    if($resultComent->num_rows > 0){
+                      while($com = $resultComent->fetch_array(MYSQLI_ASSOC)){
+                        $comentarios[] = $com;
+                      }
+                      foreach ($comentarios as $tario){
+                          
+                  echo   "
 
-			             				<div class='unComent'>
+                          <div class='unComent'>
                                                     
-															<p class='nombre'><a href='#'>".$tario['nombre']."</a></p> 
-											           <p>".$tario['comentario']."</p>  
-											            <p class='tiempo'>".$tario['fecha']."</p>
-														
-												 </div> ";
-										}
+                              <p class='nombre'><a href='#'>".$tario['nombre']."</a></p> 
+                                 <p>".$tario['comentario']."</p>  
+                                  <p class='tiempo'>".$tario['fecha']."</p>
+                            
+                         </div> ";
+                    }
 
-									}
+                  }
 
-								}										
-							?>	
-			</div>	
-		</div>	
-	</section>
+                }                   
+              ?>  
+      </div>  
+    </div>  
+  </section>
    
 
  
 
-			
- 					<?php $conexion->close(); ?>
+      
+          <?php $conexion->close(); ?>
                  
-				</div> <!--main wrapper-->
+        </div> <!--main wrapper-->
 
 
-			<!-- Footer Wrapper -->
-				<div id="footer-wrapper">
+      <!-- Footer Wrapper -->
+        <div id="footer-wrapper">
 
-				<!-- Footer -->
-						<div id="footer" class="container">
-							<header>
-								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
-							</header>
-							<p>Email: egdoweb@gmail.com.</p>
-							<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-							</ul>
-						</div>
+        <!-- Footer -->
+            <div id="footer" class="container">
+              <header>
+                <h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
+              </header>
+              <p>Email: egdoweb@gmail.com.</p>
+              <ul class="contact">
+                <li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
+                <li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+              </ul>
+            </div>
 
-					<!-- Copyright -->
-						<div id="copyright" class="container">
-							&copy; EGDO 2016.
-						</div>
+          <!-- Copyright -->
+            <div id="copyright" class="container">
+              &copy; EGDO 2016.
+            </div>
 
-				</div>
+        </div>
 
-		</div>
+    </div>
 
-		<!-- Scripts -->
-		  <script src="../js/jquery.min.js"></script>
+    <!-- Scripts -->
+      <script src="../js/jquery.min.js"></script>
       <script src="../js/jquery.dropotron.min.js"></script>
       <script src="../js/skel.min.js"></script>
       <script src="../js/skel-viewport.min.js"></script>
@@ -331,5 +283,5 @@ $buscarComentarioInfo = "select usuario.nombre, comentario_infoviaje.comentario,
         <script src="../js/bjqs.min.js"></script>
         <script src="../js/script.js"></script>
 
-	</body>
+  </body>
 </html>
