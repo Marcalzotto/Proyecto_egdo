@@ -177,7 +177,7 @@
 									
 											
 										<div class="-2u 8u$">
-										<img class="mod-img-det" src="../images/lugares_upd/<?php echo $row['foto_lugar']; ?>" />
+										<img class="mod-img-det" src="../images/<?php echo $row['foto_lugar']; ?>" />
 										</div>
 										
 										

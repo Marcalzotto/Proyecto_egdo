@@ -20,7 +20,7 @@ if(filter_var($id_upd, FILTER_VALIDATE_INT) === false){
 
 				//Armamos la consulta para introducir los datos
 	
-				$consulta = "UPDATE upd SET foto_lugar='moderada.png',estado_moderar1=1 WHERE id_upd='$id_upd'";
+				$consulta = "UPDATE upd SET foto_lugar='lugares_upd/moderada.png',estado_moderar1=1 WHERE id_upd='$id_upd'";
 	
 				//Si los datos se introducen correctamente, mostramos los datos
 				//Sino, mostramos un mensaje de error

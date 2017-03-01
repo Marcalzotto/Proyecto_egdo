@@ -178,7 +178,7 @@
 										
 									
 										<div class="-2u 8u$">
-										<img class="mod-img-fiesta" src="../images/lugares_fiesta/<?php echo $row['foto_perfil']; ?>" />
+										<img class="mod-img-fiesta" src="../images/<?php echo $row['foto_perfil']; ?>" />
 										</div>
 										
 									</section> <!-- /section uss-->
