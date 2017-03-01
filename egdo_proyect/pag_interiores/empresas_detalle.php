@@ -137,7 +137,7 @@
 
 								<div id="detalle">
 									<ul>
-									<li><p><img src="../images/empresas_logos/logotipo.jpg" width="200" height="200" alt=""></p></li>
+									<li><p><img src="data:image/jpeg;base64,<?php echo base64_encode($empresa['logo']); ?>" alt="Logo"/></p></li>
 									<li><p>Nombre: </p> <p><?php echo $empresa["nombre_empresa"]; ?></p></li>
 									<li><p>Calle: </p><p><?php echo $empresa["calle"]; ?></p></li>
 									<!--<li><p>Altura: </p><p><?php //echo $empresa["altura"]; ?></p></li>-->

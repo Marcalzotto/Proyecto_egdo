@@ -127,7 +127,9 @@
 												
 													$item = "<li>";
 													$item .= "<p>".strtoupper($empresa["nombre_empresa"])."</p>"; 
-													$item .= "<a href=empresas_detalle.php?id=".base64_encode($empresa["id_empresa"])."><img width='70' height='70' src='../images/empresas_logos/logotipo.jpg' alt=''></a>";
+													//$item .= "<a href=empresas_detalle.php?id=".base64_encode($empresa["id_empresa"])."><img width='70' height='70' src='../images/empresas_logos/logotipo.jpg' alt=''></a>";
+													$item .= "<a href=empresas_detalle.php?id=".base64_encode($empresa["id_empresa"])."><img src='data:image/jpeg;base64,<?php echo base64_encode($row[logo]); ?> alt='Logo'/></a>";
+																		//<img class="logo-mini" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="Logo"/>
 													$item .= "<p>Calificacion:</p>";
 													$item .= "<p class='puntaje'>".$calificacion."</p>";
 													$item .= "<p class='estrellas'></p>";

@@ -143,3 +143,8 @@ INSERT INTO VOTOS VALUES('',10,22,3,2,7);
 UPDATE DISENIO SET VOTOS_SEGUNDA_INSTANCIA = 1 WHERE ID_DISENIO = 22;
 UPDATE DISENIO SET VOTOS_SEGUNDA_INSTANCIA = 2 WHERE ID_DISENIO = 23;
 UPDATE DISENIO SET VOTOS_SEGUNDA_INSTANCIA = 2 WHERE ID_DISENIO = 24;
+
+alter table actividad_disenio auto_increment=1;
+alter table notificacion_vista_por auto_increment=1;
+alter table votos auto_increment=1;
+alter table curso_pdf auto_increment=1;
