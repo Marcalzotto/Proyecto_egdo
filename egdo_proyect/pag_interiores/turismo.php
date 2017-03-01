@@ -195,7 +195,8 @@ $(document).ready(function() {
                          <input type='hidden' id='usu' value='<?php echo $obtUsuario ?>'>
                        <input type='hidden' id='destino_info' value='<?php echo $id?>'>
                          
-                         <div class='-4u 6u$'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='enviar' id='enviar-btn'/></div>
+                         <div class='-4u 1u'> <input name='submit' class='button special icon fa fa-plus' type='submit' value='Enviar' id='enviar-btn'/></div>
+                         <div class='-1u 2u$'> <input name='reset' class='button special icon fa fa-plus' type='reset' value='Borrar' id='enviar-btn'/></div>
                         </div><!--/row -->
                      </form>
 
