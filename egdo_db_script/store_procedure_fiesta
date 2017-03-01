@@ -1,0 +1,70 @@
+-- --------------------------------------------------------------------------------
+-- STORE PROCEDURE QUE FUERZA INICIO DE LA PROPUESTA , ME LLEVA DEL 1 AL 2 DE MARZO
+DROP PROCEDURE IF EXISTS sp_fiesta;
+DELIMITER $$
+CREATE PROCEDURE sp_fiesta(_curso INT, _act INT)
+BEGIN 
+SELECT @fecha_tomar:= fecha_hora FROM evento WHERE id_curso= _curso and id_actividad= _act;
+SELECT @fecha:= date_add(@fecha_tomar, interval +1 DAY);
+UPDATE evento set fecha_hora=@fecha where id_curso=_curso and id_actividad=_act;
+END $$
+DELIMITER ;
+
+-- STORE QUE FUERZA INICIO DE CALIFICACION SE LE SUMA 14 DIAS DEL 2 PASA AL 16 DE MARZO
+DROP PROCEDURE IF EXISTS sp_fiesta_1;
+DELIMITER $$
+CREATE PROCEDURE sp_fiesta_1(_curso INT, _act INT)
+BEGIN 
+SELECT @fecha_tomar:= fecha_hora FROM evento WHERE id_curso=_curso and id_actividad=_act;
+SELECT @fecha:= date_add(@fecha_tomar, interval +14 DAY);
+UPDATE evento set fecha_hora=@fecha where id_curso=_curso and id_actividad=_act;
+END $$
+DELIMITER ;
+
+
+
+-- SP que inserta  calificaciones para fiesta
+DROP PROCEDURE IF EXISTS sp_inserta_calificacionesFiesta;
+DELIMITER $$
+CREATE PROCEDURE sp_inserta_calificacionesFiesta()
+BEGIN
+
+INSERT INTO calificacion_fiesta(id_usuario,valor,id_lugar) 
+ VALUES ('9','3','3');
+
+INSERT INTO calificacion_fiesta(id_usuario,valor,id_lugar) 
+ VALUES ('6','1','3');
+
+
+INSERT INTO calificacion_fiesta(id_usuario,valor,id_lugar) 
+ VALUES ('7','1','3');
+
+INSERT INTO calificacion_fiesta(id_usuario,valor,id_lugar) 
+ VALUES ('7','2','5');
+
+END $$
+DELIMITER ;
+
+-- STORE QUE FUERZA MAS VOTOS SE LE SUMA 3 DIAS DEL 16 PASA AL 19 DE MARZO
+DROP PROCEDURE IF EXISTS sp_fiesta_2;
+DELIMITER $$
+CREATE PROCEDURE sp_fiesta_2(_curso INT, _act INT)
+BEGIN 
+SELECT @fecha_tomar:= fecha_hora FROM evento WHERE id_curso=_curso and id_actividad=_act;
+SELECT @fecha:= date_add(@fecha_tomar, interval +3 DAY);
+UPDATE evento set fecha_hora=@fecha where id_curso=_curso and id_actividad=_act;
+END $$
+DELIMITER ;
+
+-- STORE QUE FUERZA LUGAR GANADOR SE LE SUMA 4 DIAS DEL 19 PASA AL 23 DE MARZO
+DROP PROCEDURE IF EXISTS sp_fiesta_3;
+DELIMITER $$
+CREATE PROCEDURE sp_fiesta_3(_curso INT, _act INT)
+BEGIN 
+SELECT @fecha_tomar:= fecha_hora FROM evento WHERE id_curso=_curso and id_actividad=_act;
+SELECT @fecha:= date_add(@fecha_tomar, interval +4 DAY);
+UPDATE evento set fecha_hora=@fecha where id_curso=_curso and id_actividad=_act;
+END $$
+DELIMITER ;
+
+

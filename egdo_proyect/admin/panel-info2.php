@@ -5,6 +5,7 @@
 <?php
 
 //Creamos las variables necesarias
+$usu_rol = $_SESSION['id_rol'];
 $usu_id = $_SESSION['id_usuario'];
 $descripcion = $_POST['descripcion'];
 $descripcion2 = $_POST['descripcion2'];
@@ -150,7 +151,7 @@ if(empty($nombreCiudad)) {
 			 $ruta_img = $datos['imagen'];
 			 $descripcion = $datos['descripcion'];
 
-
+             if ($usu_rol='1'){
 
               echo "<div id='intro' class='container'> 
 						<div class='mensaje'> </div>
@@ -158,11 +159,29 @@ if(empty($nombreCiudad)) {
 							
 					<section class='4u 12u(mobile)'>
 									<header>
-									<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
+									<h2><a href='turismoAdmin.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
 									</header>
 									<img class='number' src='../images/".$ruta_img."'/>
 								
 									<p>".$descripcion."</p>";
+								      }
+
+								      else {
+
+             							 echo "<div id='intro' class='container'> 
+												<div class='mensaje'> </div>
+													<div class='row'>
+							
+											<section class='4u 12u(mobile)'>
+														<header>
+
+													<h2><a href='../pag_interiores/turismo.php?id=".$traerIdlugar."'>" .$nombre."</a></h2>
+															</header>
+													<img class='number' src='../images/".$ruta_img."'/>
+								
+													<p>".$descripcion."</p>";
+								      }
+
 
 								}
  echo    "
