@@ -93,7 +93,7 @@
 										<div class="-1u 5u$"><span><input type='text' name='emp_cuit' class="form-class" placeholder='11-11111111-1'/></span></div>
 										<!-- Break -->
 										<div class="-1u 2u"><span>Direcci&oacute;n </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_calle' class="form-class" placeholder='Calle'/></span></div>
+										<div class="-1u 5u$"><span><input type='text' name='emp_calle' class="form-class" placeholder='Dirección'/></span></div>
 										<!-- Break -->
 										<div class="-1u 2u"><span>Tel&eacute;fono </span></div>
 										<div class="-1u 5u$"><span><input type='text' name='emp_tel' class="form-class" placeholder='11-1111-1111'/></span></div>
