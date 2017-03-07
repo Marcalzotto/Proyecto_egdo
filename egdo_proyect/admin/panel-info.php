@@ -97,7 +97,7 @@ $("#enviarimagenes").on("submit", function(evento){
 						<section id="content" class="container">
 							
 							<div class="row"> <!-- Row Principal -->
-								<section class="12u 12u"> <!-- formulario subida-->
+								<section class="12u 12u$"> <!-- formulario subida-->
 
 
 
