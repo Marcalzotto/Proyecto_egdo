@@ -2395,8 +2395,7 @@ font-weight: bold;
 text-decoration:underline;
 }
 
-/* NO ANDA */
-textarea.txtMsj{
-background-color: #EF2F72;
-height: 300px;
+/* textarea de listar*/
+textarea#ccomment{
+background-color: #242424;
 }

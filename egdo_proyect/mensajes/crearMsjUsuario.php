@@ -166,7 +166,7 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 											<span><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Mensaje</span>
 										</div>
 										<div class="-3u 5u$">
-											<textarea id="ccomment" class="txtMsj" name="mensaje" required></textarea>
+											<textarea id="ccomment" name="mensaje" required></textarea>
 										</div>
 
 										<!-- Break -->

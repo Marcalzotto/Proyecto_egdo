@@ -62,7 +62,7 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 			<!-- DataTables-->
 			<script type="text/javascript"  src="../admin/assets/js/jquery.dataTables.min.js"></script>
-			<script type="text/javascript"  src="../admin/assets/js/configDatatables.js"></script>
+			<script type="text/javascript"  src="../mensajes/js/configDatatables.js"></script>
 			<link href="../admin/assets/css/datatables.min.css" rel="stylesheet" type="text/css">
 			<link href="../admin/assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
