@@ -50,13 +50,15 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			
+			<!-- estilos Mensajes-->	
+			<link rel="stylesheet" href="../css/mensajes.css" />
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -80,46 +82,110 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
 
+		<!-- main Wrapper -->
+				<div id="main-wrapper">
 	
-	<div id="bandejaEntrada">
+					<!-- Wide Content -->
+						<section id="content" class="container">
+							
+							<h3>Mensaje de Usuarios</h3>
+							
+							<hr class="major"/>
+							
+							<div class="row uniform"> <!-- sub cabecera -->
+								
+								<div class="12u">
+									<a href="../mensajes/listarAdminCurso.php" class="button button-big adds">
+										<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+									</a>
+									<a href="../mensajes/crearAdminCurso.php" class="button button-big adds">
+										<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+									</a>
+								</div>	
+								
+							</div> <!-- /sub cabecera -->
+							
+							<hr class="major"/> <!-- /sub cabecera -->
+								
+		
+							<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+							
+								<div class="row uniform"> <!-- sub cabecera -->
+										
+									<div class="-3u 5u$">
+										<h3><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Crear Mensaje</h3>
+									</div>	
+										
+								</div> <!-- /sub cabecera -->
+									
 
-<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />
+								<form method="post" action="enviarMsjUsuario.php">
 
-<form method="post" action="../mensajes/enviarMsjUsuario.php" >
+									<div class="row uniform 50%">
+									
+										<!-- Break -->	
+										<div class="-3u 1u">
+											<span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Para</span>
+										</div>
 
-<div class="descripcion">Para
-<?php
-$id_curso=$_SESSION['curso'];
-$sql="SELECT A.descripcion_rol, T.* 
-FROM rol A INNER JOIN 
-usuario T ON A.id_rol=T.id_rol 
-WHERE T.id_rol=2 and T.id_curso='$id_curso' and T.estadoActivacion=1
-";
-$res = $conexion->query($sql) or die($conexion->error);
-			echo '<div class="form-group">';
+										<div class="-1u 3u$">
+											<div class="select-wrapper">
+												<select class="select" name="id_receptor" id="sel1">
+													<option value="">seleccione</option>
 
-echo '<select class="campoCrear" class="form-control" id="sel1" name="id_receptor">';						
-						echo '<option value=""></option>';
-						while($row = $res->fetch_array(MYSQLI_ASSOC)) {
-							echo"<option value='".$row['id_usuario']."'>".$row['nombre']." ".$row['apellido']." (".$row['descripcion_rol'].")</option>";
-						}					
-						echo '</select></div>';
-?>
-</div>
-<div class="descripcion">Asunto</div>
-<input class="campoCrear" type="text" name="asunto" />
-<div class="descripcion">Mensaje</div>
-<textarea class="campoMensaje" name="mensaje"></textarea></br>
-<input class="enviar" type="submit" name="enviar" value="Enviar" />
-</form>
+											<?php
+											$id_curso=$_SESSION['curso'];
+											$sql="SELECT A.descripcion_rol, T.* 
+											FROM rol A INNER JOIN 
+											usuario T ON A.id_rol=T.id_rol 
+											WHERE T.id_rol=2 and T.id_curso='$id_curso' and T.estadoActivacion=1
+											";
+											$res = $conexion->query($sql) or die($conexion->error);
+												while($row = $res->fetch_array(MYSQLI_ASSOC)) {
+													echo"<option value='".$row['id_usuario']."'>".$row['nombre']." ".$row['apellido']." (".$row['descripcion_rol'].")</option>";
+												}					
+											?>
 
+
+												</select>
+											</div>
+										</div>
+
+										<!-- Break -->
+										<div class="-3u 1u">
+											<span><i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp;Asunto</span>
+										</div>
+										<div class="-1u 3u$">
+											<span><input type='text' id="asunto" name='asunto' class="form-class" placeholder='Asunto'/>
+											</span>
+										</div>
+
+										<!-- Break -->
+										<div class="-3u 2u$">
+											<span><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Mensaje</span>
+										</div>
+										<div class="-3u 5u$">
+											<textarea id="ccomment" class="txtMsj" name="mensaje" required></textarea>
+										</div>
+
+										<!-- Break -->
+										<div class="-6u 6u$">
+											<button type="submit" class="button special icon" name="enviar" id="btn-save">
+												<i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Responder
+											</button>
+										</div>
+
+									</div>
+
+								</form>
+
+							</div> <!-- /Sec Datos Empresa -->
+													 
+													 
+						</section>
 	
-	</div>
-	
-</div>
+				</div>	
 
 				
 				
@@ -127,9 +193,8 @@ echo '<select class="campoCrear" class="form-control" id="sel1" name="id_recepto
 					include '../pag_interiores/menu/masterFooter.php';
 				?>
 
-				</div>
 
-		</div>
+
 
 		
 		

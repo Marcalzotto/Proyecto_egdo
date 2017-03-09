@@ -29,34 +29,45 @@ generar_notificacion($conexion,$_SESSION["curso"]);
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../css/style-assets.css" />		
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
-			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
-			<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
-			<link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
-			<link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
-			<link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
-			<link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
-			<link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
-			<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-			<link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
-			<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-			<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
-			<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-			<link rel="manifest" href="../favicon/manifest.json">
-			<meta name="msapplication-TileColor" content="#ffffff">
-			<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-			<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+		<link rel="manifest" href="../favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 			
-			<!-- modal  -->
+		<!-- modal  -->
+		<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+		<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
+		<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+		<script src="../js/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
+		<script src="../js/tomarDatos.js"></script>
 			
+		<!-- estilos Mensajes-->	
+		<link rel="stylesheet" href="../css/mensajes.css" /> 
+		
+		<!-- DataTables-->
+		<script type="text/javascript"  src="../admin/assets/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"  src="../admin/assets/js/configDatatables.js"></script>
+		<link href="../admin/assets/css/datatables.min.css" rel="stylesheet" type="text/css">
+		<link href="../admin/assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
-			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
-			<script src="../js/jquery.min.js"></script>
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-			<script src="../js/tomarDatos.js"></script>
+			
+			
+			
+			
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -80,26 +91,49 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+
+
 
 	
-	<div id="bandejaEntrada">
-
+	
 <?php
 $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."'";
 $res = $conexion->query($sql) or die($conexion->error);
 
 ?>
-<div id="menu"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a></div><br /><br />
-  <table width="800" border="0" align="center" cellpadding="1" cellspacing="1">
-    <tr>
-	  <th class="columna"><strong>Mensaje Nro</strong></td>
-      <th class="columna"><strong>Asunto</strong></td>
-      <th class="columna"><strong>De</strong></td>
-	  <th class="columna"><strong>Fecha</strong></td>
-	  <th class="columna"><strong>Eliminar</strong></td>
-    </tr>
+<div id="main-wrapper">
+<section id="content" class="container">
+<h3>Mensaje de Usuarios</h3>
+<hr class="major"/>
+							
+	<div class="12u">
+			<a href="../mensajes/listarAdminCurso.php" class="button button-big adds">
+				<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+			</a>
+			<a href="../mensajes/crearAdminCurso.php" class="button button-big adds">
+				<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+			</a>
+	</div>
+	
+<hr class="major"/>
+
+<div>
+							
+<div class="">
+
+
+
+<table id="example" class="alt hover order-column" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Nro_Mensaje</th>
+			<th>Asunto</th>
+			<th>De</th>
+			<th>Fecha</th>
+			<th>Eliminar</th>
+		</tr>
+	</thead>
+	<tbody>
     <?php
 	
 	
@@ -110,39 +144,45 @@ $res = $conexion->query($sql) or die($conexion->error);
 		$asunto = $row['asunto'];
 	
 	?>
-    <tr class="fila">
-	  <td class="columna"><?=$i+1?></td>
+    <tr class="">
+	  <td class=""><?=$i+1?></td>
 	  
 	  
       		<?php 
 			if($row['leido']==0){
 			
-				echo	'<td class="columna">';
-				echo	"<a class='linkLeer' href='../mensajes/leerAdminCurso.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	'<td class="">';
+				echo	"<a class='linkLeer linkMsj' href='../mensajes/leerAdminCurso.php?id_mensaje=".$id_mensaje."'>".$asunto."";
 				echo	'</a>';
 				echo	'</td>';
 			}
 			else {
 			
-				echo	'<td class="columna">';
-				echo	"<a class='' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	'<td class="">';
+				echo	"<a class='linkMsj delete-link' href='../mensajes/leerAdminCurso.php?id_mensaje=".$id_mensaje."'>".$asunto."";
 				echo	'</a>';
 				echo	'</td>';
 			
 			}
 		?>
 	  
-	  <td class="columna"><?=$row['nombre']?> <?=$row['apellido']?></td>
-	  <td class="columna"><?=$row['fecha_hora']?></td>
-	  <td class="columna"><a href="../mensajes/eliminarAdminCurso.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="../mensajes/images/delete.png" width="15" height="15"></a></td>
+	  <td class=""><?=$row['nombre']?> <?=$row['apellido']?></td>
+	  <td class=""><?=$row['fecha_hora']?></td>
+	  <td class=""><a class='delete-link' href="../mensajes/eliminarAdminCurso.php?id_mensaje=<?=$row['id_mensaje']?>"><img alt="" src="../mensajes/images/delete.png" width="15" height="15"></a></td>
     </tr>
 <?php $i++; 
-} ?>
+} 
+
+?>
+</tbody>
 </table>
-		
 	</div>
-	
+							</div>
+</section>
 </div>
+		
+	
+	
 
 				
 				
