@@ -59,7 +59,7 @@
 						<section id="intro" class="container">
 							
 							<div class="row"> <!-- Row Principal -->
-								<section class="12u 12u">
+								<section class="12u 12u$">
 									<header>
 										<h2>Registro Empresas</h2>
 									</header>
@@ -92,8 +92,8 @@
 										<div class="-1u 2u"><span>Cuit Empresa</span></div>
 										<div class="-1u 5u$"><span><input type='text' name='emp_cuit' class="form-class" placeholder='11-11111111-1'/></span></div>
 										<!-- Break -->
-										<div class="-1u 2u"><span>Direcci&oacute;n </span></div>
-										<div class="-1u 5u$"><span><input type='text' name='emp_calle' class="form-class" placeholder='Dirección'/></span></div>
+										<div class="-1u 2u"><span>Calle </span></div>
+										<div class="-1u 5u$"><span><input type='text' name='emp_calle' class="form-class" placeholder='Calle'/></span></div>
 										<!-- Break -->
 										<div class="-1u 2u"><span>Tel&eacute;fono </span></div>
 										<div class="-1u 5u$"><span><input type='text' name='emp_tel' class="form-class" placeholder='11-1111-1111'/></span></div>
