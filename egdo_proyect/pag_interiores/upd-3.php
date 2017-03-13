@@ -58,7 +58,7 @@ if(isset($_GET["upd"])){
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
     <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" /> 
 

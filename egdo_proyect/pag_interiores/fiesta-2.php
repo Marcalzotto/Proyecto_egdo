@@ -18,7 +18,7 @@ if($result = $conexion->query($verificarFecha)){
 		$fechahoy = new DateTime();
 		$fechaEvento = new DateTime($fecha);
 
-		$intervalo = $fechahoy->diff($fechaEvento);
+		$intervalo = $fechaEvento->diff($fechahoy);
 		$intervalA = $intervalo->y;
 		$intervalM = $intervalo->m;
 		$intervalD = $intervalo->d;
@@ -113,7 +113,7 @@ if($result = $conexion->query($verificarFecha)){
 		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
         <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -139,7 +139,7 @@ if($result = $conexion->query($verificarFecha)){
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/form-viaje.css">
-			<link rel="stylesheet" href="../css/form-upd-comentario.css">
+			<!--<link rel="stylesheet" href="../css/form-upd-comentario.css">-->
 			<link rel="stylesheet" href="../css/viajes.css">
 			 <link rel="stylesheet" type="text/css" href="../css/estrellitasCalificacion.css" /> 
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
@@ -148,6 +148,8 @@ if($result = $conexion->query($verificarFecha)){
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/reiniciar_fiesta.js"></script>
+			<script src="../js/fiesta_votacion.js"></script>
+			<script src="../js/finalizar_votacion_fiesta.js"></script>
 	</head>
 <body class="homepage">
 		<div id="page-wrapper">
@@ -177,7 +179,7 @@ if($result = $conexion->query($verificarFecha)){
 					<!-- Wide Content -->
 						<div id="intro" class="container">
 									
-								<h2>Lugares propuestos para la fiesta de egresados: <?php echo $intervalD; ?></h2>
+								<h2>Lugares propuestos para la fiesta de egresados</h2>
 				
 							<?php
 							if($intervalA > 0){
@@ -268,7 +270,7 @@ if($result = $conexion->query($verificarFecha)){
 													if($result->num_rows == 0){
 														echo "<h2>No hay lugares para calificar el evento se reiniciara.</h2>";
 														if($_SESSION["id_rol"] < 3){
-														echo "<button id='btn-fiesta'>Reinciar Evento</button>";
+														echo "<button class='btn-fiesta-upd' id='btn-fiesta'>Reinciar Evento</button>";
 														}
 													}
 												}else{
@@ -280,6 +282,13 @@ if($result = $conexion->query($verificarFecha)){
 									}
 								}
 							}
+								if($intervalD < 15 && $_SESSION["id_usuario"] == 6){
+									echo "<button class='btn-fiesta-upd' id='btn-votacion-fiesta'>Pasar a votacion</button>";
+								}else if($intervalD >= 15 && $intervalD < 22 && $_SESSION["id_usuario"] == 6 && $result->num_rows > 0){
+								echo "<button class='btn-fiesta-upd' id='btn-fin-fiesta'>Finalizar Votacion</button>";
+								}else if($intervalD >= 22 && $_SESSION["id_usuario"] == 6 && $result->num_rows > 0){
+								echo "<button class='btn-fiesta-upd' id='btn-fiesta'>Reiniciar Evento</button>";
+								}
 							?>
 						</div>
 				</div>

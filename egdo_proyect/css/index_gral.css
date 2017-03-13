@@ -156,7 +156,7 @@ height:5%;
     	border-color: #333;
 		}
 
-		#btn-upd,#btn-fiesta{
+		.btn-fiesta-upd{
 			padding: 20px;
     border-radius: 5px;
     border: 0;
@@ -165,6 +165,8 @@ height:5%;
     font-weight: bold;
     font-family: 'Open Sans Condensed',sans-serif;
     font-size: 20px;
+    cursor: pointer;
+    margin-top: 45px;
 		}
 	}
 
@@ -501,6 +503,10 @@ height:5%;
     font-weight: bold;
     font-family: 'Open Sans Condensed',sans-serif;
     font-size: 20px;	
+		}
+
+		.calendario_ajax{
+			overflow-x: scroll; 
 		}
 
 }/*termina @media screen and (max-width: 736px)*/
@@ -2467,6 +2473,7 @@ height:5%;
     font-family: 'Open Sans Condensed',sans-serif;
     font-weight: bold;
     font-size: 20px;
+    cursor: pointer;
 }
 #btn-share{
 				margin: 0 auto;

@@ -67,7 +67,7 @@
 									
 									<div class="row uniform">
 										<div class="12u">
-											<a href="moderar-comentarioEmpresa.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios Empresas</a>
+											<a href="moderar-comentarioEmpresas.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios Empresas</a>
 											<hr class="major"/>
 										</div>
 										

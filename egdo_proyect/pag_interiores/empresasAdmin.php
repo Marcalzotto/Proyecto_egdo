@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="../css/index_gral.css" />
 	
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
         <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">

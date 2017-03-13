@@ -67,7 +67,7 @@
 									
 									<div class="row uniform">
 										<div class="12u">
-											<a href="moderar-comentarioUPD.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios UPD</a>
+											<a href="moderar-comentarioUpd.php" class="button button-big ver"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Ver Comentarios UPD</a>
 											<hr class="major"/>
 										</div>
 										

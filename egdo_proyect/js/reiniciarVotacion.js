@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	var num = 1;
-	$(".reinicio").click(function(){
+	$("#volver_disenio").click(function(){
 
 		$.ajax({
 			type:'POST',

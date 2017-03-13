@@ -117,7 +117,7 @@ if($result = $conexion->query($verificarFecha)){
 	
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
         <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
 		<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -144,7 +144,7 @@ if($result = $conexion->query($verificarFecha)){
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<link rel="stylesheet" href="../css/viajes.css">
 			<link rel="stylesheet" href="../css/form-viaje.css">
-			<link rel="stylesheet" href="../css/form-upd-comentario.css">
+			<!--<link rel="stylesheet" href="../css/form-upd-comentario.css">-->
 
 			<link rel="stylesheet" href="../css/viajes.css">
 
@@ -156,6 +156,8 @@ if($result = $conexion->query($verificarFecha)){
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/reiniciar_upd.js"></script>
+			<script src="../js/upd_votacion.js"></script>
+			<script src="../js/finalizar_votacion_upd.js"></script>
 			
 	</head>
 <body class="homepage">
@@ -188,7 +190,7 @@ if($result = $conexion->query($verificarFecha)){
 					<!-- Wide Content -->
 						<div id="intro" class="container">
 
-								<h2>Lugares propuestos para el UPD :<?php echo $intervalD; ?></h2>
+								<h2>Lugares propuestos para el UPD</h2>
 					
 							<?php
 
@@ -281,7 +283,7 @@ if($result = $conexion->query($verificarFecha)){
 													if($result->num_rows == 0){
 														echo "<h2>No hay lugares para calificar el evento se reiniciara.</h2>";
 														if($_SESSION["id_rol"] < 3){
-														echo "<button id='btn-upd'>Reinciar Evento</button>";
+														echo "<button class='btn-fiesta-upd' id='btn-upd'>Reinciar Evento</button>";
 														}
 													}
 												}else{
@@ -294,6 +296,15 @@ if($result = $conexion->query($verificarFecha)){
 								}
 							}
 
+
+								if($intervalD < 15 && $_SESSION["id_usuario"] == 6){
+									echo "<button class='btn-fiesta-upd' id='btn-votacion-upd'>Pasar a votacion</button>";
+								}else if($intervalD >= 15 && $intervalD < 22 && $_SESSION["id_usuario"] == 6 && $result->num_rows > 0){
+								echo "<button class='btn-fiesta-upd' id='btn-fin-upd'>Finalizar Votacion</button>";
+								}else if($intervalD >= 22 && $_SESSION["id_usuario"] == 6 && $result->num_rows > 0){
+								echo "<button class='btn-fiesta-upd' id='btn-upd'>Reiniciar Evento</button>";
+								}
+							
 							?>
 							
 

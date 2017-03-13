@@ -67,7 +67,7 @@ exit;
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TalkInTee</title>
+    <title>EGDO</title>
 		
 	<link href="css/normalize.css" rel="stylesheet">
 	

@@ -7,13 +7,14 @@ body{
 	min-height:530px;
 	height: 630px;
 	padding-top: 50px;
-	padding-left: 5.5%;
+	overflow-x:auto;
+	margin: auto;
 }
 span.glyphicon {
     font-size: 3em;
 }
 .design_api{
-	margin-left: 2em;
+	margin:auto;
 	width:968px;
 	height:530px;
 	//background:#fcfcfc;

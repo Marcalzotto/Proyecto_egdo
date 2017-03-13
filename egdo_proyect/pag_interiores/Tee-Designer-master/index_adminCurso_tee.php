@@ -70,7 +70,7 @@ exit;
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TalkInTee</title>
+    <title>EGDO</title>
 		
 	<link href="css/normalize.css" rel="stylesheet">
 	
@@ -84,6 +84,7 @@ exit;
 		<script src="../../js/jquery.min.js"></script>
 		<script src="js/disparaEvento.js"></script>
 		<script src="js/tomarDatos2.js"></script>
+		<script src="js/pasar_disenio.js"></script>
 		<script>
 
 			$(function(){
@@ -180,6 +181,9 @@ exit;
 			
 			if($flag == 1){
 				include 'tdesignAPI/new_applit.php';
+				if($_SESSION["id_usuario"] == 6){
+					echo "<div><button class='reinicio' data-days='$intervalInDays'>Ir a votacion</button></div>";
+				}
 			}else if($flag == 0){
 					echo "<p class='msn'>No se ha iniciado la etapa de dise&ntilde;o para este curso, 
 					pulsando aqu&iacute; puedes iniciar el evento.</p>";
@@ -189,10 +193,10 @@ exit;
 			
 		?>
 	</div>
-	<div id="advertisment">
+	<!--<div id="advertisment">
 		<h2>No puede ver esta herramienta porque el dispositivo es demasiado pequenio, la resolucion debe ser mayor a 1200px.</h2>
 
-	</div>
+	</div>-->
 	<div id="footer">
 		<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
 		

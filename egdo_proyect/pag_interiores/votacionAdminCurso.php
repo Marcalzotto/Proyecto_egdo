@@ -8,7 +8,7 @@
 <?php include('../pag_interiores/funciones/cantidad_notificaciones_mensajes.php');?>
 <?php include('funciones/ningun_disenio.php');?>
 <?php 
-	date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 	$flag = 0;
 	$curso = $_SESSION['curso'];
 	$usuario = $_SESSION['id_usuario'];
@@ -100,15 +100,15 @@
 			<!--Librarys for lightBox -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script type="text/javascript" src="../js/administrarVotacion.js"></script>
 			<script type="text/javascript" src="../js/obtenerMedidaBandera.js"></script>
 			<script type="text/javascript" src="../js/obtenerTallesAlumno.js"></script>
 			<script type="text/javascript" src="../js/eliminarTallesUsuario.js"></script>
-			
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		
 			<script src="../js/tomarDatos.js"></script>
 			<script src="../js/reiniciarVotacion.js"></script>
+			<script src="../js/votacion_segunda.js"></script>
+			<script src="../js/votacion_final.js"></script>
 			<!--<script src="../js/mainModal.js"></script>-->  <!--Gem jQuery -->
 	
 	</head>
@@ -277,6 +277,12 @@
 											$d3 = ningun_disenio($conexion,$curso,3);
 											if($d1 == 1 && $d2 == 1 && $d3 == 1){
 												echo "<div class='row 0% reiniciar'><div class='12u'><button class='reinicio'>Reiniciar votacion</button></div></div>";
+											}else if($_SESSION["id_usuario"] == 6 && ($fechaHoy >= $fecha_apertura && $fechaHoy <= $fecha_fin_primer_instancia)){
+												echo "<div class='row 0% reiniciar'><div class='12u'><button class='reinicio' id='etapa_2'>Pasar a etapa 2</button></div></div>";
+											}else if($_SESSION["id_usuario"] == 6 && ($fechaHoy > $fecha_fin_primer_instancia && $fechaHoy <= $fecha_fin_segunda_instancia)){
+												echo "<div class='row 0% reiniciar'><div class='12u'><button class='reinicio' id='etapa_3'>Finalizar votacion</button></div></div>";		
+											}else if($_SESSION["id_usuario"] == 6 && ($fechaHoy > $fecha_fin_segunda_instancia)){
+												echo "<div class='row 0% reiniciar'><div class='12u'><button class='reinicio' id='volver_disenio'>Volver al diseño</button></div></div>";
 											}
 									?>
 										<?php

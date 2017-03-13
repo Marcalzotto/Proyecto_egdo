@@ -26,6 +26,8 @@ var expReg = /[^0-9]/;
 					}else if(data == 1){
 						
 						$(et).closest("div.row").fadeOut(600);
+					}else{
+						alert(data);
 					}
 				}
 

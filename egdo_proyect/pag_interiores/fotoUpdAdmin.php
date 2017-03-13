@@ -26,51 +26,51 @@
 	<!-- FACEBOOK -->
 	
 	<!-- mejora tooltips-->
-		<link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />
+		<link rel="stylesheet"  href="../css/hint.css-2.4.1/hint.min.css" />
 
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     
     <link rel="stylesheet" href="../css/index_gral.css" />
 	
-
+  
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/common.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/style-assets.css" /> 
     <link rel="stylesheet" type="text/css" href="../css/estilos-sliderFotoEvento.css" /> 
 
-    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
-      <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-      <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-      <link rel="manifest" href="../favicon/manifest.json">
-      <meta name="msapplication-TileColor" content="#ffffff">
-      <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-      <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png" />
+      <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png" />
+      <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png" />
+      <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png" />
+      <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png" />
+      <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png" />
+      <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+      <link rel="manifest" href="../favicon/manifest.json" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+      <meta name="theme-color" content="#ffffff" />
       
       <!-- modal  -->
       
 
-      <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-      <link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
-      <script src="../js/modernizr.js"></script> <!-- Modernizr -->
-      <script src="../js/jquery.min.js"></script>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
-      <script src="../js/tomarDatos.js"></script>
+      <link rel="stylesheet" href="../css/reset.css" /> <!-- CSS reset -->
+      <link rel="stylesheet" href="../css/styleModal.css" /> <!-- Gem style -->
+      <script type="text/javascript" src="../js/modernizr.js"></script> <!-- Modernizr -->
+      <script type="text/javascript" src="../js/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="../js/mainModal.js"></script> <!-- Gem jQuery -->
+      <script type="text/javascript" src="../js/tomarDatos.js"></script>
   </head>
   <body class="homepage">
   
 	<!-- FACEBOOK colocar siempre en el body, no se debe modificar nada -->
-		<script type="text/javascritp">//<![CDATA[
+		<script type="text/javascript">//<![CDATA[
 		  (
 				function(d, s, id) {
 					  var js, fjs = d.getElementsByTagName(s)[0];
@@ -144,7 +144,7 @@
 							
 							echo '<!-- FACEBOOK modificar solo lo que se encuentra entre [] -->								
 						
-						<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/fotoUpdAdmin.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2FfotoUpdAdmin.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" ></a></div>
+						<div style="text-align: center;" data-href="http://www.egdo.com.ar/pag_interiores/fotoUpdAdmin.php"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egdo.com.ar%2Fpag_interiores%2FfotoUpdAdmin.php&amp;src=sdkpreparse"><img src="../images/faceCompartir.png" /></a></div>
 						
 						
 												

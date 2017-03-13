@@ -52,12 +52,29 @@ if(empty($nombreCiudad)) {
 	$extensiones = array('jpg', 'jpeg', 'gif', 'png', 'bmp');
 
 	//Obtenemos la extensión (en minúsculas) para poder comparar
-	$extension = strtolower(end(explode('.', $_FILES['info_imagen_1']['name']))); 
-	$extension2 = strtolower(end(explode('.', $_FILES['info_imagen_2']['name'])));
-	$extension3 = strtolower(end(explode('.', $_FILES['info_imagen_3']['name']))); 
-	$extension4 = strtolower(end(explode('.', $_FILES['info_imagen_4']['name'])));  
-
-	//Verificamos que sea una extensión permitida, si no lo es mostramos un mensaje de error
+	
+				$imagen1 = $_FILES['info_imagen_1']['name'];
+        $imagen2 = $_FILES['info_imagen_2']['name'];
+        $imagen3 = $_FILES['info_imagen_3']['name'];
+        $imagen4 = $_FILES['info_imagen_4']['name'];
+        //imagen 1
+        $extension_1 = explode('.', $imagen1); 
+        $extension1_end = end($extension_1);
+        $extension = strtolower($extension1_end);
+        //imagen 2
+        $extension_2 = explode('.', $imagen2); 
+        $extension2_end = end($extension_2);
+        $extension2 = strtolower($extension2_end);
+        //imagen 3
+        $extension_3 = explode('.', $imagen3); 
+        $extension3_end = end($extension_3);
+        $extension3 = strtolower($extension3_end);
+        //imagen 4
+        $extension_4 = explode('.', $imagen4); 
+        $extension4_end = end($extension_4);
+        $extension4 = strtolower($extension4_end);
+ 
+		//Verificamos que sea una extensión permitida, si no lo es mostramos un mensaje de error
   	if(!in_array($extension, $extensiones)) {
 		die( 'Sólo se permiten archivos con las siguientes extensiones: '.implode(', ', $extensiones) );
 		   }
