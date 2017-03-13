@@ -1453,6 +1453,15 @@ ALTER TABLE `votos`
   ADD CONSTRAINT `votos_ibfk_3` FOREIGN KEY (`tipo_disenio`) REFERENCES `codigo_disenio` (`id_codigo_disenio`),
   ADD CONSTRAINT `votos_ibfk_4` FOREIGN KEY (`actividad_disenio_num`) REFERENCES `actividad_disenio` (`actividad_disenio_id`);
 
+--
+-- Cambio en la tabla `empresa`, se modifica campo telefono a varchar 20 (07/03/2017)
+-- 
+  
+
+ ALTER TABLE `empresa` CHANGE `telefono` `telefono` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+  
+  
+  
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

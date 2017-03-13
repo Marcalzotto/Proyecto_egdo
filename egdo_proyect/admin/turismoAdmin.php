@@ -24,27 +24,34 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel='stylesheet' href='../admin/assets/css/mainAdmin.css' />
+		
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<!--<link rel="stylesheet" href="../css/index_gral.css" />-->
+
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]--> 
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+		<link rel="manifest" href="../favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
     
 		<link rel="stylesheet" type="text/css" href="../css/viajes.css" />
 		<link rel="stylesheet" type="text/css" href="../css/demo.css" />
         <link rel="stylesheet" type="text/css" href="../css/form-viaje.css" />
         <link rel="stylesheet" type="text/css" href="../css/estilos-slider.css" />  
-        <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
-          <link rel="stylesheet" type="text/css" href="../css/estilosComentInfo.css" /> 
-      <!--  <link rel="stylesheet" href="../admin/assets/css/mainAdmin.css" />	-->
+    
+        
+		<link rel="stylesheet" href="../admin/assets/css/mainAdmin.css" />	
         <link rel="stylesheet" href="../css/hint.css-2.4.1/hint.min.css" />	
-		<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+		
       <script src="../js/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
+      
  
 	</head>
 	<body class="no-sidebar">
-		<div id="page-wrapper">
+		<div id="page-wrapper"> <!-- page-wrapper -->
 
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
@@ -53,12 +60,12 @@
 						<div id="header" class="container">
 
 						
-               <!-- Logo -->
-                <h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="assets/images/EGDO.png" alt=""/></a></h1>
+						<!-- Logo -->
+						<h1 id="logo"><a href="admin-index.php"><img class="logo-img" src="assets/images/EGDO.png" alt=""/></a></h1>
 
-              <?php
-              include '../admin/menuAdminEgdo.php';
-              ?>
+						<?php
+						include '../admin/menuAdminEgdo.php';
+						?>
 
 						</div>
 
@@ -68,13 +75,9 @@
 			<div id="main-wrapper">
 
 							   <?php 
-
-
-        $obtUsuario = $_SESSION['id_usuario'];
-
+								$obtUsuario = $_SESSION['id_usuario'];
                	
-
-              	   $id= $_GET['id'];
+								$id= $_GET['id'];
 										if(filter_var($id, FILTER_VALIDATE_INT) === false){  
 											echo 'Valor incorrecto';  
 										}else{  
@@ -91,40 +94,41 @@
                                $desc2 = $datos['descripcion1'];
                                $desc3 = $datos['descripcion2'];
                                $desc4 = $datos['descripcion3'];
-
                                     }
-
                                 }
-
                                 }
                             }
                                  ?>   
 
- <section id='content' class='container'>   
-         <div class="row"> <!-- Row Principal -->
-             <section class="12u 12u">
-              <div id='sliders'>
-              <ul class='bjqs'> 
+				<section id='content' class='container'>  <!-- section -->  
+				<div class="row"> <!-- Row -->
+					<section class="12u 12u$">
+					<div id='sliders'>
+					<ul class='bjqs'> 
                      
-                   <li>
-                  <img src='../images/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
-                  </li>
-                  <li>
-                  <img src='../images/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
-                  </li>
-                  <li>
-                  <img src='../images/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
-                  </li>
+					<li>
+						<img src='../images/<?php echo $ruta_img_1 ?>' alt='Imagenes' title='<?php echo $desc2 ?> '>
+					</li>
+					<li>
+						<img src='../images/<?php echo $ruta_img_2 ?>' alt='Imagenes' title='<?php echo $desc3 ?> '>
+					</li>
+					<li>
+						<img src='../images/<?php echo $ruta_img_3 ?>' alt='Imagenes' title='<?php echo $desc4 ?> '>
+					</li>
 
              
-                       </ul>
-                       </div>
-             </section>
+                    </ul>
+                    </div>
+					</section>
 
 			
  					<?php $conexion->close(); ?>
                  
-				</div> <!--main wrapper-->
+				</div> <!-- /Row -->
+				</section> <!-- /section -->
+				
+				
+			</div><!--/main wrapper-->
 
 
 			<!-- Footer Wrapper -->
@@ -135,11 +139,10 @@
 							<header>
 								<h2>SEGUINOS EN NUESTRAS REDES SOCIALES</h2>
 							</header>
-							<p>Email: egdoweb@gmail.com.</p>
 							<ul class="contact">
-								<li><a href="#" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="#" class="icon fa-twitter"><span>Twitter</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter"><span>Twitter</span></a></li>
 							</ul>
 						</div>
 
@@ -150,17 +153,17 @@
 
 				</div>
 
-		</div>
+		</div><!-- /page-wrapper -->
 
 		<!-- Scripts -->
-		  <script src="../js/jquery.min.js"></script>
-      <script src="../js/jquery.dropotron.min.js"></script>
-      <script src="../js/skel.min.js"></script>
-      <script src="../js/skel-viewport.min.js"></script>
-      <script src="../js/util.js"></script>
-      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-      <script src="../js/main.js"></script>
-      <!-- Incluimos la libreria jQuery -->
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/jquery.dropotron.min.js"></script>
+		<script src="../js/skel.min.js"></script>
+		<script src="../js/skel-viewport.min.js"></script>
+		<script src="../js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="../js/main.js"></script>
+		<!-- Incluimos la libreria jQuery -->
         
  
         <!-- Incluimos el plugin -->

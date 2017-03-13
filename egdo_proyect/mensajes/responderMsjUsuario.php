@@ -51,13 +51,16 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			
+			
+			<!-- estilos Mensajes-->	
+			<link rel="stylesheet" href="../css/mensajes.css" />
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -81,52 +84,117 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
 
-	
-	<div id="bandejaEntrada">
+					<!-- Wide Content -->
+						<section id="content" class="container">
+							
+							<h3>Mensaje de Usuarios</h3>
+							
+							<hr class="major"/>
+							
+							<div class="row uniform"> <!-- sub cabecera -->
+								
+								<div class="12u">
+									<a href="../mensajes/listarMsjUsuario.php" class="button button-big adds">
+										<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+									</a>
+									<a href="../mensajes/crearMsjUsuario.php" class="button button-big adds">
+										<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+									</a>
+								</div>	
+								
+							</div> <!-- /sub cabecera -->
+							
+							<hr class="major"/> <!-- /sub cabecera -->
+							<?php 
 
-<?php 
+							# Obtenemos el mensaje privado
+							$id=base64_decode($_GET['respMsj']);
+							//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+							$sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
 
-# Obtenemos el mensaje privado
-$id = $_POST['id_mensaje'];
-//$sql = "SELECT * FROM mensajes_privado WHERE id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
-$sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_privado T ON A.id_usuario=T.id_emisor WHERE T.id_receptor='".$_SESSION['id_usuario']."' and id_mensaje='".$id."'";
+							$res = $conexion->query($sql) or die($conexion->error);
+							$row = $res->fetch_array(MYSQLI_ASSOC);
+							?>
 
-$res = $conexion->query($sql) or die($conexion->error);
-$row = $res->fetch_array(MYSQLI_ASSOC);
-?>
+						<div class="12u 12u$(medium)"> <!-- Sec Datos Empresa -->
+						
+						<div class="row uniform"> <!-- sub cabecera -->
+								
+								<div class="-3u 4u$">
+									<h3><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Mensaje de Usuarios</h3>
+								</div>	
+								
+						</div> <!-- /sub cabecera -->
+						
+						
+						<!-- form start -->
+						<form role="form" id="re-mensaje" action="../mensajes/enviarMsjUsuario.php" autocomplete="off" method="post" enctype="multipart/form-data">
+									
+							<div class="row uniform 50%">	
+										
+								<!-- Break -->
+								<input type='hidden' name='lMsj' value='<?php echo $id_protegido=base64_encode($row['id_mensaje']); ?>'/>
+								
+								<input type='hidden' name='receptor' value='<?php echo $row['id_emisor']; ?>'/>
+								<input type='hidden' name='emisor' value='<?php echo $row['id_receptor']; ?>'/>
+										
+								<!-- Break -->
+								<div class="-3u 2u">
+									<span><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Para</span>
+								</div>
+								<div class="-1u 5u$">
+									<span><?php echo $row['nombre']; ?>&nbsp;<?php echo $row['apellido']; ?></span>
+								</div>
+										
+								<!-- Break -->
+								<div class="-3u 2u">
+									
+									<span><i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp;Asunto</span>
+								</div>
+								<div class="-1u 2u$">
+									<span><input type='text' id="asunto" name='asunto' class="form-class" placeholder='Asunto' value='<?php echo $row['asunto']; ?>'/>
+									</span>
+								</div>
+										
+								<!-- Break -->
+								<div class="-3u 2u$">
+									<span><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Mensaje</span>
+								</div>
+								<div class="-3u 5u$">
+									<textarea id="ccomment" name="mensaje" required></textarea>
+									<label for="ccomment" class="error block"></label>
+								</div>
+								
+									<?php echo '<input type="hidden" name="id_receptor" value="'.$row["id_emisor"].'">';?>
+									<?php echo '<input type="hidden" name="asunto" value="'.$row["asunto"].'">';?>
 
+										
+								<!-- Break -->
+								<div class="-6u 6u$">
+									<button type="submit" class="button special icon" name="btn-save" id="btn-save">
+										<i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Responder
+									</button>
+								</div>
+								
+								<div class="-3u 5u$"> 
+									
+									<div id="error" class="">
+									</div>
+									
+								</div>
+								
+							</div>
+						</form>
+										
+					</div> <!-- /Sec Datos Empresa -->
+							 
+							 
+					</section>
 
-<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a> </div><br /><br />
-<div class="descripcion"><strong>De</strong></div> 
-<div class="campo"><?=$row['nombre']?> <?=$row['apellido']?></div>
-<div class="descripcion"><strong>Fecha</strong></div> 
-<div class="campo"><?=$row['fecha_hora']?><br /></div>
-<div class="descripcion"><strong>Asunto</strong></div> 
-<div class="campo"><?=$row['asunto']?></div>
-<div class="descripcion"><strong>Mensaje</strong></div>
-<div class="campoMensaje"><?=$row['mensaje']?></div>
-
-<form method="post" action="../mensajes/enviarMsjUsuario.php" >
-
-	
-	<?php echo '<input type="hidden" name="id_receptor" value="'.$row["id_emisor"].'">';?>
-	<?php echo '<input type="hidden" name="asunto" value="'.$row["asunto"].'">';?>
-	
-	<div class="descripcion"><strong>Respuesta</strong></div>
-	<textarea class="campoMensaje" name="mensaje"></textarea></br>
-	
-	<input class="enviar" type="submit" name="enviar" value="Enviar" />
-	
-</form>
-
-	
-	</div>
-	
-</div>
-
+				</div>
 				
 				
 				<?php

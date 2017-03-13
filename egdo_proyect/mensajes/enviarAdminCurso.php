@@ -50,13 +50,15 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			
+			<!-- estilos Mensajes-->	
+			<link rel="stylesheet" href="../css/mensajes.css" />
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -81,19 +83,33 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				</div>
 </header>
 			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+<div id="main-wrapper">
 
-	
-	<div id="bandejaEntrada">
+<!-- Wide Content -->
+<section id="content" class="container">
+
+	<h3>Mensaje de Usuarios</h3>
+							
+							<hr class="major"/>
+							
+							<div class="row uniform"> <!-- sub cabecera -->
+								
+								<div class="12u">
+									<a href="../mensajes/listarAdminCurso.php" class="button button-big adds">
+										<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+									</a>
+									<a href="../mensajes/crearAdminCurso.php" class="button button-big adds">
+										<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+									</a>
+								</div>	
+								
+							</div> <!-- /sub cabecera -->
+							
+							<hr class="major"/> <!-- /sub cabecera -->
 
 	
 	<?php
 
-
-	
-	echo '<div ALIGN="left" style="font-size:130%"><a class="links" href="../mensajes/listarAdminCurso.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearAdminCurso.php">Crear mensajes</a></div><br /><br />';
-
-		
 		@$id_receptor = $_POST['id_receptor'];
 		@$asunto = $_POST['asunto'];
 		@$mensaje = $_POST['mensaje'];
@@ -110,7 +126,7 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 ?>
  
 	
-	</div>
+	</section>
 	
 </div>
 

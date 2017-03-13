@@ -50,13 +50,21 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			<!-- DataTables-->
+			<script type="text/javascript"  src="assets/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"  src="assets/js/configDatatables.js"></script>
+			<link href="assets/css/datatables.min.css" rel="stylesheet" type="text/css">
+			<link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+			
+			
+			<!-- estilos Mensajes-->	
+			<link rel="stylesheet" href="../css/mensajes.css" />
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -80,11 +88,31 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
 
-	
-	<div id="bandejaEntrada">
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Wide Content -->
+					<section id="content" class="container">
+							
+							<h3>Mensaje de Usuarios</h3>
+							
+							<hr class="major"/>
+							
+							<div class="row uniform"> <!-- sub cabecera -->
+								
+								<div class="12u">
+									<a href="../mensajes/listarMsjUsuario.php" class="button button-big adds">
+										<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+									</a>
+									<a href="../mensajes/crearMsjUsuario.php" class="button button-big adds">
+										<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+									</a>
+								</div>
+							
+							</div> <!-- /sub cabecera -->
+							
+							<hr class="major"/> <!-- /sub cabecera --></br>	
 
 <?php 
 
@@ -103,36 +131,65 @@ $res = $conexion->query($sql) or die($conexion->error);
 $row = $res->fetch_array(MYSQLI_ASSOC);
 ?>
 
+		
+		<div class="table-wrapper">
+			<table class="segMsj" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+						<th></th>
+						<th>De:</th>
+						<th>Asunto</th>
+						<th>Fecha</th>
+						<th>Mensaje</th>
+						<th>Responder</th>
+						</tr>
+					</thead>
+			<tbody>
+								
+			<tr>
+				<td>
+					<i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+				</td>
+				<td>
+					<i class="fa fa-user" aria-hidden="true"></i>&nbsp;<?php echo $row['nombre']; ?> <?php echo $row['apellido']; ?> 
+				</td>
+				<td>
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp;<?php echo $row['asunto']; ?>
+				</td>
+				<td>
+					<i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<?php echo $row['fecha_hora']; ?>
+				</td>
+				<td>
+					<?php echo $row['mensaje']; ?>
+				</td>
+				<td>
+					<a href="responderMsjUsuario.php?respMsj=<?php echo $id_protegido=base64_encode($row['id_mensaje']);?>" class="button fit" title="Eliminar">
+					<i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Responder
+					</a>
+				</td>
+			</tr>
+								
+			</tbody>
+			</table>					
+		</div>
+		
+					</section>
 
-<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a> </div><br /><br />
-<div class="descripcion"><strong>De</strong></div> 
-<div class="campo"><?=$row['nombre']?> <?=$row['apellido']?></div>
-<div class="descripcion"><strong>Fecha</strong></div> 
-<div class="campo"><?=$row['fecha_hora']?><br /></div>
-<div class="descripcion"><strong>Asunto</strong></div> 
-<div class="campo"><?=$row['asunto']?></div>
-<div class="descripcion"><strong>Mensaje</strong></div>
-<div class="campoMensaje"><?=$row['mensaje']?></div>
+				</div>
 
-<form method="post" action="../mensajes/responderMsjUsuario.php" >
-	</br>
-	<?php echo '<input type="hidden" name="id_mensaje" value="'.$_GET["id_mensaje"].'">';?>
-	<input class="enviar" type="submit" name="enviar" value="Responder" />
+
+			</div>	
+
+
+			<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
 	
-</form>
-
-	
-	</div>
-	
-</div>
-
-				
 				
 				<?php
 					include '../pag_interiores/menu/masterFooter.php';
 				?>
+			</div>
 
-		</div>
 
 		
 		

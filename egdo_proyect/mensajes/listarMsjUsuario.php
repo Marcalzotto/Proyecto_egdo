@@ -50,13 +50,22 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 			
 
 			<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-			<link rel="stylesheet" href="../css/estiloBandeja.css"> <!-- CSS reset -->
 			<link rel="stylesheet" href="../css/styleModal.css"> <!-- Gem style -->
 			<script src="../js/modernizr.js"></script> <!-- Modernizr -->
 			<script src="../js/jquery.min.js"></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<script src="../js/mainModal.js"></script> <!-- Gem jQuery -->
 			<script src="../js/tomarDatos.js"></script>
+			
+			<!-- estilos Mensajes-->	
+			<link rel="stylesheet" href="../css/mensajes.css" /> 
+			
+			<!-- DataTables-->
+			<script type="text/javascript"  src="../admin/assets/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"  src="../mensajes/js/configDatatables.js"></script>
+			<link href="../admin/assets/css/datatables.min.css" rel="stylesheet" type="text/css">
+			<link href="../admin/assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -80,11 +89,10 @@ generar_notificacion($conexion,$_SESSION["curso"]);
 				
 				</div>
 </header>
-			<!-- Banner Wrapper -->
-<div id="banner-wrapper">
+			<!-- main Wrapper -->
+<div id="main-wrapper">
 
 	
-	<div id="bandejaEntrada">
 
 <?php
 	
@@ -93,15 +101,38 @@ $sql = "SELECT A.nombre, A.apellido, T.* FROM usuario A INNER JOIN mensajes_priv
 $res = $conexion->query($sql) or die($conexion->error);
 
 ?>
-<div id="menu"><a class="links" href="../mensajes/listarMsjUsuario.php">Ver mensajes</a> | <a class="links" href="../mensajes/crearMsjUsuario.php">Crear mensajes</a></div><br /><br />
-  <table width="800" border="0" align="center" cellpadding="1" cellspacing="1">
-    <tr>
-	  <th class="columna"><strong>Mensaje Nro</strong></td>
-      <th class="columna"><strong>Asunto</strong></td>
-      <th class="columna"><strong>De</strong></td>
-	  <th class="columna"><strong>Fecha</strong></td>
-	  <th class="columna"><strong>Eliminar</strong></td>
-    </tr>
+<section id="content" class="container">
+<h3>Mensaje de Usuarios</h3>
+<hr class="major"/>
+							
+	<div class="12u">
+			<a href="../mensajes/listarMsjUsuario.php" class="button button-big adds">
+				<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Ver Mensajes
+			</a>
+			<a href="../mensajes/crearMsjUsuario.php" class="button button-big adds">
+				<i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Crear Mensajes
+			</a>
+	</div>
+	
+<hr class="major"/>
+
+<div>
+							
+<div class="">
+
+
+
+<table id="example" class="alt hover order-column" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Nro_Mensaje</th>
+			<th>Asunto</th>
+			<th>De</th>
+			<th>Fecha</th>
+			<th>Eliminar</th>
+		</tr>
+	</thead>
+	<tbody>
     <?php
 	$i = 0; 
 	while($row = $res->fetch_array(MYSQLI_ASSOC)){ 
@@ -116,14 +147,14 @@ $res = $conexion->query($sql) or die($conexion->error);
 			if($row['leido']==0){
 			
 				echo	'<td class="columna">';
-				echo	"<a class='linkLeer' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	"<a class='linkLeer linkMsj' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
 				echo	'</a>';
 				echo	'</td>';
 			}
 			else {
 			
 				echo	'<td class="columna">';
-				echo	"<a class='' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
+				echo	"<a class='linkMsj delete-link' href='../mensajes/leerMsjUsuario.php?id_mensaje=".$id_mensaje."'>".$asunto."";
 				echo	'</a>';
 				echo	'</td>';
 			
@@ -136,10 +167,11 @@ $res = $conexion->query($sql) or die($conexion->error);
     </tr>
 <?php $i++; 
 } ?>
+</tbody>
 </table>
-		
 	</div>
-	
+							</div>
+</section>
 </div>
 
 				
