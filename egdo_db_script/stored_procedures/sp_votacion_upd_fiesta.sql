@@ -192,3 +192,13 @@ BEGIN
     UPDATE DISENIO SET VOTOS_SEGUNDA_INSTANCIA = 3 WHERE ID_DISENIO = 10;
 END $$
 DELIMITER ;
+
+-- procedure para borrar los votos y los diseños de los usuarios 6 y 7
+DROP PROCEDURE IF EXISTS sp_borra_votos_mas_disenios;
+DELIMITER $$
+CREATE PROCEDURE sp_borra_votos_mas_disenios(IN _curso INT)
+BEGIN
+	DELETE FROM votos where id_usuario_voto = 6;
+	DELETE FROM votos where id_usuario_voto = 7;
+END $$
+DELIMITER ;

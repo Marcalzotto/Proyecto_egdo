@@ -14,7 +14,8 @@ $(document).ready(function(){
 					if(data == -1){
 						alert("hubo errores en el envio de datos");
 					}else if(data == 1){
-						alert("finalizo la votacion, pulsa f5 para continuar");
+						alert("Finalizo la votacion");
+						location.reload();
 					}
 				}
 

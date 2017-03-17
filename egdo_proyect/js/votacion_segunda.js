@@ -14,7 +14,8 @@ var num = 1;
 					if(data == -1){
 						alert("hubo un error al procesar la peticion");
 					}else if(data == 1){
-						alert("se paso a la segunda instancia pulsa f5 para continuar");
+						alert("se paso a la segunda instancia de votacion.");
+						location.reload();
 					}else{
 						alert(data);
 					}

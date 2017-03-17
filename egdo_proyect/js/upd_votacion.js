@@ -14,7 +14,8 @@ var num = 1;
 					if(data == -1){
 						alert("hubo un error al procesar la peticion");
 					}else if(data == 1){
-						alert("cambiado a votacion, pulsa f5 para continuar");
+						alert("Se paso a votacion");
+						location.reload();
 					}else{
 						alert(data);
 					}

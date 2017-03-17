@@ -21,3 +21,7 @@ CALL sp_votos_paso_2 (2);
 -- Ejecutar sp_disenio_paso_2c mostrar disenios ganadores
 
 CALL sp_disenio_paso_2c (2);
+
+-- Ejecutar sp_borra_votos_mas_disenios
+
+CALL sp_borra_votos_mas_disenios(2);

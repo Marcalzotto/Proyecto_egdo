@@ -14,7 +14,8 @@ var num = 1;
 					if(data == -1){
 						alert("Hubo un error inesperado, intenta mas tarde");
 					}else{
-						alert("El evento fue reiniciado, pulsa f5 para continuar");
+						alert("El evento fue reiniciado");
+						location.reload();
 					}
 				}
 			});

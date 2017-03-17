@@ -35,11 +35,11 @@
 			}else if($intervalInDays >= 7){
 				$flag = 1;
 			}else{
-				header('location:Tee-Designer-master/index_adminCurso_tee.php');
+				header('location:Tee-Designer-Master/index_adminCurso_tee.php');
 			}
 			
 		}else{
-			header('location:Tee-Designer-master/index_adminCurso.php');
+			header('location:Tee-Designer-Master/index_adminCurso_tee.php');
 		}
 	}else{
 		die("Lo sentimos hubo problemas con el servidor");

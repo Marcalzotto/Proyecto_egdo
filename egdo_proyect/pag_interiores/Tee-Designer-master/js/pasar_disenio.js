@@ -11,7 +11,8 @@ $(document).ready(function(){
 				if(data == -1){
 					alert("hubo un error");
 				}else if(data == 1){
-					alert("Pasado a votacion, pulsa f5 para continuar");
+					alert("Se paso a etapa de votacion");
+					location.reload();
 				}else{
 					alert(data);
 				}

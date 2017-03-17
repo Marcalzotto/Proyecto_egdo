@@ -11,7 +11,8 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				if(data == 1){
-					alert("Se ha reiniciado la votacion, por favor pulsa f5 para continuar");
+					alert("Se ha reiniciado la votacion");
+					location.reload();
 				}else if(data == 2){
 					alert("Hubo un error inesperado");
 				}else if(data == 3){
