@@ -16,7 +16,7 @@ if(isset($_GET["upd"])){
 
   $exp_reg='/[^0-9]/';
   if(!preg_match($exp_reg, $id_upd)){
-      $traerTodo = "select * from upd where id_upd = '$id_upd' and id_curso='$curso'";
+      $traerTodo = "select * from upd where id_upd = '$id_upd' and id_curso='$curso' and estado_moderar = 0";
       if($result = $conexion->query($traerTodo)){
         if($result->num_rows > 0){
           $reg = $result->fetch_array(MYSQLI_ASSOC);
@@ -160,10 +160,10 @@ if(isset($_GET["upd"])){
                   $d = $interval->d;
 
                   $buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
-                  select max(calificacion) from upd)";
+                  select max(calificacion) from upd where estado_moderar = 0)";
                   if($result = $conexion->query($buscar_maximos)){
                       $maximos = $result->num_rows;
-                      if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($d >= 22 && $maximos > 1 && $_SESSION["id_rol"] < 3)){
+                      if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] == 2) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] == 2) || ($d >= 22 && $maximos > 1 && $_SESSION["id_rol"] == 2)){
                       echo  "<section class='4u 12u(mobile) section_votos'>
                             <p class='upd_votes'>Votar este lugar</p>
                              <form>
@@ -285,6 +285,7 @@ if(isset($_GET["upd"])){
               }else{
                 echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>";
               }
+              $conexion->close();
             ?>
             </div>
         </div> 

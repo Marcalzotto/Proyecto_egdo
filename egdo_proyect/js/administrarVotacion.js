@@ -11,7 +11,8 @@
 						$.post(url_servidor,{'id':id, 'tipo':tipo},function(data){
 
 							if(data == -1){
-								
+								var messaje = "No puedes volver a votar este disenio";
+								$("#alert").find("span").text(messaje);
 								$("#alert").fadeIn('slow');
 								//return false;
 							

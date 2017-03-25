@@ -32,12 +32,12 @@ if($_POST){
 
 						if($intervalA > 0 || $intervalM > 0 || $intervalD >=22){
 								$buscar_maximos = "select * from upd where id_curso = '$_SESSION[curso]' and calificacion = (
-								select max(calificacion) from upd)";
+								select max(calificacion) from upd where estado_moderar = 0)";
 								if($result = $conexion->query($buscar_maximos)){
 										$maximos = $result->num_rows;
 										
 										if($maximos > 1){
-											if($_SESSION["id_rol"] < 3){
+											if($_SESSION["id_rol"] == 2){
 												$insertarCalificacion = "insert into calificacion_upd(id_usuario,valor,id_lugar) values('$usuario','$valor','$lugar');";
 													if($result = $conexion->query($insertarCalificacion)){
 													$calificacion = calcular($conexion,$lugar,"upd");

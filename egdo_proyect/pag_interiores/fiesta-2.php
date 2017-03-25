@@ -25,45 +25,9 @@ if($result = $conexion->query($verificarFecha)){
 		//echo $intervalD;
 		//cuando descomente esta linea se producira un error con la libreria skel
 		$vota = 0;
-		if($intervalA > 0){
-			$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
-												 select max(calificacion) from fiesta)";
-			if($result = $conexion->query($buscar_maximos)){
-				//$reg = $result->fetch_array(MYSQLI_ASSOC);
-				$maximos = $result->num_rows;
-				if($maximos > 1){
-					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
-						$vecMax[] = $reg;
-					}
-				}else{
-					$reg = $result->fetch_array(MYSQLI_ASSOC);
-					$vecMax[] = $reg;
-				}
-	
-			}else{
-				die("Hubo un error al buscar los maximos");
-			}
-		}else if($intervalM > 0){
+		if($intervalA > 0 || $intervalM > 0 || $intervalD >= 22){
 				$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
-												 select max(calificacion) from fiesta)";
-			if($result = $conexion->query($buscar_maximos)){
-				//$reg = $result->fetch_array(MYSQLI_ASSOC);
-				$maximos = $result->num_rows;
-				if($maximos > 1){
-					while($reg = $result->fetch_array(MYSQLI_ASSOC)){
-						$vecMax[] = $reg;
-					}
-				}else{
-					$reg = $result->fetch_array(MYSQLI_ASSOC);
-					$vecMax[] = $reg;
-				}
-	
-			}else{
-				die("Hubo un error al buscar los maximos");
-			}
-		}else if($intervalD >= 22){
-				$buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
-												 select max(calificacion) from fiesta)";
+												 select max(calificacion) from fiesta where estado_moderar = 0)";
 			if($result = $conexion->query($buscar_maximos)){
 				//$reg = $result->fetch_array(MYSQLI_ASSOC);
 				$maximos = $result->num_rows;
@@ -192,7 +156,7 @@ if($result = $conexion->query($verificarFecha)){
 
 								$x=0;
 								$y=0;
-								$traerLugares = "select * from fiesta where id_curso = '$_SESSION[curso]'";
+								$traerLugares = "select * from fiesta where id_curso = '$_SESSION[curso]' and estado_moderar = 0";
 								if($result = $conexion->query($traerLugares)){
 									if($result->num_rows > 0){
 										$rows = $result->num_rows;
@@ -265,11 +229,11 @@ if($result = $conexion->query($verificarFecha)){
 
 										if($intervalD >= 15 && $intervalD < 22){
 											//es hora de votar por los lugares propuestos
-												$hayLugares = "select id_fiesta from fiesta where id_curso = '$_SESSION[curso]'";
+												$hayLugares = "select id_fiesta from fiesta where id_curso = '$_SESSION[curso]' and estado_moderar = 0";
 												if($result = $conexion->query($hayLugares)){
 													if($result->num_rows == 0){
 														echo "<h2>No hay lugares para calificar el evento se reiniciara.</h2>";
-														if($_SESSION["id_rol"] < 3){
+														if($_SESSION["id_rol"] == 2){
 														echo "<button class='btn-fiesta-upd' id='btn-fiesta'>Reinciar Evento</button>";
 														}
 													}
@@ -289,6 +253,9 @@ if($result = $conexion->query($verificarFecha)){
 								}else if($intervalD >= 22 && $_SESSION["id_usuario"] == 6 && $result->num_rows > 0){
 								echo "<button class='btn-fiesta-upd' id='btn-fiesta'>Reiniciar Evento</button>";
 								}
+
+							$conexion->close();
+
 							?>
 						</div>
 				</div>

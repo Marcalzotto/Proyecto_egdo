@@ -325,3 +325,12 @@ where u.id_curso = 2 and d.codigo_tipo = 1;
 
 
 select id_disenio from disenio where codigo_tipo = 3;
+alter table fiesta drop column calificacion;
+alter table upd drop column calificacion;
+
+alter table fiesta add column calificacion decimal(2,1) not null after id_curso;
+
+alter table upd add column calificacion decimal(2,1) not null after id_curso;
+alter table disenio add column cantidad_votos int not null default 0 after id_usuario_subio;
+alter table disenio add column votos_segunda_instancia int not null default 0 after cantidad_votos;
+

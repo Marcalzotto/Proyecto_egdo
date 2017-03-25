@@ -16,7 +16,7 @@ if(isset($_GET["fiesta"])){
 
   $exp_reg='/[^0-9]/';
   if(!preg_match($exp_reg, $id_fiesta)){
-      $traerTodo = "select * from fiesta where id_fiesta = '$id_fiesta' and id_curso='$curso'";
+      $traerTodo = "select * from fiesta where id_fiesta = '$id_fiesta' and id_curso='$curso' and estado_moderar = 0";
       if($result = $conexion->query($traerTodo)){
         if($result->num_rows > 0){
           $reg = $result->fetch_array(MYSQLI_ASSOC);
@@ -159,7 +159,7 @@ if(isset($_GET["fiesta"])){
                   $d = $interval->d;
 
                   $buscar_maximos = "select * from fiesta where id_curso = '$_SESSION[curso]' and calificacion = (
-                  select max(calificacion) from fiesta)";
+                  select max(calificacion) from fiesta where estado_moderar = 0)";
                   if($result = $conexion->query($buscar_maximos)){
                       $maximos = $result->num_rows;
                       if(($a > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($m > 0 && $maximos > 1 && $_SESSION["id_rol"] < 3) || ($d >= 22 && $maximos > 1 && $_SESSION["id_rol"] < 3)){
@@ -282,6 +282,7 @@ if(isset($_GET["fiesta"])){
               }else{
                 echo "<h4>Lo sentimos hubo error inesperado, no podras ver los comentario</h4>";
               }
+              $conexion->close();
             ?>
             </div>
 

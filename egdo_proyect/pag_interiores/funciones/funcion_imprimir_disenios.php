@@ -8,7 +8,7 @@ $fechaHoy->format("Y-m-d");
 if($fechaHoy >= $fa && $fechaHoy <= $fpi){
 
 	$qry = "select * from disenio as d join usuario as u on d.id_usuario_subio = u.id_usuario 
-	where u.id_curso = '$curso' and d.codigo_tipo = '$tipo_prenda'";
+	where u.id_curso = '$curso' and d.codigo_tipo = '$tipo_prenda' and estado_moderar = 0";
 
 	$resultSetTipo1 = $conexion->query($qry) or die($conexion->error);
 
@@ -41,7 +41,7 @@ if($fechaHoy >= $fa && $fechaHoy <= $fpi){
 }else if($fechaHoy > $fpi && $fechaHoy <= $fsi){
 																
 	$traerDiseniosMasVotados = "select * from disenio as d join usuario u on d.id_usuario_subio = u.id_usuario 
-	where d.codigo_tipo = '$tipo_prenda' and u.id_curso = '$curso' order by d.cantidad_votos desc limit 3";
+	where d.codigo_tipo = '$tipo_prenda' and u.id_curso = '$curso' and estado_moderar = 0 order by d.cantidad_votos desc limit 3";
 																
 	$consultaMasVotados = $conexion->query($traerDiseniosMasVotados) or die($conexion->error);
 
@@ -76,7 +76,7 @@ echo "<li><a href=Tee-Designer-Master/tdesignAPI/".$unoMasVotado['path_img_doble
 																
 		$buscarGanador = "select * from disenio as di join usuario u on di.id_usuario_subio = u.id_usuario 
 											where u.id_curso = '$curso' and di.codigo_tipo = '$tipo_prenda' and di.votos_segunda_instancia in(
-											select max(d.votos_segunda_instancia) from disenio as d where d.codigo_tipo = '$tipo_prenda');";												
+											select max(d.votos_segunda_instancia) from disenio as d where d.codigo_tipo = '$tipo_prenda' and d.estado_moderar = 0);";												
 				
 				$traerGanador = $conexion->query($buscarGanador) or die($conexion->error);
 
