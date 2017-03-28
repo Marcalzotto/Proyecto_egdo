@@ -1,0 +1,11 @@
+-cuando el ancho de la pantalla es 736 maximo se achica el icono
+
+-entre 737 y 1184 el icono tiene tamaño mediano
+
+-de 1185 para arriba el icono tiene la resolucion mas grande
+
+-con ancho min de 1185 el icono mide 295 x 175
+
+- entre 737 y 1184 el icono mide 272 x 161
+
+- con ancho menor o igual a 736 el icono mide 168x115
