@@ -1,0 +1,71 @@
+
+#sliders{
+margin:5px auto;
+box-shadow: 0 .1em 1em black;
+-webkit-box-shadow: 0 .1em 1em black;
+-moz-box-shadow: 0 .1em 1em black;
+-o-box-shadow: 0 .1em 1em black;
+}
+
+
+ 
+/* ESTILOS DEL SLIDESHOW */
+ 
+ul.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:hidden; display:none;}
+li.bjqs-slide{position:absolute; display:none;}
+ul.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
+ul.bjqs-controls.v-centered li a{position:absolute;}
+ul.bjqs-controls.v-centered li.bjqs-next a{right:0;}
+ul.bjqs-controls.v-centered li.bjqs-prev a{left:0;}
+ol.bjqs-markers{list-style: none; padding: 0; margin: 0; width:100%;}
+ol.bjqs-markers.h-centered{text-align: center;}
+ol.bjqs-markers li{display:inline;}
+ol.bjqs-markers li a{display:inline-block;border-radius: 15px;}
+p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+ 
+ 
+.bjqs-caption{
+color:black;
+font-weight: bold;
+font-size: 12px;
+background:whitesmoke;
+opacity:.75;
+}
+ 
+/* BOTONERA UBICADA AL PIE DEL SLIDESHOW */
+ol.bjqs-markers{
+margin-top:35px;
+}
+ol.bjqs-markers li a{
+padding: 6px 10px;
+background: #000;
+color: #fff;
+margin: 5px;
+text-decoration: none;
+transition:background .5s ease;
+-webkit-transition:background .5s ease;
+-moz-transition:background .5s ease;
+-o-transition:background .5s ease;
+}
+li.active-marker a, ol.bjqs-markers li a:hover{
+background:gray!important;
+}
+ 
+/* CONTROLES ATRAS Y ADELANTE */
+ul.bjqs-controls.v-centered li a {
+display: block;
+padding: 10px;
+background: whitesmoke;
+color: #000;
+text-decoration: none;
+opacity:.75;
+ 
+transition:color .5s ease, background .5s ease;
+-webkit-transition:color .5s ease, background .5s ease;
+-moz-transition:color .5s ease, background .5s ease;
+-o-transition:color .5s ease, background .5s ease;
+}
+ul.bjqs-controls.v-centered li a:hover{
+    background:#000;
+    color:#fff;
+}
