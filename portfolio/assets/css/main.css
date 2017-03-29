@@ -1531,6 +1531,7 @@
 	#intro {
 		overflow: hidden;
 		text-align: center;
+		margin-top: 0em;
 	}
 
 		#intro header h2 {
@@ -1582,6 +1583,7 @@
 
 			#footer-wrapper {
 				padding: 5em 0em;
+				background-color: #1C1C1C;
 			}
 
 			#header {
@@ -1830,6 +1832,20 @@
 					display: none;
 				}
 
+			/*button ir arriba*/
+			#ir-arriba{
+			/*background-image: url(../../images/png/up-arrow.png); */	
+			position: fixed;
+   		left: 90%;
+    	bottom: 5%;
+    	}
+
+    	#ir-arriba a img{
+    		width: 100%;
+    		height: auto;
+    	}
+
+
 	}
 
 /* Tablet */
@@ -1855,8 +1871,8 @@
 			#intro section:before {
 				left: 15px;
 			}
-
-	}
+			
+	} /*termina resolucion table*/
 
 /* Mobile */
 
@@ -1864,7 +1880,7 @@
 		display: none;
 	}
 
-	@media screen and (max-width: 736px) {
+	@media screen and (max-width: 736px){
 
 		/* Basic */
 
@@ -1887,7 +1903,7 @@
 			}
 
 			.button {
-				display: block;
+				/*display: block;*/
 				margin: 0.75em 0;
 				text-align: center;
 				font-size: 1.2em;
@@ -2096,6 +2112,7 @@
 
 			#footer-wrapper {
 				padding: 0em 15px !important;
+				background: #1c1c1c;
 			}
 
 			.wrapper-style1 {
@@ -2225,7 +2242,29 @@
 				margin-top: 1em;
 			}
 
-	}
+			/*button ir arriba*/
+			#ir-arriba{
+			position: fixed;
+   		left: 88%;
+    	bottom: 5%;
+    	}
+
+    	#ir-arriba a img{
+    		width: 32px;
+    		height: 32px;
+    	}
+
+    	.next_arr{
+    		/*margin-top: 100%;
+				width: 50%;*/
+    	}
+
+			.back_arr{
+				/*margin-top: 100%;
+				width: 50%;*/
+			}
+
+	}/*Termina media screem max width:736px*/
 
 	#registracion{
 		background-color: #1c1c1c;
@@ -2303,6 +2342,8 @@
 		#nosotros{
 			
 			padding: 5em 0em 3em 0em;
+			background: #1c1c1c;
+    	width: 100%;
 		}	
 		
 		#nosotros header h2{
@@ -2318,6 +2359,7 @@
 
 #introEquipo {
 margin-top: 50px;
+text-align: center;
 }
 
 .number-txt img{
@@ -2328,12 +2370,76 @@ text-align:center;
 }
 
 #nosotros2{
-	
-	padding: 5em 20em 3em 2s0em;
-	background:#333;
+		margin: 0;
+		margin-top: 30px;
+    padding: 5em 2em 3em 2em;
+    background: #191919;
+    width: 100%;
 }	
 
 #nosotros2 header h2{
 	font-size: 1.6em;
 	text-align: center;
 }
+
+ul.contact2{
+	margin: 0;
+  padding: 2em 0em 0em 0em;
+  list-style: none;
+  cursor: default;
+}
+ul.contact2 li{
+
+    padding: 0em 0.25em;
+    font-size: 1.2em;
+}
+
+ul.contact2 li a:before {
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    display: inline-block;
+    background: #2e2e2e;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 30px;
+    text-align: center;
+    color: #939291;
+}
+
+ul.contact2 li a:hover:before {
+    background: #393939;
+    color: #FFF;
+}
+
+ul.contact2 li a {
+    color: #FFF;
+}
+
+ul.contact2 li span {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.p_email{
+	font-size: 15px;
+    font-weight: bold;
+    
+}
+
+.espaciar{
+	text-align: center;
+	margin-top: 110px;
+}
+
+.next_arr{
+	width: 32px;
+}
+
+.back_arr{
+	width: 32px;
+}
+

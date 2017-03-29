@@ -32,12 +32,14 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 		<link rel="manifest" href="favicon/manifest.json">
 		
-		
-		
+		<style>
+		.espaciar {margin-top: 110px;}
+		</style>
+	
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
-
+		
 			<!-- Header Wrapper -->
 				<div id="header-wrapper">
 
@@ -47,9 +49,10 @@
 							<!-- Logo -->
 							<h1 id="logo"><a href="index.html">
 							<picture class="egdo">
-							<source media="(min-width: 1185px)"	srcset="images/EGDO.png">
-							<source media="(min-width: 737px)"  srcset="images/EGDO.png">
-							<img src="images/EGDO.png" alt="egdo chico">
+							<!--<source media="(min-width: 1185px)"	srcset="images/EGDO.png">-->
+							<!--<source media="(min-width: 737px)"  srcset="images/EGDO.png">-->
+							<!--<source media="(max-width: 736px)" srcset="images/egdo_mobile.png">-->	
+							<img src="images/EGDO.png" style="width:90%;" alt="egdo chico">
 							</picture>
 							</a>
 							</h1>
@@ -58,8 +61,8 @@
 								<nav id="nav">
 									<ul>
 										<li><a href="#main-wrapper">Inicio</a></li>
-										<li><a href="#indumentaria">Conocenos</a></li> <!--left-sidebar-->
-										<li class="break"><a href="#registracion">Equipo</a></li>
+										<li><a href="#main">Conocenos</a></li> <!--left-sidebar-->
+										<li class="break"><a href="#introEquipo">Equipo</a></li>
 										<li><a href="#footer-wrapper">Seguinos</a></li>
 									</ul>
 								</nav>
@@ -87,6 +90,8 @@
 					</div>
 
 				</div>
+			
+
 			<div id="nosotros" class="container">
 				<header>
 					<h2>Egdo te ayuda a organizar tu ultimo a&ntilde;o</h2>
@@ -97,10 +102,12 @@
 			
 			<!-- Main Wrapper -->
 				<div id="main-wrapper">
-
-					<!-- Main -->
+					      
+						<!-- Intro -->
 						<div id="intro" class="container">
-							<div class="row">
+							
+							<div class="row"> <!-- Row seccion actividades -->
+								
 								<section class="3u 12u(mobile)">
 									<span class="number txt"><img src="images/party_3.png" alt="upd"></span>
 									<header>
@@ -108,14 +115,15 @@
 									</header>
 									<p>Te ayudamos a organizar tu ultimo primer dia de forma ordenada, facil y rapida, para que lo disfrutes al maximo.</p>
 								</section>
+								
 								<section class="3u 12u(mobile)">
-									
 									<span class="number img"><img src="images/Events_white_4.png" alt="fiesta egresados"></span>
 									<header>
 										<h2>Fiesta de Egresados</h2>
 									</header>
 									<p>Organiza tu fiesta de egresados, sin vueltas, con EGDO ya no hay de que preocuparse.</p>
 								</section>
+								
 								<section class="3u 12u(mobile)">
 									<span class="number img"><img src="images/bus_white.png" alt="bus"></span>
 									<header>
@@ -125,7 +133,6 @@
 								</section>
 								
 								<section class="3u 12u(mobile)">
-									
 									<span class="number img"><img src="images/sweatshirt_white.png" alt="fiesta egresados"></span>
 									<header>
 										<h2>DISE&ntilde;A</h2>
@@ -133,52 +140,71 @@
 									<p>Dise&ntilde;a tu buzo, remera y bandera de egresados con EGDO de forma sencilla.</p>
 								</section>
 							
+							</div> <!-- /Row seccion actividades -->
 							
+						</div>
+					
 							
-							</div>
+						<!-- Intro -->
+						<div id="main" class="container">	
 							
+							<div id='sliders'> <!-- Slider -->
+									<ul class='bjqs'>
+                  	<li>
+                      <img src="images/capturas/1upd.jpg"  alt=''/>
+                    </li>
+                    <li>
+                      <img src="images/capturas/2fiesta.jpg"  alt=''/>
+                    </li>
+                    <li>
+                      <img src="images/capturas/3disenio.jpg"  alt=''/>
+                    </li>
+                    <li>
+                      <img src="images/capturas/4galeria_fiesta.jpg"  alt=''/>
+                    </li>
+                    <li>
+                      <img src="images/capturas/5info_viaje.jpg"  alt=''/>
+                    </li>
+                    <li>
+                      <img src="images/capturas/6calendario.jpg"  alt=''/>
+                    </li>
+                  </ul>
+             	</div> <!-- /Slider -->
 							
-							
-								<!-- SLIDESHOW -->
-                        <div id='sliders'>
-                     
-                            <ul class='bjqs'>
+						</div>
+					
+						<div class="espaciar">
 
-                            
-                              <li>
-                                    <img src="images/capturas/1upd.jpg"  alt=''/>
-                               </li>
-                           
-						 
-                            </ul>
-                        </div>
-							
-							
-							
-							
-							
 							<div class="actions">
 								<!--<a href="#" class="button button-big button-other">Mas Info</a>-->
 								<a href="https://www.egdo.com.ar" class="button button-big button-alt" target="_blank" >IR AL SITIO</a>
 							</div>
 						</div>
 
+
+					</div>	<!-- Man Wrapper-->
+
 			<div id="nosotros2" class="container">
 				<header>
 					<h2>Conoce al equipo de EGDO</h2>
 				</header>
 				
-				<p> </p>	
 			</div>
 						
-					<!-- Main 2 -->
-						<div id="introEquipo" class="container">
+			<!-- Main 2 -->
+					
+					<div id="introEquipo" class="container">
+							
 							<div class="row">
 								<section class="3u 12u(mobile)">
 									<span class="number-txt"><img src="images/avatares/marcos.png" alt="marcos"></span>
 									<header>
 										<h2>Marcos Scalzotto</h2>
 									</header>
+									<ul class="contact2">
+									<li><a href="https://www.linkedin.com/in/marcos-scalzotto-52425252/" class="icon fa-linkedin" target="_blank"><span>Linkedin</span></a></li>
+									<li><p class="p_email"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;marcos.scalzotto24@gmail.com</p></li>
+									</ul>
 									</section>
 								<section class="3u 12u(mobile)">
 									
@@ -186,14 +212,20 @@
 									<header>
 										<h2>Noelia Morel</h2>
 									</header>
-									
+									<ul class="contact2">
+									<li><a href="https://ar.linkedin.com/in/noelia-morel-1466747a" class="icon fa-linkedin" target="_blank"><span>Linkedin</span></a></li>
+									<li><p class="p_email"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;noenmorel@gmail.com</p></li>
+									</ul>
 								</section>
 								<section class="3u 12u(mobile)">
 									<span class="number-txt"><img src="images/avatares/pau.png" alt="pau"></span>
 									<header>
 										<h2>Paula Neri</h2>
 									</header>
-									
+									<ul class="contact2">
+									<li><a href="https://ar.linkedin.com/" class="icon fa-linkedin" target="_blank"><span>Linkedin</span></a></li>
+									<li><p class="p_email"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;pauuu.10.03@gmail.com</p></li>
+									</ul>
 								</section>
 								
 								<section class="3u 12u(mobile)">
@@ -202,39 +234,26 @@
 									<header>
 										<h2>Romina Velasco</h2>
 									</header>
+									<ul class="contact2">
+									<li><a href="https://ar.linkedin.com/" class="icon fa-linkedin" target="_blank"><span>Linkedin</span></a></li>
+									<li><p class="p_email"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;romy_velasco28@gmail.com</p></li>
+									</ul>
 								</section>
 							
-							
+						
 							
 							</div>
 							
-						</div>
+						</div> <!-- /Main 2 -->
 
 				
 						
 						
 				
 				
-				</div>
+				<!--</div> <!-- /page Wrapper -->
 				
 				
-					<div id="intro" class="container">
-							
-							<div class="row">
-								<!-- 
-								
-								espacio libre 
-								
-								-->
-								
-								
-
-							</div>
-							
-					</div>
-
-			
-
 				<!-- Footer Wrapper -->
 				<div id="footer-wrapper">
 
@@ -245,9 +264,9 @@
 							</header>
 							<p><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;egdo.egresados@gmail.com</p>
 							<ul class="contact">
-								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook"><span>Facebook</span></a></li>
-								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter"><span>Twitter</span></a></li>
+								<li><a href="https://www.instagram.com/egdoweb/" class="icon fa-instagram" target="_blank"><span>Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/egdo.web" class="icon fa-facebook" target="_blank"><span>Facebook</span></a></li>
+								<li><a href="https://twitter.com/WebEgdo" class="icon fa-twitter" target="_blank"><span>Twitter</span></a></li>
 							</ul>
 						</div>
 
@@ -257,8 +276,12 @@
 						</div>
 
 				</div>
+				<div id="ir-arriba"><a href="#header-wrapper">
+					<img src="images/png/up-arrow.png" alt="ir arriba"/>		
+				</a></div>
+			</div> <!-- /page Wrapper -->
 
-		</div>
+		<!--</div> revisar -->
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -269,6 +292,8 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/bjqs.min.js"></script>
+			<script src="assets/js/script.js"></script>
+			<script src="assets/js/slowScrolling.js"></script>
 
 	</body>
 </html>
