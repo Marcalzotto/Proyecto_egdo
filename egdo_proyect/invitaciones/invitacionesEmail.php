@@ -144,7 +144,7 @@
 										$patron_num = "/^[[0-9\s]+$/";
 										
 										//Cantidad de alumnos
-										$cant_alumnos = trim(htmlentities(mysql_real_escape_string($_POST["cant_alumnos"])));
+										$cant_alumnos = trim(htmlentities($conexion->real_escape_string($_POST["cant_alumnos"])));
 										
 										if( empty($cant_alumnos) )
 											$aErrores[] = "- Debe completar el campo Cantidad de alumnos";
